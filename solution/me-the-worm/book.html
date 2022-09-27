@@ -1,0 +1,751 @@
+
+
+
+
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+<title>Me, the Worm</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <meta property="og:title" content="Galactic Puzzle Hunt 2022">
+    <meta property="og:description" content="Registration for this year's Galactic Puzzle Hunt is now open!">
+    <meta property="og:image" content="https://galacticpuzzlehunt.com/static/images/banner.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:slnt,CASL,CRSV,MONO@-3,0.5,1,1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/skeleton.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.formset/1.2.2/jquery.formset.min.js"></script>
+    <script src="/jsi18n/"></script>
+    <script src="/static/js/sorttable.js"></script>
+    <script src="/static/js/tray.js"></script>
+    <script src="/static/js/notify.js"></script>
+    <script src="/static/js/time.js"></script>
+    
+    
+    <link rel="icon" sizes="16x16 32x32 48x48 64x64" href="/static/images/favicon.ico" type="image/vnd.microsoft.icon">
+    
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92192633-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-92192633-1');
+</script>
+
+</head>
+<body>
+    
+    <div id="background-glitch-wrapper" class="background-glitch">
+        <div class="glitch-1"></div>
+        <div class="glitch-2"></div>
+        <div class="glitch-3"></div>
+    </div>
+    
+    
+    <input id="shortcuts" type="checkbox">
+    
+    <nav>
+        <span class="tray">
+            <span id="tray-timer"></span>
+            <div class="top-tabs">
+                <a href="/">
+                    Home
+                </a>
+                
+                
+                <a href="/story">
+                    Story
+                </a>
+                
+                
+                <a class="selected-tab" href="/puzzles">
+                    Puzzles
+                </a>
+                
+                <a href="/teams">
+                    Teams
+                </a>
+                
+                
+                <a href="/errata">
+                    Updates
+                </a>
+                
+                
+                
+                
+                <a id="nav-music" href="#">
+                    <label for="music" title="Music" style="margin-bottom: 0; font-weight: normal; cursor: pointer;">Music</label>
+                </a>
+                <input id="music" type="checkbox">
+                <div class="shortcuts music">
+                    <audio id="music-audio" controls src="/static/puzzle_resources/worlds-end-concert/music-audio.mp3">
+                        There should be a music player here.
+                    </audio>
+                </div>
+                
+                
+            </div>
+            <div class="top-left-actions">
+                
+<a href="/solution/me-the-worm" class="btn">Back to the solution</a>
+
+            </div>
+        </span>
+        <div class="top-right-actions">
+        
+        <label for="shortcuts" title="Simulator">Simulator </label>
+        
+        
+        </div>
+    </nav>
+    
+    <div class="shortcuts">
+        <form id="progress-simulator">
+        <div>Current round:</div>
+        <button class="btn" type="submit" name="round" value="forward">⬆️</button>
+        <button class="btn" type="submit" name="round" value="spring">🌸</button>
+        <button class="btn" type="submit" name="round" value="summer">☀️</button>
+        <button class="btn" type="submit" name="round" value="autumn">🍂</button>
+        <button class="btn" type="submit" name="round" value="winter">☃️</button>
+        <button class="btn" type="submit" name="round" value="concert">🎤</button>
+        <button class="btn" type="submit" name="round" value="none">None</button>
+        <div>Endgame:</div>
+        <button class="btn" type="submit" name="endgame" value="true">Unlock</button>
+        <button class="btn" type="submit" name="endgame" value="false">Reset</button>
+        <div>Reset:</div>
+        <button class="btn" type="submit" name="reset" value="reset">Reset</button>
+        </form>
+    </div>
+    
+    
+    
+    
+    
+    <div id="loop-reset">
+        <form>
+            <svg viewBox="-30 160 720 320">
+                <defs>
+                    <path id="loop-end-path" d="m 370,240 c 38.29044,0 74.26676,18.33512 96.83716,49.26624 l -76.8369,30.73478 V 270 L 300,330 261.03858,309.74192 c 19.60706,-42.51188 62.14674,-69.74008 108.9623,-69.74306 z m 106.15758,64.22738 c 6.65282,12.65518 10.9906,26.39738 12.80876,40.57862 l -38.96532,5.19538 z"/>
+                </defs>
+                <foreignObject width="720" height="480" clip-path="url(#loop-end-clip)" class="loop-shade">
+                    <aside class="loop-shade" xmlns="http://www.w3.org/1999/xhtml" style="width: 100%; height: 100%;"></aside>
+                </foreignObject>
+                <clipPath id="loop-end-clip"><use href="#loop-end-path"/></clipPath>
+                <use href="#loop-end-path"/>
+                <path d="M 490,400 600,330 450,350 490,280 390,320 V 270 L 300,330 50,200 170,380 50,400"/>
+            </svg>
+            <div>THE END</div>
+            <p>You can reset once per minute.</p>
+            <table>
+                <tr id="loop-reset-btn-row-reset">
+                    <td><button class="btn" disabled>Reset</button></td>
+                    <td>Start over from the beginning of the exam.</td>
+                </tr>
+                <tr id="loop-reset-btn-row-restore">
+                    <td><button class="btn" disabled>Jump</button></td>
+                    <td>Start over, but resubmit your previous answers to bring you back to this point.</td>
+                </tr>
+                <tr>
+                    <td><a class="btn" href="javascript:toggleReset(false)">Stay</a></td>
+                    <td>Look at this page a bit longer. Make sure to save your work.</td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    
+    <script>
+
+    
+    
+    let glitchTriggerFuncs = [];
+    let glitchTriggerReceived = false;
+    let glitchTriggerExReceived = false;
+    let glitchPageLoaded = false;
+    function processGlitchFuncs(ex) {
+        glitchTriggerFuncs.forEach((func) => {
+            func(ex);
+        });
+    }
+    function doGlitch(ex) {
+        glitchTriggerReceived = true;
+        if (ex) {
+            glitchTriggerExReceived = true;
+        }
+        if (glitchPageLoaded) {
+            processGlitchFuncs(ex);
+        }
+    }
+    window.addEventListener('load', () => {
+        glitchPageLoaded = true;
+        if (glitchTriggerExReceived) {
+            processGlitchFuncs(true);
+        }
+        else if (glitchTriggerReceived) {
+            processGlitchFuncs(false);
+        }
+    }, false);
+    
+    
+    
+    function registerOnGlitchHook(func) {
+        if (glitchTriggerExReceived) {
+            func(true);
+        }
+        else if (glitchTriggerReceived) {
+            func(false);
+        }
+        glitchTriggerFuncs.push(func);
+    }
+    
+
+    
+    
+    </script>
+    <div class="content">
+        
+<style>
+.symbol {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 200px;
+}
+</style>
+<h1>Me, the Worm</h1>
+
+<h3 id="1">Page 1</h3>
+<p>“Ah, what a good day to be a humble earthworm!” you say to yourself.<br><br>You just love being a simple earthworm. Squirming in the dirt, eating micronutrients. Sometimes your relatives come to visit. Isn’t this just the peak of life?<br><br>If you would like to think a big thought, <a href='#2'>turn to the next page</a>.</p>
+
+<h3 id="2">Page 2</h3>
+<p>A thought enters your small but sufficient brain. You live in the dirt. You have a vague idea of what you’ll find if you go up, but what about if you were to dig <i>down</i>?<br><br>If you would like to forget this thought and live normally, <a href='#3'>turn to the next page</a>.<br>If you would like to dig down, <a href='#41'>turn to page 41</a>.</p>
+
+<h3 id="3">Page 3</h3>
+<p>Here at home, life is good and simple.<br><br>If you would like to go for a walk, <a href='#47'>turn to page 47</a>.<br>If you would like to take in the surroundings, <a href='#8'>turn to page 8</a>.<br>If you would like to watch TV, <a href='#73'>turn to page 73</a>.<br></p>
+
+<h3 id="4">Page 4</h3>
+<p>You wander down a back alley. On the side of the alley is a dumpster stuffed full of rotting garbage. It smells delicious! All this going up and down has made you pretty hungry, so you hop in.<br><br>“Hey, how are you!” “Did you hear about that flock of birds? I heard that hundreds of worms were eaten!” The dumpster is filled with the chatter of other worms. In worm culture, the dumpster is the place to see and be seen. You self-consciously smooth the membrane of your head; it's gotten all roughed up from all the digging you were doing.<br><br>You start in on a discarded chicken nugget. It’s highly nutritious.<br><br>There is a mysterious black bag in front of you. The end is open at the top. It looks full.<br><br>If you would like to go into the mysterious black bag, <a href='#9'>turn to page 9</a>.<br>If you would like to leave the dumpster, <a href='#98'>turn to page 98</a>.</p>
+
+<h3 id="5">Page 5</h3>
+<p>“… how you have enough money for getting high in the sky?”<br><br>“Well, I normally kind of keep my money hidden, but since you asked, I'll show you.”<br><br>Fly pulls out a coin with a strange symbol on it.<br><br><img class="symbol" src="/static/puzzle_resources/me-the-worm/symbol.png"><br><br>“I found this weird coin the other day out on the pavement. I don't think it's worth a lot, but I decided to keep it anyway.”<br><br>If you would like to ask Fly what the symbol means, <a href='#6'>turn to the next page</a>.<br>If you would like to ask Fly something else, <a href='#112'>turn to page 112</a>.</p>
+
+<h3 id="6">Page 6</h3>
+<p>“Do you know what that symbol means?” you ask.<br><br>"The symbol on the coin? It means that the coin is important in this section of the book! The length of this section is 6, by the way (don't include the ending page).”<br><br>If you would like to ask Fly something else, <a href='#112'>turn to page 112</a>.</p>
+
+<h3 id="7">Page 7</h3>
+<p>You bite into the apple with enthusiasm. Hey, it’s pretty good. You visit the solid core of the apple, having checked out the juicier bits, and you try eating one of the seeds. Suddenly, your vision blurs and you feel dizzy. The last thing you think of before you die is… <i>oh, cyanide</i>.<br><br>THE END</p>
+
+<h3 id="8">Page 8</h3>
+<p>You take a look around. In one direction, there is a forest. Farther away, a mountain pokes up into the sky.<br><br>If you would like to go to the mountain, <a href='#94'>turn to page 94</a>.<br>If you would like to go to the forest, <a href='#90'>turn to page 90</a>.<br>If you would like to bask, <a href='#83'>turn to page 83</a>.<br>If you would like to go back home, <a href='#3'>turn to page 3</a>.</p>
+
+<h3 id="9">Page 9</h3>
+<p>The black bag is filled with some small shards of plastic and metal. Not exactly a good meal for a worm. You absentmindedly toss a pile of metal filings onto the ground. The filings arrange themselves into a pattern.<br><br><img class="symbol" src="/static/puzzle_resources/me-the-worm/symbol.png"><br><br>If you were paying attention, you would have found their spontaneous arrangement interesting. But you are distracted by a big, juicy fuji apple rotting right in front of you! Can you believe your luck!<br><br>You would like to eat the apple. <a href='#7'>Turn to page 7</a>.</p>
+
+<h3 id="10">Page 10</h3>
+<p>You approach the orange bird. “Hey, just passing through!” you say weakly.<br><br>The bird catches sight of your movement, and its head swivels around so that both of its eyes are focused on you.<br><br>“It’s a worm.”<br><br>A moment passes. The bird closes its eyes. Another moment passes. You continue to move forward.<br><br>Meanwhile, the sea of grass-covered worms has advanced farther.<br><br>It’s not long before you come across another branch with two more bird guards, a green bird and a yellow bird.<br><br>If you would like to talk to the green bird, <a href='#66'>turn to page 66</a>.<br>If you would like to talk to the yellow bird, <a href='#16'>turn to page 16</a>.</p>
+
+<h3 id="11">Page 11</h3>
+<p>You approach the black bird. “Hey, just passing through!” you say weakly.<br><br>The bird catches sight of your movement, and its head swivels around so that both of its eyes are focused on you.<br><br><a href='#95'>Turn to page 95</a>.</p>
+
+<h3 id="12">Page 12</h3>
+<p>Your eyes are closed. Your thoughts are lowered to the Holy Worm.<br><br>If you would like to continue praying, <a href='#122'>turn to page 122</a>.<br>If you would like to stop praying, <a href='#125'>turn to page 125</a>.</p>
+
+<h3 id="13">Page 13</h3>
+<p>Your eyes are closed. Your thoughts are lowered to the Holy Worm.<br><br>If you would like to continue praying, <a href='#58'>turn to page 58</a>.<br>If you would like to stop praying, <a href='#125'>turn to page 125</a>.</p>
+
+<h3 id="14">Page 14</h3>
+<p>Your eyes are closed. Your thoughts are lowered to the Holy Worm.<br><br>If you would like to continue praying, <a href='#64'>turn to page 64</a>.<br>If you would like to stop praying, <a href='#125'>turn to page 125</a>.</p>
+
+<h3 id="15">Page 15</h3>
+<p>Your eyes are closed. Your thoughts are lowered to the Holy Worm.<br><br>If you would like to continue praying, <a href='#57'>turn to page 57</a>.<br>If you would like to stop praying, <a href='#125'>turn to page 125</a>.</p>
+
+<h3 id="16">Page 16</h3>
+<p>You approach the yellow bird. “Hey, just passing through!” you say weakly.<br><br>The bird catches sight of your movement, and its head swivels around so that both of its eyes are focused on you.<br><br>“It’s a worm.”<br><br>A moment passes. The bird closes its eyes. Another moment passes. You continue to move forward.<br><br>Meanwhile, the sea of grass-covered worms has advanced farther.<br><br>It’s not long before you come across another branch with two more bird guards, a black bird and a white bird.<br><br>If you would like to talk to the black bird, <a href='#11'>turn to page 11</a>.<br>If you would like to talk to the white bird, <a href='#135'>turn to page 135</a>.</p>
+
+<h3 id="17">Page 17</h3>
+<p>Your eyes are closed. Your thoughts are lowered to the Holy Worm.<br><br>If you would like to continue praying, <a href='#53'>turn to page 53</a>.<br>If you would like to stop praying, <a href='#125'>turn to page 125</a>.</p>
+
+<h3 id="18">Page 18</h3>
+<p>You approach the pink bird. “Hey, just passing through!” you say weakly.<br><br>The bird catches sight of your movement, and its head swivels around so that both of its eyes are focused on you.<br><br>“It’s a worm.”<br><br>A moment passes. The bird closes its eyes. Another moment passes. You continue to move forward.<br><br>Meanwhile, the sea of grass-covered worms has advanced farther.<br><br>It’s not long before you come across another branch with two more bird guards, a green bird and an orange bird.<br><br>If you would like to talk to the green bird, <a href='#85'>turn to page 85</a>.<br>If you would like to talk to the orange bird, <a href='#119'>turn to page 119</a>.</p>
+
+<h3 id="19">Page 19</h3>
+<p>You open your eyes.<br><br>“Praying Mantis, I feel nothing. Where is the Holy Worm?”<br><br>Praying Mantis says, “Encountering the Holy Worm requires restraint, and not just devotion. I think you prayed just three seconds too much.”<br><br><a href='#118'>Turn to page 118</a>.</p>
+
+<h3 id="20">Page 20</h3>
+<p>You pull up to the street corner and start chilling so hard it should be a crime.<br><br>“Me. The worm. Ah yesss,” you say to yourself.<br><br>Suddenly, you feel yourself lifted off the ground. A human has pinched you between two of its fingers!<br><br>“Help! Help! Help!” Your voice is clearly not heard by anyone bigger than a breadbox.<br><br>If you would like to bite the finger, <a href='#71'>turn to page 71</a>.<br>If you would like to squirm furiously, <a href='#22'>turn to page 22</a>.</p>
+
+<h3 id="21">Page 21</h3>
+<p>You dig deeper. You dig faster. Your body writhes in furious contraction and expansion.<br><br>This is the farthest you’ve ever been from home. <i>I am not afraid</i>.<br><br>The pressure starts to build. <i>Please, it’s nothing I can’t handle</i>.<br><br>It’s getting hot. Very hot. <i>I can do anything</i>.<br><br>You find yourself digging through a seething, burning, molten mass of liquid metal. Is your body still moving? You’ve been compressed into a gooey pulp. <i>Nice</i>.<br><br>THE END</p>
+
+<h3 id="22">Page 22</h3>
+<p>You wriggle your little body as vigorously as it’s able, but to no avail.<br><br>“What a fascinating specimen!”<br><br>The person is a worm collector (nematologist? nematophile? you can't really tell the difference from here… maybe there are more important things to be thinking about right now). They put you in a clear box and put you on the shelf above the fireplace. You wonder what you’re doing here.<br><br>You live out the rest of your days hanging out in a box above the fireplace. Hey, at least you’re a warm worm here.<br><br>THE END</p>
+
+<h3 id="23">Page 23</h3>
+<p>Your eyes are closed. Your thoughts are lowered to the Holy Worm.<br><br>If you would like to continue praying, <a href='#142'>turn to page 142</a>.<br>If you would like to stop praying, <a href='#125'>turn to page 125</a>.</p>
+
+<h3 id="24">Page 24</h3>
+<p>You approach the red bird. “Hey, just passing through!” you say weakly.<br><br>The bird catches sight of your movement, and its head swivels around so that both of its eyes are focused on you.<br><br><a href='#95'>Turn to page 95</a>.</p>
+
+<h3 id="25">Page 25</h3>
+<p>You’ve been digging for a long time. But you’re digging even faster now. What will you find down here, anyway?<br><br>If you would like to dig deeper and faster, <a href='#21'>turn to page 21</a>.</p>
+
+<h3 id="26">Page 26</h3>
+<p>You approach the purple bird. “Hey, just passing through!” you say weakly.<br><br>The bird catches sight of your movement, and its head swivels around so that both of its eyes are focused on you.<br><br><a href='#95'>Turn to page 95</a>.</p>
+
+<h3 id="27">Page 27</h3>
+<p>Your eyes are closed. Your thoughts are lowered to the Holy Worm.<br><br>If you would like to continue praying, <a href='#13'>turn to page 13</a>.<br>If you would like to stop praying, <a href='#125'>turn to page 125</a>.</p>
+
+<h3 id="28">Page 28</h3>
+<p>Your eyes are closed. Your thoughts are lowered to the Holy Worm.<br><br>If you would like to continue praying, <a href='#62'>turn to page 62</a>.<br>If you would like to stop praying, <a href='#125'>turn to page 125</a>.</p>
+
+<h3 id="29">Page 29</h3>
+<p>You’ve been digging for a long time.<br><br>If you would like to dig deeper, <a href='#40'>turn to page 40</a>.<br>If you would like to dig down faster, <a href='#25'>turn to page 25</a>.</p>
+
+<h3 id="30">Page 30</h3>
+<p>You’ve been digging for a long time. <br><br>If you would like to dig deeper, <a href='#29'>turn to page 29</a>.</p>
+
+<h3 id="31">Page 31</h3>
+<p>You’ve been digging for a long time. <br><br>Around you, the rock is tinted green. All worms are essentially armchair geologists, and you recognize that the rock is made up of silicates, one of which is olivine. The striations in the rock have a cool shape.<br><br><img class="symbol" src="/static/puzzle_resources/me-the-worm/symbol.png"><br><br>If you would like to dig deeper, <a href='#30'>turn to page 30</a>.</p>
+
+<h3 id="32">Page 32</h3>
+<p>You’ve been digging for a long time.<br><br>If you would like to dig deeper, <a href='#31'>turn to page 31</a>.</p>
+
+<h3 id="33">Page 33</h3>
+<p>Your rare gem shop, conveniently located 150km below the surface, is profitable and you are pleased. You continue selling rocks here for the rest of your days.<br><br>THE END</p>
+
+<h3 id="34">Page 34</h3>
+<p>No! You will not give up! You will not squirm back home in defeat! There must be a way forward!<br><br>You consider your quandary, then realize: you want to be a rich businessworm, not a mere diamond miner. You will get other digging creatures to do this hard labor for you.<br><br>You network among the various digging animal communities. You ask for loans. You haggle over contracts and labor rates and percentages of future profits. At long last, with the mining operation firmly in the claws of your mole partners, you open a gem shop.<br><br><a href='#35'>Turn to the next page</a>.</p>
+
+<h3 id="35">Page 35</h3>
+<p>You set up a Grand Opening for your gem shop. You chew through the ceremonial ribbon and a crowd streams inside.<br><br>Now you have to work the shop and make it profitable. It's hard, and sometimes you miss the simple life you once had. You’ve spent years plying this trade, and trading rocks isn’t as easy as you thought. But when you reflect on all of your happy customers and your immense profits, you know that you made the right choice in chasing your dream.<br><br>If you would like to continue running your gem shop happily, <a href='#33'>turn to page 33</a>.<br>If you would like to have a mid-life crisis, <a href='#96'>turn to page 96</a>.</p>
+
+<h3 id="36">Page 36</h3>
+<p>You’ve been digging for a long time.<br><br>If you would like to dig deeper, <a href='#32'>turn to page 32</a>.<br>If you would like to instead dig up, <a href='#97'>turn to page 97</a>.</p>
+
+<h3 id="37">Page 37</h3>
+<p>You’ve been digging for a long time.<br><br>If you would like to dig deeper, <a href='#36'>turn to page 36</a>.</p>
+
+<h3 id="38">Page 38</h3>
+<p>You’ve been digging for a long time.<br><br>If you would like to dig deeper, <a href='#37'>turn to page 37</a>.<br>If you would like to stop and look around, <a href='#39'>turn to the next page</a>.</p>
+
+<h3 id="39">Page 39</h3>
+<p>You stop digging and look around. It’s beautiful! All around you are the sparkling crystals of the earth, embedded within a worm’s reach. Now you know why you dug all the way down here: to become a businessworm and get rich off of the rock market.<br><br>You can foresee two possible endings to your business plans: a level of middling success that keeps you afloat, or a lifetime of fortune and glory. Of course, there is always the possibility that your business totally fails and you need to leave the industry. Let’s hope you don’t make a mistake which leads to that.<br><br>If you would like to get rich, <a href='#42'>turn to page 42</a>.</p>
+
+<h3 id="40">Page 40</h3>
+<p>You’ve been digging for a long time.<br><br>If you would like to dig deeper, <a href='#38'>turn to page 38</a>.</p>
+
+<h3 id="41">Page 41</h3>
+<p>You lather on your slime, lace up your shoe, and throw open the bottom door of your dirt pile. It’s time to crawl out of here and find the adventure you didn’t know you were looking for!<br><br>It takes you an embarrassingly long time to do so, but you finally orient yourself into a vertical position suitable for trans-stratal motion. You start to work your way through the clods of loam in front of you.<br><br>Your body moves in a supple, rhythmic motion as you push deeper and deeper into the earth. The exertion is starting to make you warm. Fortunately, the cool dirt around you keeps your vitals comfortable (worm fact: worms don’t sweat). You must look really sexy right now. If only another worm would pop out of an adjacent tunnel and ogle your writhing contortions. But there’s no time for idle thoughts of worm romance; this isn’t that kind of book. You’ve got digging to do.<br><br>Working your way through the soil like this, you know, it really isn’t so different from digging up.<br><i>The digging you used to do</i>, you think to yourself, <i>before you decided to change your life</i>.<br><br>If you would like to dig deeper, <a href='#40'>turn to page 40</a>.</p>
+
+<h3 id="42">Page 42</h3>
+<p>You are an earthworm. Digging is your passion. You have a great time digging until, at last, you find an area with lots of diamonds.<br><br>Unfortunately, diamonds are too hard and pointy for you to handle with your soft worm body. For an instant, your dreams are shattered. Now you'll never get rich by selling diamonds at their artificially-high prices and screwing over the cartels. <br><br>If you would like to give up on your dream and go back to a simple life at home, <a href='#3'>turn to page 3</a>.<br>If you want to persevere, <a href='#34'>turn to page 34</a>.</p>
+
+<h3 id="43">Page 43</h3>
+<p>Butterfly opens the door to their immaculately decorated flat, and you inch in. “Earthworm! It’s been far too long,” they greet you excitedly. You don’t have a sense of smell, but you nonetheless get the sense that food is cooking nearby. You’re hungry, but your old friend Potato Bug told you that he didn’t trust Butterfly before he disappeared. But Butterfly is still around to be your friend, and Potato Bug hasn’t been seen in forever, so he’s probably wrong.<br><br>“Please, come into the kitchen! I was just making some toast!”<br><br>If you would like to go into the kitchen, <a href='#44'>turn to the next page</a>.<br>If you would like to leave, <a href='#47'>turn to page 47</a>.</p>
+
+<h3 id="44">Page 44</h3>
+<p>You go into the kitchen with Butterfly.<br><br>On the table there is a VERY large, flat dish. There are words in many languages written around the border of the dish. Starting from the top left and going clockwise, the languages are: Arabic, Tigrinya, French, Afar, Swahili, English, Portuguese, Makhuwa, Afrikaans, English, Portuguese, French, Spanish, Kamtok, English, French, Ewe, Akan, Kru, Kpelle, Krio, Susu, Crioulo, Mandinka, Balanta.<br><br>In the center of the dish is a prominent symbol.<br><br><img class="symbol" src="/static/puzzle_resources/me-the-worm/symbol.png"><br><br>You get the sense that a pun is being attempted here, but you don't quite get it yet.<br><br>"So, toast. Would you like some?" Butterfly asks.<br><br>You feel vaguely uneasy. Why is Butterfly so intent on offering you toast?<br><br>If you would like to ask for toast, <a href='#81'>turn to page 81</a>.<br>If you would like to politely decline, <a href='#45'>turn to the next page</a>.<br></p>
+
+<h3 id="45">Page 45</h3>
+<p>“No toast, eh?” Butterfly’s tone has gotten substantially unfriendlier.<br><br>“Do you not trust my cooking? I’ll show you what real toast looks like…”<br><br>You try to reassure them, but it’s no use. Butterfly has got pots and pans in every wing and antenna and you’re but a worm; you decide to just stay out of the way and see what happens.<br><br>If you would like to stay out of the way and see what happens, <a href='#46'>turn to the next page</a>.<br>Are you sure you don't want to leave? If you would like to leave and hide in the bathroom, <a href='#65'> turn to page 65</a>.</p>
+
+<h3 id="46">Page 46</h3>
+<p>Butterfly fills with maniacal laughter. They say, “you know what makes a good toast topping? WORMS!”<br><br>Before you know it, they’ve plucked you from your foot and placed you in a pan. You saute briefly, and before you know it you’re being spread all over the crispy, crunchy sides and top of the toast. This is not where you were expecting to end up.<br><br>“Yum!” is the last thing you hear as Butterfly takes a giant bite. You’re toast.<br><br>THE END</p>
+
+<h3 id="47">Page 47</h3>
+<p>You’re out on the grass. Maybe you should visit your friends. They haven't seen you for awhile. They probably think you dried out on the pavement or something.<br><br>If you would like to head towards the forest, <a href='#89'>turn to page 89</a>.<br>If you would like to visit the library, <a href='#49'>turn to page 49</a>.<br>If you would like to visit your friend Butterfly, <a href='#43'>turn to page 43</a>.<br>If you would like to go back home, <a href='#3'>turn to page 3</a>.</p>
+
+<h3 id="48">Page 48</h3>
+<p>Your eyes are closed. Your thoughts are lowered to the Holy Worm.<br><br>If you would like to continue praying, <a href='#126'>turn to page 126</a>.<br>If you would like to stop praying, <a href='#125'>turn to page 125</a>.</p>
+
+<h3 id="49">Page 49</h3>
+<p>At the library, you of course find Bookworm. Bookworm is your half-sister (the worm half, not the book half).<br><br>If you would like to ask Bookworm for her recommendation of a good book, <a href='#50'>turn to page 50</a>.<br>If you would like to ask Bookworm about her “Save the Worms” movement, <a href='#51'>turn to page 51</a>.<br>If you would like to ask Bookworm about the bird-dominated dystopian society we all inhabit, <a href='#74'>turn to page 74</a>.<br>If you would like to leave, <a href='#47'>turn to page 47</a>.</p>
+
+<h3 id="50">Page 50</h3>
+<p>“Hey Bookworm, have you read any good books lately?” you ask.<br><br>“Have you read the new book <i>Me, the Worm</i>?” Bookworm fires back. “I just finished it! It’s a choose-your-own-adventure book. It’s really good. The book’s got <i>layers</i>.”<br><br>“Oh, and there are many interesting endings!” Bookworm adds. “Each ending marks the ending of a layer. By the way, some of the layers have no pages inside.”<br><br>Bookworm holds out a book from a stack next to her. “Actually, I have a copy that you can borrow. Here.”<br><br>You’ve been searching high and low for some purpose in life, some answer to all your questions. You take the book from Bookworm and hold it in front of you. You think the wise Bookworm might know what you need to do.<br><br>If you would like to ___, then do it!<br>If you would like to ask Bookworm something else, <a href='#49'>turn to page 49</a>.</p>
+
+<h3 id="51">Page 51</h3>
+<p>“Hey Bookworm, can you remind me about your Save the Worms movement again? It’s something about how worms are always drowning, right?”<br><br>Bookworm says, “Save the Worms is about the plight that we worms face when it rains. For a worm whose home has poor drainage due to disrepair, rain can force it to abandon its home and squirm out onto the pavement, which usually has some dry patches during a rainstorm.”<br><br>“But once out on the pavement, a worm is no longer safe. Besides the constant danger of birds, the primary threat is humans who step right on the poor worm. Human negligence is without parallel! Not to mention, I’ve seen so many worms with midsections flattened by bicycle tires.”<br><br>“The movement is trying to do two things. First, we fix up worm houses which are in danger of flooding during rain. Second, we attempt to raise awareness in the human world so that not so many worms are stepped on during rainstorms.”<br><br>If you would like to contribute money towards the “Save the Worms” movement, you can <a target='_blank' href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=L4CVDVR3VTLZJ'>donate to us here</a>.<br>If you would like to ask Bookworm something else, <a href='#49'>turn to page 49</a>.</p>
+
+<h3 id="52">Page 52</h3>
+<p>You approach the red bird. “Hey, just passing through!” you say weakly.<br><br>The bird catches sight of your movement, and its head swivels around so that both of its eyes are focused on you.<br><br><a href='#95'>Turn to page 95</a>.</p>
+
+<h3 id="53">Page 53</h3>
+<p>Your eyes are closed. Your thoughts are lowered to the Holy Worm.<br><br>If you would like to continue praying, <a href='#23'>turn to page 23</a>.<br>If you would like to stop praying, <a href='#125'>turn to page 125</a>.</p>
+
+<h3 id="54">Page 54</h3>
+<p>Your eyes are closed. Your thoughts are lowered to the Holy Worm.<br><br>If you would like to continue praying, <a href='#28'>turn to page 28</a>.<br>If you would like to stop praying, <a href='#125'>turn to page 125</a>.</p>
+
+<h3 id="55">Page 55</h3>
+<p>You approach the teal bird. “Hey, just passing through!” you say weakly.<br><br>The bird catches sight of your movement, and its head swivels around so that both of its eyes are focused on you.<br><br>“It’s a worm.”<br><br>A moment passes. The bird closes its eyes. Another moment passes. You continue to move forward.<br><br>Meanwhile, the sea of grass-covered worms has advanced farther.<br><br>It’s not long before you come across another branch with two more bird guards, a purple bird and a red bird.<br><br>If you would like to talk to the purple bird, <a href='#26'>turn to page 26</a>.<br>If you would like to talk to the red bird, <a href='#106'>turn to page 106</a>.</p>
+
+<h3 id="56">Page 56</h3>
+<p>You approach the black bird. “Hey, just passing through!” you say weakly.<br><br>The bird catches sight of your movement, and its head swivels around so that both of its eyes are focused on you.<br><br><a href='#95'>Turn to page 95</a>.</p>
+
+<h3 id="57">Page 57</h3>
+<p>Your eyes are closed. Your thoughts are lowered to the Holy Worm.<br><br>If you would like to continue praying, <a href='#17'>turn to page 17</a>.<br>If you would like to stop praying, <a href='#125'>turn to page 125</a>.</p>
+
+<h3 id="58">Page 58</h3>
+<p>Your eyes are closed. Your thoughts are lowered to the Holy Worm.<br><br>If you would like to continue praying, <a href='#48'>turn to page 48</a>.<br>If you would like to stop praying, <a href='#125'>turn to page 125</a>.</p>
+
+<h3 id="59">Page 59</h3>
+<p>You look down. There’s a crescent-shaped chasm here that seems to go down a long way. The pattern of the chasm is surprisingly geometric.<br><br><img class="symbol" src="/static/puzzle_resources/me-the-worm/symbol.png"><br><br><a href='#80'>Turn to page 80</a>.</p>
+
+<h3 id="60">Page 60</h3>
+<p>Suddenly you spit out, “Curse the rings of the Holy Worm!” You’re angry and frustrated that you still don’t know what you’re doing.<br><br>Praying Mantis turns to look at you.<br><br>There is a large cracking noise. The ground beneath you is rent apart by an unseen force. You flail your body to latch on to something but it is to no avail. You fall into the crevasse. The last thing you see is the outline of Praying Mantis’s face, peering over the edge and silhouetted by the glow of a church lamp.<br><br>When you awaken, you are in the underworld. But somewhat surprisingly, this isn’t a worm underworld. It seems that your baleful fate is to toil here forever. You join Sisyphus, who is pushing his stone up a hill, and you do another loop of your own endlessly repeating journey, doomed to repeat it forever and ever and ever and ever.<br><br>THE END</p>
+
+<h3 id="61">Page 61</h3>
+<p>You leap into the abyss. You fall. There may be a bottom to the abyss, but it’s far away, lost in the darkness. You lose consciousness as your body starts to accelerate uncontrollably fast. This is the end. What did you think would happen?<br><br>THE END</p>
+
+<h3 id="62">Page 62</h3>
+<p>Your eyes are closed. Your thoughts are lowered to the Holy Worm.<br><br>If you would like to continue praying, <a href='#128'>turn to page 128</a>.<br>If you would like to stop praying, <a href='#125'>turn to page 125</a>.</p>
+
+<h3 id="63">Page 63</h3>
+<p>You float past a large creature, almost five hundred inches long and definitely threatening. Subtle markings on its thematically-named "forehead" trace out a pattern.<br><br><img class="symbol" src="/static/puzzle_resources/me-the-worm/symbol.png"><br><br><a href='#80'>Turn to page 80</a>.</p>
+
+<h3 id="64">Page 64</h3>
+<p>Your eyes are closed. Your thoughts are lowered to the Holy Worm.<br><br>If you would like to continue praying, <a href='#88'>turn to page 88</a>.<br>If you would like to stop praying, <a href='#125'>turn to page 125</a>.</p>
+
+<h3 id="65">Page 65</h3>
+<p>You excuse yourself and head to the bathroom. There’s no lock on the door, but you push yourself against the door. Butterfly is surely up to something strange. What can you do?<br><br>You realize you have two choices.<br><br>To flush yourself down the toilet, <a href='#79'>turn to page 79</a>.<br>To go back into the kitchen and be brave, <a href='#46'>turn to page 46</a>.</p>
+
+<h3 id="66">Page 66</h3>
+<p>You approach the green bird. “Hey, just passing through!” you say weakly.<br><br>The bird catches sight of your movement, and its head swivels around so that both of its eyes are focused on you.<br><br><a href='#95'>Turn to page 95</a>.</p>
+
+<h3 id="67">Page 67</h3>
+<p>Your eyes are closed. Your thoughts are lowered to the Holy Worm.<br><br>If you would like to continue praying, <a href='#107'>turn to page 107</a>.<br>If you would like to stop praying, <a href='#125'>turn to page 125</a>.</p>
+
+<h3 id="68">Page 68</h3>
+<p>Your eyes are closed. Your thoughts are lowered to the Holy Worm.<br><br>If you would like to continue praying, <a href='#14'>turn to page 14</a>.<br>If you would like to stop praying, <a href='#125'>turn to page 125</a>.</p>
+
+<h3 id="69">Page 69</h3>
+<p>You approach the purple bird. “Hey, just passing through!” you say weakly.<br><br>The bird catches sight of your movement, and its head swivels around so that both of its eyes are focused on you.<br><br><a href='#95'>Turn to page 95</a>.</p>
+
+<h3 id="70">Page 70</h3>
+<p>Your eyes are closed. Your thoughts are lowered to the Holy Worm.<br><br>If you would like to continue praying, <a href='#133'>turn to page 133</a>.<br>If you would like to stop praying, <a href='#125'>turn to page 125</a>.</p>
+
+<h3 id="71">Page 71</h3>
+<p>You turn your head to the finger around your midriff and chomp furiously with all the torque your jaw can muster. The human doesn’t seem to react.<br><br>The person is a fisherperson.<br><br>You know what this means. You’ve heard the stories. You’re going into the WATER.<br><br>The fear is so much that you barely notice that you are on a bait hook. The water engulfs you! <br><br><a href='#72'>Turn to the next page</a>.</p>
+
+<h3 id="72">Page 72</h3>
+<p>You never learned how to swim. So you begin to sink.<br>    <br>You sink down very far, down to where the light does not penetrate. You think you'll be stuck down here in the dark wet ocean forever, when suddenly you see a light approaching. You wiggle toward it, but your wiggling instincts were trained on land and you can't manage to move yourself around down here. Luckily, the light moves toward you. And then you see there is a terrifying creature that is bringing the light to you.<br><br>SNAP! You are eaten by an anglerfish!<br><br>THE END</p>
+
+<h3 id="73">Page 73</h3>
+<p>You switch on the TV.<br><br>“…traveling through another dimension, a dimension not only of sight and sound but of mind. A journey into a wondrous land whose boundaries are that of imagination.”<br><br>The TV is airing a familiar show. Eerie music plays. You are sucked in. It seems that you’re not going to get anything else done today.<br><br>THE END</p>
+
+<h3 id="74">Page 74</h3>
+<p>“Hey Bookworm, can you tell me about the bird-dominated dystopian society we all inhabit?” you ask.<br><br>Bookworm seems excited that you’re willing to listen to her talk about birds and society. You’re worried when she hands you a glass of mud to drink. This is going to take a while.<br><br>But it turns out that what she has to say is endlessly fascinating. Birds and worms have been enemies for millennia, and your half-sister is aware of all the intricate details.<br><br>“The birds have been pinching us left and right! You must remember the night that mom was taken. I’ve never looked at a blue jay the same way since. And they pretend to be <i>such nice creatures</i>.”<br><br>“Baby worms are being snatched right off the pavement. How can we live in a world like this?”<br><br>“I’ve been involved recently with a paramilitary group seeking to destabilize the bird regime,” Bookworm says. “We have a raid tonight. We want to take our revenge. Show them that it’s safe for nobody out there. We want to steal their eggs.” There is a glint in her light and darkness sensory receptors. <br><br>“Are you in?”<br><br>If you would like to join the raid, <a href='#75'>turn to page 75</a>.<br>If you would like to ask Bookworm something else, <a href='#49'>turn to page 49</a>.</p>
+
+<h3 id="75">Page 75</h3>
+<p>You nod. You’re in.<br><br>“Ok,” says Bookworm. “Meet back here around ten PM.”<br><br>You come back to the library later in the evening. Surprisingly, it’s packed with worms! There must be hundreds of worms among the shelves. The library remains fairly quiet. Everyone seems grim.<br><br>Bookworm is at the reception desk, talking with a grizzled-looking worm who seems to be a couple rings short of a full length. She’s giving short orders to other worms as they come by. She’s clearly in some sort of command position. Your half-sister has really been up to a lot recently, so it would seem.<br><br>You approach her. “Hi Bookworm! I’m here.”<br><br>Bookworm gives you a blade of grass. “Great timing. Put this on.” She shouts out to the group, “Worms! It’s time!”<br><br>If you would like to head out with the company, <a href='#76'>go to page 76</a>.</p>
+
+<h3 id="76">Page 76</h3>
+<p>The company of worms squirms quickly and silently through the night. Every worm has a blade across their back, camouflaging it from above. If a bird were to fly over right now, it would see nothing but a field of grass swaying in the breeze.<br><br>The company approaches the edge of the forest. You hear the faint flap of wings, and it makes your five hearts skip their beats. There are birds here.<br><br>The worm next to you whispers in your direction, “The nest we’re trying to get is just inside the treeline.”<br><br>You see Bookworm coming over to you.<br><br>“Now’s your time. I need you for a special task, my half-sibling. Can you go in and distract the birds?”<br><br>You gulp. Uh oh… this sounds dangerous. You might be able to get through this task if you try hard enough, but you're pretty sure there's a principled approach, too. Haven't you been here before?<br><br>If you would like to distract the birds, <a href='#77'>turn to page 77</a>.<br>If you would like to return to a simple life at home… well, it’s too late for that now.</p>
+
+<h3 id="77">Page 77</h3>
+<p>“Ok. How can I distract the birds?”<br><br>Bookworm says, “You know, we didn’t think that part through. How about you just talk to them?”<br><br>You approach the tree with the nest. Two bird guards are sitting on a branch, a black bird and a blue bird.<br><br>If you would like to talk to the black bird, <a href='#56'>turn to page 56</a>.<br>If you would like to talk to the blue bird, <a href='#143'>turn to page 143</a>.</p>
+
+<h3 id="78">Page 78</h3>
+<p>Your eyes are closed. Your thoughts are lowered to the Holy Worm.<br><br>If you would like to continue praying, <a href='#70'>turn to page 70</a>.<br>If you would like to stop praying, <a href='#125'>turn to page 125</a>.</p>
+
+<h3 id="79">Page 79</h3>
+<p>You jump on the toilet's lever to flush it. Quickly, before the water drains away, you launch yourself into the toilet bowl. (This isn't so different from using a diving board, and you even manage a couple flips before you hit the water.)<br><br>Only after you enter the sewers do you stop to consider what you have done. Do you even know how plumbing works? Where do these pipes lead? You struggle against the current, but your narrow body is too hydrodynamic for your flailing to make much difference. You resign yourself to your fate and let the current take you where it will.<br><br>To your surprise, the water quality abruptly changes. It is cleaner, certainly, and… saltier? Dumping raw sewage in the ocean would be unsanitary, but it seems you are in the ocean after all. Maybe Butterfly's house is hooked up to some unusual all-natural plumbing system.<br><br><a href='#80'>Turn to the next page</a>.</p>
+
+<h3 id="80">Page 80</h3>
+<p>You are in the ocean. You think a big thought. It is spookily parallel with a thought you had a long time ago: I wonder what’s <i>down</i>?<br><br>If you would like to look at marine topography, <a href='#59'>turn to page 59</a>.<br>If you would like to look at marine animals, <a href='#63'>turn to page 63</a>.<br>If you would like to go down, <a href='#72'>turn to page 72</a></p>
+
+<h3 id="81">Page 81</h3>
+<p>Butterfly opens the refrigerator, "Look at all the topping options here!" On the top shelf there is a mushy sea creature with a strange symbol on it.<br><br><img class="symbol" src="/static/puzzle_resources/me-the-worm/symbol.png"><br><br> "Tastes great on toast! I only source my condiments organically. No peanut butter, though. All my peanut butters ran away because I ran out of peanuts for them to butt… Peanuts are big, how am I supposed to carry one with my dainty little wings…"<br> <br>“I make my own butter though. So what do you want on your toast?”<br><br>If you ask for the mushy sea creature, <a href='#82'>turn to the next page</a>.<br>If you ask for butter, <a href='#84'>turn to page 84</a>.<br>If you ask Butterfly to surprise you, <a href='#46'>turn to page 46</a>.</p>
+
+<h3 id="82">Page 82</h3>
+<p>“Hmmm… you know, I was saving that for a special occasion. Not that you’re not a special friend, or anything, but, you know, uh, it’s just not ripe yet. Why don’t you choose something else?”<br><br>If you ask for butter, <a href='#84'>turn to page 84</a>.<br>If you ask Butterfly to surprise you, <a href='#46'>turn to page 46</a>.</p>
+
+<h3 id="83">Page 83</h3>
+<p>You put on your darkest pair of worm-fitted sunglasses and stretch out fully. Here in the light of the sun, it’s so warm and toasty.<br><br>    Actually, it’s a little too warm, and you don’t notice that you’re drying out until it’s too late. You shrivel up. The powerful sun cooks you into a crisp. This is the place where the audio clip “bakin’ in the sun” from the song “Rock Lobster” by the B-52s would play, except this is a book and not a multimedia experience.<br><br>    THE END</p>
+
+<h3 id="84">Page 84</h3>
+<p>“I’ll have butter on my toast,” you say.<br><br>“Perfect! They say I have the best butter in town.”<br><br>Butterfly hands you a plate of toast coated in a strange green liquid. You take a bite, and it tastes, sure enough, like butter.<br><br>You have a sudden vision. You glimpse fifteen different paths that your life could take. Along the way, eleven crucial moments stand out to you. And then the vision suddenly stops.<br><br>“Uhh, is it normal to have a vision when eating that?” you ask.<br><br>“Hmm, I’m still working on my psychedelic formula. Do you want more toast now?”<br><br>If you say yes, <a href='#81'>turn to page 81</a>.<br>If you excuse yourself, <a href='#47'>turn to page 47</a>.</p>
+
+<h3 id="85">Page 85</h3>
+<p>You approach the green bird. “Hey, just passing through!” you say weakly.<br><br>The bird catches sight of your movement, and its head swivels around so that both of its eyes are focused on you.<br><br><a href='#95'>Turn to page 95</a>.</p>
+
+<h3 id="86">Page 86</h3>
+<p>Your eyes are closed. Your thoughts are lowered to the Holy Worm.<br><br>If you would like to continue praying, <a href='#136'>turn to page 136</a>.<br>If you would like to stop praying, <a href='#125'>turn to page 125</a>.</p>
+
+<h3 id="87">Page 87</h3>
+<p>You approach the teal bird. “Hey, just passing through!” you say weakly.<br><br>The bird catches sight of your movement, and its head swivels around so that both of its eyes are focused on you.<br><br>“It’s a worm.”<br><br>A moment passes. The bird closes its eyes. Another moment passes. You continue to move forward.<br><br>Meanwhile, the sea of grass-covered worms has advanced farther.<br><br>It’s not long before you come across another branch with two more bird guards, an orange bird and a red bird.<br><br>If you would like to talk to the orange bird, <a href='#10'>turn to page 10</a>.<br>If you would like to talk to the red bird, <a href='#52'>turn to page 52</a>.</p>
+
+<h3 id="88">Page 88</h3>
+<p>Your eyes are closed. Your thoughts are lowered to the Holy Worm.<br><br>If you would like to continue praying, <a href='#86'>turn to page 86</a>.<br>If you would like to stop praying, <a href='#125'>turn to page 125</a>.</p>
+
+<h3 id="89">Page 89</h3>
+<p>You make your way through the grass towards the forest.<br><br>Suddenly you hear the flap of wings.<br><br>Whoa! Bird alert! You freeze, pretending to be a stick or a discarded piece of chewing gum.<br><br>You lay in the grass, praying to the Holy Worm that nobirdy sees you. Over the next few minutes, ten colorful birds arrive nearby. You think that it might be useful to remember their order in case they try to kill you later. They arrive in the following order: purple bird, green bird, yellow bird, teal bird, red bird, black bird, pink bird, orange bird, blue bird, white bird.<br><br>Better not keep going this way!<br><br>If you would like to turn back, <a href='#47'>turn to page 47</a>.</p>
+
+<h3 id="90">Page 90</h3>
+<p>You’re out in the forest. The soil smells especially fragrant here under the trees. It’s a pleasant time, and it lets you quickly forget your fears and troubles. A bird wouldn't dare try to eat you somewhere as peaceful as here.<br><br>If you would like to continue strolling, <a href='#91'>turn to the next page</a>.</p>
+
+<h3 id="91">Page 91</h3>
+<p>You forge onward into the forest, and you hear a buzzing noise. A friendly insect! But no, this is a more sinister buzzing… is it a bird? You see the very small creature darting through the air, hovering in different places long enough to be drawing some sort of symbol in the air. You watch, transfixed, and memorize the symbol. It looks like this:<br><br><img class="symbol" src="/static/puzzle_resources/me-the-worm/symbol.png"><br><br>If you would like to continue strolling, <a href='#8'>turn to page 8</a>.</p>
+
+<h3 id="92">Page 92</h3>
+<p>You grab the gear shift and move it into reverse. <br><br>You hear the sound of gears clanking and spinning, as the engines rotate around from the bottom of the rocket to the top. A moment later, and now you're headed down.<br><br>Below you, you can see the ocean getting closer and closer.<br><br>“How do we land the rocket?” you turn to ask Fly.<br><br>“The rocket? Just jump out!”<br><br>Fly says, “The rocket's disposable. I'll just buy a new one.”<br><br>If you would like to jump into the ocean, <a href='#80'>turn to page 80</a>.</p>
+
+<h3 id="93">Page 93</h3>
+<p>You leap into the abyss. Your body plunges downward…<br><br>…but almost immediately, you’re caught around a stick protruding out of the side of the abyss.<br><br><i>I almost died! Again!</i> you think to yourself. <i>Thank the Holy Worm for that stick!</i><br><br>You’re still hanging on to the stick. You can’t help but think a quietly sickening thought: you still have a choice to make.<br><br>If you would like to leap off of the stick, <a href='#61'>turn to page 61</a>.<br>If you would like to climb out of the abyss, <a href='#116'>turn to page 116</a>.</p>
+
+<h3 id="94">Page 94</h3>
+<p>You are at the base of the mountain. At the top of the mountain is a church, but you can’t see it from here. The sun set long ago—it’s quite dark. Is this really a good time to climb a mountain? Not to mention, this mountain is very imposing; it’s several feet tall.<br><br>If you would like to climb the mountain, <a href='#100'>turn to page 100</a>.<br>If you would like to go to the grass, <a href='#8'>turn to page 8</a>.</p>
+
+<h3 id="95">Page 95</h3>
+<p>The bird takes a few quick hops toward you. You try to back away, but it’s too late. The bird snaps its beak around your midsection, plucks you up, and swallows you whole. You have become a bird’s meal.<br><br>The bird cackles, “The early bird gets the worm, ahahaha!”<br><br>It opens its wings and flaps off into the sky.<br><br>THE END</p>
+
+<h3 id="96">Page 96</h3>
+<p>You get bored of running your shop. You achieved your dream of becoming a successful businessworm and you have a ton of money now. I guess it’s time… to buy a private jet!!!<br><br>You take your fancy worm elevator up to your private jet. You're served a milliliter of fancy alcohol, and you put on your seatbelt. You look out the window toward the beach.<br><br>Whooooosh! Your jet takes off from the airstrip on your private island. You put up your leg, throw on some smooth jazz, and sail into the endless blue sky.<br><br>THE END</p>
+
+<h3 id="97">Page 97</h3>
+<p>As you dig towards the surface, the dirt starts to become looser and lighter. Moisture fills the air and layers on your skin. Far away, you can sense the vibrations of other creatures of the earth making their ways through parallel tunnels.<br><br><i>We’re all choosing our own adventure. How poetic.</i><br><br>The light breaks in front of you, and you poke out of a little hole between two slabs of concrete. Around you is the hustle and bustle of an unfamiliar city. You must have made it through to the other side of the world… you’d have expected people to be more upside-down here. You dodge a huge shoe that suddenly steps where you were lying - better be careful around here!<br><br>If you would like to continue onwards, <a href='#98'>turn to the next page</a>.</p>
+
+<h3 id="98">Page 98</h3>
+<p>You slither your way down the block. Giant footsteps land all around you. In the space far above, signs hang and lights glow. The excitement of the city fills you with renewed energy. There are so many things to explore!<br><br>If you would like to turn down a side street, <a href='#4'>turn to page 4</a>.<br>If you would like to head to the airport, <a href='#101'>turn to page 101</a>.<br>If you would like to play it cool and chill on the street corner, <a href='#20'>turn to page 20</a>.</p>
+
+<h3 id="99">Page 99</h3>
+<p>You approach the black bird. “Hey, just passing through!” you say weakly.<br><br>The bird catches sight of your movement, and its head swivels around so that both of its eyes are focused on you.<br><br><a href='#95'>Turn to page 95</a>.</p>
+
+<h3 id="100">Page 100</h3>
+<p>You curl around rocks and sticks and pull yourself up the side of the pinnacle. Another rock, another curl, another inch closer to the top. You got this.<br><br>As you are climbing, you see a subtle green light far off in the night. Curious! You've never been this close to the North Pole before, and you wonder if this happens often. The light entrances you, forming a tantalizing pattern.<br><br><img class="symbol" src="/static/puzzle_resources/me-the-worm/symbol.png"><br><br>Nevertheless, you cannot spend all evening watching the light.<br><br>If you would like to go higher, <a href='#102'>turn to page 102</a>.<br>If you would like to turn back, <a href='#94'>turn to page 94</a>.</p>
+
+<h3 id="101">Page 101</h3>
+<p>You head to the airport. Watching the airplanes take off and land makes you daydream. Compared to a small worm like you, these airplanes are enormous… to think that they can travel in a second what would take you a week of laborious slithering!<br><br><i>I wish I had my own private jet… Then I could go wherever I wanted to.</i><br><br>“Hey! Do you want to go higher than you ever thought you could?” Someone is talking to you.<br><br>“My name’s Fly. I love getting up high in the sky. If you want to come with me into the sky, I’m always looking for partners. Also, I can’t stop talking. If you stop talking, they’re gonna swat you, is what my parents always used to say.”<br><br>Fly is moving back and forth.<br><br>“If you want, I can get you way up in the sky.”<br><br>If you would like to ask Fly for details, <a href='#112'>turn to page 112</a>.<br>If you would like to avoid this character and head back to the street, <a href='#98'>turn to page 98</a>.</p>
+
+<h3 id="102">Page 102</h3>
+<p>You climb ever higher up the mountain. The path winds around boulders, trees, and stumps. It’s not easy going.<br><br>You come upon an icy river running swiftly. The path leads onto a bridge, but the bridge looks ancient. The planks are rotting and hang at unsafe angles. You’re not sure how to proceed.<br><br>If you would like to wade across the icy river, <a href='#103'>turn to page 103</a>.<br>If you would like to cross the decaying bridge, <a href='#104'>turn to page 104</a>.</p>
+
+<h3 id="103">Page 103</h3>
+<p>You enter at the edge of the icy river. Your mom never taught you how to swim. This was a fool’s errand!<br><br>As soon as your tail end leaves the river bank, you lose traction and the water takes you. You scream a tiny worm scream. You imagine yourself drowning. You feel yourself drowning. You are drowning.<br><br>But a moment later, you slam into the river bank. You drifted downstream a long way, but you’re alive. Shaking, you inch out of the water and into lovely, familiar grass.<br><br><a href='#47'>Turn to page 47</a>.</p>
+
+<h3 id="104">Page 104</h3>
+<p>You step out onto the decaying bridge. The first plank groans, but holds your weight.<br><br>Until it doesn’t. The plank splinters apart, and your body falls through the rupture. Your shoe catches on the shard of the plank. You are dangling upside down from the bridge, with your rear end barely gripping the wood of the bridge. The icy water rushes in front of your face, roaring. Deathly peril fills you.<br><br>You flex your massive abs and reach your front end up, desperately clawing for a grip. You latch onto the next plank. With both ends contacting the bridge, you haul yourself up to the height of the bridge.<br><br>Your five hearts are throbbing. You take a gasp. You move to the next plank, then the next. Each plank groans, but holds you.<br><br>You step onto the far bank of the bridge, and the feeling of imminent danger evaporates. You lay down in the dirt, feeling mentally drained. You’re glad you didn’t fall into the icy river. You don’t know how to swim, and that water was moving very fast. You probably would have drowned.<br><br>Some time later, you decide to continue with your climb.<br><br>The trail winds vaguely up and up. Off to the side of the trail, you catch sight of an abyss. The abyss is a pit that stretches far, far down into total blackness. To attempt to enter it is clear lunacy. And yet…<br><br>If you would like to leap into the abyss, <a href='#93'>turn to page 93</a>.<br>If you would like to climb higher, <a href='#116'>turn to page 116</a>.</p>
+
+<h3 id="105">Page 105</h3>
+<p>Your eyes are closed. Your thoughts are lowered to the Holy Worm.<br><br>If you would like to continue praying, <a href='#54'>turn to page 54</a>.<br>If you would like to stop praying, <a href='#125'>turn to page 125</a>.</p>
+
+<h3 id="106">Page 106</h3>
+<p>You approach the red bird. “Hey, just passing through!” you say weakly.<br><br>The bird catches sight of your movement, and its head swivels around so that both of its eyes are focused on you.<br><br>“It’s a worm.”<br><br>A moment passes. The bird closes its eyes. Another moment passes. You continue to move forward.<br><br>Meanwhile, the sea of grass-covered worms has advanced farther.<br><br>It’s not long before you come across another branch with two more bird guards, a blue bird and a yellow bird.<br><br>If you would like to talk to the blue bird, <a href='#129'>turn to page 129</a>.<br>If you would like to talk to the yellow bird, <a href='#123'>turn to page 123</a>.</p>
+
+<h3 id="107">Page 107</h3>
+<p>Your eyes are closed. Your thoughts are lowered to the Holy Worm.<br><br>If you would like to continue praying, <a href='#105'>turn to page 105</a>.<br>If you would like to stop praying, <a href='#125'>turn to page 125</a>.</p>
+
+<h3 id="108">Page 108</h3>
+<p>“… to get me high in the sky?”<br><br>“Definitely can!” Fly responds. “We should go to my garage.”<br><br>Fly flies over to his garage, and you struggle to keep up inching along the ground. Eventually, he notices that you're falling behind, and he comes back to fly along at your pace. You arrive at the garage and he opens the big sliding door. In the corner of the garage, under a sheet, is what seems to be a large contraption.<br><br>“Look! This is what I use to get up into the sky! See! It’s… Wait wait wait, you should guess. Can you guess what’s underneath the sheet?”<br><br>If you would like to guess that it’s an airplane, <a href='#109'>turn to page 109</a>.<br>If you would like to guess that it’s not an airplane, <a href='#110'>turn to page 110</a>.<br>If you would like to guess that it’s not not an airplane, <a href='#120'>turn to page 120</a>.</p>
+
+<h3 id="109">Page 109</h3>
+<p>“Is it an airplane?” you ask.<br><br>“Is it an airplane? Is it an airplane?!” Fly says. “Well…… it’s not an airplane! Try again!”<br><br>If you would like to guess that it’s not an airplane, <a href='#110'>turn to page 110</a>.<br>If you would like to guess that it’s not not an airplane, <a href='#120'>turn to page 120</a>.</p>
+
+<h3 id="110">Page 110</h3>
+<p>“Is it not an airplane?” you ask.<br><br>“You’re right! It’s not an airplane!” Fly answers. “Uh. Can you guess something more specific?”<br><br><i>Hmm…</i> 🤔🤔<br><br>“Well, whatever. It’s….” Fly pulls off the sheet. “A catapult! Tada! That was probably your next guess.”<br><br>Underneath the sheet is a gangly contraption of wood, metal, and rope.<br><br>“I haven’t had a lot of luck with getting people interested lately. Most bugs aren’t too keen on the sky. I think they don’t like the birds? Or the open space? Or the heights? I don’t get it. Everyone seems like such a curmudgeon.”<br><br>If you would like to be launched, <a href='#111'>turn to page 111</a>.<br>If you would like to leave and return to the street, <a href='#98'>turn to page 98</a>.</p>
+
+<h3 id="111">Page 111</h3>
+<p>You strap into the catapult.<br><br>Fly's catapult is a bit too powerful and you end up high in the sky. You can't hear anything because the air is too thin to transmit sound. Even though the air around you is extremely cold, you incinerate with a flash of light.<br><br>Down below, Fly says, “Wow, a shooting star!”<br><br>THE END</p>
+
+<h3 id="112">Page 112</h3>
+<p>“I am an earthworm,” you say. “I love the earth. But lately I’ve also been curious about what’s up there in the sky. Can I ask you…”<br><br>If you would like to ask Fly whether “getting high in the sky” is a euphemism for drugs, <a href='#113'>turn to the next page</a>.<br>If you would like to ask Fly to get you high in the sky, <a href='#108'>turn to page 108</a>.<br>If you would like to ask Fly how to finance air travel, <a href='#5'>turn to page 5</a>.</p>
+
+<h3 id="113">Page 113</h3>
+<p>“… if getting high in the sky is a euphemism for taking drugs?”<br><br>Fly looks at you. “What? No! I’m talking about flying. Like with my wings, but a lot higher. This book is rated PG.”<br><br>If you would like to ask Fly something else, <a href='#112'>turn to page 112</a>.</p>
+
+<h3 id="114">Page 114</h3>
+<p>You approach the green bird. “Hey, just passing through!” you say weakly.<br><br>The bird catches sight of your movement, and its head swivels around so that both of its eyes are focused on you.<br><br><a href='#95'>Turn to page 95</a>.</p>
+
+<h3 id="115">Page 115</h3>
+<p>Your eyes are closed. Your thoughts are lowered to the Holy Worm.<br><br>If you would like to continue praying, <a href='#27'>turn to page 27</a>.<br>If you would like to stop praying, <a href='#125'>turn to page 125</a>.</p>
+
+<h3 id="116">Page 116</h3>
+<p>Leaving behind the abyss, you continue your way up.<br><br>After a short while longer, you finally arrive at the mountain top. The church is in front of you. A dim light shines in the window.<br><br>If you would like to enter the church, <a href='#117'>turn to the next page</a>.<br>If you would like to hike back to the bottom of the mountain, <a href='#94'>turn to page 94</a>.</p>
+
+<h3 id="117">Page 117</h3>
+<p>You enter the church. You jump as the doors slam closed behind you, echoing throughout the vaulted chamber. Suddenly, you feel shut in.<br><br>“Will you pray with me to the Holy Worm?”<br><br>The words come from a massive shadowy figure near the sanctum. By the voice and the shape, you recognize your friend, Praying Mantis.<br><br>You step up beside Praying Mantis. Recently, you have been feeling pretty lost and confused. Maybe the Holy Worm can help you find what you’re looking for.<br><br>“Praying Mantis, can you tell me something? Do you know what I am trying to get out of this long journey I’m on?”<br><br>Praying Mantis bows his head slightly. “You have climbed an entire mountain to get here. You have met countless people. Your path may seem to twist and turn in interesting ways. You have made so many choices, it makes one’s head spin. But all that is irrelevant.”<br><br>Praying Mantis says, “What is most important is to understand where you end.”<br><br>You consider his words.<br><br><a href='#118'>Turn to the next page</a>.</p>
+
+<h3 id="118">Page 118</h3>
+<p>If you would like to pray to the Holy Worm, <a href='#115'>turn to page 115</a>.<br><br>If you would like to spurn the Holy Worm, <a href='#60'>turn to page 60</a>.</p>
+
+<h3 id="119">Page 119</h3>
+<p>You approach the orange bird. “Hey, just passing through!” you say weakly.<br><br>The bird catches sight of your movement, and its head swivels around so that both of its eyes are focused on you.<br><br>“It’s a worm.”<br><br>A moment passes. The bird closes its eyes. Another moment passes. You continue to move forward.<br><br>Meanwhile, the sea of grass-covered worms has advanced farther.<br><br>It’s not long before you come across another branch with two more bird guards, a purple bird and a teal bird.<br><br>If you would like to talk to the purple bird, <a href='#141'>turn to page 141</a>.<br>If you would like to talk to the teal bird, <a href='#130'>turn to page 130</a>.</p>
+
+<h3 id="120">Page 120</h3>
+<p>“Is it not not an airplane?” you ask.<br><br>“You’re right! It’s not… wait a second, are you right? I think you’re right,” Fly answers. “Because it’s a rocket ship!”<br><br>Fly pulls off the sheet. Underneath the sheet is the smooth gleaming hull of a beautiful rocket. Wow! You wouldn’t have suspected Fly to have such a fancy piece of technology.<br><br>If you would like to fly in the rocket, <a href='#121'>turn to the next page</a>.<br>If you would like to leave and return to the street, <a href='#98'>turn to page 98</a>.</p>
+
+<h3 id="121">Page 121</h3>
+<p>You and Fly strap in to the cockpit of the rocket. There is a huge control panel with an array of controls of different sorts. Fly presses three different buttons, flips a switch, and inserts a tiny key.<br><br>“Ready? Three… two… ok let’s go!” Fly turns the key to ignite the rocket.<br><br>You’re pressed back into your cylindrical worm-shaped seat as the rocket launches upwards. Here we go!<br>    <br>Out the window of the rocket, you catch a glimpse of a giant vehicle with eight solar arrays that looks vaguely buglike. You only saw it for a split second, but wait… was someone waving? You think they were drawing something on their window.<br><br><img class="symbol" src="/static/puzzle_resources/me-the-worm/symbol.png"><br><br>If you would like to whoop with glee, do it.<br>If you would like to sit back and enjoy the ride, <a href='#139'>turn to page 139</a>.</p>
+
+<h3 id="122">Page 122</h3>
+<p>Your eyes are closed. Your thoughts are lowered to the Holy Worm.<br><br>Stop praying. <a href='#19'>Turn to page 19.</a></p>
+
+<h3 id="123">Page 123</h3>
+<p>You approach the yellow bird. “Hey, just passing through!” you say weakly.<br><br>The bird catches sight of your movement, and its head swivels around so that both of its eyes are focused on you.<br><br><a href='#95'>Turn to page 95</a>.</p>
+
+<h3 id="124">Page 124</h3>
+<p>Your eyes are closed. Your thoughts are lowered to the Holy Worm.<br><br>If you would like to continue praying, <a href='#68'>turn to page 68</a>.<br>If you would like to stop praying, <a href='#125'>turn to page 125</a>.</p>
+
+<h3 id="125">Page 125</h3>
+<p>You open your eyes. Praying Mantis is beside you, deep in meditation.<br><br><a href='#118'>Turn to page 118</a>.</p>
+
+<h3 id="126">Page 126</h3>
+<p>Your eyes are closed. Your thoughts are lowered to the Holy Worm.<br><br>If you would like to continue praying, <a href='#138'>turn to page 138</a>.<br>If you would like to stop praying, <a href='#125'>turn to page 125</a>.</p>
+
+<h3 id="127">Page 127</h3>
+<p>You approach the white bird. “Hey, just passing through!” you say weakly.<br><br>The bird catches sight of your movement, and its head swivels around so that both of its eyes are focused on you.<br><br>“It’s a worm.”<br><br>A moment passes. The bird closes its eyes. Another moment passes. You continue to move forward.<br><br>Finally, the sea of grass-covered worms has made it to the nest! The worms push upward in unison, and the egg is lifted out of the basket of sticks. On silent slime, the egg is carried across the grass.<br><br>You give a sigh of relief. The white bird hears you and opens its eyes. Fear grips you, but its attention is caught by the large glistening egg gliding across the lawn.<br><br>“Our egg! Our egg!” the bird caws in frenzied alarm.<br><br>The call is joined by birds in the surrounding trees. In the space of a few seconds, the air is filled with flapping wings and deadly beaks.<br><br>The company of worms has dropped the egg, which is now tumbling away down the hill. Dropping all pretense of secrecy, the worms scream and flee. Worms are being plucked and eaten left and right. You see Bookworm pounding away from a furious bird. Some worms burrow into the earth, their ends half-dangling out of the soil as bird beaks pluck them right back out.<br><br>You imagine phantom beaks pulling at your tail as you dive away in a different direction, heading towards the surrounding shrubbery.<br><br><a href='#144'>Turn to page 144.</a></p>
+
+<h3 id="128">Page 128</h3>
+<p>Your eyes are closed. Your thoughts are lowered to the Holy Worm.<br><br>If you would like to continue praying, <a href='#132'>turn to page 132</a>.<br>If you would like to stop praying, <a href='#125'>turn to page 125</a>.</p>
+
+<h3 id="129">Page 129</h3>
+<p>You approach the blue bird. “Hey, just passing through!” you say weakly.<br><br>The bird catches sight of your movement, and its head swivels around so that both of its eyes are focused on you.<br><br>“It’s a worm.”<br><br>A moment passes. The bird closes its eyes. Another moment passes. You continue to move forward.<br><br>Meanwhile, the sea of grass-covered worms has advanced farther.<br><br>It’s not long before you come across another branch with two more bird guards, a black bird and a pink bird.<br><br>If you would like to talk to the black bird, <a href='#99'>turn to page 99</a>.<br>If you would like to talk to the pink bird, <a href='#18'>turn to page 18</a>.</p>
+
+<h3 id="130">Page 130</h3>
+<p>You approach the teal bird. “Hey, just passing through!” you say weakly.<br><br>The bird catches sight of your movement, and its head swivels around so that both of its eyes are focused on you.<br><br>“It’s a worm.”<br><br>A moment passes. The bird closes its eyes. Another moment passes. You continue to move forward.<br><br>Meanwhile, the sea of grass-covered worms has advanced farther.<br><br>It’s not long before you come across another branch with two more bird guards, a red bird and a white bird.<br><br>If you would like to talk to the red bird, <a href='#24'>turn to page 24</a>.<br>If you would like to talk to the white bird, <a href='#127'>turn to page 127</a>.</p>
+
+<h3 id="131">Page 131</h3>
+<p>Your eyes are closed. Your thoughts are lowered to the Holy Worm.<br><br>If you would like to continue praying, <a href='#67'>turn to page 67</a>.<br>If you would like to stop praying, <a href='#125'>turn to page 125</a>.</p>
+
+<h3 id="132">Page 132</h3>
+<p>Your eyes are closed. Your thoughts are lowered to the Holy Worm.<br><br>If you would like to continue praying, <a href='#78'>turn to page 78</a>.<br>If you would like to stop praying, <a href='#125'>turn to page 125</a>.</p>
+
+<h3 id="133">Page 133</h3>
+<p>Your eyes are closed. Your thoughts are lowered to the Holy Worm.<br><br>If you would like to continue praying, <a href='#124'>turn to page 124</a>.<br>If you would like to stop praying, <a href='#125'>turn to page 125</a>.</p>
+
+<h3 id="134">Page 134</h3>
+<p>Your eyes are closed. Your thoughts are lowered to the Holy Worm.<br><br>If you would like to continue praying, <a href='#12'>turn to page 12</a>.<br>If you would like to stop praying, <a href='#125'>turn to page 125</a>.</p>
+
+<h3 id="135">Page 135</h3>
+<p>You approach the white bird. “Hey, just passing through!” you say weakly.<br><br>The bird catches sight of your movement, and its head swivels around so that both of its eyes are focused on you.<br><br>“It’s a worm.”<br><br>A moment passes. The bird closes its eyes. Another moment passes. You continue to move forward.<br><br>Meanwhile, the sea of grass-covered worms has advanced farther.<br><br>It’s not long before you come across another branch with two more bird guards, a green bird and a teal bird.<br><br>If you would like to talk to the green bird, <a href='#114'>turn to page 114</a>.<br>If you would like to talk to the teal bird, <a href='#55'>turn to page 55</a>.</p>
+
+<h3 id="136">Page 136</h3>
+<p>Your eyes are closed. Your thoughts are lowered to the Holy Worm.<br><br>If you would like to continue praying, <a href='#15'>turn to page 15</a>.<br>If you would like to stop praying, <a href='#125'>turn to page 125</a>.</p>
+
+<h3 id="137">Page 137</h3>
+<p>You open your eyes. Your vision is met by a stunning flash of light.<br><br>MY CHILD I AM HERE<br><br>You cry out, “O Holy Worm! You have come!”<br><br>“Please, Holy Worm, can you show me the answer?” It’s a plaintive, desperate cry.<br><br>NO<br><br>Damn. Telling it straight.<br><br>LET ME SHOW YOU WHAT TRULY MATTERS<br><br>The Holy Worm lifts your body into the air, higher and higher and higher, to somewhere between a height of 80km and 600km. You can see everything from up here. All of your problems have become small and inconsequential. Making choices, solving puzzles—it doesn’t matter; you are happy with just being a worm.<br><br>THE END</p>
+
+<h3 id="138">Page 138</h3>
+<p>Your eyes are closed. Your thoughts are lowered to the Holy Worm.<br><br>If you would like to continue praying, <a href='#131'>turn to page 131</a>.<br>If you would like to stop praying, <a href='#125'>turn to page 125</a>.</p>
+
+<h3 id="139">Page 139</h3>
+<p>The rocket goes higher and higher.<br><br>“Woo-hoo!” Fly cheers.<br><br>“Did you see the gear shift stick here?” Fly says. “We can put it in reverse when we're ready to go down. ”<br><br>You think about what gears do in a rocket, but you don't think too hard. This is beyond the mental capabilities of your earthworm brain.<br><br>If you would like to put the rocket in reverse, <a href='#92'>turn to page 92</a>.<br>If you would like to put the rocket in park, <a href='#140'>turn to the next page</a>.<br>If you would like to continue going up, <a href='#145'>turn to page 145</a>.</p>
+
+<h3 id="140">Page 140</h3>
+<p>You grab the gear shift and move it into park. The engines shut off, leaving the cabin in silence. <br><br>“Well. This is pretty nice, isn't it?” Fly says. “It's a great view from way up here. Now you see why I like flying in the sky.”<br><br>You agree. It is a beautiful view out the window. You are above the deep blue ocean, which occupies about a third of the book.<br><br>If you would like to put the rocket in reverse, <a href='#92'>turn to page 92</a>.<br>If you would like to continue going up, <a href='#145'>turn to page 145</a>.</p>
+
+<h3 id="141">Page 141</h3>
+<p>You approach the purple bird. “Hey, just passing through!” you say weakly.<br><br>The bird catches sight of your movement, and its head swivels around so that both of its eyes are focused on you.<br><br><a href='#95'>Turn to page 95</a>.</p>
+
+<h3 id="142">Page 142</h3>
+<p>Your eyes are closed. Your thoughts are lowered to the Holy Worm.<br><br>If you would like to continue praying, <a href='#134'>turn to page 134</a>.<br>If you would like to stop praying, <a href='#137'>turn to page 137</a>.</p>
+
+<h3 id="143">Page 143</h3>
+<p>You approach the blue bird. “Hey, just passing through!” you say weakly.<br><br>The bird catches sight of your movement, and its head swivels around so that both of its eyes are focused on you.<br><br>“It’s a worm.”<br><br>A moment passes. The bird closes its eyes. Another moment passes. You continue to move forward.<br><br>Meanwhile, the sea of grass-covered worms has advanced farther.<br><br>It’s not long before you come across another branch with two more bird guards, a purple bird and a teal bird.<br><br>If you would like to talk to the purple bird, <a href='#69'>turn to page 69</a>.<br>If you would like to talk to the teal bird, <a href='#55'>turn to page 55</a>.</p>
+
+<h3 id="144">Page 144</h3>
+<p>You keep squirming away, and the din of caws slowly fades. You are alone in the forest.<br><br>In the weeds nearby, you spy the charred remains of a metal object. It was the very first of its kind! Now it just looks like a small heap of scrap. The remains form a pattern on the ground.<br><br><img class="symbol" src="/static/puzzle_resources/me-the-worm/symbol.png"><br><br>You're very tired, so you lay down to rest next to the object.<br><br><i>Zzz…………</i><br><br>If you would like to continue sleeping, don't turn the page. It's your choice, after all.<br>If you would like to get up and walk around, <a href='#90'>turn to page 90</a>.</p>
+
+<h3 id="145">Page 145</h3>
+<p>Upward!” you declare. Fly nods and smiles.<br>    <br>It’s time to go where no worm has gone before. It’s suitable that this is the last page of the book. The rocket is exiting the upper reaches of the atmosphere, sailing into the vast unknown.<br><br>You have become the first worm astronaut.<br><br>THE END</p>
+
+
+    </div>
+    
+
+    
+
+    
+    <script>
+    document.getElementById('nav-music').style.display = 'none';
+    document.getElementById("progress-simulator").addEventListener("submit", (e) => {
+        if (e.submitter.name === "reset") {
+            toggleReset(true);
+            doGlitch(false);
+            document.getElementById("shortcuts").checked = false;
+            e.preventDefault();
+        } else {
+            localStorage.setItem(e.submitter.name, e.submitter.value);
+        }
+    });
+    addStyles();
+
+    function toggleReset(which) {
+        $('#loop-reset').toggleClass('loop-resetting', which);
+    }
+
+    function addStyles() {
+        const changeFavicon = (url) => {
+            const e = Array.from(document.getElementsByTagName("link"))
+                .filter(e => e.rel === "icon")[0];
+            e.href = url;
+        }
+        const addSheet = (url) => {
+            const e = document.createElement("link");
+            e.rel = "stylesheet";
+            e.href = url;
+            document.getElementsByTagName("head")[0].appendChild(e);
+        }
+
+        const seasons = ["spring", "summer", "autumn", "winter"];
+        let current_main_round = localStorage.getItem("round");
+        const endgame_unlocked = localStorage.getItem("endgame") === "true";
+
+        const matches = new RegExp(`\\?(${seasons.join("|")})`).exec(document.URL);
+        if (matches && matches[1]) {
+            current_main_round = matches[1];
+        }
+
+        if (endgame_unlocked) {
+            addSheet("/static/css/endgame.css");
+            changeFavicon("/static/images/favicon-endgame.ico");
+            const nodes = document.getElementsByClassName("energy-nodes-info");
+            console.log(nodes);
+            if (nodes.length > 0) {
+                nodes[0].style.display = "block";
+            }
+        } else if (current_main_round === "concert") {
+            addSheet("/static/css/concert.css");
+            changeFavicon("/static/images/favicon-concert.ico");
+            // also add the concert music
+            document.getElementById('nav-music').style.display = 'inline-block';
+            const audio = document.getElementById("music-audio");
+            if (audio) {
+                audio.addEventListener('play', () => {
+                    audio.volume = localStorage.getItem('music-audio-volume') ?? 0.5;
+                });
+                audio.addEventListener('volumechange', () => {
+                    localStorage.setItem('music-audio-volume', audio.volume);
+                });
+            }
+        } else if (seasons.includes(current_main_round)) {
+            addSheet("/static/css/season.css");
+            addSheet(`/static/css/${current_main_round}.css`);
+            changeFavicon(`/static/images/favicon-${current_main_round}.ico`);
+        } else {
+            addSheet("/static/css/blue.css");
+            changeFavicon("/static/images/favicon-blue.ico");
+        }
+    }
+
+    registerOnGlitchHook((ex) => {
+        document.getElementById('background-glitch-wrapper').style.display = 'initial';
+    });
+    </script>
+    
+</body>
+</html>

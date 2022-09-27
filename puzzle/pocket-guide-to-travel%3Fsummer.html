@@ -1,0 +1,538 @@
+
+
+
+
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+<title>Pocket Guide to Travel</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <meta property="og:title" content="Galactic Puzzle Hunt 2022">
+    <meta property="og:description" content="Registration for this year's Galactic Puzzle Hunt is now open!">
+    <meta property="og:image" content="https://galacticpuzzlehunt.com/static/images/banner.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:slnt,CASL,CRSV,MONO@-3,0.5,1,1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/skeleton.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.formset/1.2.2/jquery.formset.min.js"></script>
+    <script src="/jsi18n/"></script>
+    <script src="/static/js/sorttable.js"></script>
+    <script src="/static/js/tray.js"></script>
+    <script src="/static/js/notify.js"></script>
+    <script src="/static/js/time.js"></script>
+    
+    
+    <link rel="icon" sizes="16x16 32x32 48x48 64x64" href="/static/images/favicon.ico" type="image/vnd.microsoft.icon">
+    
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92192633-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-92192633-1');
+</script>
+
+</head>
+<body>
+    
+    <div id="background-glitch-wrapper" class="background-glitch">
+        <div class="glitch-1"></div>
+        <div class="glitch-2"></div>
+        <div class="glitch-3"></div>
+    </div>
+    
+    
+    <input id="shortcuts" type="checkbox">
+    
+    <nav>
+        <span class="tray">
+            <span id="tray-timer"></span>
+            <div class="top-tabs">
+                <a href="/">
+                    Home
+                </a>
+                
+                
+                <a href="/story">
+                    Story
+                </a>
+                
+                
+                <a class="selected-tab" href="/puzzles">
+                    Puzzles
+                </a>
+                
+                <a href="/teams">
+                    Teams
+                </a>
+                
+                
+                <a href="/errata">
+                    Updates
+                </a>
+                
+                
+                
+                
+                <a id="nav-music" href="#">
+                    <label for="music" title="Music" style="margin-bottom: 0; font-weight: normal; cursor: pointer;">Music</label>
+                </a>
+                <input id="music" type="checkbox">
+                <div class="shortcuts music">
+                    <audio id="music-audio" controls src="/static/puzzle_resources/worlds-end-concert/music-audio.mp3">
+                        There should be a music player here.
+                    </audio>
+                </div>
+                
+                
+            </div>
+            <div class="top-left-actions">
+                
+
+
+
+
+<a href="/post-hunt-solve/pocket-guide-to-travel" class="btn">Check your answer spoiler-free</a>
+
+
+
+<a href="/solution/pocket-guide-to-travel" class="btn">View solution</a>
+<a href="/stats/pocket-guide-to-travel" class="btn">Stats</a>
+
+
+            </div>
+        </span>
+        <div class="top-right-actions">
+        
+        <label for="shortcuts" title="Simulator">Simulator </label>
+        
+        
+        </div>
+    </nav>
+    
+    <div class="shortcuts">
+        <form id="progress-simulator">
+        <div>Current round:</div>
+        <button class="btn" type="submit" name="round" value="forward">⬆️</button>
+        <button class="btn" type="submit" name="round" value="spring">🌸</button>
+        <button class="btn" type="submit" name="round" value="summer">☀️</button>
+        <button class="btn" type="submit" name="round" value="autumn">🍂</button>
+        <button class="btn" type="submit" name="round" value="winter">☃️</button>
+        <button class="btn" type="submit" name="round" value="concert">🎤</button>
+        <button class="btn" type="submit" name="round" value="none">None</button>
+        <div>Endgame:</div>
+        <button class="btn" type="submit" name="endgame" value="true">Unlock</button>
+        <button class="btn" type="submit" name="endgame" value="false">Reset</button>
+        <div>Reset:</div>
+        <button class="btn" type="submit" name="reset" value="reset">Reset</button>
+        </form>
+    </div>
+    
+    
+    
+    
+    
+    <div id="loop-reset">
+        <form>
+            <svg viewBox="-30 160 720 320">
+                <defs>
+                    <path id="loop-end-path" d="m 370,240 c 38.29044,0 74.26676,18.33512 96.83716,49.26624 l -76.8369,30.73478 V 270 L 300,330 261.03858,309.74192 c 19.60706,-42.51188 62.14674,-69.74008 108.9623,-69.74306 z m 106.15758,64.22738 c 6.65282,12.65518 10.9906,26.39738 12.80876,40.57862 l -38.96532,5.19538 z"/>
+                </defs>
+                <foreignObject width="720" height="480" clip-path="url(#loop-end-clip)" class="loop-shade">
+                    <aside class="loop-shade" xmlns="http://www.w3.org/1999/xhtml" style="width: 100%; height: 100%;"></aside>
+                </foreignObject>
+                <clipPath id="loop-end-clip"><use href="#loop-end-path"/></clipPath>
+                <use href="#loop-end-path"/>
+                <path d="M 490,400 600,330 450,350 490,280 390,320 V 270 L 300,330 50,200 170,380 50,400"/>
+            </svg>
+            <div>THE END</div>
+            <p>You can reset once per minute.</p>
+            <table>
+                <tr id="loop-reset-btn-row-reset">
+                    <td><button class="btn" disabled>Reset</button></td>
+                    <td>Start over from the beginning of the exam.</td>
+                </tr>
+                <tr id="loop-reset-btn-row-restore">
+                    <td><button class="btn" disabled>Jump</button></td>
+                    <td>Start over, but resubmit your previous answers to bring you back to this point.</td>
+                </tr>
+                <tr>
+                    <td><a class="btn" href="javascript:toggleReset(false)">Stay</a></td>
+                    <td>Look at this page a bit longer. Make sure to save your work.</td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    
+    <script>
+
+    
+    
+    let glitchTriggerFuncs = [];
+    let glitchTriggerReceived = false;
+    let glitchTriggerExReceived = false;
+    let glitchPageLoaded = false;
+    function processGlitchFuncs(ex) {
+        glitchTriggerFuncs.forEach((func) => {
+            func(ex);
+        });
+    }
+    function doGlitch(ex) {
+        glitchTriggerReceived = true;
+        if (ex) {
+            glitchTriggerExReceived = true;
+        }
+        if (glitchPageLoaded) {
+            processGlitchFuncs(ex);
+        }
+    }
+    window.addEventListener('load', () => {
+        glitchPageLoaded = true;
+        if (glitchTriggerExReceived) {
+            processGlitchFuncs(true);
+        }
+        else if (glitchTriggerReceived) {
+            processGlitchFuncs(false);
+        }
+    }, false);
+    
+    
+    
+    function registerOnGlitchHook(func) {
+        if (glitchTriggerExReceived) {
+            func(true);
+        }
+        else if (glitchTriggerReceived) {
+            func(false);
+        }
+        glitchTriggerFuncs.push(func);
+    }
+    
+
+    
+    
+    </script>
+    <div class="content">
+        
+
+<h1>
+    Pocket Guide to Travel
+    
+    
+    
+    <div>
+      
+      <a class="btn" href="pocket-guide-to-travel%253Fspring">🌸</a>
+      
+      <a class="btn" href="pocket-guide-to-travel%253Fsummer">☀️</a>
+      
+      <a class="btn" href="pocket-guide-to-travel%253Fautumn">🍂</a>
+      
+      <a class="btn" href="pocket-guide-to-travel%253Fwinter">☃️</a>
+      
+    </div>
+    
+    
+</h1>
+
+
+
+<main class="puzzle-main clipboard-container">
+    
+    
+    
+    <style>
+.puzzle-main {
+  text-align: center;
+}
+
+div.col-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+div.col-flex > img {
+  max-width: 600px;
+  max-height: 600px;
+}
+
+@font-face {
+  font-family: pocketGuideFont;
+  src: url(/static/puzzle_resources/pocket-guide-to-travel/font.ttf);
+}
+
+.color1 { /* dark gold */
+  color: #b8a038;
+  font-family: pocketGuideFont;
+}
+
+.color2 { /* orange */
+  color: #f08030;
+  font-family: pocketGuideFont;
+}
+
+.color3 { /* light gold */
+  color: #e0c068;
+  font-family: pocketGuideFont;
+}
+
+.color4 { /* dark brown */
+  color: #705848;
+  font-family: pocketGuideFont;
+}
+
+.color5 { /* light gray */
+  color: #b8b8d0;
+  font-family: pocketGuideFont;
+}
+
+.color6 { /* dark purple */
+  color: #705898;
+  font-family: pocketGuideFont;
+}
+
+.color7 { /* grayish yellow */
+  color: #a8a878;
+  font-family: pocketGuideFont;
+}
+
+.color8 { /* light purple */
+  color: #a890f0;
+  font-family: pocketGuideFont;
+}
+
+.color9 { /* red */
+  color: #c03028;
+  font-family: pocketGuideFont;
+}
+
+.color10 { /* bright purple */
+  color: #a040a0;
+  font-family: pocketGuideFont;
+}
+
+.color11 { /* light green */
+  color: #78c850;
+  font-family: pocketGuideFont;
+}
+
+.color12 { /* light blue */
+  color: #98d8d8;
+  font-family: pocketGuideFont;
+}
+
+.color13 { /* medium blue */
+  color: #6890f0;
+  font-family: pocketGuideFont;
+}
+
+.color14 { /* light olive green */
+  color: #a8b820;
+  font-family: pocketGuideFont;
+}
+
+.color15 { /* yellow */
+  color: #f8d030;
+  font-family: pocketGuideFont;
+}
+
+.color16 { /* light pink */
+  color: #ee99ac;
+  font-family: pocketGuideFont;
+}
+
+.color17 { /* salmon pink */
+  color: #f85888;
+  font-family: pocketGuideFont;
+}
+
+p.p {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+table.t td, th {
+  text-align: center;
+}
+
+table.u td {
+  border: 0px;
+}
+
+div.no-wrap {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+</style>
+<p class="flavor">Remember to put together a suitcase.</p>
+<div class="col-flex no-copy"><img src="/static/puzzle_resources/pocket-guide-to-travel/image01.png" alt="5 saxophones in increasing size order, with an arrow pointing to the 2nd one"><img src="/static/puzzle_resources/pocket-guide-to-travel/image02.png" alt="Various salamanders, caecilians, frogs, and toads"><img src="/static/puzzle_resources/pocket-guide-to-travel/image03.png" alt="Coral reef with many varieties of fish"><img src="/static/puzzle_resources/pocket-guide-to-travel/image04.png" alt="Room full of medieval weaponry, including shields, swords, and pieces of armor"><img src="/static/puzzle_resources/pocket-guide-to-travel/image05.png" alt="Brown snake with a pattern of alternating black markings resembling a zigzag, on a field of rocks"><img src="/static/puzzle_resources/pocket-guide-to-travel/image06.png" alt="Pinkish-white creature with lidless eyes, suspended in water against a blurry background"><img src="/static/puzzle_resources/pocket-guide-to-travel/image07.png" alt="Bombylius major sitting on a leaf"><img src="/static/puzzle_resources/pocket-guide-to-travel/image08.png" alt="Fire"><img src="/static/puzzle_resources/pocket-guide-to-travel/image09.png" alt="Portrait of a man wearing a laurel and a red cloak over a silver cuirass; the text 'IMP. I.' is in the top-right corner"><img src="/static/puzzle_resources/pocket-guide-to-travel/image10.png" alt="Candle holder with three arms"><img src="/static/puzzle_resources/pocket-guide-to-travel/image11.png" alt="Schematic of an atom with 6 protons and 6 electrons"><img src="/static/puzzle_resources/pocket-guide-to-travel/image12.png" alt="Armored man with a red feathered helmet, red cape, several silver medals, and red shield. On the shield are four yellow wings, two straight arrows, and four zigzagging arrows emanating from the center"><img src="/static/puzzle_resources/pocket-guide-to-travel/image13.png" alt="Two cartoon duck heads with bow ties, one pink, the other decorated as the American flag; on a green circle against a yellow background"><img src="/static/puzzle_resources/pocket-guide-to-travel/image14.png" alt="Two black rectangular line segments intersecting, one horizontal, one vertical; the intersection is at the center of the horizontal segment and roughly a third from the top of the vertical segment"><img src="/static/puzzle_resources/pocket-guide-to-travel/image15.png" alt="Luke Pasqualino in period armor"><img src="/static/puzzle_resources/pocket-guide-to-travel/image16.png" alt="Painting in which a man, dressed in lavish clothes on a golden chair and being served from a golden platter, looks above him at a sword seemingly suspended in midair. Behind him, an older man in red gestures to the sword with one hand and holds a scepter in the other"><img src="/static/puzzle_resources/pocket-guide-to-travel/image17.png" alt="Sharp point at the end of an insect"><img src="/static/puzzle_resources/pocket-guide-to-travel/image18.png" alt="Round red doll with a white inset featuring a face and some butterfly-like patterns and some golden patterns and Japanese text in the bottom and on the sides"><img src="/static/puzzle_resources/pocket-guide-to-travel/image19.png" alt="Animated boy in a running pose, wearing a black mask covering the areas around his eyes and a red skintight suit with black gloves and boots. In the middle of the suit is a yellow lowercase I on a black oval with an orange border"><img src="/static/puzzle_resources/pocket-guide-to-travel/image20.png" alt="Gray tree with leaves falling off and an arrow pointing to it, to the left of an evergreen tree"><img src="/static/puzzle_resources/pocket-guide-to-travel/image21.png" alt="Mountain of scrap metal"><img src="/static/puzzle_resources/pocket-guide-to-travel/image22.png" alt="3D rendering of T. rex"><img src="/static/puzzle_resources/pocket-guide-to-travel/image23.png" alt="A collage of four images, clockwise from top left: a white folded fleece blanket; a white arctic fox; two pairs of fuzzy socks with faces being worn, the left pair being pink with white stripes and a spherical red nose, the right pair being white with a carrot nose; and a stuffed panda with rainbow markings"><img src="/static/puzzle_resources/pocket-guide-to-travel/image24.png" alt="Small splash created by water droplet"><img src="/static/puzzle_resources/pocket-guide-to-travel/image25.png" alt="Lightning coming out of the end of a 3-pronged cable"><img src="/static/puzzle_resources/pocket-guide-to-travel/image26.png" alt="Brown eyebrow above left eye with blue iris"><img src="/static/puzzle_resources/pocket-guide-to-travel/image27.png" alt="Woman in a gymnastics bridge pose"><img src="/static/puzzle_resources/pocket-guide-to-travel/image28.png" alt="Clockwise from top left: Indian peafowl, red junglefowl, golden pheasant, Chukar partridge, Gunnison grouse, wild turkey, great curassow, helmeted Guineafowl"><img src="/static/puzzle_resources/pocket-guide-to-travel/image29.png" alt="Black-and-white photograph of a Native American (Apache) man kneeling and holding a rifle"><img src="/static/puzzle_resources/pocket-guide-to-travel/image30.png" alt="Illustrated light cyan sword with a black handle in the top-middle, silver ornamentation near the handle, and a bright cyan aura that arcs around the right of the handle"><img src="/static/puzzle_resources/pocket-guide-to-travel/image31.png" alt="A Disney cartoon man with orange hair, wearing a dark blue cape and dark orange Greek tunic and having a sword at his side, smiling and posing"><img src="/static/puzzle_resources/pocket-guide-to-travel/image32.png" alt="Cartoon illustration of two bears; the larger bear on the right is yellow and is pointing at the purple bear to the left, who is holding a small yellow flower"><img src="/static/puzzle_resources/pocket-guide-to-travel/image33.png" alt="Illustration of a fully armored knight in a brightly lit doorway that features rays emanating from a a yellow goblet and candles"><img src="/static/puzzle_resources/pocket-guide-to-travel/image34.png" alt="Basket full of long green vegetables with lighter-green and white roots"><img src="/static/puzzle_resources/pocket-guide-to-travel/image35.png" alt="6 buff, shirtless men wearing jeans"><img src="/static/puzzle_resources/pocket-guide-to-travel/image36.png" alt="Queen Elizabeth II of England"><img src="/static/puzzle_resources/pocket-guide-to-travel/image37.png" alt="Map of a country on the southeast coast of its landmass, split into 9 regions, one of which is colored in red"><img src="/static/puzzle_resources/pocket-guide-to-travel/image38.png" alt="Human nose"><img src="/static/puzzle_resources/pocket-guide-to-travel/image39.png" alt="Black-and-white still of a bald Max Schreck with prominent teeth, grasping a black mass behind a bed"><img src="/static/puzzle_resources/pocket-guide-to-travel/image40.png" alt="Person standing in front of many red-and-white hurdles"><img src="/static/puzzle_resources/pocket-guide-to-travel/image41.png" alt="A board game with the title obscured. The creators, Matt Riddle and Ben Pinchback, and the subtitle, Little Songbirds, are visible. The ornamental card back and three cards are shown: a yellow card labeled 6. Goldammer / Yellowhammer, a green card labeled 6. Grünfunk / Greenfinch, and a blue card labeled 1 Buchfink / Chaffinch."><img src="/static/puzzle_resources/pocket-guide-to-travel/image42.png" alt="Gray furry animal grasping several branches atop a tree. Its eyes are surrounded by mask-like black fur, which is further surrounded by white fur; its tail has black rings."><img src="/static/puzzle_resources/pocket-guide-to-travel/image43.png" alt="Train traveling at high speed"><img src="/static/puzzle_resources/pocket-guide-to-travel/image44.png" alt="Two people laying in bed, the left one has their eyes open and is covering their ears with a stack of pillows, while the right person's eyes are closed and zigzags are drawn around their mouth"><img src="/static/puzzle_resources/pocket-guide-to-travel/image45.png" alt="Sand dunes"><img src="/static/puzzle_resources/pocket-guide-to-travel/image46.png" alt="Ninja in a fighting pose with katana"><img src="/static/puzzle_resources/pocket-guide-to-travel/image47.png" alt="A grayish-brown furry rodent with small paws and a prominent tapered snout sitting on a human finger"><img src="/static/puzzle_resources/pocket-guide-to-travel/image48.png" alt="Anatomy diagram of human skeleton"><img src="/static/puzzle_resources/pocket-guide-to-travel/image49.png" alt="Sun shining brightly in a blue sky with a few white clouds"><img src="/static/puzzle_resources/pocket-guide-to-travel/image50.png" alt="Pebbles"><img src="/static/puzzle_resources/pocket-guide-to-travel/image51.png" alt="Movie poster featuring a blonde actor in armor and a red cape wielding a hammer, with lightning bolts in the foreground, against a galactic background"><img src="/static/puzzle_resources/pocket-guide-to-travel/image52.png" alt="Bottle with a skull-and-crossbones label, with green fluid coming out"><img src="/static/puzzle_resources/pocket-guide-to-travel/image53.png" alt="Planet with white and very light orange streaks against a black background"><img src="/static/puzzle_resources/pocket-guide-to-travel/image54.png" alt="Woman with light brown skin and a substantial amount of curly hair"></div>
+<div class="copy-only">[See original puzzle for images.]</div>
+<div class="no-copy"><p class="p"><div class="no-wrap"><span class="color1">I</span>＋<span class="color2">U</span></div>&nbsp;
+    <div class="no-wrap"><span class="color1">G</span>＋<span class="color3">D</span></div>&nbsp;
+    <div class="no-wrap"><span class="color4">N</span>＋<span class="color5">T</span></div>&nbsp;
+    <div class="no-wrap"><span class="color1">T</span>＋<span class="color5">H</span></div>&nbsp;
+    <div class="no-wrap"><span class="color6">G</span>＋<span class="color2">F</span></div>&nbsp;
+    <div class="no-wrap"><span class="color7">M</span>＋<span class="color8">F</span></div>&nbsp;
+    <div class="no-wrap"><span class="color9">F</span>＋<span class="color9">P</span></div>&nbsp;
+    <div class="no-wrap"><span class="color5">L</span>＋<span class="color6">S</span></div>&nbsp;
+    <div class="no-wrap"><span class="color10">G</span>＋<span class="color10">I</span></div></p><p class="p"><div class="no-wrap"><span class="color10">P</span>＋<span class="color8">O</span></div>&nbsp;
+    <div class="no-wrap"><span class="color11">P</span>＋<span class="color11">T</span></div>&nbsp;
+    <div class="no-wrap"><span class="color2">F</span>＋<span class="color9">B</span></div>&nbsp;
+    <div class="no-wrap"><span class="color12">L</span>＋<span class="color12">E</span></div>&nbsp;
+    <div class="no-wrap"><span class="color13">E</span>＋<span class="color4">È</span></div>&nbsp;
+    <div class="no-wrap"><span class="color14">I</span>＋<span class="color10">P</span></div>&nbsp;
+    <div class="no-wrap"><span class="color7">N</span>＋<span class="color7">M</span></div>&nbsp;
+    <div class="no-wrap"><span class="color15">C</span>＋<span class="color8">O</span></div>&nbsp;
+    <div class="no-wrap"><span class="color13">E</span>＋<span class="color13">U</span></div>&nbsp;
+    <div class="no-wrap"><span class="color14">T</span>＋<span class="color16">É</span></div>&nbsp;
+    <div class="no-wrap"><span class="color13">U</span>＋<span class="color3">L</span></div></p><p class="p"><div class="no-wrap"><span class="color11">A</span>＋<span class="color6">G</span></div>&nbsp;
+    <div class="no-wrap"><span class="color4">R</span>＋<span class="color7">L</span></div>&nbsp;
+    <div class="no-wrap"><span class="color11">R</span>＋<span class="color10">I</span></div>&nbsp;
+    <div class="no-wrap"><span class="color5">S</span>＋<span class="color8">I</span></div>&nbsp;
+    <div class="no-wrap"><span class="color17">P</span>＋<span class="color16">F</span></div>&nbsp;
+    <div class="no-wrap"><span class="color14">B</span>＋<span class="color9">N</span></div>&nbsp;
+    <div class="no-wrap"><span class="color12">I</span>＋<span class="color5">L</span></div></p></div>
+<table class="copy-only u"><tr><td class="color1">I</td><td>＋</td><td class="color2">U</td><td></td><td class="color1">G</td><td>＋</td><td class="color3">D</td><td></td><td class="color4">N</td><td>＋</td><td class="color5">T</td><td></td><td class="color1">T</td><td>＋</td><td class="color5">H</td><td></td><td class="color6">G</td><td>＋</td><td class="color2">F</td><td></td><td class="color7">M</td><td>＋</td><td class="color8">F</td><td></td><td class="color9">F</td><td>＋</td><td class="color9">P</td><td></td><td class="color5">L</td><td>＋</td><td class="color6">S</td><td></td><td class="color10">G</td><td>＋</td><td class="color10">I</td></tr><tr></tr><tr><td class="color10">P</td><td>＋</td><td class="color8">O</td><td></td><td class="color11">P</td><td>＋</td><td class="color11">T</td><td></td><td class="color2">F</td><td>＋</td><td class="color9">B</td><td></td><td class="color12">L</td><td>＋</td><td class="color12">E</td><td></td><td class="color13">E</td><td>＋</td><td class="color4">È</td><td></td><td class="color14">I</td><td>＋</td><td class="color10">P</td><td></td><td class="color7">N</td><td>＋</td><td class="color7">M</td><td></td><td class="color15">C</td><td>＋</td><td class="color8">O</td><td></td><td class="color13">E</td><td>＋</td><td class="color13">U</td><td></td><td class="color14">T</td><td>＋</td><td class="color16">É</td><td></td><td class="color13">U</td><td>＋</td><td class="color3">L</td></tr><tr></tr><tr><td class="color11">A</td><td>＋</td><td class="color6">G</td><td></td><td class="color4">R</td><td>＋</td><td class="color7">L</td><td></td><td class="color11">R</td><td>＋</td><td class="color10">I</td><td></td><td class="color5">S</td><td>＋</td><td class="color8">I</td><td></td><td class="color17">P</td><td>＋</td><td class="color16">F</td><td></td><td class="color14">B</td><td>＋</td><td class="color9">N</td><td></td><td class="color12">I</td><td>＋</td><td class="color5">L</td><td></td></tr></table>
+<p><button onclick="toggleColorblindInfo()">Toggle colorblind assistance</button>
+<div id="colorblind-a11y-info">
+  The below information is for colorblind accessibility. Color IDs are assigned in appearance order.
+  <div class="col-flex"><table class="t"><th>Position</th><th>Letter</th><th>Color ID</th><th>Color hex code</th><th>Color description</th><tr><td>1</td><td>I</td><td>1</td><td>#b8a038</td><td>dark gold</td></tr><tr><td>2</td><td>U</td><td>2</td><td>#f08030</td><td>orange</td></tr><tr><td>3</td><td>G</td><td>1</td><td>#b8a038</td><td>dark gold</td></tr><tr><td>4</td><td>D</td><td>3</td><td>#e0c068</td><td>light gold</td></tr><tr><td>5</td><td>N</td><td>4</td><td>#705848</td><td>dark brown</td></tr><tr><td>6</td><td>T</td><td>5</td><td>#b8b8d0</td><td>light gray</td></tr><tr><td>7</td><td>T</td><td>1</td><td>#b8a038</td><td>dark gold</td></tr><tr><td>8</td><td>H</td><td>5</td><td>#b8b8d0</td><td>light gray</td></tr><tr><td>9</td><td>G</td><td>6</td><td>#705898</td><td>dark purple</td></tr><tr><td>10</td><td>F</td><td>2</td><td>#f08030</td><td>orange</td></tr><tr><td>11</td><td>M</td><td>7</td><td>#a8a878</td><td>grayish yellow</td></tr><tr><td>12</td><td>F</td><td>8</td><td>#a890f0</td><td>light purple</td></tr><tr><td>13</td><td>F</td><td>9</td><td>#c03028</td><td>red</td></tr><tr><td>14</td><td>P</td><td>9</td><td>#c03028</td><td>red</td></tr><tr><td>15</td><td>L</td><td>5</td><td>#b8b8d0</td><td>light gray</td></tr><tr><td>16</td><td>S</td><td>6</td><td>#705898</td><td>dark purple</td></tr><tr><td>17</td><td>G</td><td>10</td><td>#a040a0</td><td>bright purple</td></tr><tr><td>18</td><td>I</td><td>10</td><td>#a040a0</td><td>bright purple</td></tr><tr><td>19</td><td>P</td><td>10</td><td>#a040a0</td><td>bright purple</td></tr><tr><td>20</td><td>O</td><td>8</td><td>#a890f0</td><td>light purple</td></tr><tr><td>21</td><td>P</td><td>11</td><td>#78c850</td><td>light green</td></tr><tr><td>22</td><td>T</td><td>11</td><td>#78c850</td><td>light green</td></tr><tr><td>23</td><td>F</td><td>2</td><td>#f08030</td><td>orange</td></tr><tr><td>24</td><td>B</td><td>9</td><td>#c03028</td><td>red</td></tr><tr><td>25</td><td>L</td><td>12</td><td>#98d8d8</td><td>light blue</td></tr><tr><td>26</td><td>E</td><td>12</td><td>#98d8d8</td><td>light blue</td></tr><tr><td>27</td><td>E</td><td>13</td><td>#6890f0</td><td>medium blue</td></tr><tr><td>28</td><td>È</td><td>4</td><td>#705848</td><td>dark brown</td></tr><tr><td>29</td><td>I</td><td>14</td><td>#a8b820</td><td>light olive green</td></tr><tr><td>30</td><td>P</td><td>10</td><td>#a040a0</td><td>bright purple</td></tr><tr><td>31</td><td>N</td><td>7</td><td>#a8a878</td><td>grayish yellow</td></tr><tr><td>32</td><td>M</td><td>7</td><td>#a8a878</td><td>grayish yellow</td></tr><tr><td>33</td><td>C</td><td>15</td><td>#f8d030</td><td>yellow</td></tr><tr><td>34</td><td>O</td><td>8</td><td>#a890f0</td><td>light purple</td></tr><tr><td>35</td><td>E</td><td>13</td><td>#6890f0</td><td>medium blue</td></tr><tr><td>36</td><td>U</td><td>13</td><td>#6890f0</td><td>medium blue</td></tr><tr><td>37</td><td>T</td><td>14</td><td>#a8b820</td><td>light olive green</td></tr><tr><td>38</td><td>É</td><td>16</td><td>#ee99ac</td><td>light pink</td></tr><tr><td>39</td><td>U</td><td>13</td><td>#6890f0</td><td>medium blue</td></tr><tr><td>40</td><td>L</td><td>3</td><td>#e0c068</td><td>light gold</td></tr><tr><td>41</td><td>A</td><td>11</td><td>#78c850</td><td>light green</td></tr><tr><td>42</td><td>G</td><td>6</td><td>#705898</td><td>dark purple</td></tr><tr><td>43</td><td>R</td><td>4</td><td>#705848</td><td>dark brown</td></tr><tr><td>44</td><td>L</td><td>7</td><td>#a8a878</td><td>grayish yellow</td></tr><tr><td>45</td><td>R</td><td>11</td><td>#78c850</td><td>light green</td></tr><tr><td>46</td><td>I</td><td>10</td><td>#a040a0</td><td>bright purple</td></tr><tr><td>47</td><td>S</td><td>5</td><td>#b8b8d0</td><td>light gray</td></tr><tr><td>48</td><td>I</td><td>8</td><td>#a890f0</td><td>light purple</td></tr><tr><td>49</td><td>P</td><td>17</td><td>#f85888</td><td>salmon pink</td></tr><tr><td>50</td><td>F</td><td>16</td><td>#ee99ac</td><td>light pink</td></tr><tr><td>51</td><td>B</td><td>14</td><td>#a8b820</td><td>light olive green</td></tr><tr><td>52</td><td>N</td><td>9</td><td>#c03028</td><td>red</td></tr><tr><td>53</td><td>I</td><td>12</td><td>#98d8d8</td><td>light blue</td></tr><tr><td>54</td><td>L</td><td>5</td><td>#b8b8d0</td><td>light gray</td></tr></table></div></div></p>
+<p><button class="btn clipboard-button"></button>
+<script>
+  const colorblindInfo = document.getElementById("colorblind-a11y-info");
+  const copyOnly = document.createElement('div');
+  copyOnly.innerHTML = colorblindInfo.innerHTML;
+  copyOnly.classList.add('copy-only');
+  colorblindInfo.parentElement.insertBefore(copyOnly, colorblindInfo);
+  colorblindInfo.classList.add('no-copy');
+  colorblindInfo.style.display = 'none';
+
+  const toggleColorblindInfo = () => {
+    if (colorblindInfo.style.display === 'none') {
+      colorblindInfo.style.display = 'block';
+    } else {
+      colorblindInfo.style.display = 'none'
+    }
+  }
+</script>
+</p>
+    
+    
+
+    
+    <div class="puzzle-main-corner puzzle-main-corner-1"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-2"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-3"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-4"></div>
+    
+</main>
+
+<script src="/static/js/copyjack.js"></script>
+
+
+    </div>
+    
+
+    
+
+    
+    <script>
+    document.getElementById('nav-music').style.display = 'none';
+    document.getElementById("progress-simulator").addEventListener("submit", (e) => {
+        if (e.submitter.name === "reset") {
+            toggleReset(true);
+            doGlitch(false);
+            document.getElementById("shortcuts").checked = false;
+            e.preventDefault();
+        } else {
+            localStorage.setItem(e.submitter.name, e.submitter.value);
+        }
+    });
+    addStyles();
+
+    function toggleReset(which) {
+        $('#loop-reset').toggleClass('loop-resetting', which);
+    }
+
+    function addStyles() {
+        const changeFavicon = (url) => {
+            const e = Array.from(document.getElementsByTagName("link"))
+                .filter(e => e.rel === "icon")[0];
+            e.href = url;
+        }
+        const addSheet = (url) => {
+            const e = document.createElement("link");
+            e.rel = "stylesheet";
+            e.href = url;
+            document.getElementsByTagName("head")[0].appendChild(e);
+        }
+
+        const seasons = ["spring", "summer", "autumn", "winter"];
+        let current_main_round = localStorage.getItem("round");
+        const endgame_unlocked = localStorage.getItem("endgame") === "true";
+
+        const matches = new RegExp(`\\?(${seasons.join("|")})`).exec(document.URL);
+        if (matches && matches[1]) {
+            current_main_round = matches[1];
+        }
+
+        if (endgame_unlocked) {
+            addSheet("/static/css/endgame.css");
+            changeFavicon("/static/images/favicon-endgame.ico");
+            const nodes = document.getElementsByClassName("energy-nodes-info");
+            console.log(nodes);
+            if (nodes.length > 0) {
+                nodes[0].style.display = "block";
+            }
+        } else if (current_main_round === "concert") {
+            addSheet("/static/css/concert.css");
+            changeFavicon("/static/images/favicon-concert.ico");
+            // also add the concert music
+            document.getElementById('nav-music').style.display = 'inline-block';
+            const audio = document.getElementById("music-audio");
+            if (audio) {
+                audio.addEventListener('play', () => {
+                    audio.volume = localStorage.getItem('music-audio-volume') ?? 0.5;
+                });
+                audio.addEventListener('volumechange', () => {
+                    localStorage.setItem('music-audio-volume', audio.volume);
+                });
+            }
+        } else if (seasons.includes(current_main_round)) {
+            addSheet("/static/css/season.css");
+            addSheet(`/static/css/${current_main_round}.css`);
+            changeFavicon(`/static/images/favicon-${current_main_round}.ico`);
+        } else {
+            addSheet("/static/css/blue.css");
+            changeFavicon("/static/images/favicon-blue.ico");
+        }
+    }
+
+    registerOnGlitchHook((ex) => {
+        document.getElementById('background-glitch-wrapper').style.display = 'initial';
+    });
+    </script>
+    
+</body>
+</html>

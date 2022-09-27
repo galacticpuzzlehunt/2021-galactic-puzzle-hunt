@@ -1,0 +1,536 @@
+
+
+
+
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+<title>Solution: Changes</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <meta property="og:title" content="Galactic Puzzle Hunt 2022">
+    <meta property="og:description" content="Registration for this year's Galactic Puzzle Hunt is now open!">
+    <meta property="og:image" content="https://galacticpuzzlehunt.com/static/images/banner.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:slnt,CASL,CRSV,MONO@-3,0.5,1,1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/skeleton.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.formset/1.2.2/jquery.formset.min.js"></script>
+    <script src="/jsi18n/"></script>
+    <script src="/static/js/sorttable.js"></script>
+    <script src="/static/js/tray.js"></script>
+    <script src="/static/js/notify.js"></script>
+    <script src="/static/js/time.js"></script>
+    
+    
+    <link rel="icon" sizes="16x16 32x32 48x48 64x64" href="/static/images/favicon.ico" type="image/vnd.microsoft.icon">
+    
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92192633-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-92192633-1');
+</script>
+
+</head>
+<body>
+    
+    <div id="background-glitch-wrapper" class="background-glitch">
+        <div class="glitch-1"></div>
+        <div class="glitch-2"></div>
+        <div class="glitch-3"></div>
+    </div>
+    
+    
+    <input id="shortcuts" type="checkbox">
+    
+    <nav>
+        <span class="tray">
+            <span id="tray-timer"></span>
+            <div class="top-tabs">
+                <a href="/">
+                    Home
+                </a>
+                
+                
+                <a href="/story">
+                    Story
+                </a>
+                
+                
+                <a class="selected-tab" href="/puzzles">
+                    Puzzles
+                </a>
+                
+                <a href="/teams">
+                    Teams
+                </a>
+                
+                
+                <a href="/errata">
+                    Updates
+                </a>
+                
+                
+                
+                
+                <a id="nav-music" href="#">
+                    <label for="music" title="Music" style="margin-bottom: 0; font-weight: normal; cursor: pointer;">Music</label>
+                </a>
+                <input id="music" type="checkbox">
+                <div class="shortcuts music">
+                    <audio id="music-audio" controls src="/static/puzzle_resources/worlds-end-concert/music-audio.mp3">
+                        There should be a music player here.
+                    </audio>
+                </div>
+                
+                
+            </div>
+            <div class="top-left-actions">
+                
+<a href="/puzzle/changes" class="btn">Back to the puzzle</a>
+
+            </div>
+        </span>
+        <div class="top-right-actions">
+        
+        <label for="shortcuts" title="Simulator">Simulator </label>
+        
+        
+        </div>
+    </nav>
+    
+    <div class="shortcuts">
+        <form id="progress-simulator">
+        <div>Current round:</div>
+        <button class="btn" type="submit" name="round" value="forward">⬆️</button>
+        <button class="btn" type="submit" name="round" value="spring">🌸</button>
+        <button class="btn" type="submit" name="round" value="summer">☀️</button>
+        <button class="btn" type="submit" name="round" value="autumn">🍂</button>
+        <button class="btn" type="submit" name="round" value="winter">☃️</button>
+        <button class="btn" type="submit" name="round" value="concert">🎤</button>
+        <button class="btn" type="submit" name="round" value="none">None</button>
+        <div>Endgame:</div>
+        <button class="btn" type="submit" name="endgame" value="true">Unlock</button>
+        <button class="btn" type="submit" name="endgame" value="false">Reset</button>
+        <div>Reset:</div>
+        <button class="btn" type="submit" name="reset" value="reset">Reset</button>
+        </form>
+    </div>
+    
+    
+    
+    
+    
+    <div id="loop-reset">
+        <form>
+            <svg viewBox="-30 160 720 320">
+                <defs>
+                    <path id="loop-end-path" d="m 370,240 c 38.29044,0 74.26676,18.33512 96.83716,49.26624 l -76.8369,30.73478 V 270 L 300,330 261.03858,309.74192 c 19.60706,-42.51188 62.14674,-69.74008 108.9623,-69.74306 z m 106.15758,64.22738 c 6.65282,12.65518 10.9906,26.39738 12.80876,40.57862 l -38.96532,5.19538 z"/>
+                </defs>
+                <foreignObject width="720" height="480" clip-path="url(#loop-end-clip)" class="loop-shade">
+                    <aside class="loop-shade" xmlns="http://www.w3.org/1999/xhtml" style="width: 100%; height: 100%;"></aside>
+                </foreignObject>
+                <clipPath id="loop-end-clip"><use href="#loop-end-path"/></clipPath>
+                <use href="#loop-end-path"/>
+                <path d="M 490,400 600,330 450,350 490,280 390,320 V 270 L 300,330 50,200 170,380 50,400"/>
+            </svg>
+            <div>THE END</div>
+            <p>You can reset once per minute.</p>
+            <table>
+                <tr id="loop-reset-btn-row-reset">
+                    <td><button class="btn" disabled>Reset</button></td>
+                    <td>Start over from the beginning of the exam.</td>
+                </tr>
+                <tr id="loop-reset-btn-row-restore">
+                    <td><button class="btn" disabled>Jump</button></td>
+                    <td>Start over, but resubmit your previous answers to bring you back to this point.</td>
+                </tr>
+                <tr>
+                    <td><a class="btn" href="javascript:toggleReset(false)">Stay</a></td>
+                    <td>Look at this page a bit longer. Make sure to save your work.</td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    
+    <script>
+
+    
+    
+    let glitchTriggerFuncs = [];
+    let glitchTriggerReceived = false;
+    let glitchTriggerExReceived = false;
+    let glitchPageLoaded = false;
+    function processGlitchFuncs(ex) {
+        glitchTriggerFuncs.forEach((func) => {
+            func(ex);
+        });
+    }
+    function doGlitch(ex) {
+        glitchTriggerReceived = true;
+        if (ex) {
+            glitchTriggerExReceived = true;
+        }
+        if (glitchPageLoaded) {
+            processGlitchFuncs(ex);
+        }
+    }
+    window.addEventListener('load', () => {
+        glitchPageLoaded = true;
+        if (glitchTriggerExReceived) {
+            processGlitchFuncs(true);
+        }
+        else if (glitchTriggerReceived) {
+            processGlitchFuncs(false);
+        }
+    }, false);
+    
+    
+    
+    function registerOnGlitchHook(func) {
+        if (glitchTriggerExReceived) {
+            func(true);
+        }
+        else if (glitchTriggerReceived) {
+            func(false);
+        }
+        glitchTriggerFuncs.push(func);
+    }
+    
+
+    
+    
+    </script>
+    <div class="content">
+        
+
+<style>
+h2 {
+    font-size: 2.5rem;
+    font-weight: normal;
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+
+h4 {
+    font-size: 2rem;
+    font-weight: normal;
+    margin: 2rem 0;
+}
+</style>
+
+<h1>
+    Solution <span style="font-weight: 300">Changes</span>
+    <div class="solved-title-marker">Answer <span class="solved-title-answer spoiler">AQUEOUS HUMOR</span></div>
+</h1>
+
+<main class="puzzle-main">
+    <h2 style="margin-top: 0">
+        Written by
+        
+Brian Chen
+
+    </h2>
+
+    
+    <style>
+.box {
+  background: pink;
+}
+</style>
+
+<p>The puzzle consists of a sequence of transformations that are applied to the input words. Solvers can input words into the text boxes at the top and, at each stage, check the checkboxes to indicate which words should be transformed. Each stage requires a fixed number of checkboxes to be checked, except for a single stage where all checkboxes must be checked.</p>
+<p>After the stage&rsquo;s transformation is applied, words that are not in the puzzle&rsquo;s dictionary are crossed out and removed as inputs to the following stage. (Hard mode switches the puzzle to use a smaller word list whose words are more common; words that are crossed out but would be allowed in easy mode are colored differently.) Some transformations can leave a word unchanged, but words otherwise cannot repeat within a row or from previous stages; repeated words are also crossed out and removed in the next stage.</p>
+<p>The transformations as described below are often nondeterministic. Usually, the transformation is applied in a way so as to maximize the number of legal words remaining and then to use the alphabetically earliest result, with a few exceptions. As additional hints and confirmation to how stages work, each stage displays a fraction; the denominator indicates how many possibilities there are for resolving the transformation, while the numerator indicates the number of possibilities that produces all legal words.</p>
+<p>Through trial and error, solvers can determine how each transformation works. In addition, if solvers find a set of words and transformation targets that passes through all stages, brackets appear around certain letters in the process, chosen by an extraction method that solvers can determine and that will be useful later; furthermore, a message appears at the bottom. Note that multiple pairs of brackets can appear in a single stage, but all will extract the same letter and should be treated as extracting one letter for the final result.</p>
+<p>A few example save states from testsolvers that get through all stages:</p>
+<ul><li><code>0,HAE,MEAD,TAME,PEDAL,TRAD,ROOMING,REST,RAIN,QMgEECCAUP8DCCQgITCBQYhCEFCBKipsyEzAwA==</code><li><code>1,UNCROSS,PARSE,BRATS,PIT,BONES,SNAPS,PLUMPING,REEDS,IOACgEAQMP+IQEhAIGBAEFAQQGAIwIAwoIDAwA==</code><li><code>0,COATING,AND,FRISK,CARD,LIME,CHAR,RING,ANTS,IOCAgICAwP8GIDCAQGBAgBSAgMBAiIDAwIDAwA==</code></ul>
+<table><thead><tr class="header"><th>Stage</th><th># Req words</th><th>Transformation</th><th>Extraction</th></tr></thead><tbody><tr class="odd"><td>1</td><td>1</td><td>Delete the second letter.</td><td>Extract the third (before deletion) / second (after deletion) letter.</td></tr><tr class="even"><td>2</td><td>3</td><td>Replace each word’s second-to-last letter with the same letter. At least one word’s second-to-last letter must change.</td><td>Extract the new letter.</td></tr><tr class="odd"><td>3</td><td>1</td><td>Delete the last three letters.</td><td>Extract the fourth-to-last (before deletion) / last (after deletion) letter.</td></tr><tr class="even"><td>4</td><td>1</td><td>Delete the first two letters.</td><td>Extract the second-to-last letter.</td></tr><tr class="odd"><td>5</td><td>1</td><td>Move the last letter to the second position.</td><td>-</td></tr><tr class="even"><td>6</td><td>1</td><td>Insert a letter in the second-to-last position.</td><td>Extract the inserted letter.</td></tr><tr class="odd"><td>7</td><td>2</td><td>Replace both words’ last letter with the same bigram (pair of letters).</td><td>-</td></tr><tr class="even"><td>8</td><td>all</td><td>Delete any words that are not longest.</td><td>-</td></tr><tr class="odd"><td>9</td><td>2</td><td>Concatenate two words (in either order).</td><td>-</td></tr><tr class="even"><td>10</td><td>1</td><td>Delete the first letter.</td><td>Extract the second (before deletion) / first (after deletion) letter.</td></tr><tr class="odd"><td>11</td><td>2</td><td>Find the longest string that can be appended to both words to still make a word.</td><td>Extract the second letter of the resulting string.</td></tr><tr class="even"><td>12</td><td>1</td><td>Change the second letter to something different and then move the last letter to the front.</td><td>Extract the third (before moving) / fourth (after moving) letter.</td></tr><tr class="odd"><td>13</td><td>1</td><td>Insert a letter in the second position.</td><td>-</td></tr><tr class="even"><td>14</td><td>2</td><td>Replace both words’ first two letters with the same bigram (pair of letters).</td><td>-</td></tr><tr class="odd"><td>15</td><td>1</td><td>Delete the first letter.</td><td>Extract the second-to-last letter.</td></tr><tr class="even"><td>16</td><td>1</td><td>Replace the second and third letters with one letter.</td><td>-</td></tr><tr class="odd"><td>17</td><td>1</td><td>Embed one word into another.</td><td>-</td></tr><tr class="even"><td>18</td><td>1</td><td>Switch the first and last letters of a word, then append a letter.</td><td>Extract the appended letter.</td></tr><tr class="odd"><td>19</td><td>1</td><td>Replace any letter other than the first or last of a word with a bigram.</td><td>Extract the second-to-last letter of the resulting word.</td></tr><tr class="even"><td>20</td><td>2</td><td>Replace the first letter of one word and the first two letters of the other with the same letter, which can’t be the previous first letter of the former word.</td><td>Extract the first letter of the word where two letters were replaced.</td></tr><tr class="odd"><td>21</td><td>1</td><td>Remove the letters at even positions (second, fourth, etc.)</td><td>-</td></tr><tr class="even"><td>22</td><td>2</td><td>Concatenate the two words and take a substring that uses at least two letters from both words. If multiple substrings are valid, take the longest.</td><td>Extract the last letter of the word that was first in the concatenation.</td></tr><tr class="odd"><td>23</td><td>1</td><td>Delete the first half of a word, rounding down.</td><td>Extract the first letter of the old word.</td></tr><tr class="even"><td>24</td><td>2</td><td>Construct a “portmanteau” of two words: the result is a string as long as the longer of the two that consists of a nonempty prefix of one word followed by a nonempty suffix of the other.</td><td>-</td></tr><tr class="odd"><td>25</td><td>2</td><td>Take any letter from one of the words and replace the second and third letters of the other word with that single letter.</td><td>Extract the first replaced letter (second letter) of the latter word.</td></tr><tr class="even"><td>26</td><td>1</td><td>Reverse the word.</td><td>-</td></tr><tr class="odd"><td>27</td><td>2</td><td>Replace the first letters of both words with the same letter and the last letters of both words with the same letter.</td><td>Extract the first new letter.</td></tr></tbody></table>
+
+<p>The message is:</p>
+<blockquote>
+<p>Well done! Now find the eight secret words to apply Changes to. It may be helpful to consult a Book.</p>
+<p>(P.S. Remember that this is an American hunt.)</p>
+</blockquote>
+<p>The capitalized words hint at the Book of Changes, another name for the <a href="https://en.wikipedia.org/wiki/I_Ching">I Ching</a>, which features the <a href="https://en.wikipedia.org/wiki/Bagua">bagua</a>, or Eight Trigrams. There is not a universally canonical translation of these trigrams, but we went with HEAVEN, LAKE, FIRE, THUNDER, WIND, WATER, MOUNTAIN, EARTH.</p>
+<p>If solvers enter any of these words, all transformations&rsquo; inputs and outputs are replaced with ?&rsquo;s, which also allows solvers to confirm the exact set of eight words the puzzle is looking for. If solvers enter all eight words, all inputs and outputs are bolded and highlighted. Because the transformation results are obscured, solvers must use their understanding of the transformations to determine what the actual inputs and outputs to each stage are and transform the right words in the right order.</p>
+<p>This often requires some amount of lookahead and is not obviously unique, though it was chosen to generally have more compelling words than alternatives and to have the exact same behavior whether or not hard mode is enabled. Some high-level guidelines:</p>
+<ul>
+<li>Although the results of any experimentation are obscured, solvers can still see their lengths and whether they&rsquo;re valid words, which can help them check their hypotheses as they go.</li>
+<li>The stage that requires all words to be the same length is quite strict, though there remain a few ambiguities, most prominently which two of FINCH/WINCH/LEACH should be chosen. Afterwards, it&rsquo;s unclear which word should be beheaded to give INCH to allow WORMS. This is resolved by FLINCH.</li>
+<li>Similarly, CONCH is an option in the bigram replacing phase, but being able to produce an embedding like COVENANT is a strong constraint.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Transformation</th>
+<th>Words</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Delete the second letter.</td>
+<td>HE<span class="box">A</span>VEN → H<span class="box">A</span>VEN</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Replace each word’s second-to-last letter with the same letter. At least one word’s second-to-last letter must change.</td>
+<td>FIRE, LAKE, WIND → FI<span class="box">N</span>E, LA<span class="box">N</span>E, WI<span class="box">N</span>D</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Delete the last three letters.</td>
+<td>MOUN<span class="box">T</span>AIN → MOUN<span class="box">T</span></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Delete the first two letters.</td>
+<td>THUND<span class="box">E</span>R → UND<span class="box">E</span>R</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Move the last letter to the second position.</td>
+<td>LANE → LEAN</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Insert a letter in the second-to-last position.</td>
+<td>LEAN → LEA<span class="box">R</span>N</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Replace both words’ last letter with the same bigram (pair of letters).</td>
+<td>FINE, WIND → FINCH, WINCH</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Delete any words that are not longest.</td>
+<td>(none)</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Concatenate two words (in either order).</td>
+<td>UNDER, WATER → UNDERWATER</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Delete the first letter.</td>
+<td>W<span class="box">I</span>NCH → <span class="box">I</span>NCH</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Find the longest string that can be appended to both words to still make a word.</td>
+<td>EARTH, INCH → W<span class="box">O</span>RMS</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Change the second letter to something different and then move the last letter to the front.</td>
+<td>WO<span class="box">R</span>MS → SWA<span class="box">R</span>M</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Insert a letter in the second position.</td>
+<td>FINCH → FLINCH</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Replace both words’ first two letters with the same bigram (pair of letters).</td>
+<td>HAVEN, MOUNT → COVEN, COUNT</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Delete the first letter.</td>
+<td>COV<span class="box">E</span>N → OV<span class="box">E</span>N</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Replace the second and third letters with one letter.</td>
+<td>COUNT → CANT</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Embed one word into another.</td>
+<td>OVEN, CANT → COVENANT</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Switch the first and last letters of a word, then append a letter.</td>
+<td>LEARN → NEARL<span class="box">Y</span></td>
+</tr>
+<tr>
+<td>19</td>
+<td>Replace any letter other than the first or last of a word with a bigram.</td>
+<td>UNDERWATER → UNDERWRIT<span class="box">E</span>R</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Replace the first letter of one word and the first two letters of the other with the same letter, which can’t be the previous first letter of the former word.</td>
+<td><span class="box">F</span>LINCH, NEARLY → PINCH, PEARLY</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Remove the letters at even positions (second, fourth, etc.)</td>
+<td>PEARLY → PAL</td>
+</tr>
+<tr>
+<td>22</td>
+<td>Concatenate the two words and take a substring that uses at least two letters from both words. If multiple substrings are valid, take the longest.</td>
+<td>PA<span class="box">L</span>, COVENANT → A<span class="box">L</span>COVE</td>
+</tr>
+<tr>
+<td>23</td>
+<td>Delete the first half of a word, rounding down.</td>
+<td><span class="box">U</span>NDERWRITER → WRITER</td>
+</tr>
+<tr>
+<td>24</td>
+<td>Construct a “portmanteau” of two words: the result is a string as long as the longer of the two that consists of a nonempty prefix of one word followed by a nonempty suffix of the other.</td>
+<td>PINCH, WRITER → PINCER</td>
+</tr>
+<tr>
+<td>25</td>
+<td>Take any letter from one of the words and replace the second and third letters of the other word with that single letter.</td>
+<td>ALCOVE, P<span class="box">I</span>NCER → PACER</td>
+</tr>
+<tr>
+<td>26</td>
+<td>Reverse the word.</td>
+<td>PACER → RECAP</td>
+</tr>
+<tr>
+<td>27</td>
+<td>Replace the first letters of both words with the same letter and the last letters of both words with the same letter.</td>
+<td>RECAP, SWARM → <span class="box">D</span>ECAF, <span class="box">D</span>WARF</td>
+</tr>
+</tbody>
+</table>
+<p>A save state: <code>1,EARTH,FIRE,HEAVEN,LAKE,MOUNTAIN,THUNDER,WATER,WIND,IFEIBBAQQf8GAoKAQSghCSgSCFARMhpcaEzAwA==</code></p>
+<p>Solvers can also circumvent much of the obscuring mechanic by finding a set of words that, after a few transformations, produce the same set of words that they expect the Trigrams to produce after the same transformations (possibly applied to different words). Here&rsquo;s a save state (using partial work from Pusheen Fan Club) that converges after only four transformations: <code>0,HAVEN,LIANE,FINE,UNDER,WILD,WATERING,MOUNT,UNEARTH,QGgEAUBAKP8UCAoIIISABIRAEGBAwCBgwIDAwA==</code>.</p>
+<p>When the correct transformations are applied, the extraction brackets reappear. After determining the inputs and outputs, solvers can determine which letters are extracted. Those letters spell out ANTERIOR EYE FLUID, a cluephrase for the answer, <strong>AQUEOUS HUMOR</strong> (and not HUMOUR, as gently hinted by the endnote).</p>
+
+    
+    
+    <h2 id="authors-notes">Author&rsquo;s Notes</h2>
+    <p>In keeping with my continued habit of <a href="https://2020.galacticpuzzlehunt.com/puzzle/intersections">incorporating every possible hobby into a puzzlehunt puzzle</a>, this puzzle is <em>very vaguely</em> inspired by my recent experience with FFXIV savage raids, and thinking about what they&rsquo;d look like (in particular, their mechanics) if turned into puzzlehunt puzzles. Things like, if exactly one of your party members will be forced to lose some HP (letters), you want it to be a tank who has more HP (letters). I even wrote a little bit of a draft that was going to be titled &ldquo;Full Party&rdquo;, in which the eight secret words were BARD, DRAGOON, MONK, PALADIN, SAGE, SCHOLAR, SUMMONER, WARRIOR (which is not the only standard composition consisting of only Scrabble-legal words, and admittedly includes two shield healers, but it&rsquo;s actually pretty constrained; and though unusual, shield healer pairs are actually doing <a href="https://www.fflogs.com/zone/statistics/44/#metric=healercombineddps">pretty</a> <a href="https://www.fflogs.com/zone/statistics/49#metric=healercombinedbossdps">impressive</a> average damage); but my editors quickly convinced me this was a bad idea. Still, I ended up sticking with the size of a full party in FFXIV for no real reason other than inertia. (With a little more raid experience — as of two days before the release of this note, I just cleared the first savage raid of the most recent tier, hilariously released the Tuesday of hunt — I am sure that there are better ways to capture the puzzly nature in a puzzlehunt puzzle, which I will probably continue thinking about in the future.)</p>
+<p>Oddly enough (but quite thematically for a time loop hunt), one of my editors pointed out that the puzzle idea resembles a combination of one of my first published puzzlehunt puzzles, 2015 MH&rsquo;s <a href="https://puzzles.mit.edu/2015/puzzle/pipe/">Pipe</a>, with the meta it fed into, the <a href="https://puzzles.mit.edu/2015/puzzle/coral_reef_meta/">Coral Reef Meta</a>.</p>
+<p>The first testsolvable draft did not provide you with the lengths of the input/outputs or extraction brackets if you submitted any of the eight trigrams, with the intent that you&rsquo;d have to be very confident in the transformations and also experimentally determine the exact rules for extracting letters. However, this would require solvers to find multiple very different solutions in order to extract unambiguously (you can&rsquo;t be certain if you&rsquo;re extracting the <i>n</i>th letter, the <i>n</i>th-from-last letter, or some letter related to the transformed letter), which turned out not to be that fun, not to mention how it would make an already long puzzle even longer.</p>
+<p>Fun fact: UKACD (in this context, best known for being Qat&rsquo;s default dictionary) has &ldquo;inchworm&rdquo; but not &ldquo;inchworms&rdquo;, which caused one of our testsolves to get stuck for more than an hour. This fact, and the American spelling of HUMOR required for the meta, sort-of prompted the endnote; Qat does work if you tell it to use the &ldquo;American&rdquo; list YAWL. (Completionist puzzlers with a long memory may also recognize the endnote as a reference to a certain MUMS Puzzle Hunt confirmation message&hellip;)</p>
+    
+
+    
+    
+
+    
+    <div class="puzzle-main-corner puzzle-main-corner-1"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-2"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-3"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-4"></div>
+    
+</main>
+
+
+    </div>
+    
+
+    
+
+    
+    <script>
+    document.getElementById('nav-music').style.display = 'none';
+    document.getElementById("progress-simulator").addEventListener("submit", (e) => {
+        if (e.submitter.name === "reset") {
+            toggleReset(true);
+            doGlitch(false);
+            document.getElementById("shortcuts").checked = false;
+            e.preventDefault();
+        } else {
+            localStorage.setItem(e.submitter.name, e.submitter.value);
+        }
+    });
+    addStyles();
+
+    function toggleReset(which) {
+        $('#loop-reset').toggleClass('loop-resetting', which);
+    }
+
+    function addStyles() {
+        const changeFavicon = (url) => {
+            const e = Array.from(document.getElementsByTagName("link"))
+                .filter(e => e.rel === "icon")[0];
+            e.href = url;
+        }
+        const addSheet = (url) => {
+            const e = document.createElement("link");
+            e.rel = "stylesheet";
+            e.href = url;
+            document.getElementsByTagName("head")[0].appendChild(e);
+        }
+
+        const seasons = ["spring", "summer", "autumn", "winter"];
+        let current_main_round = localStorage.getItem("round");
+        const endgame_unlocked = localStorage.getItem("endgame") === "true";
+
+        const matches = new RegExp(`\\?(${seasons.join("|")})`).exec(document.URL);
+        if (matches && matches[1]) {
+            current_main_round = matches[1];
+        }
+
+        if (endgame_unlocked) {
+            addSheet("/static/css/endgame.css");
+            changeFavicon("/static/images/favicon-endgame.ico");
+            const nodes = document.getElementsByClassName("energy-nodes-info");
+            console.log(nodes);
+            if (nodes.length > 0) {
+                nodes[0].style.display = "block";
+            }
+        } else if (current_main_round === "concert") {
+            addSheet("/static/css/concert.css");
+            changeFavicon("/static/images/favicon-concert.ico");
+            // also add the concert music
+            document.getElementById('nav-music').style.display = 'inline-block';
+            const audio = document.getElementById("music-audio");
+            if (audio) {
+                audio.addEventListener('play', () => {
+                    audio.volume = localStorage.getItem('music-audio-volume') ?? 0.5;
+                });
+                audio.addEventListener('volumechange', () => {
+                    localStorage.setItem('music-audio-volume', audio.volume);
+                });
+            }
+        } else if (seasons.includes(current_main_round)) {
+            addSheet("/static/css/season.css");
+            addSheet(`/static/css/${current_main_round}.css`);
+            changeFavicon(`/static/images/favicon-${current_main_round}.ico`);
+        } else {
+            addSheet("/static/css/blue.css");
+            changeFavicon("/static/images/favicon-blue.ico");
+        }
+    }
+
+    registerOnGlitchHook((ex) => {
+        document.getElementById('background-glitch-wrapper').style.display = 'initial';
+    });
+    </script>
+    
+</body>
+</html>

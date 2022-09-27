@@ -1,0 +1,529 @@
+
+
+
+
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+<title>Solution: Speedy Crosswording</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <meta property="og:title" content="Galactic Puzzle Hunt 2022">
+    <meta property="og:description" content="Registration for this year's Galactic Puzzle Hunt is now open!">
+    <meta property="og:image" content="https://galacticpuzzlehunt.com/static/images/banner.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:slnt,CASL,CRSV,MONO@-3,0.5,1,1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/skeleton.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.formset/1.2.2/jquery.formset.min.js"></script>
+    <script src="/jsi18n/"></script>
+    <script src="/static/js/sorttable.js"></script>
+    <script src="/static/js/tray.js"></script>
+    <script src="/static/js/notify.js"></script>
+    <script src="/static/js/time.js"></script>
+    
+    
+    <link rel="icon" sizes="16x16 32x32 48x48 64x64" href="/static/images/favicon.ico" type="image/vnd.microsoft.icon">
+    
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92192633-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-92192633-1');
+</script>
+
+</head>
+<body>
+    
+    <div id="background-glitch-wrapper" class="background-glitch">
+        <div class="glitch-1"></div>
+        <div class="glitch-2"></div>
+        <div class="glitch-3"></div>
+    </div>
+    
+    
+    <input id="shortcuts" type="checkbox">
+    
+    <nav>
+        <span class="tray">
+            <span id="tray-timer"></span>
+            <div class="top-tabs">
+                <a href="/">
+                    Home
+                </a>
+                
+                
+                <a href="/story">
+                    Story
+                </a>
+                
+                
+                <a class="selected-tab" href="/puzzles">
+                    Puzzles
+                </a>
+                
+                <a href="/teams">
+                    Teams
+                </a>
+                
+                
+                <a href="/errata">
+                    Updates
+                </a>
+                
+                
+                
+                
+                <a id="nav-music" href="#">
+                    <label for="music" title="Music" style="margin-bottom: 0; font-weight: normal; cursor: pointer;">Music</label>
+                </a>
+                <input id="music" type="checkbox">
+                <div class="shortcuts music">
+                    <audio id="music-audio" controls src="/static/puzzle_resources/worlds-end-concert/music-audio.mp3">
+                        There should be a music player here.
+                    </audio>
+                </div>
+                
+                
+            </div>
+            <div class="top-left-actions">
+                
+<a href="/puzzle/speedy-crosswording" class="btn">Back to the puzzle</a>
+
+            </div>
+        </span>
+        <div class="top-right-actions">
+        
+        <label for="shortcuts" title="Simulator">Simulator </label>
+        
+        
+        </div>
+    </nav>
+    
+    <div class="shortcuts">
+        <form id="progress-simulator">
+        <div>Current round:</div>
+        <button class="btn" type="submit" name="round" value="forward">⬆️</button>
+        <button class="btn" type="submit" name="round" value="spring">🌸</button>
+        <button class="btn" type="submit" name="round" value="summer">☀️</button>
+        <button class="btn" type="submit" name="round" value="autumn">🍂</button>
+        <button class="btn" type="submit" name="round" value="winter">☃️</button>
+        <button class="btn" type="submit" name="round" value="concert">🎤</button>
+        <button class="btn" type="submit" name="round" value="none">None</button>
+        <div>Endgame:</div>
+        <button class="btn" type="submit" name="endgame" value="true">Unlock</button>
+        <button class="btn" type="submit" name="endgame" value="false">Reset</button>
+        <div>Reset:</div>
+        <button class="btn" type="submit" name="reset" value="reset">Reset</button>
+        </form>
+    </div>
+    
+    
+    
+    
+    
+    <div id="loop-reset">
+        <form>
+            <svg viewBox="-30 160 720 320">
+                <defs>
+                    <path id="loop-end-path" d="m 370,240 c 38.29044,0 74.26676,18.33512 96.83716,49.26624 l -76.8369,30.73478 V 270 L 300,330 261.03858,309.74192 c 19.60706,-42.51188 62.14674,-69.74008 108.9623,-69.74306 z m 106.15758,64.22738 c 6.65282,12.65518 10.9906,26.39738 12.80876,40.57862 l -38.96532,5.19538 z"/>
+                </defs>
+                <foreignObject width="720" height="480" clip-path="url(#loop-end-clip)" class="loop-shade">
+                    <aside class="loop-shade" xmlns="http://www.w3.org/1999/xhtml" style="width: 100%; height: 100%;"></aside>
+                </foreignObject>
+                <clipPath id="loop-end-clip"><use href="#loop-end-path"/></clipPath>
+                <use href="#loop-end-path"/>
+                <path d="M 490,400 600,330 450,350 490,280 390,320 V 270 L 300,330 50,200 170,380 50,400"/>
+            </svg>
+            <div>THE END</div>
+            <p>You can reset once per minute.</p>
+            <table>
+                <tr id="loop-reset-btn-row-reset">
+                    <td><button class="btn" disabled>Reset</button></td>
+                    <td>Start over from the beginning of the exam.</td>
+                </tr>
+                <tr id="loop-reset-btn-row-restore">
+                    <td><button class="btn" disabled>Jump</button></td>
+                    <td>Start over, but resubmit your previous answers to bring you back to this point.</td>
+                </tr>
+                <tr>
+                    <td><a class="btn" href="javascript:toggleReset(false)">Stay</a></td>
+                    <td>Look at this page a bit longer. Make sure to save your work.</td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    
+    <script>
+
+    
+    
+    let glitchTriggerFuncs = [];
+    let glitchTriggerReceived = false;
+    let glitchTriggerExReceived = false;
+    let glitchPageLoaded = false;
+    function processGlitchFuncs(ex) {
+        glitchTriggerFuncs.forEach((func) => {
+            func(ex);
+        });
+    }
+    function doGlitch(ex) {
+        glitchTriggerReceived = true;
+        if (ex) {
+            glitchTriggerExReceived = true;
+        }
+        if (glitchPageLoaded) {
+            processGlitchFuncs(ex);
+        }
+    }
+    window.addEventListener('load', () => {
+        glitchPageLoaded = true;
+        if (glitchTriggerExReceived) {
+            processGlitchFuncs(true);
+        }
+        else if (glitchTriggerReceived) {
+            processGlitchFuncs(false);
+        }
+    }, false);
+    
+    
+    
+    function registerOnGlitchHook(func) {
+        if (glitchTriggerExReceived) {
+            func(true);
+        }
+        else if (glitchTriggerReceived) {
+            func(false);
+        }
+        glitchTriggerFuncs.push(func);
+    }
+    
+
+    
+    
+    </script>
+    <div class="content">
+        
+
+<style>
+h2 {
+    font-size: 2.5rem;
+    font-weight: normal;
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+
+h4 {
+    font-size: 2rem;
+    font-weight: normal;
+    margin: 2rem 0;
+}
+</style>
+
+<h1>
+    Solution <span style="font-weight: 300">Speedy Crosswording</span>
+    <div class="solved-title-marker">Answer <span class="solved-title-answer spoiler">BENJAMINS</span></div>
+</h1>
+
+<main class="puzzle-main">
+    <h2 style="margin-top: 0">
+        Written by
+        
+Jack Chen, Jenna Himawan, and Jakob Weisblat
+
+    </h2>
+
+    
+    <style>
+  table.crossword {
+    min-width: 30em;
+    display: block;
+  }
+  table.crossword td {
+    background-clip: padding-box;
+    line-height: 1em;
+    width: 2em;
+    height: 2em;
+    border: 1px solid black;
+    position: relative;
+    padding: 0px;
+    text-align: center;
+    vertical-align: bottom;
+  }
+  .crossword-number {
+    position: absolute;
+    width: min-content;
+    height: 33%;
+    text-align: left;
+    top: 0;
+    left: 0;
+    transform: scale(0.75);
+    transform-origin: top left;
+  }
+  table.crossword td.black {
+    box-shadow: inset 50px 50px black;
+    background-color: black;
+  }
+  table td.cyan {
+    box-shadow: inset 50px 50px cyan;
+    background-color: cyan;
+  }
+  table td.yellow {
+    box-shadow: inset 50px 50px yellow;
+    background-color: yellow;
+  }
+  table td.pink {
+    box-shadow: inset 50px 50px pink;
+    background-color: pink;
+  }
+  table td.blue {
+    box-shadow: inset 50px 50px cornflowerblue;
+    background-color: cornflowerblue;
+  }
+  table.crossword td.no-border {
+    border: 0px;
+  }
+  div.centered {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  table.t td {
+    width: 1em;
+    height: 1em;
+    margin: 0px;
+    padding: 0.2em;
+    text-align: center;
+  }
+  div.row-flex {
+    display: flex;
+    flex-direction: row;
+  }
+  div.row-flex div {
+    flex: 1;
+  }
+  div.clues {
+    height: 30em;
+  }
+  div.clues > * {
+    background-color: white;
+    border: 1px solid currentColor;
+    padding: 1em;
+    height: 30em;
+    overflow-y: scroll;
+    overflow-x: visible;
+  }
+</style>
+<h3>Initial observations</h3>
+<p>When we open this puzzle, we see an interactive crossword player. Given the title of the puzzle, we might wonder
+what happens if we can successfully fill the grid.</p>
+<p>It turns out that if you fill the first grid, a second crossword is shown!</p>
+<p>The puzzles are always the same, and always shown in the same order, across time loops. To successfully fill all the
+grids, we can iteratively type in the answers to the crosswords we&rsquo;ve already solved, then copy the new
+crossword to work on it outside of the webpage.</p>
+<p>As we try to solve these crosswords, we may notice that some entries seem a little off. In fact, each crossword has
+a particular gimmick.</p>
+<p>The solutions to the crosswords and their gimmicks are as follows:</p>
+<h4 id="puz1-grid">Puzzle #1: Some cells contain multiple letters</h3><div class="no-break"><div class="row-flex"><table class="crossword no-break"><tr><td><span class="crossword-number">1</span>C</td><td><span class="crossword-number">2</span>R</td><td><span class="crossword-number">3</span>U</td><td><span class="crossword-number">4</span>S</td><td><span class="crossword-number">5</span>T</td><td><span class="crossword-number">6</span>S</td><td class="black"></td><td><span class="crossword-number">7</span>B</td><td><span class="crossword-number">8</span>B</td><td><span class="crossword-number">9</span>C</td><td class="black"></td><td><span class="crossword-number">10</span>M</td><td><span class="crossword-number">11</span>A</td><td><span class="crossword-number">12</span>C</td><td><span class="crossword-number">13</span>H</td></tr><tr><td><span class="crossword-number">14</span>F</td><td>U</td><td>L</td><td>C</td><td>R</td><td>A</td><td class="black"></td><td><span class="crossword-number">15</span>L</td><td>A</td><td>O</td><td class="black"></td><td><span class="crossword-number">16</span>I</td><td>L</td><td>S</td><td>A</td></tr><tr><td><span class="crossword-number">17</span>O</td><td>N</td><td>Y</td><td>O</td><td>U</td><td>R</td><td><span class="crossword-number">18</span>M</td><td>A</td><td class="yellow">RK</td><td>S</td><td class="black"></td><td><span class="crossword-number">19</span>N</td><td class="yellow">AR</td><td>C</td><td>S</td></tr><tr><td class="black"></td><td><span class="crossword-number">20</span>C</td><td>A</td><td>R</td><td>D</td><td>I</td><td>A</td><td>C</td><td class="black"></td><td><span class="crossword-number">21</span>T</td><td><span class="crossword-number">22</span>R</td><td>U</td><td>M</td><td>A</td><td>N</td></tr><tr><td><span class="crossword-number">23</span>C</td><td>O</td><td>N</td><td>E</td><td>Y</td><td class="black"></td><td><span class="crossword-number">24</span>O</td><td class="yellow">KR</td><td><span class="crossword-number">25</span>A</td><td class="black"></td><td><span class="crossword-number">26</span>A</td><td>T</td><td>I</td><td>L</td><td>T</td></tr><tr><td class="yellow"><span class="crossword-number">27</span>RO</td><td>L</td><td>O</td><td>S</td><td class="black"></td><td><span class="crossword-number">28</span>C</td><td>Z</td><td>A</td><td>R</td><td class="black"></td><td><span class="crossword-number">29</span>V</td><td>I</td><td>S</td><td>E</td><td class="black"></td></tr><tr><td><span class="crossword-number">30</span>C</td><td>D</td><td>V</td><td class="black"></td><td><span class="crossword-number">31</span>T</td><td>H</td><td>E</td><td>S</td><td>C</td><td><span class="crossword-number">32</span>R</td><td>E</td><td>A</td><td>M</td><td class="black"></td><td class="black"></td></tr><tr><td class="black"></td><td class="black"></td><td class="black"></td><td><span class="crossword-number">33</span>H</td><td>E</td><td>A</td><td>D</td><td>P</td><td>H</td><td>O</td><td>N</td><td>E</td><td class="black"></td><td class="black"></td><td class="black"></td></tr><tr><td class="black"></td><td class="black"></td><td><span class="crossword-number">34</span>S</td><td>E</td><td>A</td><td>R</td><td>O</td><td>B</td><td>I</td><td>N</td><td>S</td><td class="black"></td><td class="yellow"><span class="crossword-number">35</span>SP</td><td><span class="crossword-number">36</span>C</td><td><span class="crossword-number">37</span>A</td></tr><tr><td class="black"></td><td class="yellow"><span class="crossword-number">38</span>PA</td><td>I</td><td>R</td><td>S</td><td class="black"></td><td><span class="crossword-number">39</span>N</td><td>E</td><td>T</td><td>S</td><td class="black"></td><td><span class="crossword-number">40</span>D</td><td>A</td><td>L</td><td>I</td></tr><tr><td><span class="crossword-number">41</span>M</td><td>R</td><td>L</td><td>E</td><td>E</td><td class="black"></td><td><span class="crossword-number">42</span>G</td><td>R</td><td>E</td><td class="black"></td><td><span class="crossword-number">43</span>D</td><td>A</td><td>M</td><td>O</td><td>N</td></tr><tr><td><span class="crossword-number">44</span>A</td><td>L</td><td>E</td><td>G</td><td>R</td><td><span class="crossword-number">45</span>E</td><td class="black"></td><td><span class="crossword-number">46</span>R</td><td>C</td><td><span class="crossword-number">47</span>C</td><td>O</td><td>L</td><td>A</td><td>S</td><td class="black"></td></tr><tr><td><span class="crossword-number">48</span>M</td><td>O</td><td>N</td><td>O</td><td class="black"></td><td><span class="crossword-number">49</span>G</td><td><span class="crossword-number">50</span>U</td><td>I</td><td>T</td><td>A</td><td>L</td><td>E</td><td>L</td><td>E</td><td><span class="crossword-number">51</span>S</td></tr><tr><td><span class="crossword-number">52</span>M</td><td>U</td><td>T</td><td>E</td><td class="black"></td><td><span class="crossword-number">53</span>A</td><td>S</td><td>E</td><td class="black"></td><td><span class="crossword-number">54</span>L</td><td>A</td><td>K</td><td>O</td><td>T</td><td>A</td></tr><tr><td><span class="crossword-number">55</span>A</td><td>R</td><td>E</td><td>S</td><td class="black"></td><td><span class="crossword-number">56</span>D</td><td class="yellow">OC</td><td>S</td><td class="black"></td><td><span class="crossword-number">57</span>I</td><td>N</td><td>S</td><td>T</td><td>O</td><td class="yellow">CK</td></tr></table><div class="clues row-flex"><div><b>Across</b><ol id="across"><li id="clue_0" value="1">They’re shared by snow and pizzas</li><li id="clue_7" value="7" class="open"><i>Only Connect</i> network</li><li id="clue_11" value="10" class="open">Word before a number</li><li id="clue_16" value="14" class="open">Seesaw parts</li><li id="clue_17" value="15" class="open">___-tzu (Taoism founder)</li><li id="clue_18" value="16" class="open">Faust on <i>Mission: Impossible</i></li><li id="clue_19" value="17" class="open">Official announcement?</li><li id="clue_21" value="19" class="open">Rats</li><li id="clue_22" value="20" class="open">Kind of arrest</li><li id="clue_23" value="21" class="open">He had a show, in a movie</li><li id="clue_25" value="23" class="open">“Island” with a popular beach</li><li id="clue_27" value="24" class="open">Ingredient in bhindi masala</li><li id="clue_29" value="26" class="open">Listing</li><li id="clue_30" value="27" class="open">Circular candies</li><li id="clue_31" value="28" class="open">Peter, e.g.</li><li id="clue_33" value="29" class="open">Get a grip!</li><li id="clue_34" value="30" class="open">V x IX x IX</li><li id="clue_35" value="31" class="open">Painting that inspired an emoji</li><li id="clue_38" value="33" class="open">Ear accessory</li><li id="clue_40" value="34" class="open">Fish that sound like they should be birds</li><li id="clue_42" value="35" class="open">Humane org.</li><li id="clue_46" value="38" class="open">They could be cards or pants</li><li id="clue_48" value="39" class="open">Team that plays at Flatbush Av &amp; Atlantic Av</li><li id="clue_49" value="40" class="open">Artist after whom a neural net art engine is named</li><li id="clue_51" value="41" class="open">1957 Bobbettes hit</li><li id="clue_53" value="42" class="open">Test taken for univ. admissions</li><li id="clue_54" value="43" class="open">He played an astronaut in a popular film</li><li id="clue_56" value="44" class="open">Porto ___, Brazil</li><li id="clue_58" value="46" class="open">Some pops</li><li id="clue_60" value="48" class="open">Illness that goes around college dorms</li><li id="clue_61" value="49" class="open">Hybrid instruments</li><li id="clue_64" value="52" class="open">Remote button</li><li id="clue_65" value="53" class="open">Next of kin?</li><li id="clue_66" value="54" class="open">Language of the Sioux</li><li id="clue_67" value="55" class="open">Greek god</li><li id="clue_68" value="56" class="open">Google ___</li><li id="clue_69" value="57" class="open">Available, in a way</li></ol></div><div><b>Down</b><ol id="down"><li id="clue_1" value="1" class="open">Corp. treasurer, often</li><li id="clue_2" value="2" class="open">When your blood does this, it’s not a good sign</li><li id="clue_3" value="3" class="open">Lenin’s birth surname</li><li id="clue_4" value="4" class="open">Almost makes the cut?</li><li id="clue_5" value="5" class="open">Monk’s late wife on <i>Monk</i></li><li id="clue_6" value="6" class="open">Flowing garment</li><li id="clue_8" value="7" class="open">Fruit often used for winemaking</li><li id="clue_9" value="8" class="open">It might be compared to a bite</li><li id="clue_10" value="9" class="open">It might be sunk</li><li id="clue_12" value="10" class="open">Trivialities</li><li id="clue_13" value="11" class="open">Making a big deal out of nothing, maybe</li><li id="clue_14" value="12" class="open">Piano beginner’s exercise</li><li id="clue_15" value="13" class="open">“Who ___?”</li><li id="clue_20" value="18" class="open">Revolutionary who died in 1976</li><li id="clue_24" value="22" class="open">Much-maligned animals</li><li id="clue_26" value="23" class="open">Swamp beast</li><li id="clue_28" value="25" class="open">Wright or Gehry, e.g.</li><li id="clue_32" value="28" class="open">Fish that sounds hot but lives in the cold</li><li id="clue_36" value="31" class="open">Movie trailer, e.g.</li><li id="clue_37" value="32" class="open">Perlman and Howard, e.g.</li><li id="clue_39" value="33" class="open">Words before nothing</li><li id="clue_41" value="34" class="open">52-Across has one, fittingly</li><li id="clue_43" value="35" class="open">2004 musical adapted from a 1975 film</li><li id="clue_44" value="36" class="open">Near</li><li id="clue_45" value="37" class="open">Department of eastern France</li><li id="clue_47" value="38" class="open">Room in a British palace</li><li id="clue_50" value="40" class="open">Whovian villains</li><li id="clue_52" value="41" class="open"><i>___ Mia!</i> (ABBA musical)</li><li id="clue_55" value="43" class="open">HBO founder Charles</li><li id="clue_57" value="45" class="open">Cry of surprise</li><li id="clue_59" value="47" class="open">SF locale</li><li id="clue_62" value="50" class="open">Org. for American athletes</li><li id="clue_63" value="51" class="open">Get rid of, in a way</li></ol></div></div></div></div><p><a href="#puz1-extract">See how to extract from gimmicked cells.</a><h4 id="puz2-grid">Puzzle #2: Some entries contain extra letters</h3>
+The entries with extra letters are:
+<table><th>Clue ID</th><th>Clue Text</th><th>Clue Answer</th><tr><td>21A</td><td>Suit</td><td>HEART(H)S</td></tr><tr><td>28A</td><td>Gets ready to take off</td><td>(A)UNTIES</td></tr><tr><td>30A</td><td>Some are grannies</td><td>WI(N)DOWS</td></tr><tr><td>43A</td><td>&ldquo;Damn it!&rdquo;</td><td>OH HELL(O)</td></tr><tr><td>46A</td><td>Tirade</td><td>SCRE(W)ED</td></tr><tr><td>52A</td><td>Like some cheese</td><td>G(Y)RATED</td></tr></table><div class="no-break"><div class="row-flex"><table class="crossword no-break"><tr><td><span class="crossword-number">1</span>S</td><td><span class="crossword-number">2</span>A</td><td><span class="crossword-number">3</span>C</td><td><span class="crossword-number">4</span>K</td><td class="black"></td><td><span class="crossword-number">5</span>S</td><td><span class="crossword-number">6</span>C</td><td><span class="crossword-number">7</span>A</td><td><span class="crossword-number">8</span>R</td><td><span class="crossword-number">9</span>E</td><td class="black"></td><td><span class="crossword-number">10</span>A</td><td><span class="crossword-number">11</span>S</td><td><span class="crossword-number">12</span>I</td><td><span class="crossword-number">13</span>S</td></tr><tr><td><span class="crossword-number">14</span>E</td><td>I</td><td>R</td><td>E</td><td class="black"></td><td><span class="crossword-number">15</span>T</td><td>A</td><td>K</td><td>E</td><td>I</td><td class="black"></td><td><span class="crossword-number">16</span>W</td><td>A</td><td>N</td><td>T</td></tr><tr><td><span class="crossword-number">17</span>A</td><td>R</td><td>A</td><td>B</td><td><span class="crossword-number">18</span>S</td><td>P</td><td>R</td><td>I</td><td>N</td><td>G</td><td class="black"></td><td><span class="crossword-number">19</span>L</td><td>I</td><td>V</td><td>E</td></tr><tr><td><span class="crossword-number">20</span>C</td><td>R</td><td>Y</td><td class="black"></td><td><span class="crossword-number">21</span>H</td><td>E</td><td>A</td><td>R</td><td>T</td><td class="yellow">H</td><td><span class="crossword-number">22</span>S</td><td class="black"></td><td><span class="crossword-number">23</span>D</td><td>I</td><td>E</td></tr><tr><td><span class="crossword-number">24</span>O</td><td>O</td><td>O</td><td class="black"></td><td><span class="crossword-number">25</span>E</td><td>T</td><td>T</td><td>A</td><td class="black"></td><td><span class="crossword-number">26</span>T</td><td>E</td><td><span class="crossword-number">27</span>A</td><td>S</td><td>E</td><td>D</td></tr><tr><td class="yellow"><span class="crossword-number">28</span>A</td><td>U</td><td>N</td><td><span class="crossword-number">29</span>T</td><td>I</td><td>E</td><td>S</td><td class="black"></td><td><span class="crossword-number">30</span>W</td><td>I</td><td class="yellow">N</td><td>D</td><td>O</td><td>W</td><td>S</td></tr><tr><td><span class="crossword-number">31</span>S</td><td>T</td><td>E</td><td>A</td><td>K</td><td class="black"></td><td class="black"></td><td><span class="crossword-number">32</span>B</td><td>E</td><td>E</td><td>T</td><td>S</td><td class="black"></td><td class="black"></td><td class="black"></td></tr><tr><td><span class="crossword-number">33</span>T</td><td>E</td><td>D</td><td>X</td><td class="black"></td><td><span class="crossword-number">34</span>T</td><td><span class="crossword-number">35</span>O</td><td>U</td><td>T</td><td>S</td><td class="black"></td><td><span class="crossword-number">36</span>A</td><td><span class="crossword-number">37</span>T</td><td><span class="crossword-number">38</span>A</td><td><span class="crossword-number">39</span>D</td></tr><tr><td class="black"></td><td class="black"></td><td class="black"></td><td><span class="crossword-number">40</span>I</td><td>F</td><td>A</td><td>N</td><td>Y</td><td class="black"></td><td class="black"></td><td><span class="crossword-number">42</span>G</td><td>L</td><td>O</td><td>V</td><td>E</td></tr><tr><td><span class="crossword-number">43</span>O</td><td><span class="crossword-number">44</span>H</td><td><span class="crossword-number">45</span>H</td><td>E</td><td>L</td><td>L</td><td class="yellow">O</td><td class="black"></td><td><span class="crossword-number">46</span>S</td><td><span class="crossword-number">47</span>C</td><td>R</td><td>E</td><td class="yellow">W</td><td>E</td><td>D</td></tr><tr><td><span class="crossword-number">48</span>F</td><td>A</td><td>I</td><td>S</td><td>A</td><td>L</td><td class="black"></td><td><span class="crossword-number">49</span>M</td><td>I</td><td>L</td><td>A</td><td class="black"></td><td><span class="crossword-number">50</span>E</td><td>M</td><td>U</td></tr><tr><td><span class="crossword-number">51</span>F</td><td>R</td><td>Y</td><td class="black"></td><td><span class="crossword-number">52</span>G</td><td class="yellow">Y</td><td><span class="crossword-number">53</span>R</td><td>A</td><td>T</td><td>E</td><td>D</td><td class="black"></td><td><span class="crossword-number">54</span>L</td><td>A</td><td>C</td></tr><tr><td><span class="crossword-number">55</span>D</td><td>I</td><td>A</td><td><span class="crossword-number">56</span>L</td><td class="black"></td><td><span class="crossword-number">57</span>H</td><td>I</td><td>T</td><td>P</td><td>A</td><td>Y</td><td><span class="crossword-number">58</span>D</td><td>I</td><td>R</td><td>T</td></tr><tr><td><span class="crossword-number">59</span>A</td><td>B</td><td>L</td><td>E</td><td class="black"></td><td><span class="crossword-number">60</span>O</td><td>C</td><td>E</td><td>A</td><td>N</td><td class="black"></td><td><span class="crossword-number">61</span>U</td><td>N</td><td>I</td><td>E</td></tr><tr><td><span class="crossword-number">62</span>Y</td><td>O</td><td>L</td><td>O</td><td class="black"></td><td><span class="crossword-number">63</span>S</td><td>E</td><td>R</td><td>T</td><td>S</td><td class="black"></td><td><span class="crossword-number">64</span>E</td><td>G</td><td>A</td><td>D</td></tr></table><div class="clues row-flex"><div><b>Across</b><ol id="across"><li id="clue_0" value="1" class="open">Hit it</li><li id="clue_5" value="5" class="open">Say “boo” to, say</li><li id="clue_11" value="10" class="open">Listing warning</li><li id="clue_16" value="14" class="open">The Emerald Isle</li><li id="clue_17" value="15" class="open"><i>Star Trek</i> actor</li><li id="clue_18" value="16" class="open">Kind of ad</li><li id="clue_19" value="17" class="open">Movement beginning in 2010</li><li id="clue_21" value="19" class="open">Opposite of 23-Across</li><li id="clue_22" value="20" class="open">Say “boo hoo”, say</li><li id="clue_23" value="21" class="open">Suit</li><li id="clue_25" value="23" class="open">(See 19-Across)</li><li id="clue_26" value="24" class="open">Love letters?</li><li id="clue_27" value="25" class="open">Jazz name</li><li id="clue_28" value="26" class="open">Was a flirt</li><li id="clue_30" value="28" class="open">Prepares to take off</li><li id="clue_32" value="30" class="open">Some are grannies</li><li id="clue_34" value="31" class="open">It might be cooked sous vide</li><li id="clue_35" value="32" class="open">They store energy underground</li><li id="clue_37" value="33" class="open">Lecture series at a university, perhaps</li><li id="clue_38" value="34" class="open">Talks up</li><li id="clue_41" value="36" class="open">Slightly</li><li id="clue_45" value="40" class="open">(assuming one exists)</li><li id="clue_47" value="42" class="open">Fit comparison</li><li id="clue_49" value="43" class="open">“Damn it!”</li><li id="clue_53" value="46" class="open">Tirade</li><li id="clue_56" value="48" class="open">Bygone Saudi king</li><li id="clue_57" value="49" class="open"><i>___ 18</i> (Uris novel)</li><li id="clue_59" value="50" class="open">Its egg is over 10 cm tall</li><li id="clue_60" value="51" class="open">It might be French or small</li><li id="clue_61" value="52" class="open">Like some cheese</li><li id="clue_63" value="54" class="open">Place to find eau</li><li id="clue_64" value="55" class="open">Dove alternative</li><li id="clue_66" value="57" class="open">Strike gold</li><li id="clue_68" value="59" class="open">Competent</li><li id="clue_69" value="60" class="open">One of seven</li><li id="clue_70" value="61" class="open">Christen___ (Dutch political party)</li><li id="clue_71" value="62" class="open">Hashtag since 2012</li><li id="clue_72" value="63" class="open"><i>The Triumph of Apollo</i> and <i>The Elephant Fountain</i>, e.g.</li><li id="clue_73" value="64" class="open">“Good grief!”</li></ol></div><div><b>Down</b><ol id="down"><li id="clue_1" value="1" class="open">Land by 60-Across</li><li id="clue_2" value="2" class="open">One of many over the north Atlantic, perhaps</li><li id="clue_3" value="3" class="open">Doodled, as a child might</li><li id="clue_4" value="4" class="open">“Slow Down” singer Mo’</li><li id="clue_6" value="5" class="open">City in Fla.</li><li id="clue_7" value="6" class="open">Very small weights</li><li id="clue_8" value="7" class="open">Director Kurosawa</li><li id="clue_9" value="8" class="open">1996 Tony winner</li><li id="clue_10" value="9" class="open">Queen time</li><li id="clue_12" value="10" class="open">It’s in the hole</li><li id="clue_13" value="11" class="open">Made the decision</li><li id="clue_14" value="12" class="open">Not hidden</li><li id="clue_15" value="13" class="open">They can be trusty</li><li id="clue_20" value="18" class="open">Zelda’s alternate identity</li><li id="clue_24" value="22" class="open">Climbed successfully, in rock climber lingo</li><li id="clue_29" value="27" class="open">Goal on Madison Ave</li><li id="clue_31" value="29" class="open">Prepares to take off</li><li id="clue_33" value="30" class="open">Like some paint</li><li id="clue_36" value="32" class="open">Good deal</li><li id="clue_39" value="34" class="open">Hunting cries</li><li id="clue_40" value="35" class="open">“Bed-in” figure</li><li id="clue_42" value="37" class="open">Post-bath activity</li><li id="clue_43" value="38" class="open">Mass media?</li><li id="clue_44" value="39" class="open">Took off</li><li id="clue_46" value="41" class="open">It’s flown</li><li id="clue_48" value="42" class="open">Sizemore of baseball</li><li id="clue_50" value="43" class="open">There’s one after the All-Star Game</li><li id="clue_51" value="44" class="open">Kind of bear</li><li id="clue_52" value="45" class="open">Southern greeting</li><li id="clue_54" value="46" class="open">Be patient</li><li id="clue_55" value="47" class="open">With “up”, finishes way up</li><li id="clue_58" value="49" class="open">Alma ___</li><li id="clue_62" value="53" class="open">Shred, as cauliflower</li><li id="clue_65" value="56" class="open">Savior of Kate, in film</li><li id="clue_67" value="58" class="open">Karma, in a way</li></ol></div></div></div><p><a href="#puz2-extract">See how to extract from gimmicked cells.</a><h4 id="puz3-grid">Puzzle #3: Some letters are outside the grid</h3>
+The entries with a letter entered outside the grid are:
+<table><th>Clue ID</th><th>Clue Text</th><th>Clue Answer</th><tr><td>2D</td><td>It&rsquo;s dangerous, at heart?</td><td>(C)LOT</td></tr><tr><td>5D</td><td>Fix a clothing issue</td><td>(R)ETIE</td></tr><tr><td>7D</td><td>Played pretend</td><td>(I)MAGINED</td></tr><tr><td>9D</td><td>Hiker&rsquo;s goal</td><td>(T)HE TOP</td></tr><tr><td>12D</td><td>All together</td><td>(I)N TOTAL</td></tr><tr><td>16A</td><td>Charged, in a way</td><td>EROTI(C)</td></tr><tr><td>23A</td><td>Change of the locks?</td><td>(N)EW DO</td></tr><tr><td>31A</td><td>Certain diet</td><td>PALE(O)</td></tr><tr><td>31D</td><td>Get one&rsquo;s comeuppance</td><td>PAY THE PIPE(R)</td></tr><tr><td>36A</td><td>Failures of self-defence?</td><td>(O)WN GOALS</td></tr><tr><td>43A</td><td>Handling</td><td>ON TOP O(F)</td></tr><tr><td>45D</td><td>In a sticky situation</td><td>UP A TRE(E)</td></tr><tr><td>47D</td><td>Breadmaker</td><td>SARA LE(E)</td></tr><tr><td>49A</td><td>Drains</td><td>(S)APS</td></tr><tr><td>50D</td><td>Moody teenager, perhaps</td><td>SULKE(R)</td></tr><tr><td>58A</td><td>Someone with a directorial job</td><td>TRAFFIC CO(P)</td></tr><tr><td>61D</td><td>U.S. Pacific island</td><td>OAH(U)</td></tr><tr><td>62A</td><td>Threatened</td><td>(A)T RISK</td></tr></table><div class="no-break"><div class="row-flex"><table class="crossword no-break"><tr><td class="no-border"></td><td class="no-border"></td><td class="no-border yellow">C</td><td class="no-border"></td><td class="no-border"></td><td class="no-border yellow">R</td><td class="no-border"></td><td class="no-border"></td><td class="no-border yellow">I</td><td class="no-border"></td><td class="no-border"></td><td class="no-border yellow">T</td><td class="no-border"></td><td class="no-border"></td><td class="no-border yellow">I</td><td class="no-border"></td><td class="no-border"></td></tr><tr><td class="no-border"></td><td><span class="crossword-number">1</span>P</td><td><span class="crossword-number">2</span>L</td><td><span class="crossword-number">3</span>A</td><td><span class="crossword-number">4</span>T</td><td><span class="crossword-number">5</span>E</td><td class="black"></td><td><span class="crossword-number">6</span>G</td><td><span class="crossword-number">7</span>M</td><td><span class="crossword-number">8</span>S</td><td class="black"></td><td><span class="crossword-number">9</span>H</td><td><span class="crossword-number">10</span>A</td><td><span class="crossword-number">11</span>S</td><td><span class="crossword-number">12</span>N</td><td><span class="crossword-number">13</span>T</td><td class="no-border"></td></tr><tr><td class="no-border"></td><td><span class="crossword-number">14</span>D</td><td>O</td><td>G</td><td>I</td><td>T</td><td class="black"></td><td><span class="crossword-number">15</span>R</td><td>A</td><td>P</td><td class="black"></td><td><span class="crossword-number">16</span>E</td><td>R</td><td>O</td><td>T</td><td>I</td><td class="no-border yellow">C</td></tr><tr><td class="no-border"></td><td><span class="crossword-number">17</span>A</td><td>T</td><td>O</td><td>M</td><td>I</td><td><span class="crossword-number">18</span>C</td><td>A</td><td>G</td><td>E</td><td class="black"></td><td><span class="crossword-number">19</span>T</td><td>I</td><td>M</td><td>O</td><td>R</td><td class="no-border"></td></tr><tr><td class="no-border"></td><td class="black"></td><td class="black"></td><td class="black"></td><td><span class="crossword-number">20</span>H</td><td>E</td><td>A</td><td>D</td><td>I</td><td>N</td><td><span class="crossword-number">21</span>T</td><td>O</td><td class="black"></td><td><span class="crossword-number">22</span>E</td><td>T</td><td>A</td><td class="no-border"></td></tr><tr><td class="no-border yellow">N</td><td><span class="crossword-number">23</span>E</td><td><span class="crossword-number">24</span>W</td><td><span class="crossword-number">25</span>D</td><td>O</td><td class="black"></td><td><span class="crossword-number">26</span>S</td><td>E</td><td>N</td><td>D</td><td>U</td><td>P</td><td class="black"></td><td><span class="crossword-number">27</span>D</td><td>A</td><td>D</td><td class="no-border"></td></tr><tr><td class="no-border"></td><td><span class="crossword-number">28</span>H</td><td>A</td><td>R</td><td>R</td><td><span class="crossword-number">29</span>Y</td><td class="black"></td><td><span class="crossword-number">30</span>S</td><td>E</td><td>E</td><td>N</td><td class="black"></td><td><span class="crossword-number">31</span>P</td><td>A</td><td>L</td><td>E</td><td class="no-border yellow">O</td></tr><tr><td class="no-border"></td><td><span class="crossword-number">32</span>O</td><td>R</td><td>A</td><td>T</td><td>E</td><td><span class="crossword-number">33</span>S</td><td class="black"></td><td><span class="crossword-number">34</span>D</td><td>R</td><td>E</td><td><span class="crossword-number">35</span>D</td><td>A</td><td>Y</td><td class="black"></td><td class="black"></td><td class="no-border"></td></tr><tr><td class="no-border yellow">O</td><td><span class="crossword-number">36</span>W</td><td>N</td><td>G</td><td>O</td><td>A</td><td>L</td><td><span class="crossword-number">37</span>S</td><td class="black"></td><td><span class="crossword-number">38</span>S</td><td>T</td><td>A</td><td>Y</td><td>S</td><td><span class="crossword-number">39</span>I</td><td><span class="crossword-number">40</span>N</td><td class="no-border"></td></tr><tr><td class="no-border"></td><td class="black"></td><td class="black"></td><td><span class="crossword-number">41</span>O</td><td>N</td><td>R</td><td>I</td><td>C</td><td><span class="crossword-number">42</span>E</td><td class="black"></td><td><span class="crossword-number">43</span>O</td><td>N</td><td>T</td><td>O</td><td>P</td><td>O</td><td class="no-border yellow">F</td></tr><tr><td class="no-border"></td><td><span class="crossword-number">44</span>N</td><td><span class="crossword-number">45</span>U</td><td>N</td><td>S</td><td class="black"></td><td><span class="crossword-number">46</span>P</td><td>U</td><td>N</td><td><span class="crossword-number">47</span>S</td><td class="black"></td><td><span class="crossword-number">48</span>S</td><td>H</td><td>O</td><td>O</td><td>T</td><td class="no-border"></td></tr><tr><td class="no-border yellow">S</td><td><span class="crossword-number">49</span>A</td><td>P</td><td>S</td><td class="black"></td><td><span class="crossword-number">50</span>S</td><td>U</td><td>L</td><td>T</td><td>A</td><td><span class="crossword-number">51</span>N</td><td class="black"></td><td><span class="crossword-number">52</span>E</td><td>N</td><td>D</td><td>S</td><td class="no-border"></td></tr><tr><td class="no-border"></td><td><span class="crossword-number">53</span>S</td><td>A</td><td>L</td><td class="black"></td><td><span class="crossword-number">54</span>U</td><td>P</td><td>P</td><td>E</td><td>R</td><td>L</td><td><span class="crossword-number">55</span>I</td><td>P</td><td class="black"></td><td class="black"></td><td class="black"></td><td class="no-border"></td></tr><tr><td class="no-border"></td><td><span class="crossword-number">56</span>A</td><td>T</td><td>A</td><td><span class="crossword-number">57</span>L</td><td>L</td><td class="black"></td><td><span class="crossword-number">58</span>T</td><td>R</td><td>A</td><td>F</td><td>F</td><td>I</td><td><span class="crossword-number">59</span>C</td><td><span class="crossword-number">60</span>C</td><td><span class="crossword-number">61</span>O</td><td class="no-border yellow">P</td></tr><tr><td class="no-border yellow">A</td><td><span class="crossword-number">62</span>T</td><td>R</td><td>I</td><td>S</td><td>K</td><td class="black"></td><td><span class="crossword-number">63</span>E</td><td>E</td><td>L</td><td class="black"></td><td><span class="crossword-number">64</span>A</td><td>P</td><td>N</td><td>E</td><td>A</td><td class="no-border"></td></tr><tr><td class="no-border"></td><td><span class="crossword-number">65</span>V</td><td>E</td><td>R</td><td>D</td><td>E</td><td class="black"></td><td><span class="crossword-number">66</span>D</td><td>D</td><td>E</td><td class="black"></td><td><span class="crossword-number">67</span>T</td><td>E</td><td>N</td><td>T</td><td>H</td><td class="no-border"></td></tr><tr><td class="no-border"></td><td class="no-border"></td><td class="no-border yellow">E</td><td class="no-border"></td><td class="no-border"></td><td class="no-border yellow">R</td><td class="no-border"></td><td class="no-border"></td><td class="no-border"></td><td class="no-border yellow">E</td><td class="no-border"></td><td class="no-border"></td><td class="no-border yellow">R</td><td class="no-border"></td><td class="no-border"></td><td class="no-border yellow">U</td><td class="no-border"></td></tr></table><div class="clues row-flex"><div><b>Across</b><ol id="across"><li id="clue_0" value="1" class="open">Home base?</li><li id="clue_6" value="6" class="open">Personnel officials: Abbr.</li><li id="clue_10" value="9" class="open">“I told my psychiatrist that everyone hates me. He said I was being ridiculous-everyone ___ met me yet.”—Rodney Dangerfield</li><li id="clue_16" value="14" class="open">Goof off on the job</li><li id="clue_17" value="15" class="open">One might be bad</li><li id="clue_18" value="16" class="open">Charged, in a way</li><li id="clue_19" value="17" class="open">’50s design wave</li><li id="clue_21" value="19" class="open">Divided island</li><li id="clue_22" value="20" class="open">Enter</li><li id="clue_24" value="22" class="open">It’s frustrating when it gets pushed back</li><li id="clue_25" value="23" class="open">Change of the locks?</li><li id="clue_29" value="26" class="open">Make fun of, in a way</li><li id="clue_30" value="27" class="open">Certain joker</li><li id="clue_31" value="28" class="open">A famous one is “Dirty”</li><li id="clue_33" value="30" class="open">Understood, in a way</li><li id="clue_34" value="31" class="open">Certain diet</li><li id="clue_36" value="32" class="open">Offers one form of address?</li><li id="clue_38" value="34" class="open">1993 rap hit</li><li id="clue_40" value="36" class="open">Failures of self-defense?</li><li id="clue_42" value="38" class="open">Doesn’t go anywhere</li><li id="clue_45" value="41" class="open">How meat might be served at a halal cart</li><li id="clue_47" value="43" class="open">Handling</li><li id="clue_48" value="44" class="open">Many characters in <i>Sister Act</i></li><li id="clue_51" value="46" class="open">They’re common in crossword clues</li><li id="clue_53" value="48" class="open">Drat!</li><li id="clue_54" value="49" class="open">Drains</li><li id="clue_55" value="50" class="open">Dubai VIP</li><li id="clue_58" value="52" class="open">They might be tight or loose</li><li id="clue_59" value="53" class="open">Traitor in <i>The Godfather</i></li><li id="clue_60" value="54" class="open">Keep it stiff</li><li id="clue_62" value="56" class="open">In any way</li><li id="clue_64" value="58" class="open">Someone with a directorial job</li><li id="clue_68" value="62" class="open">Threatened</li><li id="clue_69" value="63" class="open">Tangy fish</li><li id="clue_70" value="64" class="open">It might take your breath away</li><li id="clue_71" value="65" class="open">Like lechuga</li><li id="clue_72" value="66" class="open">HST follower</li><li id="clue_73" value="67" class="open">Commandment about coveting</li></ol></div><div><b>Down</b><ol id="down"><li id="clue_1" value="1" class="open">2000s smart device: Abbr.</li><li id="clue_2" value="2" class="open">It’s dangerous, at heart?</li><li id="clue_3" value="3" class="open">Back</li><li id="clue_4" value="4" class="open">Where a hockey player might get a snack</li><li id="clue_5" value="5" class="open">Fix a clothing issue</li><li id="clue_7" value="6" class="open">Evaluates</li><li id="clue_8" value="7" class="open">Played pretend</li><li id="clue_9" value="8" class="open">Big ones are whales</li><li id="clue_11" value="9" class="open">Hiker’s goal</li><li id="clue_12" value="10" class="open">Reporter Shapiro</li><li id="clue_13" value="11" class="open">Ambiguous promise</li><li id="clue_14" value="12" class="open">All together</li><li id="clue_15" value="13" class="open">Uncontrolled words</li><li id="clue_20" value="18" class="open">Actor Anvar of <i>The Expanse</i></li><li id="clue_23" value="21" class="open">Words on a highway sign advertising emergency information</li><li id="clue_26" value="23" class="open">Website with funny pictures</li><li id="clue_27" value="24" class="open">Flash a light at, perhaps</li><li id="clue_28" value="25" class="open">It might be full of gold</li><li id="clue_32" value="29" class="open">Common lease term</li><li id="clue_35" value="31" class="open">Get one’s commuppance</li><li id="clue_37" value="33" class="open">Faux pas</li><li id="clue_39" value="35" class="open">Savage and others</li><li id="clue_41" value="37" class="open">Like a hot bod, perhaps</li><li id="clue_43" value="39" class="open">Shuffler, at times</li><li id="clue_44" value="40" class="open">Forget-me-___</li><li id="clue_46" value="42" class="open">Recorded</li><li id="clue_49" value="44" class="open">Channel for a launch</li><li id="clue_50" value="45" class="open">In a sticky situation</li><li id="clue_52" value="47" class="open">Breadmaker</li><li id="clue_56" value="50" class="open">Moody teenager, perhaps</li><li id="clue_57" value="51" class="open">Vietnam War grp.</li><li id="clue_61" value="55" class="open">“___ first you don’t succeed, ...”</li><li id="clue_63" value="57" class="open">You might trip on it</li><li id="clue_65" value="59" class="open">Subject of a recent acquisition</li><li id="clue_66" value="60" class="open">What’s French for this?</li><li id="clue_67" value="61" class="open">U.S. Pacific island</li></ol></div></div></div></div><p><a href="#puz3-extract">See how to extract from gimmicked cells.</a><h4 id="puz4-grid">Puzzle #4: Some entries are randomly anagrammed</h3>
+The entries that are anagrammed are:
+<table><tr><th>Clue ID</th><th>Clue Text</th><th>Clue Answer</th><th>Anagrammed Answer (Grid Content)</th></tr><tr><td>10D</td><td>Building up</td><td>AMASSING</td><td>GAS MAINS</td></tr><tr><td>17A</td><td>It&rsquo;s measured in steradians</td><td>SOLID ANGLE</td><td>SLIDE ALONG</td></tr><tr><td>36A</td><td>Kind of relationship that might help you get over an ex</td><td>REBOUND</td><td>UNROBED</td></tr><tr><td>48A</td><td>Kind of moment, named for a French author, that brings you suddenly back to a particular memory or point in the past</td><td>PROUSTIAN</td><td>PUT ON AIRS</td></tr><tr><td>63A</td><td>A blue one features in the title of 1980 and 1991 films</td><td>LAGOON</td><td>NO GOAL</td></tr></table><div class="no-break"><div class="row-flex"><table class="crossword no-break"><tr><td><span class="crossword-number">1</span>B</td><td><span class="crossword-number">2</span>E</td><td><span class="crossword-number">3</span>A</td><td><span class="crossword-number">4</span>M</td><td><span class="crossword-number">5</span>A</td><td><span class="crossword-number">6</span>N</td><td class="black"></td><td><span class="crossword-number">7</span>D</td><td><span class="crossword-number">8</span>J</td><td><span class="crossword-number">9</span>S</td><td class="black"></td><td class="yellow"><span class="crossword-number">10</span>G</td><td><span class="crossword-number">11</span>L</td><td><span class="crossword-number">12</span>O</td><td><span class="crossword-number">13</span>W</td></tr><tr><td><span class="crossword-number">14</span>A</td><td>L</td><td>T</td><td>A</td><td>R</td><td>S</td><td class="black"></td><td><span class="crossword-number">15</span>O</td><td>U</td><td>I</td><td class="black"></td><td class="yellow"><span class="crossword-number">16</span>A</td><td>I</td><td>M</td><td>E</td></tr><tr><td class="cyan"><span class="crossword-number">17</span>S</td><td class="yellow">L</td><td class="yellow">I</td><td class="yellow">D</td><td class="yellow">E</td><td class="cyan">A</td><td class="yellow"><span class="crossword-number">18</span>L</td><td class="yellow">O</td><td class="yellow">N</td><td class="yellow">G</td><td class="black"></td><td class="yellow"><span class="crossword-number">19</span>S</td><td>V</td><td>E</td><td>N</td></tr><tr><td><span class="crossword-number">20</span>E</td><td>A</td><td>T</td><td>E</td><td>N</td><td class="black"></td><td><span class="crossword-number">21</span>I</td><td>D</td><td>O</td><td>N</td><td><span class="crossword-number">22</span>T</td><td class="yellow">M</td><td>I</td><td>N</td><td>D</td></tr><tr><td class="black"></td><td class="black"></td><td class="black"></td><td><span class="crossword-number">23</span>D</td><td>A</td><td><span class="crossword-number">24</span>B</td><td>S</td><td>A</td><td>T</td><td class="black"></td><td><span class="crossword-number">25</span>I</td><td class="yellow">A</td><td>N</td><td class="black"></td><td class="black"></td></tr><tr><td><span class="crossword-number">26</span>C</td><td><span class="crossword-number">27</span>A</td><td><span class="crossword-number">28</span>P</td><td>O</td><td class="black"></td><td><span class="crossword-number">29</span>I</td><td>T</td><td>D</td><td class="black"></td><td><span class="crossword-number">30</span>S</td><td>T</td><td class="cyan">I</td><td>G</td><td><span class="crossword-number">31</span>M</td><td><span class="crossword-number">32</span>A</td></tr><tr><td><span class="crossword-number">33</span>O</td><td>N</td><td>E</td><td class="black"></td><td><span class="crossword-number">34</span>A</td><td>C</td><td>E</td><td>S</td><td class="black"></td><td><span class="crossword-number">35</span>Q</td><td>A</td><td class="cyan">N</td><td>D</td><td>A</td><td>S</td></tr><tr><td class="yellow"><span class="crossword-number">36</span>U</td><td class="yellow">N</td><td class="yellow">R</td><td class="cyan"><span class="crossword-number">37</span>O</td><td class="yellow">B</td><td class="yellow">E</td><td class="cyan">D</td><td class="black"></td><td><span class="crossword-number">38</span>S</td><td>U</td><td>N</td><td class="yellow">S</td><td>E</td><td>T</td><td>S</td></tr><tr><td><span class="crossword-number">39</span>P</td><td>U</td><td>F</td><td>F</td><td>U</td><td>P</td><td class="black"></td><td><span class="crossword-number">40</span>C</td><td>H</td><td>I</td><td>S</td><td class="black"></td><td><span class="crossword-number">41</span>A</td><td>T</td><td>E</td></tr><tr><td><span class="crossword-number">42</span>E</td><td>L</td><td>E</td><td>C</td><td>T</td><td>S</td><td class="black"></td><td><span class="crossword-number">43</span>H</td><td>I</td><td>D</td><td class="black"></td><td><span class="crossword-number">44</span>O</td><td>D</td><td>E</td><td>S</td></tr><tr><td class="black"></td><td class="black"></td><td><span class="crossword-number">45</span>C</td><td>H</td><td>O</td><td class="black"></td><td><span class="crossword-number">46</span>M</td><td>U</td><td>E</td><td>S</td><td><span class="crossword-number">47</span>L</td><td>I</td><td class="black"></td><td class="black"></td><td class="black"></td></tr><tr><td class="cyan"><span class="crossword-number">48</span>P</td><td class="yellow"><span class="crossword-number">49</span>U</td><td class="yellow">T</td><td class="yellow">O</td><td class="yellow">N</td><td class="yellow"><span class="crossword-number">50</span>A</td><td class="cyan">I</td><td class="yellow">R</td><td class="yellow">S</td><td class="black"></td><td><span class="crossword-number">51</span>E</td><td>L</td><td><span class="crossword-number">52</span>M</td><td><span class="crossword-number">53</span>E</td><td><span class="crossword-number">54</span>R</td></tr><tr><td><span class="crossword-number">55</span>A</td><td>N</td><td>T</td><td>I</td><td class="black"></td><td><span class="crossword-number">56</span>T</td><td>E</td><td>N</td><td>T</td><td><span class="crossword-number">57</span>H</td><td>G</td><td>R</td><td>A</td><td>D</td><td>E</td></tr><tr><td><span class="crossword-number">58</span>S</td><td>P</td><td>E</td><td>C</td><td class="black"></td><td><span class="crossword-number">59</span>O</td><td>L</td><td>E</td><td class="black"></td><td><span class="crossword-number">60</span>U</td><td>G</td><td>A</td><td>N</td><td>D</td><td>A</td></tr><tr><td><span class="crossword-number">61</span>A</td><td>C</td><td>N</td><td>E</td><td class="black"></td><td><span class="crossword-number">62</span>M</td><td>E</td><td>D</td><td class="black"></td><td class="yellow"><span class="crossword-number">63</span>N</td><td class="yellow">O</td><td class="cyan">G</td><td class="cyan">O</td><td class="yellow">A</td><td class="yellow">L</td></tr></table><div class="clues row-flex"><div><b>Across</b><ol id="across"><li id="clue_0" value="1" class="open">Mulan refrain</li><li id="clue_7" value="7" class="open">Certain spinners</li><li id="clue_11" value="10" class="open">Do it in the dark!</li><li id="clue_16" value="14" class="open">Wedding sites</li><li id="clue_17" value="15" class="open">Le ciel est-il bleu?</li><li id="clue_18" value="16" class="open">“Je t’___”</li><li id="clue_19" value="17" class="open">It’s measured in steradians</li><li id="clue_21" value="19" class="open">Nonspeaking role in <i>Frozen</i></li><li id="clue_22" value="20" class="open">No longer available, in a way</li><li id="clue_23" value="21" class="open">“Do whatever you like”</li><li id="clue_25" value="23" class="open">Nurses, perhaps</li><li id="clue_27" value="25" class="open">Inventor of James</li><li id="clue_28" value="26" class="open">It makes playing a B major chord a lot easier</li><li id="clue_32" value="29" class="open">“___ be an honor!”</li><li id="clue_33" value="30" class="open">Mark of shame</li><li id="clue_37" value="33" class="open">Beatles album</li><li id="clue_38" value="34" class="open">Pocket ones are good</li><li id="clue_40" value="35" class="open">Lectures back?</li><li id="clue_41" value="36" class="open">Kind of relationship that might help you get over an ex</li><li id="clue_43" value="38" class="open">Prepares to turn off</li><li id="clue_45" value="39" class="open">Flatter</li><li id="clue_46" value="40" class="open">XXX, in a way</li><li id="clue_48" value="41" class="open">Made disappear</li><li id="clue_49" value="42" class="open">Opts</li><li id="clue_50" value="43" class="open">Made disappear</li><li id="clue_51" value="44" class="open">Keats work</li><li id="clue_53" value="45" class="open">Comic Margaret</li><li id="clue_54" value="46" class="open">It’s a cereal</li><li id="clue_57" value="48" class="open">Kind of moment, named for a French author, that brings you suddenly back to a particular memory or point in the past</li><li id="clue_61" value="51" class="open">Bugs hunter</li><li id="clue_65" value="55" class="open">One side of a debate</li><li id="clue_66" value="56" class="open">Time for geometry, often</li><li id="clue_68" value="58" class="open">Something to write on</li><li id="clue_69" value="59" class="open">Game call</li><li id="clue_70" value="60" class="open">Its flag has the same three bands of color twice</li><li id="clue_71" value="61" class="open">That’s the spot!</li><li id="clue_72" value="62" class="open">Kind of school: Abbr.</li><li id="clue_73" value="63" class="open">A blue one features in the title of 1980 and 1991 films</li></ol></div><div><b>Down</b><ol id="down"><li id="clue_1" value="1" class="open">Source of a bitter taste, chemically</li><li id="clue_2" value="2" class="open">She of Sorrento</li><li id="clue_3" value="3" class="open">Working hard</li><li id="clue_4" value="4" class="open">Barely managed</li><li id="clue_5" value="5" class="open">Game point?</li><li id="clue_6" value="6" class="open">Codebreaking org.</li><li id="clue_8" value="7" class="open">Thingamabobs</li><li id="clue_9" value="8" class="open">Novelist Díaz</li><li id="clue_10" value="9" class="open">It might stop you</li><li id="clue_12" value="10" class="open">Building up</li><li id="clue_13" value="11" class="open">Apocalypse concern</li><li id="clue_14" value="12" class="open">It means trouble</li><li id="clue_15" value="13" class="open">Go here and there</li><li id="clue_20" value="18" class="open">Threatened to fall</li><li id="clue_24" value="22" class="open">They might be seen in Tennessee</li><li id="clue_26" value="24" class="open">Curling targets?</li><li id="clue_29" value="26" class="open">Sporty car</li><li id="clue_30" value="27" class="open">Cancel out, in a way</li><li id="clue_31" value="28" class="open">Impressive gymnastics feat</li><li id="clue_34" value="30" class="open">Ink producers</li><li id="clue_35" value="31" class="open">Like the walls of a theater</li><li id="clue_36" value="32" class="open">Numskulls</li><li id="clue_39" value="34" class="open">Touch</li><li id="clue_42" value="37" class="open">The best</li><li id="clue_44" value="38" class="open">Like Bashful, among the dwarves</li><li id="clue_47" value="40" class="open">Did some farmwork</li><li id="clue_52" value="44" class="open">Explosion hazard in a metal shop</li><li id="clue_55" value="46" class="open">Vacuum cleaner brand</li><li id="clue_56" value="47" class="open">Request in a classic breakfast ad</li><li id="clue_58" value="48" class="open">“¿Qué ___?”</li><li id="clue_59" value="49" class="open">Not appropriate, in a way</li><li id="clue_60" value="50" class="open">A little bit</li><li id="clue_62" value="52" class="open">___ a ___</li><li id="clue_63" value="53" class="open">Heroic tale</li><li id="clue_64" value="54" class="open">Like e but not i</li><li id="clue_67" value="57" class="open">Dear alternative</li></ol></div></div></div></div><p><a href="#puz4-extract">See how to extract from gimmicked cells.</a><h3>Extracting from each crossword</h3>
+
+Once we have solved all the crosswords, we are shown an image and some numbers:
+<svg version="1.1" viewBox="0.0 0.0 288.0 288.0" fill="none" stroke="none" stroke-linecap="square" stroke-miterlimit="10" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><clipPath id="p.0"><path d="m0 0l288.0 0l0 288.0l-288.0 0l0 -288.0z" clip-rule="nonzero"/></clipPath><g clip-path="url(#p.0)"><path fill="#ffffff" fill-opacity="0.0" d="m0 0l288.0 0l0 288.0l-288.0 0z" fill-rule="evenodd"/><path fill="#000000" fill-opacity="0.0" d="m46.440945 98.13386l39.023624 0l0 39.02363l-39.023624 0z" fill-rule="evenodd"/><path stroke="#000000" stroke-width="4.0" stroke-linejoin="round" stroke-linecap="butt" d="m46.440945 98.13386l39.023624 0l0 39.02363l-39.023624 0z" fill-rule="evenodd"/><path fill="#000000" d="m60.483646 128.2688l0 -1.1875076l10.859379 0l0 1.1875076l-10.859379 0z" fill-rule="nonzero"/><path fill="#000000" fill-opacity="0.0" d="m85.46457 98.13386l39.02362 0l0 39.02363l-39.02362 0z" fill-rule="evenodd"/><path stroke="#000000" stroke-width="4.0" stroke-linejoin="round" stroke-linecap="butt" d="m85.46457 98.13386l39.02362 0l0 39.02363l-39.02362 0z" fill-rule="evenodd"/><path fill="#000000" d="m99.50727 128.2688l0 -1.1875076l10.859375 0l0 1.1875076l-10.859375 0z" fill-rule="nonzero"/><path fill="#000000" fill-opacity="0.0" d="m124.48819 98.13386l39.02362 0l0 39.02363l-39.02362 0z" fill-rule="evenodd"/><path stroke="#000000" stroke-width="4.0" stroke-linejoin="round" stroke-linecap="butt" d="m124.48819 98.13386l39.02362 0l0 39.02363l-39.02362 0z" fill-rule="evenodd"/><path fill="#000000" fill-opacity="0.0" d="m163.51181 98.13386l39.02362 0l0 39.02363l-39.02362 0z" fill-rule="evenodd"/><path stroke="#000000" stroke-width="4.0" stroke-linejoin="round" stroke-linecap="butt" d="m163.51181 98.13386l39.02362 0l0 39.02363l-39.02362 0z" fill-rule="evenodd"/><path fill="#000000" d="m177.55452 128.2688l0 -1.1875076l10.859375 0l0 1.1875076l-10.859375 0z" fill-rule="nonzero"/><path fill="#000000" fill-opacity="0.0" d="m202.53543 98.13386l39.02362 0l0 39.02363l-39.02362 0z" fill-rule="evenodd"/><path stroke="#000000" stroke-width="4.0" stroke-linejoin="round" stroke-linecap="butt" d="m202.53543 98.13386l39.02362 0l0 39.02363l-39.02362 0z" fill-rule="evenodd"/><path fill="#000000" d="m216.57814 128.2688l0 -1.1875076l10.859375 0l0 1.1875076l-10.859375 0z" fill-rule="nonzero"/><path fill="#000000" fill-opacity="0.0" d="m241.55905 98.13386l39.02362 0l0 39.02363l-39.02362 0z" fill-rule="evenodd"/><path stroke="#000000" stroke-width="4.0" stroke-linejoin="round" stroke-linecap="butt" d="m241.55905 98.13386l39.02362 0l0 39.02363l-39.02362 0z" fill-rule="evenodd"/><path fill="#000000" d="m255.60176 128.2688l0 -1.1875076l10.85936 0l0 1.1875076l-10.85936 0z" fill-rule="nonzero"/><path fill="#000000" fill-opacity="0.0" d="m124.66404 179.6798l-0.18897247 32.220474" fill-rule="evenodd"/><path stroke="#000000" stroke-width="1.0" stroke-linejoin="round" stroke-linecap="butt" d="m124.64394 183.10681l-0.16887665 28.793457" fill-rule="evenodd"/><path fill="#000000" stroke="#000000" stroke-width="1.0" stroke-linecap="butt" d="m124.64394 183.10681l1.1179657 1.1311646l-1.1064453 -3.0963135l-1.1426849 3.08313z" fill-rule="evenodd"/><path fill="#000000" fill-opacity="0.0" d="m163.51181 172.60367l-0.25196838 39.275604" fill-rule="evenodd"/><path stroke="#000000" stroke-width="1.0" stroke-linejoin="round" stroke-linecap="butt" d="m163.51181 172.60367l-0.25196838 39.275604" fill-rule="evenodd"/><path fill="#000000" fill-opacity="0.0" d="m163.6378 172.85564l-39.275597 -0.25196838" fill-rule="evenodd"/><path stroke="#000000" stroke-width="1.0" stroke-linejoin="round" stroke-linecap="butt" d="m163.6378 172.85564l-39.275597 -0.25196838" fill-rule="evenodd"/><path fill="#000000" fill-opacity="0.0" d="m163.6378 212.15224l-39.275597 -0.25196838" fill-rule="evenodd"/><path stroke="#000000" stroke-width="1.0" stroke-linejoin="round" stroke-linecap="butt" d="m163.6378 212.15224l-39.275597 -0.25196838" fill-rule="evenodd"/><path fill="#000000" fill-opacity="0.0" d="m153.90814 246.20473l-57.606308 -0.25196838" fill-rule="evenodd"/><path stroke="#000000" stroke-width="1.0" stroke-linejoin="round" stroke-linecap="butt" d="m153.90814 246.20473l-57.606308 -0.25196838" fill-rule="evenodd"/><path fill="#000000" fill-opacity="0.0" d="m163.51443 253.63518l-67.2126 -0.25196838" fill-rule="evenodd"/><path stroke="#000000" stroke-width="1.0" stroke-linejoin="round" stroke-linecap="butt" d="m163.51443 253.63518l-67.2126 -0.25196838" fill-rule="evenodd"/><path fill="#000000" fill-opacity="0.0" d="m172.7874 261.0643l-76.7874 -0.25195312" fill-rule="evenodd"/><path stroke="#000000" stroke-width="1.0" stroke-linejoin="round" stroke-linecap="butt" d="m172.7874 261.0643l-76.7874 -0.25195312" fill-rule="evenodd"/><path fill="#000000" fill-opacity="0.0" d="m182.50656 268.49606l-86.3937 -0.25198364" fill-rule="evenodd"/><path stroke="#000000" stroke-width="1.0" stroke-linejoin="round" stroke-linecap="butt" d="m182.50656 268.49606l-86.3937 -0.25198364" fill-rule="evenodd"/><path fill="#000000" fill-opacity="0.0" d="m192.0 275.9265l-96.0 -0.25198364" fill-rule="evenodd"/><path stroke="#000000" stroke-width="1.0" stroke-linejoin="round" stroke-linecap="butt" d="m192.0 275.9265l-96.0 -0.25198364" fill-rule="evenodd"/><path fill="#000000" fill-opacity="0.0" d="m7.4173226 98.13386l39.02362 0l0 39.02363l-39.02362 0z" fill-rule="evenodd"/><path stroke="#000000" stroke-width="4.0" stroke-linejoin="round" stroke-linecap="butt" d="m7.4173226 98.13386l39.02362 0l0 39.02363l-39.02362 0z" fill-rule="evenodd"/><path fill="#000000" d="m21.460026 128.2688l0 -1.1875076l10.859375 0l0 1.1875076l-10.859375 0z" fill-rule="nonzero"/><path fill="#000000" fill-opacity="0.0" d="m46.263702 7.905512l62.519684 0l0 39.02362l-62.519684 0z" fill-rule="evenodd"/><path stroke="#00000099" stroke-width="4.0" stroke-linejoin="round" stroke-linecap="butt" d="m46.263702 7.905512l62.519684 0l0 39.02362l-62.519684 0z" fill-rule="evenodd"/><path fill="#000000" fill-opacity="0.0" d="m112.42643 7.905512l62.51969 0l0 39.02362l-62.51969 0z" fill-rule="evenodd"/><path stroke="#00000099" stroke-width="4.0" stroke-linejoin="round" stroke-linecap="butt" d="m112.42643 7.905512l62.51969 0l0 39.02362l-62.51969 0z" fill-rule="evenodd"/><path fill="#000000" fill-opacity="0.0" d="m79.34507 16.590551l62.519676 0l0 39.02362l-62.519676 0z" fill-rule="evenodd"/><path stroke="#00000099" stroke-width="4.0" stroke-linejoin="round" stroke-linecap="butt" d="m79.34507 16.590551l62.519676 0l0 39.02362l-62.519676 0z" fill-rule="evenodd"/><path fill="#000000" fill-opacity="0.0" d="m145.5078 16.590551l62.519684 0l0 39.02362l-62.519684 0z" fill-rule="evenodd"/><path stroke="#00000099" stroke-width="4.0" stroke-linejoin="round" stroke-linecap="butt" d="m145.5078 16.590551l62.519684 0l0 39.02362l-62.519684 0z" fill-rule="evenodd"/><path fill="#000000" fill-opacity="0.0" d="m202.46063 4.913386l39.27559 0l0 42.015747l-39.27559 0z" fill-rule="evenodd"/><path fill="#000000" d="m216.01097 31.833384l0 -1.875l1.875 0l0 1.875l-1.875 0zm5.183304 0l0 -1.875l1.875 0l0 1.875l-1.875 0zm5.183304 0l0 -1.875l1.875 0l0 1.875l-1.875 0z" fill-rule="nonzero"/></g></svg><div class="centered"><p>12223111 332 441344</p></div>
+
+The image provides some clues about what to do with the gimmicked cells in each crossword.
+
+<h4 id="puz1-extract">Puzzle #1: Some cells contain multiple letters</h3>
+The gimmicked cells in this crossword are: RK AR KR RO SP PA OC CK.
+(<a href="#puz1-grid">See the yellow squares in the solution grid above.</a>)
+
+As hinted by the overlapping rectangles in the extraction photo, we can &ldquo;link&rdquo; these bigrams so that the end of one
+will be the start of the next:
+
+SP PA AR RK KR RO OC CK
+
+After eliminating duplicates of adjacent letters, we get a cluephrase: SPARK ROCK.
+
+<h4 id="puz2-extract">Puzzle #2: Some entries contain extra letters</h3>
+The gimmicked entries in this crossword are:
+
+<table><th>Clue ID</th><th>Clue Text</th><th>Clue Answer</th><tr><td>21A</td><td>Suit</td><td>HEART(H)S</td></tr><tr><td>28A</td><td>Gets ready to take off</td><td>(A)UNTIES</td></tr><tr><td>30A</td><td>Some are grannies</td><td>WI(N)DOWS</td></tr><tr><td>43A</td><td>&ldquo;Damn it!&rdquo;</td><td>OH HELL(O)</td></tr><tr><td>46A</td><td>Tirade</td><td>SCRE(W)ED</td></tr><tr><td>52A</td><td>Like some cheese</td><td>G(Y)RATED</td></tr></table>
+
+(<a href="#puz2-grid">See the yellow squares in the solution grid above.</a>)
+
+As hinted by the diagram with seven squares in the image above, we order the letters based on where in the
+seven-letter word they appear:
+
+<table><th>Clue ID</th><th>Clue Text</th><th>Clue Answer</th><tr><td>28A</td><td>Gets ready to take off</td><td>(A)UNTIES</td></tr><tr><td>52A</td><td>Like some cheese</td><td>G(Y)RATED</td></tr><tr><td>30A</td><td>Some are grannies</td><td>WI(N)DOWS</td></tr><tr><td>46A</td><td>Tirade</td><td>SCRE(W)ED</td></tr><tr><td>21A</td><td>Suit</td><td>HEART(H)S</td></tr><tr><td>43A</td><td>&ldquo;Damn it!&rdquo;</td><td>OH HELL(O)</td></tr></table>
+
+We may also notice that the diagram has 3 blanks, a space, and then 3 blanks. This tells us that the cluephrase
+should have a space in the middle, so our cluephrase is AYN WHO.
+
+<h4 id="puz3-extract">Puzzle #3: Some letters are outside the grid</h3>
+The clockwise arrow in the extraction photo tells us to start at the top left and read around the outside of the grid
+clockwise. (<a href="#puz3-grid">See the yellow squares in the solution grid above.</a>)
+
+Doing that gives us a cluephrase: CRITIC OF PURE REASON.
+
+<h4 id="puz4-extract">Puzzle #4: Some words are randomly anagrammed</h3>
+In this crossword, some entries are replaced with anagrams. We notice that each anagrammed entry has two letters in
+common with its replacement:
+<table><tr><th>Clue ID</th><th>Clue Text</th><th>Clue Answer</th><th>Anagrammed Answer (Grid Content)</th></tr><tr><td>10D</td><td>Building up</td><td>AMASS[IN]G</td><td>GAS MA[IN]S</td></tr><tr><td>17A</td><td>It&rsquo;s measured in steradians</td><td>[S]OLID [A]NGLE</td><td>[S]LIDE [A]LONG</td></tr><tr><td>36A</td><td>Kind of relationship that might help you get over an ex</td><td>REB[O]UN[D]</td><td>UNR[O]BE[D]</td></tr><tr><td>48A</td><td>Kind of moment, named for a French author, that brings you suddenly back to a particular memory or point in the past</td><td>[P]ROUST[I]AN</td><td>[P]UT ON A[I]RS</td></tr><tr><td>63A</td><td>A blue one features in the title of 1980 and 1991 films</td><td>LA[GO]ON</td><td>NO [GO]AL</td></tr></table>
+
+(<a href="#puz4-grid">See the solution grid above.</a>) The yellow squares mark anagrammed entries, and the blue
+squares mark the letters in common.
+
+The image clues ordering by length of entry, from shortest to longest:
+<table><tr><th>Clue ID</th><th>Clue Text</th><th>Clue Answer</th><th>Anagrammed Answer (Grid Content)</th></tr><tr><td>63A</td><td>A blue one features in the title of 1980 and 1991 films</td><td>LA[GO]ON</td><td>NO [GO]AL</td></tr><tr><td>36A</td><td>Kind of relationship that might help you get over an ex</td><td>REB[O]UN[D]</td><td>UNR[O]BE[D]</td></tr><tr><td>10D</td><td>Building up</td><td>AMASS[IN]G</td><td>GAS MA[IN]S</td></tr><tr><td>48A</td><td>Kind of moment, named for a French author, that brings you suddenly back to a particular memory or point in the past</td><td>[P]ROUST[I]AN</td><td>[P]UT ON A[I]RS</td></tr><tr><td>17A</td><td>It&rsquo;s measured in steradians</td><td>[S]OLID [A]NGLE</td><td>[S]LIDE [A]LONG</td></tr></table><p>Now, looking at the letters in common, we get a cluephrase: GO OD IN PI SA, i.e. GOOD IN PISA.</p><h3>Putting it all together</h3>
+The cluephrases we got from each puzzle are as follows:
+<table><tr><th>Puzzle ID</th><th>Cluephrase</th></tr><tr><td>1</td><td>SPARK ROCK</td></tr><tr><td>2</td><td>AYN WHO</td></tr><tr><td>3</td><td>CRITIC OF PURE REASON</td></tr><tr><td>4</td><td>GOOD IN PISA</td></tr></table>
+
+Now, we need to use the numbers that we were given: 12223111 332 441344.
+
+We can answer the cluephrase from crossword i with an n-letter word in such a way that there are n occurrences of i
+in the string of numbers. For example, there are five 1s in 12223111 332 441344, so we can answer Puzzle #1&rsquo;s
+cluephrase with a five-letter word.
+
+<table><tr><th>Puzzle ID</th><th>Cluephrase</th><th>Cluephrase answer</th></tr><tr class="blue"><td>1</td><td>SPARK ROCK</td><td>FLINT</td></tr><tr class="yellow"><td>2</td><td>AYN WHO</td><td>RAND</td></tr><tr class="cyan"><td>3</td><td>CRITIC OF PURE REASON</td><td>KANT</td></tr><tr class="pink"><td>4</td><td>GOOD IN PISA</td><td>BUON</td></tr></table>
+
+We then associate each number with the corresponding letter from its cluephrase answer:
+
+<table class="t"><tr><td class="blue">1</td><td class="yellow">2</td><td class="yellow">2</td><td class="yellow">2</td><td class="cyan">3</td><td class="blue">1</td><td class="blue">1</td><td class="blue">1</td><td></td><td class="cyan">3</td><td class="cyan">3</td><td class="yellow">2</td><td></td><td class="pink">4</td><td class="pink">4</td><td class="blue">1</td><td class="cyan">3</td><td class="pink">4</td><td class="pink">4</td></tr><tr><td class="blue">F</td><td class="yellow">R</td><td class="yellow">A</td><td class="yellow">N</td><td class="cyan">K</td><td class="blue">L</td><td class="blue">I</td><td class="blue">N</td><td></td><td class="cyan">A</td><td class="cyan">N</td><td class="yellow">D</td><td></td><td class="pink">B</td><td class="pink">U</td><td class="blue">T</td><td class="cyan">T</td><td class="pink">O</td><td class="pink">N</td></tr></table>
+
+Solving the cluephrase FRANKLIN AND BUTTON gives us the answer <b>BENJAMINS</b>.
+
+    
+    
+    <h2 id="authors-notes">Author&rsquo;s Notes</h2>
+    <p>One month before the start of GPH, Jenna killed this puzzle. Only part of a (probably mediocre at best) crossword 
+had been written, none of the tech implementation was done, a lot of other things needed to happen for hunt, and 
+she thought the puzzle could not be finished.</p>
+<p>Jakob (who at that point was an editor for the puzzle) volunteered to help by constructing crosswords. This allowed
+the puzzle to brought back from the dead.</p>
+<p>The crosswords themselves were written over the course of a day during a family vacation; while Jakob wrote most of
+the clues, they&rsquo;d like to thank their parents and brothers for contributing a few here and there and for 
+putting up for repeated requests like &ldquo;what&rsquo;s an interesting and difficult clue for ENDS?&rdquo; on an 
+hours-long drive.</p>
+<p>Jenna implemented the web part of the puzzle, adapting much of the code from Fencing from Mystery Hunt 2021, which 
+is <a href="https://github.com/YewLabs/cross-swords">publicly available on GitHub</a>. We are profoundly grateful that so much
+work had already been put into it and that the code was available for our reference.</p>
+    
+
+    
+    
+
+    
+    <div class="puzzle-main-corner puzzle-main-corner-1"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-2"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-3"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-4"></div>
+    
+</main>
+
+
+    </div>
+    
+
+    
+
+    
+    <script>
+    document.getElementById('nav-music').style.display = 'none';
+    document.getElementById("progress-simulator").addEventListener("submit", (e) => {
+        if (e.submitter.name === "reset") {
+            toggleReset(true);
+            doGlitch(false);
+            document.getElementById("shortcuts").checked = false;
+            e.preventDefault();
+        } else {
+            localStorage.setItem(e.submitter.name, e.submitter.value);
+        }
+    });
+    addStyles();
+
+    function toggleReset(which) {
+        $('#loop-reset').toggleClass('loop-resetting', which);
+    }
+
+    function addStyles() {
+        const changeFavicon = (url) => {
+            const e = Array.from(document.getElementsByTagName("link"))
+                .filter(e => e.rel === "icon")[0];
+            e.href = url;
+        }
+        const addSheet = (url) => {
+            const e = document.createElement("link");
+            e.rel = "stylesheet";
+            e.href = url;
+            document.getElementsByTagName("head")[0].appendChild(e);
+        }
+
+        const seasons = ["spring", "summer", "autumn", "winter"];
+        let current_main_round = localStorage.getItem("round");
+        const endgame_unlocked = localStorage.getItem("endgame") === "true";
+
+        const matches = new RegExp(`\\?(${seasons.join("|")})`).exec(document.URL);
+        if (matches && matches[1]) {
+            current_main_round = matches[1];
+        }
+
+        if (endgame_unlocked) {
+            addSheet("/static/css/endgame.css");
+            changeFavicon("/static/images/favicon-endgame.ico");
+            const nodes = document.getElementsByClassName("energy-nodes-info");
+            console.log(nodes);
+            if (nodes.length > 0) {
+                nodes[0].style.display = "block";
+            }
+        } else if (current_main_round === "concert") {
+            addSheet("/static/css/concert.css");
+            changeFavicon("/static/images/favicon-concert.ico");
+            // also add the concert music
+            document.getElementById('nav-music').style.display = 'inline-block';
+            const audio = document.getElementById("music-audio");
+            if (audio) {
+                audio.addEventListener('play', () => {
+                    audio.volume = localStorage.getItem('music-audio-volume') ?? 0.5;
+                });
+                audio.addEventListener('volumechange', () => {
+                    localStorage.setItem('music-audio-volume', audio.volume);
+                });
+            }
+        } else if (seasons.includes(current_main_round)) {
+            addSheet("/static/css/season.css");
+            addSheet(`/static/css/${current_main_round}.css`);
+            changeFavicon(`/static/images/favicon-${current_main_round}.ico`);
+        } else {
+            addSheet("/static/css/blue.css");
+            changeFavicon("/static/images/favicon-blue.ico");
+        }
+    }
+
+    registerOnGlitchHook((ex) => {
+        document.getElementById('background-glitch-wrapper').style.display = 'initial';
+    });
+    </script>
+    
+</body>
+</html>

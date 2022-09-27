@@ -1,0 +1,2151 @@
+
+
+
+
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+<title>Stats: Combat Roller</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <meta property="og:title" content="Galactic Puzzle Hunt 2022">
+    <meta property="og:description" content="Registration for this year's Galactic Puzzle Hunt is now open!">
+    <meta property="og:image" content="https://galacticpuzzlehunt.com/static/images/banner.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:slnt,CASL,CRSV,MONO@-3,0.5,1,1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/skeleton.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.formset/1.2.2/jquery.formset.min.js"></script>
+    <script src="/jsi18n/"></script>
+    <script src="/static/js/sorttable.js"></script>
+    <script src="/static/js/tray.js"></script>
+    <script src="/static/js/notify.js"></script>
+    <script src="/static/js/time.js"></script>
+    
+    
+    <link rel="icon" sizes="16x16 32x32 48x48 64x64" href="/static/images/favicon.ico" type="image/vnd.microsoft.icon">
+    
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92192633-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-92192633-1');
+</script>
+
+</head>
+<body>
+    
+    <div id="background-glitch-wrapper" class="background-glitch">
+        <div class="glitch-1"></div>
+        <div class="glitch-2"></div>
+        <div class="glitch-3"></div>
+    </div>
+    
+    
+    <input id="shortcuts" type="checkbox">
+    
+    <nav>
+        <span class="tray">
+            <span id="tray-timer"></span>
+            <div class="top-tabs">
+                <a href="/">
+                    Home
+                </a>
+                
+                
+                <a href="/story">
+                    Story
+                </a>
+                
+                
+                <a class="selected-tab" href="/puzzles">
+                    Puzzles
+                </a>
+                
+                <a href="/teams">
+                    Teams
+                </a>
+                
+                
+                <a href="/errata">
+                    Updates
+                </a>
+                
+                
+                
+                
+                <a id="nav-music" href="#">
+                    <label for="music" title="Music" style="margin-bottom: 0; font-weight: normal; cursor: pointer;">Music</label>
+                </a>
+                <input id="music" type="checkbox">
+                <div class="shortcuts music">
+                    <audio id="music-audio" controls src="/static/puzzle_resources/worlds-end-concert/music-audio.mp3">
+                        There should be a music player here.
+                    </audio>
+                </div>
+                
+                
+            </div>
+            <div class="top-left-actions">
+                
+<a href="/puzzle/combat-roller" class="btn">Back to the puzzle</a>
+
+            </div>
+        </span>
+        <div class="top-right-actions">
+        
+        <label for="shortcuts" title="Simulator">Simulator </label>
+        
+        
+        </div>
+    </nav>
+    
+    <div class="shortcuts">
+        <form id="progress-simulator">
+        <div>Current round:</div>
+        <button class="btn" type="submit" name="round" value="forward">⬆️</button>
+        <button class="btn" type="submit" name="round" value="spring">🌸</button>
+        <button class="btn" type="submit" name="round" value="summer">☀️</button>
+        <button class="btn" type="submit" name="round" value="autumn">🍂</button>
+        <button class="btn" type="submit" name="round" value="winter">☃️</button>
+        <button class="btn" type="submit" name="round" value="concert">🎤</button>
+        <button class="btn" type="submit" name="round" value="none">None</button>
+        <div>Endgame:</div>
+        <button class="btn" type="submit" name="endgame" value="true">Unlock</button>
+        <button class="btn" type="submit" name="endgame" value="false">Reset</button>
+        <div>Reset:</div>
+        <button class="btn" type="submit" name="reset" value="reset">Reset</button>
+        </form>
+    </div>
+    
+    
+    
+    
+    
+    <div id="loop-reset">
+        <form>
+            <svg viewBox="-30 160 720 320">
+                <defs>
+                    <path id="loop-end-path" d="m 370,240 c 38.29044,0 74.26676,18.33512 96.83716,49.26624 l -76.8369,30.73478 V 270 L 300,330 261.03858,309.74192 c 19.60706,-42.51188 62.14674,-69.74008 108.9623,-69.74306 z m 106.15758,64.22738 c 6.65282,12.65518 10.9906,26.39738 12.80876,40.57862 l -38.96532,5.19538 z"/>
+                </defs>
+                <foreignObject width="720" height="480" clip-path="url(#loop-end-clip)" class="loop-shade">
+                    <aside class="loop-shade" xmlns="http://www.w3.org/1999/xhtml" style="width: 100%; height: 100%;"></aside>
+                </foreignObject>
+                <clipPath id="loop-end-clip"><use href="#loop-end-path"/></clipPath>
+                <use href="#loop-end-path"/>
+                <path d="M 490,400 600,330 450,350 490,280 390,320 V 270 L 300,330 50,200 170,380 50,400"/>
+            </svg>
+            <div>THE END</div>
+            <p>You can reset once per minute.</p>
+            <table>
+                <tr id="loop-reset-btn-row-reset">
+                    <td><button class="btn" disabled>Reset</button></td>
+                    <td>Start over from the beginning of the exam.</td>
+                </tr>
+                <tr id="loop-reset-btn-row-restore">
+                    <td><button class="btn" disabled>Jump</button></td>
+                    <td>Start over, but resubmit your previous answers to bring you back to this point.</td>
+                </tr>
+                <tr>
+                    <td><a class="btn" href="javascript:toggleReset(false)">Stay</a></td>
+                    <td>Look at this page a bit longer. Make sure to save your work.</td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    
+    <script>
+
+    
+    
+    let glitchTriggerFuncs = [];
+    let glitchTriggerReceived = false;
+    let glitchTriggerExReceived = false;
+    let glitchPageLoaded = false;
+    function processGlitchFuncs(ex) {
+        glitchTriggerFuncs.forEach((func) => {
+            func(ex);
+        });
+    }
+    function doGlitch(ex) {
+        glitchTriggerReceived = true;
+        if (ex) {
+            glitchTriggerExReceived = true;
+        }
+        if (glitchPageLoaded) {
+            processGlitchFuncs(ex);
+        }
+    }
+    window.addEventListener('load', () => {
+        glitchPageLoaded = true;
+        if (glitchTriggerExReceived) {
+            processGlitchFuncs(true);
+        }
+        else if (glitchTriggerReceived) {
+            processGlitchFuncs(false);
+        }
+    }, false);
+    
+    
+    
+    function registerOnGlitchHook(func) {
+        if (glitchTriggerExReceived) {
+            func(true);
+        }
+        else if (glitchTriggerReceived) {
+            func(false);
+        }
+        glitchTriggerFuncs.push(func);
+    }
+    
+
+    
+    
+    </script>
+    <div class="content">
+        
+
+<h1>Stats <span style="font-weight: 300">Combat Roller</span></h1>
+
+<main>
+    <div class="info-row">
+        <div>
+            <h4>&nbsp;</h4>
+            <div class="info-desc">
+                <div class="stat-entry">Correct guesses <span class="stat-value">7336</span></div>
+                <div class="stat-entry">Total guesses <span class="stat-value">7673</span></div>
+            </div>
+        </div>
+        <div>
+            <h4>&nbsp;</h4>
+            <div class="info-desc">
+                <div class="stat-entry">Solving teams <span class="stat-value">103</span></div>
+                <div class="stat-entry">Hints asked <span class="stat-value">36</span></div>
+            </div>
+        </div>
+    </div>
+
+    <table class="sortable list-table">
+        <col style="width: 40%">
+        <col style="width: 10%">
+        <col style="width: 20%">
+        <col style="width: 10%">
+        <col style="width: 20%">
+        <tbody>
+            <tr>
+                <th>Team</th>
+                <th>Incorrect guesses</th>
+                <th>Unlock time (EDT)</th>
+                <th>Time to solve</th>
+                <th>Solve time (EDT)</th>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/%25E1%258D%2591+ETHIOPIC+SYLLABLE+TRALSE">ፑ ETHIOPIC SYLLABLE TRALSE</a></td>
+                <td>1</td>
+                <td sorttable_customkey="1661617025"><time datetime="2022-08-27T11:17:05.656738+00:00" data-format="M j, H:i">Aug 27, 07:17</time></td>
+                <td sorttable_customkey="11690.314648">3h14m</td>
+                <td sorttable_customkey="1661628715"><time datetime="2022-08-27T14:31:55.971386+00:00" data-format="M j, H:i">Aug 27, 10:31</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/exAM+TEsters">exAM TEsters</a></td>
+                <td>1</td>
+                <td sorttable_customkey="1661637355"><time datetime="2022-08-27T16:55:55.696632+00:00" data-format="M j, H:i">Aug 27, 12:55</time></td>
+                <td sorttable_customkey="13590.227078">3h46m</td>
+                <td sorttable_customkey="1661650945"><time datetime="2022-08-27T20:42:25.923710+00:00" data-format="M j, H:i">Aug 27, 16:42</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/C%255Bardinality%255Ds+Get+Degrees">C[ardinality]s Get Degrees</a></td>
+                <td>1</td>
+                <td sorttable_customkey="1661663544"><time datetime="2022-08-28T00:12:24.428292+00:00" data-format="M j, H:i">Aug 27, 20:12</time></td>
+                <td sorttable_customkey="14596.759317">4h3m</td>
+                <td sorttable_customkey="1661678141"><time datetime="2022-08-28T04:15:41.187609+00:00" data-format="M j, H:i">Aug 28, 00:15</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/The+C%2540r%2540line+Syzygy">The C@r@line Syzygy</a></td>
+                <td>2</td>
+                <td sorttable_customkey="1661682226"><time datetime="2022-08-28T05:23:46.441432+00:00" data-format="M j, H:i">Aug 28, 01:23</time></td>
+                <td sorttable_customkey="7946.229396">2h12m</td>
+                <td sorttable_customkey="1661690172"><time datetime="2022-08-28T07:36:12.670828+00:00" data-format="M j, H:i">Aug 28, 03:36</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/The+Saratoga+Kicks">The Saratoga Kicks</a></td>
+                <td>5</td>
+                <td sorttable_customkey="1661664085"><time datetime="2022-08-28T00:21:25.993227+00:00" data-format="M j, H:i">Aug 27, 20:21</time></td>
+                <td sorttable_customkey="30596.689787">8h29m</td>
+                <td sorttable_customkey="1661694682"><time datetime="2022-08-28T08:51:22.683014+00:00" data-format="M j, H:i">Aug 28, 04:51</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Have+you+tried+adding+and+then+removing+an+essay+component%253F">Have you tried adding and then removing an essay component?</a></td>
+                <td>4</td>
+                <td sorttable_customkey="1661674624"><time datetime="2022-08-28T03:17:04.244973+00:00" data-format="M j, H:i">Aug 27, 23:17</time></td>
+                <td sorttable_customkey="24310.607352">6h45m</td>
+                <td sorttable_customkey="1661698934"><time datetime="2022-08-28T10:02:14.852325+00:00" data-format="M j, H:i">Aug 28, 06:02</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/%25F0%259F%258E%258F%25F0%259F%258E%258F%25F0%259F%258E%258F+SATisfACTory+Herrings+%25F0%259F%258E%258F%25F0%259F%258E%258F%25F0%259F%258E%258F">🎏🎏🎏 SATisfACTory Herrings 🎏🎏🎏</a></td>
+                <td>0</td>
+                <td sorttable_customkey="1661688144"><time datetime="2022-08-28T07:02:24.542474+00:00" data-format="M j, H:i">Aug 28, 03:02</time></td>
+                <td sorttable_customkey="11516.720186">3h11m</td>
+                <td sorttable_customkey="1661699661"><time datetime="2022-08-28T10:14:21.262660+00:00" data-format="M j, H:i">Aug 28, 06:14</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Killer+Chicken+Bones">Killer Chicken Bones</a></td>
+                <td>8</td>
+                <td sorttable_customkey="1661692142"><time datetime="2022-08-28T08:09:02.558370+00:00" data-format="M j, H:i">Aug 28, 04:09</time></td>
+                <td sorttable_customkey="12093.922249">3h21m</td>
+                <td sorttable_customkey="1661704236"><time datetime="2022-08-28T11:30:36.480619+00:00" data-format="M j, H:i">Aug 28, 07:30</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/The+Blob+Wizards+%25F0%259F%2594%25AE%25F0%259F%25A7%2599">The Blob Wizards 🔮🧙</a></td>
+                <td>0</td>
+                <td sorttable_customkey="1661689058"><time datetime="2022-08-28T07:17:38.966766+00:00" data-format="M j, H:i">Aug 28, 03:17</time></td>
+                <td sorttable_customkey="21260.585682">5h54m</td>
+                <td sorttable_customkey="1661710319"><time datetime="2022-08-28T13:11:59.552448+00:00" data-format="M j, H:i">Aug 28, 09:11</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Eggplant+Parms">Eggplant Parms</a></td>
+                <td>1</td>
+                <td sorttable_customkey="1661704765"><time datetime="2022-08-28T11:39:25.379098+00:00" data-format="M j, H:i">Aug 28, 07:39</time></td>
+                <td sorttable_customkey="17722.720332">4h55m</td>
+                <td sorttable_customkey="1661722488"><time datetime="2022-08-28T16:34:48.099430+00:00" data-format="M j, H:i">Aug 28, 12:34</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Extra+Credit+for+r%252FPictureGame">Extra Credit for r/PictureGame</a></td>
+                <td>3</td>
+                <td sorttable_customkey="1661687180"><time datetime="2022-08-28T06:46:20.993418+00:00" data-format="M j, H:i">Aug 28, 02:46</time></td>
+                <td sorttable_customkey="51417.665329">14h16m</td>
+                <td sorttable_customkey="1661738598"><time datetime="2022-08-28T21:03:18.658747+00:00" data-format="M j, H:i">Aug 28, 17:03</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Pusheen+Apprec%25C4%25B1at%25C4%25B1on+Soc%25C4%25B1ety">Pusheen Apprecıatıon Socıety</a></td>
+                <td>3</td>
+                <td sorttable_customkey="1661732274"><time datetime="2022-08-28T19:17:54.326407+00:00" data-format="M j, H:i">Aug 28, 15:17</time></td>
+                <td sorttable_customkey="8316.906168">2h18m</td>
+                <td sorttable_customkey="1661740591"><time datetime="2022-08-28T21:36:31.232575+00:00" data-format="M j, H:i">Aug 28, 17:36</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/l+%252B+l+%253D+llama">l + l = llama</a></td>
+                <td>0</td>
+                <td sorttable_customkey="1661743168"><time datetime="2022-08-28T22:19:28.560763+00:00" data-format="M j, H:i">Aug 28, 18:19</time></td>
+                <td sorttable_customkey="15901.849717">4h25m</td>
+                <td sorttable_customkey="1661759070"><time datetime="2022-08-29T02:44:30.410480+00:00" data-format="M j, H:i">Aug 28, 22:44</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Good+morning.+As+you+know%252C+you%25E2%2580%2599re+here+to+take+the+GAP.+Congratulations+on+taking+this+important+step+toward+your+college+and+career+goals.+Before+we+begin+the+test%252C+I+am+going+to+read+some+instructio">Good morning. As you know, you’re here to take the GAP. Congratulations on taking this important step toward your college and career goals. Before we begin the test, I am going to read some instructio</a></td>
+                <td>1</td>
+                <td sorttable_customkey="1661716735"><time datetime="2022-08-28T14:58:55.095435+00:00" data-format="M j, H:i">Aug 28, 10:58</time></td>
+                <td sorttable_customkey="45897.188737">12h44m</td>
+                <td sorttable_customkey="1661762632"><time datetime="2022-08-29T03:43:52.284172+00:00" data-format="M j, H:i">Aug 28, 23:43</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Please+Clap">Please Clap</a></td>
+                <td>1</td>
+                <td sorttable_customkey="1661752132"><time datetime="2022-08-29T00:48:52.323515+00:00" data-format="M j, H:i">Aug 28, 20:48</time></td>
+                <td sorttable_customkey="24254.060521">6h44m</td>
+                <td sorttable_customkey="1661776386"><time datetime="2022-08-29T07:33:06.384036+00:00" data-format="M j, H:i">Aug 29, 03:33</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/_%25CC%25BEt%25E2%25B7%25ADe%25E2%25B7%25AAa%25E2%25B7%25A2m%25E2%25B7%25B7_">_̾tⷭeⷪaⷢmⷷ_</a></td>
+                <td>5</td>
+                <td sorttable_customkey="1661715160"><time datetime="2022-08-28T14:32:40.655073+00:00" data-format="M j, H:i">Aug 28, 10:32</time></td>
+                <td sorttable_customkey="68373.402704">18h59m</td>
+                <td sorttable_customkey="1661783534"><time datetime="2022-08-29T09:32:14.057777+00:00" data-format="M j, H:i">Aug 29, 05:32</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/17th+Watermelon+Bought+in+a+Math+Problem">17th Watermelon Bought in a Math Problem</a></td>
+                <td>2</td>
+                <td sorttable_customkey="1661755402"><time datetime="2022-08-29T01:43:22.231979+00:00" data-format="M j, H:i">Aug 28, 21:43</time></td>
+                <td sorttable_customkey="29462.273334">8h11m</td>
+                <td sorttable_customkey="1661784864"><time datetime="2022-08-29T09:54:24.505313+00:00" data-format="M j, H:i">Aug 29, 05:54</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/simpmeow">simpmeow</a></td>
+                <td>5</td>
+                <td sorttable_customkey="1661777562"><time datetime="2022-08-29T07:52:42.261053+00:00" data-format="M j, H:i">Aug 29, 03:52</time></td>
+                <td sorttable_customkey="18537.089009">5h8m</td>
+                <td sorttable_customkey="1661796099"><time datetime="2022-08-29T13:01:39.350062+00:00" data-format="M j, H:i">Aug 29, 09:01</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/SwaDE+fishers">SwaDE fishers</a></td>
+                <td>0</td>
+                <td sorttable_customkey="1661797413"><time datetime="2022-08-29T13:23:33.086940+00:00" data-format="M j, H:i">Aug 29, 09:23</time></td>
+                <td sorttable_customkey="6322.514657">1h45m</td>
+                <td sorttable_customkey="1661803735"><time datetime="2022-08-29T15:08:55.601597+00:00" data-format="M j, H:i">Aug 29, 11:08</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Multiplugh+Choice+Questions+Please">Multiplugh Choice Questions Please</a></td>
+                <td>1</td>
+                <td sorttable_customkey="1661731187"><time datetime="2022-08-28T18:59:47.680502+00:00" data-format="M j, H:i">Aug 28, 14:59</time></td>
+                <td sorttable_customkey="91629.252574">25h27m</td>
+                <td sorttable_customkey="1661822816"><time datetime="2022-08-29T20:26:56.933076+00:00" data-format="M j, H:i">Aug 29, 16:26</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/1cool3me">1cool3me</a></td>
+                <td>1</td>
+                <td sorttable_customkey="1661776707"><time datetime="2022-08-29T07:38:27.099269+00:00" data-format="M j, H:i">Aug 29, 03:38</time></td>
+                <td sorttable_customkey="56946.5092">15h49m</td>
+                <td sorttable_customkey="1661833653"><time datetime="2022-08-29T23:27:33.608469+00:00" data-format="M j, H:i">Aug 29, 19:27</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/The+Label+On+A+Drawer+Of+A+Bee+Teacher%2527s+Desk+Before+A+Big+Exam">The Label On A Drawer Of A Bee Teacher&#x27;s Desk Before A Big Exam</a></td>
+                <td>5</td>
+                <td sorttable_customkey="1661744227"><time datetime="2022-08-28T22:37:07.356205+00:00" data-format="M j, H:i">Aug 28, 18:37</time></td>
+                <td sorttable_customkey="91846.12603">25h30m</td>
+                <td sorttable_customkey="1661836073"><time datetime="2022-08-30T00:07:53.482235+00:00" data-format="M j, H:i">Aug 29, 20:07</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Yuki">Yuki</a></td>
+                <td>2</td>
+                <td sorttable_customkey="1661826168"><time datetime="2022-08-29T21:22:48.669625+00:00" data-format="M j, H:i">Aug 29, 17:22</time></td>
+                <td sorttable_customkey="11619.890926">3h13m</td>
+                <td sorttable_customkey="1661837788"><time datetime="2022-08-30T00:36:28.560551+00:00" data-format="M j, H:i">Aug 29, 20:36</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/jacklance">jacklance</a></td>
+                <td>2</td>
+                <td sorttable_customkey="1661842121"><time datetime="2022-08-30T01:48:41.140659+00:00" data-format="M j, H:i">Aug 29, 21:48</time></td>
+                <td sorttable_customkey="10052.517034">2h47m</td>
+                <td sorttable_customkey="1661852173"><time datetime="2022-08-30T04:36:13.657693+00:00" data-format="M j, H:i">Aug 30, 00:36</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Just-Us+League">Just-Us League</a></td>
+                <td>6</td>
+                <td sorttable_customkey="1661843677"><time datetime="2022-08-30T02:14:37.814749+00:00" data-format="M j, H:i">Aug 29, 22:14</time></td>
+                <td sorttable_customkey="14510.289168">4h1m</td>
+                <td sorttable_customkey="1661858188"><time datetime="2022-08-30T06:16:28.103917+00:00" data-format="M j, H:i">Aug 30, 02:16</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Needlessly+Eating+Scantrons">Needlessly Eating Scantrons</a></td>
+                <td>1</td>
+                <td sorttable_customkey="1661840874"><time datetime="2022-08-30T01:27:54.523276+00:00" data-format="M j, H:i">Aug 29, 21:27</time></td>
+                <td sorttable_customkey="17554.874828">4h52m</td>
+                <td sorttable_customkey="1661858429"><time datetime="2022-08-30T06:20:29.398104+00:00" data-format="M j, H:i">Aug 30, 02:20</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Indescribably+Overrated+Heuristic">Indescribably Overrated Heuristic</a></td>
+                <td>2</td>
+                <td sorttable_customkey="1661794457"><time datetime="2022-08-29T12:34:17.775853+00:00" data-format="M j, H:i">Aug 29, 08:34</time></td>
+                <td sorttable_customkey="78583.37762">21h49m</td>
+                <td sorttable_customkey="1661873041"><time datetime="2022-08-30T10:24:01.153473+00:00" data-format="M j, H:i">Aug 30, 06:24</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/%255BURGENT%255D+NO+TIME+TO+THINK+STEP+BY+STEP">[URGENT] NO TIME TO THINK STEP BY STEP</a></td>
+                <td>2</td>
+                <td sorttable_customkey="1661817001"><time datetime="2022-08-29T18:50:01.686241+00:00" data-format="M j, H:i">Aug 29, 14:50</time></td>
+                <td sorttable_customkey="70818.070778">19h40m</td>
+                <td sorttable_customkey="1661887819"><time datetime="2022-08-30T14:30:19.757019+00:00" data-format="M j, H:i">Aug 30, 10:30</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/%25F0%259F%2590%2586+Cheatahs+%25F0%259F%2590%2586">🐆 Cheatahs 🐆</a></td>
+                <td>4</td>
+                <td sorttable_customkey="1661862416"><time datetime="2022-08-30T07:26:56.275020+00:00" data-format="M j, H:i">Aug 30, 03:26</time></td>
+                <td sorttable_customkey="42864.648114">11h54m</td>
+                <td sorttable_customkey="1661905280"><time datetime="2022-08-30T19:21:20.923134+00:00" data-format="M j, H:i">Aug 30, 15:21</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Duck+Soup">Duck Soup</a></td>
+                <td>8</td>
+                <td sorttable_customkey="1661846529"><time datetime="2022-08-30T03:02:09.993589+00:00" data-format="M j, H:i">Aug 29, 23:02</time></td>
+                <td sorttable_customkey="60691.60096">16h51m</td>
+                <td sorttable_customkey="1661907221"><time datetime="2022-08-30T19:53:41.594549+00:00" data-format="M j, H:i">Aug 30, 15:53</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Arithmancers+Necessarily+Incompletely+Marking+Everything">Arithmancers Necessarily Incompletely Marking Everything</a></td>
+                <td>1</td>
+                <td sorttable_customkey="1661730349"><time datetime="2022-08-28T18:45:49.212006+00:00" data-format="M j, H:i">Aug 28, 14:45</time></td>
+                <td sorttable_customkey="177104.767595">49h11m</td>
+                <td sorttable_customkey="1661907453"><time datetime="2022-08-30T19:57:33.979601+00:00" data-format="M j, H:i">Aug 30, 15:57</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Arithmancers+Sneaking+in+Mechanical+Pencils">Arithmancers Sneaking in Mechanical Pencils</a></td>
+                <td>4</td>
+                <td sorttable_customkey="1661856155"><time datetime="2022-08-30T05:42:35.144027+00:00" data-format="M j, H:i">Aug 30, 01:42</time></td>
+                <td sorttable_customkey="113046.611962">31h24m</td>
+                <td sorttable_customkey="1661969201"><time datetime="2022-08-31T13:06:41.755989+00:00" data-format="M j, H:i">Aug 31, 09:06</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Ten+Apples">Ten Apples</a></td>
+                <td>6</td>
+                <td sorttable_customkey="1661913081"><time datetime="2022-08-30T21:31:21.969719+00:00" data-format="M j, H:i">Aug 30, 17:31</time></td>
+                <td sorttable_customkey="58110.483368">16h8m</td>
+                <td sorttable_customkey="1661971192"><time datetime="2022-08-31T13:39:52.453087+00:00" data-format="M j, H:i">Aug 31, 09:39</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/gokujou_no_imo">gokujou_no_imo</a></td>
+                <td>4</td>
+                <td sorttable_customkey="1661943157"><time datetime="2022-08-31T05:52:37.569170+00:00" data-format="M j, H:i">Aug 31, 01:52</time></td>
+                <td sorttable_customkey="29307.715338">8h8m</td>
+                <td sorttable_customkey="1661972465"><time datetime="2022-08-31T14:01:05.284508+00:00" data-format="M j, H:i">Aug 31, 10:01</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Just+for+the+Halibut">Just for the Halibut</a></td>
+                <td>2</td>
+                <td sorttable_customkey="1661914723"><time datetime="2022-08-30T21:58:43.940792+00:00" data-format="M j, H:i">Aug 30, 17:58</time></td>
+                <td sorttable_customkey="76449.340682">21h14m</td>
+                <td sorttable_customkey="1661991173"><time datetime="2022-08-31T19:12:53.281474+00:00" data-format="M j, H:i">Aug 31, 15:12</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Frumious+Bandersnatch">Frumious Bandersnatch</a></td>
+                <td>1</td>
+                <td sorttable_customkey="1661855032"><time datetime="2022-08-30T05:23:52.453613+00:00" data-format="M j, H:i">Aug 30, 01:23</time></td>
+                <td sorttable_customkey="149620.186558">41h33m</td>
+                <td sorttable_customkey="1662004652"><time datetime="2022-08-31T22:57:32.640171+00:00" data-format="M j, H:i">Aug 31, 18:57</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/The+Flemish+Quality+Management+Centers">The Flemish Quality Management Centers</a></td>
+                <td>1</td>
+                <td sorttable_customkey="1661985468"><time datetime="2022-08-31T17:37:48.728255+00:00" data-format="M j, H:i">Aug 31, 13:37</time></td>
+                <td sorttable_customkey="27436.17227">7h37m</td>
+                <td sorttable_customkey="1662012904"><time datetime="2022-09-01T01:15:04.900525+00:00" data-format="M j, H:i">Aug 31, 21:15</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/PonX">PonX</a></td>
+                <td>2</td>
+                <td sorttable_customkey="1661859161"><time datetime="2022-08-30T06:32:41.674249+00:00" data-format="M j, H:i">Aug 30, 02:32</time></td>
+                <td sorttable_customkey="153852.892005">42h44m</td>
+                <td sorttable_customkey="1662013014"><time datetime="2022-09-01T01:16:54.566254+00:00" data-format="M j, H:i">Aug 31, 21:16</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Nerds+Enjoy+School">Nerds Enjoy School</a></td>
+                <td>3</td>
+                <td sorttable_customkey="1661937624"><time datetime="2022-08-31T04:20:24.636406+00:00" data-format="M j, H:i">Aug 31, 00:20</time></td>
+                <td sorttable_customkey="84281.53316">23h24m</td>
+                <td sorttable_customkey="1662021906"><time datetime="2022-09-01T03:45:06.169566+00:00" data-format="M j, H:i">Aug 31, 23:45</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Slitherlinks+and+Ladders">Slitherlinks and Ladders</a></td>
+                <td>9</td>
+                <td sorttable_customkey="1661967770"><time datetime="2022-08-31T12:42:50.692081+00:00" data-format="M j, H:i">Aug 31, 08:42</time></td>
+                <td sorttable_customkey="59519.690376">16h31m</td>
+                <td sorttable_customkey="1662027290"><time datetime="2022-09-01T05:14:50.382457+00:00" data-format="M j, H:i">Sep 1, 01:14</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Flashcardinality">Flashcardinality</a></td>
+                <td>16</td>
+                <td sorttable_customkey="1661748941"><time datetime="2022-08-28T23:55:41.297843+00:00" data-format="M j, H:i">Aug 28, 19:55</time></td>
+                <td sorttable_customkey="288032.863054">80h0m</td>
+                <td sorttable_customkey="1662036974"><time datetime="2022-09-01T07:56:14.160897+00:00" data-format="M j, H:i">Sep 1, 03:56</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Shower+Pomelo+%25F0%259F%258D%2588">Shower Pomelo 🍈</a></td>
+                <td>3</td>
+                <td sorttable_customkey="1662010223"><time datetime="2022-09-01T00:30:23.243333+00:00" data-format="M j, H:i">Aug 31, 20:30</time></td>
+                <td sorttable_customkey="26917.428343">7h28m</td>
+                <td sorttable_customkey="1662037140"><time datetime="2022-09-01T07:59:00.671676+00:00" data-format="M j, H:i">Sep 1, 03:59</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Amateur+Hour">Amateur Hour</a></td>
+                <td>2</td>
+                <td sorttable_customkey="1661944196"><time datetime="2022-08-31T06:09:56.974536+00:00" data-format="M j, H:i">Aug 31, 02:09</time></td>
+                <td sorttable_customkey="98810.144219">27h26m</td>
+                <td sorttable_customkey="1662043007"><time datetime="2022-09-01T09:36:47.118755+00:00" data-format="M j, H:i">Sep 1, 05:36</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/The+Lexingtons">The Lexingtons</a></td>
+                <td>4</td>
+                <td sorttable_customkey="1662003303"><time datetime="2022-08-31T22:35:03.386241+00:00" data-format="M j, H:i">Aug 31, 18:35</time></td>
+                <td sorttable_customkey="62953.928982">17h29m</td>
+                <td sorttable_customkey="1662066257"><time datetime="2022-09-01T16:04:17.315223+00:00" data-format="M j, H:i">Sep 1, 12:04</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Pet+The+Catloe">Pet The Catloe</a></td>
+                <td>7</td>
+                <td sorttable_customkey="1662001466"><time datetime="2022-08-31T22:04:26.956262+00:00" data-format="M j, H:i">Aug 31, 18:04</time></td>
+                <td sorttable_customkey="92329.62781">25h38m</td>
+                <td sorttable_customkey="1662093796"><time datetime="2022-09-01T23:43:16.584072+00:00" data-format="M j, H:i">Sep 1, 19:43</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Team+Constructed+Adventures">Team Constructed Adventures</a></td>
+                <td>1</td>
+                <td sorttable_customkey="1662040735"><time datetime="2022-09-01T08:58:55.835921+00:00" data-format="M j, H:i">Sep 1, 04:58</time></td>
+                <td sorttable_customkey="54971.520752">15h16m</td>
+                <td sorttable_customkey="1662095707"><time datetime="2022-09-02T00:15:07.356673+00:00" data-format="M j, H:i">Sep 1, 20:15</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Basiscape">Basiscape</a></td>
+                <td>1</td>
+                <td sorttable_customkey="1662009291"><time datetime="2022-09-01T00:14:51.197413+00:00" data-format="M j, H:i">Aug 31, 20:14</time></td>
+                <td sorttable_customkey="90051.505724">25h0m</td>
+                <td sorttable_customkey="1662099342"><time datetime="2022-09-02T01:15:42.703137+00:00" data-format="M j, H:i">Sep 1, 21:15</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/pluru">pluru</a></td>
+                <td>2</td>
+                <td sorttable_customkey="1661897890"><time datetime="2022-08-30T17:18:10.027109+00:00" data-format="M j, H:i">Aug 30, 13:18</time></td>
+                <td sorttable_customkey="202076.00583">56h7m</td>
+                <td sorttable_customkey="1662099966"><time datetime="2022-09-02T01:26:06.032939+00:00" data-format="M j, H:i">Sep 1, 21:26</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/i+don%2527t+know">i don&#x27;t know</a></td>
+                <td>1</td>
+                <td sorttable_customkey="1661980453"><time datetime="2022-08-31T16:14:13.141589+00:00" data-format="M j, H:i">Aug 31, 12:14</time></td>
+                <td sorttable_customkey="124129.490831">34h28m</td>
+                <td sorttable_customkey="1662104582"><time datetime="2022-09-02T02:43:02.632420+00:00" data-format="M j, H:i">Sep 1, 22:43</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Pistachio">Pistachio</a></td>
+                <td>2</td>
+                <td sorttable_customkey="1662065516"><time datetime="2022-09-01T15:51:56.250858+00:00" data-format="M j, H:i">Sep 1, 11:51</time></td>
+                <td sorttable_customkey="47079.806941">13h4m</td>
+                <td sorttable_customkey="1662112596"><time datetime="2022-09-02T04:56:36.057799+00:00" data-format="M j, H:i">Sep 2, 00:56</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/o%255Bpi%255DnionsoftheETS">o[pi]nionsoftheETS</a></td>
+                <td>9</td>
+                <td sorttable_customkey="1661945803"><time datetime="2022-08-31T06:36:43.611813+00:00" data-format="M j, H:i">Aug 31, 02:36</time></td>
+                <td sorttable_customkey="171823.774873">47h43m</td>
+                <td sorttable_customkey="1662117627"><time datetime="2022-09-02T06:20:27.386686+00:00" data-format="M j, H:i">Sep 2, 02:20</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/American+Codex+Testing+%2528A.C.T.%2529">American Codex Testing (A.C.T.)</a></td>
+                <td>2</td>
+                <td sorttable_customkey="1662010113"><time datetime="2022-09-01T00:28:33.115180+00:00" data-format="M j, H:i">Aug 31, 20:28</time></td>
+                <td sorttable_customkey="107688.393463">29h54m</td>
+                <td sorttable_customkey="1662117801"><time datetime="2022-09-02T06:23:21.508643+00:00" data-format="M j, H:i">Sep 2, 02:23</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/SnapDragon">SnapDragon</a></td>
+                <td>0</td>
+                <td sorttable_customkey="1662102203"><time datetime="2022-09-02T02:03:23.727821+00:00" data-format="M j, H:i">Sep 1, 22:03</time></td>
+                <td sorttable_customkey="20530.844977">5h42m</td>
+                <td sorttable_customkey="1662122734"><time datetime="2022-09-02T07:45:34.572798+00:00" data-format="M j, H:i">Sep 2, 03:45</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Les+Gaulois">Les Gaulois</a></td>
+                <td>11</td>
+                <td sorttable_customkey="1662043681"><time datetime="2022-09-01T09:48:01.180001+00:00" data-format="M j, H:i">Sep 1, 05:48</time></td>
+                <td sorttable_customkey="100291.363087">27h51m</td>
+                <td sorttable_customkey="1662143972"><time datetime="2022-09-02T13:39:32.543088+00:00" data-format="M j, H:i">Sep 2, 09:39</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/P+Squad">P Squad</a></td>
+                <td>3</td>
+                <td sorttable_customkey="1662014870"><time datetime="2022-09-01T01:47:50.623691+00:00" data-format="M j, H:i">Aug 31, 21:47</time></td>
+                <td sorttable_customkey="133284.682033">37h1m</td>
+                <td sorttable_customkey="1662148155"><time datetime="2022-09-02T14:49:15.305724+00:00" data-format="M j, H:i">Sep 2, 10:49</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Weirdchamp+United+2">Weirdchamp United 2</a></td>
+                <td>1</td>
+                <td sorttable_customkey="1662024953"><time datetime="2022-09-01T04:35:53.607819+00:00" data-format="M j, H:i">Sep 1, 00:35</time></td>
+                <td sorttable_customkey="127624.106629">35h27m</td>
+                <td sorttable_customkey="1662152577"><time datetime="2022-09-02T16:02:57.714448+00:00" data-format="M j, H:i">Sep 2, 12:02</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/%25F0%259F%259A%2580%25F0%259F%259A%2580%25F0%259F%259A%2580">🚀🚀🚀</a></td>
+                <td>10</td>
+                <td sorttable_customkey="1661863395"><time datetime="2022-08-30T07:43:15.421787+00:00" data-format="M j, H:i">Aug 30, 03:43</time></td>
+                <td sorttable_customkey="293240.234829">81h27m</td>
+                <td sorttable_customkey="1662156635"><time datetime="2022-09-02T17:10:35.656616+00:00" data-format="M j, H:i">Sep 2, 13:10</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/weeklies.enigmatics.org">weeklies.enigmatics.org</a></td>
+                <td>0</td>
+                <td sorttable_customkey="1662018989"><time datetime="2022-09-01T02:56:29.418744+00:00" data-format="M j, H:i">Aug 31, 22:56</time></td>
+                <td sorttable_customkey="137663.12399">38h14m</td>
+                <td sorttable_customkey="1662156652"><time datetime="2022-09-02T17:10:52.542734+00:00" data-format="M j, H:i">Sep 2, 13:10</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/The+FitnessGram%25E2%2584%25A2%25EF%25B8%258F+Pacer+Test+is+a+multistage+aerobic+capacity+test+that+progressively+gets+more+difficult+as+it+continues.+The+20+meter+pacer+test+will+begin+in+30+seconds.+Line+up+at+the+start.">The FitnessGram™️ Pacer Test is a multistage aerobic capacity test that progressively gets more difficult as it continues. The 20 meter pacer test will begin in 30 seconds. Line up at the start.</a></td>
+                <td>1</td>
+                <td sorttable_customkey="1661931065"><time datetime="2022-08-31T02:31:05.847876+00:00" data-format="M j, H:i">Aug 30, 22:31</time></td>
+                <td sorttable_customkey="228129.303321">63h22m</td>
+                <td sorttable_customkey="1662159195"><time datetime="2022-09-02T17:53:15.151197+00:00" data-format="M j, H:i">Sep 2, 13:53</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/A-Plus+Students">A-Plus Students</a></td>
+                <td>1</td>
+                <td sorttable_customkey="1661996619"><time datetime="2022-08-31T20:43:39.928191+00:00" data-format="M j, H:i">Aug 31, 16:43</time></td>
+                <td sorttable_customkey="167101.101524">46h25m</td>
+                <td sorttable_customkey="1662163721"><time datetime="2022-09-02T19:08:41.029715+00:00" data-format="M j, H:i">Sep 2, 15:08</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/White+Maria">White Maria</a></td>
+                <td>1</td>
+                <td sorttable_customkey="1662110985"><time datetime="2022-09-02T04:29:45.113735+00:00" data-format="M j, H:i">Sep 2, 00:29</time></td>
+                <td sorttable_customkey="54816.672958">15h13m</td>
+                <td sorttable_customkey="1662165801"><time datetime="2022-09-02T19:43:21.786693+00:00" data-format="M j, H:i">Sep 2, 15:43</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/The+Elite">The Elite</a></td>
+                <td>5</td>
+                <td sorttable_customkey="1662012930"><time datetime="2022-09-01T01:15:30.311681+00:00" data-format="M j, H:i">Aug 31, 21:15</time></td>
+                <td sorttable_customkey="155638.842529">43h13m</td>
+                <td sorttable_customkey="1662168569"><time datetime="2022-09-02T20:29:29.154210+00:00" data-format="M j, H:i">Sep 2, 16:29</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/TruFact%25E2%2584%25A2">TruFact™</a></td>
+                <td>1</td>
+                <td sorttable_customkey="1661950979"><time datetime="2022-08-31T08:02:59.051179+00:00" data-format="M j, H:i">Aug 31, 04:02</time></td>
+                <td sorttable_customkey="227163.524153">63h6m</td>
+                <td sorttable_customkey="1662178142"><time datetime="2022-09-02T23:09:02.575332+00:00" data-format="M j, H:i">Sep 2, 19:09</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Allegories">Allegories</a></td>
+                <td>4</td>
+                <td sorttable_customkey="1662106908"><time datetime="2022-09-02T03:21:48.437711+00:00" data-format="M j, H:i">Sep 1, 23:21</time></td>
+                <td sorttable_customkey="71730.910521">19h55m</td>
+                <td sorttable_customkey="1662178639"><time datetime="2022-09-02T23:17:19.348232+00:00" data-format="M j, H:i">Sep 2, 19:17</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/bed+umber">bed umber</a></td>
+                <td>1</td>
+                <td sorttable_customkey="1662085711"><time datetime="2022-09-01T21:28:31.033454+00:00" data-format="M j, H:i">Sep 1, 17:28</time></td>
+                <td sorttable_customkey="99482.898586">27h38m</td>
+                <td sorttable_customkey="1662185193"><time datetime="2022-09-03T01:06:33.932040+00:00" data-format="M j, H:i">Sep 2, 21:06</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Ducky+Charms">Ducky Charms</a></td>
+                <td>1</td>
+                <td sorttable_customkey="1661952636"><time datetime="2022-08-31T08:30:36.861990+00:00" data-format="M j, H:i">Aug 31, 04:30</time></td>
+                <td sorttable_customkey="235902.364198">65h31m</td>
+                <td sorttable_customkey="1662188539"><time datetime="2022-09-03T02:02:19.226188+00:00" data-format="M j, H:i">Sep 2, 22:02</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/The+Rum+Swizzlers+%25F0%259F%258D%25B9">The Rum Swizzlers 🍹</a></td>
+                <td>0</td>
+                <td sorttable_customkey="1662056190"><time datetime="2022-09-01T13:16:30.722912+00:00" data-format="M j, H:i">Sep 1, 09:16</time></td>
+                <td sorttable_customkey="135667.894456">37h41m</td>
+                <td sorttable_customkey="1662191858"><time datetime="2022-09-03T02:57:38.617368+00:00" data-format="M j, H:i">Sep 2, 22:57</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/%25F0%259F%25A7%2591%25E2%2580%258D%25F0%259F%258F%25AB">🧑‍🏫</a></td>
+                <td>0</td>
+                <td sorttable_customkey="1662179180"><time datetime="2022-09-02T23:26:20.923975+00:00" data-format="M j, H:i">Sep 2, 19:26</time></td>
+                <td sorttable_customkey="21059.015696">5h50m</td>
+                <td sorttable_customkey="1662200239"><time datetime="2022-09-03T05:17:19.939671+00:00" data-format="M j, H:i">Sep 3, 01:17</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/The+Puzzledecoy">The Puzzledecoy</a></td>
+                <td>0</td>
+                <td sorttable_customkey="1662020690"><time datetime="2022-09-01T03:24:50.782204+00:00" data-format="M j, H:i">Aug 31, 23:24</time></td>
+                <td sorttable_customkey="180364.252172">50h6m</td>
+                <td sorttable_customkey="1662201055"><time datetime="2022-09-03T05:30:55.034376+00:00" data-format="M j, H:i">Sep 3, 01:30</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Hootligans">Hootligans</a></td>
+                <td>2</td>
+                <td sorttable_customkey="1662074862"><time datetime="2022-09-01T18:27:42.608577+00:00" data-format="M j, H:i">Sep 1, 14:27</time></td>
+                <td sorttable_customkey="127222.3978">35h20m</td>
+                <td sorttable_customkey="1662202085"><time datetime="2022-09-03T05:48:05.006377+00:00" data-format="M j, H:i">Sep 3, 01:48</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Test+Shouldn%2527t+Be+Impossible">Test Shouldn&#x27;t Be Impossible</a></td>
+                <td>6</td>
+                <td sorttable_customkey="1662184883"><time datetime="2022-09-03T01:01:23.009850+00:00" data-format="M j, H:i">Sep 2, 21:01</time></td>
+                <td sorttable_customkey="17465.607885">4h51m</td>
+                <td sorttable_customkey="1662202348"><time datetime="2022-09-03T05:52:28.617735+00:00" data-format="M j, H:i">Sep 3, 01:52</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/test3">test3</a></td>
+                <td>0</td>
+                <td sorttable_customkey="1662145860"><time datetime="2022-09-02T14:11:00.483311+00:00" data-format="M j, H:i">Sep 2, 10:11</time></td>
+                <td sorttable_customkey="58531.338918">16h15m</td>
+                <td sorttable_customkey="1662204391"><time datetime="2022-09-03T06:26:31.822229+00:00" data-format="M j, H:i">Sep 3, 02:26</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Team+Runpeng">Team Runpeng</a></td>
+                <td>2</td>
+                <td sorttable_customkey="1661844542"><time datetime="2022-08-30T02:29:02.875414+00:00" data-format="M j, H:i">Aug 29, 22:29</time></td>
+                <td sorttable_customkey="359895.380167">99h58m</td>
+                <td sorttable_customkey="1662204438"><time datetime="2022-09-03T06:27:18.255581+00:00" data-format="M j, H:i">Sep 3, 02:27</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/%25E2%25A2%259C+SCANTRON+ANSWER+KEY">⢜ SCANTRON ANSWER KEY</a></td>
+                <td>0</td>
+                <td sorttable_customkey="1661860460"><time datetime="2022-08-30T06:54:20.130531+00:00" data-format="M j, H:i">Aug 30, 02:54</time></td>
+                <td sorttable_customkey="348766.330771">96h52m</td>
+                <td sorttable_customkey="1662209226"><time datetime="2022-09-03T07:47:06.461302+00:00" data-format="M j, H:i">Sep 3, 03:47</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/puzzle+cobblers">puzzle cobblers</a></td>
+                <td>1</td>
+                <td sorttable_customkey="1662011595"><time datetime="2022-09-01T00:53:15.504861+00:00" data-format="M j, H:i">Aug 31, 20:53</time></td>
+                <td sorttable_customkey="200410.782526">55h40m</td>
+                <td sorttable_customkey="1662212006"><time datetime="2022-09-03T08:33:26.287387+00:00" data-format="M j, H:i">Sep 3, 04:33</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/if%2528possible%2529%257Bpopsicle%253Dtrue%257D">if(possible){popsicle=true}</a></td>
+                <td>0</td>
+                <td sorttable_customkey="1661994637"><time datetime="2022-08-31T20:10:37.325177+00:00" data-format="M j, H:i">Aug 31, 16:10</time></td>
+                <td sorttable_customkey="236365.195537">65h39m</td>
+                <td sorttable_customkey="1662231002"><time datetime="2022-09-03T13:50:02.520714+00:00" data-format="M j, H:i">Sep 3, 09:50</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/%25F0%259F%258C%25AE%25F0%259F%258C%25AEtaquito">🌮🌮taquito</a></td>
+                <td>5</td>
+                <td sorttable_customkey="1662131182"><time datetime="2022-09-02T10:06:22.679508+00:00" data-format="M j, H:i">Sep 2, 06:06</time></td>
+                <td sorttable_customkey="117510.43475">32h38m</td>
+                <td sorttable_customkey="1662248693"><time datetime="2022-09-03T18:44:53.114258+00:00" data-format="M j, H:i">Sep 3, 14:44</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Pan-Galactic+Geese">Pan-Galactic Geese</a></td>
+                <td>4</td>
+                <td sorttable_customkey="1662009644"><time datetime="2022-09-01T00:20:44.281597+00:00" data-format="M j, H:i">Aug 31, 20:20</time></td>
+                <td sorttable_customkey="257248.565971">71h27m</td>
+                <td sorttable_customkey="1662266892"><time datetime="2022-09-03T23:48:12.847568+00:00" data-format="M j, H:i">Sep 3, 19:48</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/this+puzzle+intentionally+left+huggs">this puzzle intentionally left huggs</a></td>
+                <td>10</td>
+                <td sorttable_customkey="1662099388"><time datetime="2022-09-02T01:16:28.039834+00:00" data-format="M j, H:i">Sep 1, 21:16</time></td>
+                <td sorttable_customkey="169734.235527">47h8m</td>
+                <td sorttable_customkey="1662269122"><time datetime="2022-09-04T00:25:22.275361+00:00" data-format="M j, H:i">Sep 3, 20:25</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Cross+Pali+Nation">Cross Pali Nation</a></td>
+                <td>2</td>
+                <td sorttable_customkey="1662011787"><time datetime="2022-09-01T00:56:27.174703+00:00" data-format="M j, H:i">Aug 31, 20:56</time></td>
+                <td sorttable_customkey="263907.224843">73h18m</td>
+                <td sorttable_customkey="1662275694"><time datetime="2022-09-04T02:14:54.399546+00:00" data-format="M j, H:i">Sep 3, 22:14</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/The+Judean+GNUs">The Judean GNUs</a></td>
+                <td>4</td>
+                <td sorttable_customkey="1662022765"><time datetime="2022-09-01T03:59:25.607501+00:00" data-format="M j, H:i">Aug 31, 23:59</time></td>
+                <td sorttable_customkey="257030.760312">71h23m</td>
+                <td sorttable_customkey="1662279796"><time datetime="2022-09-04T03:23:16.367813+00:00" data-format="M j, H:i">Sep 3, 23:23</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/The+real+puzzle+is+the+bodofronto+we+made+along+the+way">The real puzzle is the bodofronto we made along the way</a></td>
+                <td>0</td>
+                <td sorttable_customkey="1662214669"><time datetime="2022-09-03T09:17:49.405032+00:00" data-format="M j, H:i">Sep 3, 05:17</time></td>
+                <td sorttable_customkey="72858.253661">20h14m</td>
+                <td sorttable_customkey="1662287527"><time datetime="2022-09-04T05:32:07.658693+00:00" data-format="M j, H:i">Sep 4, 01:32</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/GAPricorn+Complexity">GAPricorn Complexity</a></td>
+                <td>4</td>
+                <td sorttable_customkey="1662086586"><time datetime="2022-09-01T21:43:06.266826+00:00" data-format="M j, H:i">Sep 1, 17:43</time></td>
+                <td sorttable_customkey="202054.289697">56h7m</td>
+                <td sorttable_customkey="1662288640"><time datetime="2022-09-04T05:50:40.556523+00:00" data-format="M j, H:i">Sep 4, 01:50</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/uhhhhhh+ummmmmm+yeah+uhhhhhh">uhhhhhh ummmmmm yeah uhhhhhh</a></td>
+                <td>1</td>
+                <td sorttable_customkey="1662092437"><time datetime="2022-09-01T23:20:37.103034+00:00" data-format="M j, H:i">Sep 1, 19:20</time></td>
+                <td sorttable_customkey="211152.867496">58h39m</td>
+                <td sorttable_customkey="1662303589"><time datetime="2022-09-04T09:59:49.970530+00:00" data-format="M j, H:i">Sep 4, 05:59</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/%25F0%259F%25A5%25A6+Broccoli+Brawlers+%25F0%259F%25A5%25A6">🥦 Broccoli Brawlers 🥦</a></td>
+                <td>1</td>
+                <td sorttable_customkey="1662012162"><time datetime="2022-09-01T01:02:42.401880+00:00" data-format="M j, H:i">Aug 31, 21:02</time></td>
+                <td sorttable_customkey="299119.805402">83h5m</td>
+                <td sorttable_customkey="1662311282"><time datetime="2022-09-04T12:08:02.207282+00:00" data-format="M j, H:i">Sep 4, 08:08</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Dirty+Bayes">Dirty Bayes</a></td>
+                <td>0</td>
+                <td sorttable_customkey="1662074586"><time datetime="2022-09-01T18:23:06.112693+00:00" data-format="M j, H:i">Sep 1, 14:23</time></td>
+                <td sorttable_customkey="240442.366659">66h47m</td>
+                <td sorttable_customkey="1662315028"><time datetime="2022-09-04T13:10:28.479352+00:00" data-format="M j, H:i">Sep 4, 09:10</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Striketeam+Et+al.">Striketeam Et al.</a></td>
+                <td>2</td>
+                <td sorttable_customkey="1662011618"><time datetime="2022-09-01T00:53:38.631902+00:00" data-format="M j, H:i">Aug 31, 20:53</time></td>
+                <td sorttable_customkey="308051.167934">85h34m</td>
+                <td sorttable_customkey="1662319669"><time datetime="2022-09-04T14:27:49.799836+00:00" data-format="M j, H:i">Sep 4, 10:27</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/tfti">tfti</a></td>
+                <td>15</td>
+                <td sorttable_customkey="1662059542"><time datetime="2022-09-01T14:12:22.018325+00:00" data-format="M j, H:i">Sep 1, 10:12</time></td>
+                <td sorttable_customkey="280356.35078">77h52m</td>
+                <td sorttable_customkey="1662339898"><time datetime="2022-09-04T20:04:58.369105+00:00" data-format="M j, H:i">Sep 4, 16:04</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Time+Vultures">Time Vultures</a></td>
+                <td>8</td>
+                <td sorttable_customkey="1662006565"><time datetime="2022-08-31T23:29:25.286827+00:00" data-format="M j, H:i">Aug 31, 19:29</time></td>
+                <td sorttable_customkey="334370.571195">92h52m</td>
+                <td sorttable_customkey="1662340935"><time datetime="2022-09-04T20:22:15.858022+00:00" data-format="M j, H:i">Sep 4, 16:22</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/The+Wombats">The Wombats</a></td>
+                <td>6</td>
+                <td sorttable_customkey="1662012588"><time datetime="2022-09-01T01:09:48.483523+00:00" data-format="M j, H:i">Aug 31, 21:09</time></td>
+                <td sorttable_customkey="347120.932271">96h25m</td>
+                <td sorttable_customkey="1662359709"><time datetime="2022-09-05T01:35:09.415794+00:00" data-format="M j, H:i">Sep 4, 21:35</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Quarantine+Decrypters">Quarantine Decrypters</a></td>
+                <td>0</td>
+                <td sorttable_customkey="1662016337"><time datetime="2022-09-01T02:12:17.589518+00:00" data-format="M j, H:i">Aug 31, 22:12</time></td>
+                <td sorttable_customkey="344533.564354">95h42m</td>
+                <td sorttable_customkey="1662360871"><time datetime="2022-09-05T01:54:31.153872+00:00" data-format="M j, H:i">Sep 4, 21:54</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Check+My+Understanding">Check My Understanding</a></td>
+                <td>2</td>
+                <td sorttable_customkey="1662107711"><time datetime="2022-09-02T03:35:11.892966+00:00" data-format="M j, H:i">Sep 1, 23:35</time></td>
+                <td sorttable_customkey="262703.213939">72h58m</td>
+                <td sorttable_customkey="1662370415"><time datetime="2022-09-05T04:33:35.106905+00:00" data-format="M j, H:i">Sep 5, 00:33</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Shrektacular">Shrektacular</a></td>
+                <td>1</td>
+                <td sorttable_customkey="1662251518"><time datetime="2022-09-03T19:31:58.573154+00:00" data-format="M j, H:i">Sep 3, 15:31</time></td>
+                <td sorttable_customkey="119998.446906">33h19m</td>
+                <td sorttable_customkey="1662371517"><time datetime="2022-09-05T04:51:57.020060+00:00" data-format="M j, H:i">Sep 5, 00:51</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/sfc">sfc</a></td>
+                <td>0</td>
+                <td sorttable_customkey="1662326652"><time datetime="2022-09-04T16:24:12.195206+00:00" data-format="M j, H:i">Sep 4, 12:24</time></td>
+                <td sorttable_customkey="49872.121935">13h51m</td>
+                <td sorttable_customkey="1662376524"><time datetime="2022-09-05T06:15:24.317141+00:00" data-format="M j, H:i">Sep 5, 02:15</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Unexpected+Items+in+Intentionally-Left-Blank+Area">Unexpected Items in Intentionally-Left-Blank Area</a></td>
+                <td>1</td>
+                <td sorttable_customkey="1662095999"><time datetime="2022-09-02T00:19:59.449707+00:00" data-format="M j, H:i">Sep 1, 20:19</time></td>
+                <td sorttable_customkey="282668.431701">78h31m</td>
+                <td sorttable_customkey="1662378667"><time datetime="2022-09-05T06:51:07.881408+00:00" data-format="M j, H:i">Sep 5, 02:51</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/LongTimeNoSee">LongTimeNoSee</a></td>
+                <td>12</td>
+                <td sorttable_customkey="1662156269"><time datetime="2022-09-02T17:04:29.748474+00:00" data-format="M j, H:i">Sep 2, 13:04</time></td>
+                <td sorttable_customkey="254839.734712">70h47m</td>
+                <td sorttable_customkey="1662411109"><time datetime="2022-09-05T15:51:49.483186+00:00" data-format="M j, H:i">Sep 5, 11:51</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Degree+In+Applied+Nonsense">Degree In Applied Nonsense</a></td>
+                <td>3</td>
+                <td sorttable_customkey="1662144048"><time datetime="2022-09-02T13:40:48.372153+00:00" data-format="M j, H:i">Sep 2, 09:40</time></td>
+                <td sorttable_customkey="276754.944681">76h52m</td>
+                <td sorttable_customkey="1662420803"><time datetime="2022-09-05T18:33:23.316834+00:00" data-format="M j, H:i">Sep 5, 14:33</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Alter+Eggos">Alter Eggos</a></td>
+                <td>5</td>
+                <td sorttable_customkey="1662005065"><time datetime="2022-08-31T23:04:25.325724+00:00" data-format="M j, H:i">Aug 31, 19:04</time></td>
+                <td sorttable_customkey="424152.243173">117h49m</td>
+                <td sorttable_customkey="1662429217"><time datetime="2022-09-05T20:53:37.568897+00:00" data-format="M j, H:i">Sep 5, 16:53</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/hashtagthetwist">hashtagthetwist</a></td>
+                <td>3</td>
+                <td sorttable_customkey="1662329583"><time datetime="2022-09-04T17:13:03.704830+00:00" data-format="M j, H:i">Sep 4, 13:13</time></td>
+                <td sorttable_customkey="103929.957791">28h52m</td>
+                <td sorttable_customkey="1662433513"><time datetime="2022-09-05T22:05:13.662621+00:00" data-format="M j, H:i">Sep 5, 18:05</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Resistant+to+Nail+Polish">Resistant to Nail Polish</a></td>
+                <td>1</td>
+                <td sorttable_customkey="1662022735"><time datetime="2022-09-01T03:58:55.510281+00:00" data-format="M j, H:i">Aug 31, 23:58</time></td>
+                <td sorttable_customkey="411971.369334">114h26m</td>
+                <td sorttable_customkey="1662434706"><time datetime="2022-09-05T22:25:06.879615+00:00" data-format="M j, H:i">Sep 5, 18:25</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/%25F0%259F%2590%25BC+Puzzled+Pandas+%25F0%259F%2590%25BC">🐼 Puzzled Pandas 🐼</a></td>
+                <td>4</td>
+                <td sorttable_customkey="1662065777"><time datetime="2022-09-01T15:56:17.969983+00:00" data-format="M j, H:i">Sep 1, 11:56</time></td>
+                <td sorttable_customkey="383779.331047">106h36m</td>
+                <td sorttable_customkey="1662449557"><time datetime="2022-09-06T02:32:37.301030+00:00" data-format="M j, H:i">Sep 5, 22:32</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/Ace+of+Clubs">Ace of Clubs</a></td>
+                <td>2</td>
+                <td sorttable_customkey="1662094533"><time datetime="2022-09-01T23:55:33.315893+00:00" data-format="M j, H:i">Sep 1, 19:55</time></td>
+                <td sorttable_customkey="365961.96839">101h39m</td>
+                <td sorttable_customkey="1662460495"><time datetime="2022-09-06T05:34:55.284283+00:00" data-format="M j, H:i">Sep 6, 01:34</time></td>
+            </tr>
+            
+            <tr>
+                <td><a href="/team/honium">honium</a></td>
+                <td>5</td>
+                <td sorttable_customkey="1662016951"><time datetime="2022-09-01T02:22:31.543118+00:00" data-format="M j, H:i">Aug 31, 22:22</time></td>
+                <td sorttable_customkey="459413.033796">127h36m</td>
+                <td sorttable_customkey="1662476364"><time datetime="2022-09-06T09:59:24.576914+00:00" data-format="M j, H:i">Sep 6, 05:59</time></td>
+            </tr>
+            
+        </tbody>
+    </table>
+    <table class="sortable list-table">
+        <col style="width: 80%">
+        <col style="width: 20%">
+        <tbody>
+            <tr>
+                <th>Answer</th>
+                <th>Submission count</th>
+            </tr>
+            <tr>
+                <td style="font-family: monospace; font-weight: bold;">MORTAL KOMBAT ARMAGEDDON</td>
+                <td style="font-weight: bold;">103</td>
+            </tr>
+            
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">ARMAGEDDON</td>
+                <td>80</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">MORTALKOMBAT</td>
+                <td>8</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">DANIEL</td>
+                <td>5</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">DECEPTION</td>
+                <td>5</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">KREATEAFIGHTER</td>
+                <td>5</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">SERIESNUMBERSEVENSTITLEDANSWER</td>
+                <td>5</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">WORLDRUGBY</td>
+                <td>5</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">BORAICHO</td>
+                <td>4</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">MORTALKOMBATDECEPTION</td>
+                <td>4</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">THEDEATHLYHALLOWS</td>
+                <td>4</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">UNCHAINED</td>
+                <td>4</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">YUGIOH</td>
+                <td>4</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">RAIDEN</td>
+                <td>3</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">SERIESNUMBERSEVENS</td>
+                <td>3</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">WORLDRUGBYSERIES</td>
+                <td>3</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">BIGGERBETTERBADDER</td>
+                <td>2</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">DAEGON</td>
+                <td>2</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">DEADLYALLIANCE</td>
+                <td>2</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">DESCENDINGSUBTRACTIONTASK</td>
+                <td>2</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">HEBREW</td>
+                <td>2</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">MORTALKOMBATGOLD</td>
+                <td>2</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">MORTALKOMBATTRILOGY</td>
+                <td>2</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">RUGBY</td>
+                <td>2</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">SERIESNUMBERSEVEN</td>
+                <td>2</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">SHAOLINMONKS</td>
+                <td>2</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">SKIESUNKNOWN</td>
+                <td>2</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">SYZYGY</td>
+                <td>2</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">THECONTENDERS</td>
+                <td>2</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">THESEVENTHWARS</td>
+                <td>2</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">THEUMBRELLAACADEMY</td>
+                <td>2</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">TICTACTOE</td>
+                <td>2</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">WORLDRUGBYSEVENS</td>
+                <td>2</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">ACE</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">ADVANCE</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">ALPHA</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">ANEWBEGINNING</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">ANSWER</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">ANSWERSEVENSSERIESNUMBERTITLED</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">APOCALYPSE</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">APPLEWATCH</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">ARMAGEDDONFREEPLAY</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">ARMAGEDDONS</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">ASHRAH</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">BATTLEBOTS</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">BATTLEOFARMAGEDDON</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">BAYERNMUNICH</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">BELOKK</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">BESTOFSEVEN</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">BLANKA</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">BLAZE</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">BOWANDARROW</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">BUNDESLIGA</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">CAPETOWN</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">CATASTROPHE</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">CATHARINE</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">CHIMERA</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">CONAN</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">CONTENDERS</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">CRATER</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">CULT</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">DARINGDEEDSDEALSANDDESTINIES</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">DARIUS</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">DICE</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">DIE</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">DUNGEONSANDDRAGONS</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">ELVESOFALFHEIM</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">EMI</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">EMIGROUPLIMITED</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">ENDOFDAYS</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">ENDOFTIME</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">EPISODEVIITHEFORCEAWAKENS</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">FALLFROMGRACE</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">FAN</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">FORESIGHT</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">FREEPLAYARMAGEDDON</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">FREEPLAYMODE</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">FULLGODHOOD</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">GATHERING</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">GENERALSECURITIES</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">GENERALSECURITIESREPRESENTATIVE</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">GODHOOD</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">GOINGSTEADY</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">GRAHAMFELLOWS</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">HARMAGEDDON</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">HARMAGEDON</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">HARMEGIDDO</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">HARRYPOTTER</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">HARRYPOTTERANDTHEDEATHLYHALLOWS</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">HEBREWTONGUE</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">HILLOFMEGIDDO</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">HYDRA</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">INTRANSITIVE</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">INTRANSITIVEDICE</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">IRB</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">ITSTHEEND</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">JACKPOT</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">JARGON</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">JAX</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">JILTEDJOHN</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">JOHN</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">JOHNPEEL</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">KAI</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">KENSHI</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">KLUTZY</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">KOMBAT</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">KRISTIN</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">KRYPTKOFFINKEY</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">MARINA</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">MEGIDDO</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">MKA</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">MOLOCH</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">MORTAL</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">MORTALKOMBATADVANCE</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">MORTALKOMBATFOUR</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">MORTALKOMBATSEVEN</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">MORTALKOMBATTRILOGYY</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">MOTARO</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">MOTORKOMBAT</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">MOUNTMEGIDDO</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">MUZJIK</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">NITARA</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">NOEXIT</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">OMEGA</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">ONELASTRIDDLE</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">ONESHININGBOT</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">OVERALLTOURNAMENTCHAMPION</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">PIZZAS</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">PLATEBOWLSHIELD</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">PRISONWITHOUTWALLS</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">PYRAMIDOFARGUS</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">QUARTZ</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">QUESTS</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">RAMPAGEVSFORREST</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">REDDRAGONCLAN</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">RNG</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">ROBOTWARS</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">ROBOTWARSTHESEVENTHWARS</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">ROLLMEAWAY</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">RUGBYWORLDCUP</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">SCANBO</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">SEKTOR</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">SERIALSEVENS</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">SERIESNUMBERSEVENSTITLED</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">SEVEN</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">SEVENDEADLYSINS</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">SEVENSSERIES</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">SEVENSWORLDSERIES</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">SHEEVA</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">SHUDDERTOTHINK</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">SINDEL</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">SKIVVY</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">SOUTHAFRICA</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">SPECIALFORCES</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">STARTREKDISCOVERY</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">STARWARSTHEFORCEAWAKENS</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">STEELBALLRUN</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">STREETFIGHTER</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">SUNANDMOON</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">SURVIVORPEARLISLANDS</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">TAVEN</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">TELMEGIDDO</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">TEMPLEOFARGUS</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">TESTYOURMIGHT</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">THEAPOCALYPSESUITE</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">THEASHVAMEDHAPROPHECY</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">THEDEADLYALLIANCE</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">THEDRAGONKING</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">THEENDALL</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">THEENDDAYS</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">THEENDWAR</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">THEFORCEAWAKENS</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">THEGEARSAWAKEN</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">THELASTTIME</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">THEREVENGEOFSEVEN</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">THETHRONEROOM</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">THEVILEVILLAGE</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">THEWHITEVIOLIN</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">THEXFILES</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">THREEBLANKFIELDS</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">TILTHEEND</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">TOMBSTONE</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">TONGUE</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">TREMOR</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">TRILOGY</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">TRUSTY</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">UMBRELLAACADEMY</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">WHITEVIOLIN</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">WHOSHOTJR</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">WINTERISHERE</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">WORLDRUGBYSEVENSSERIES</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">WORLDSEVENSSERIES</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">XFILES</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td style="font-family: monospace; word-break: break-all;">YOUUNLOCKEDTAVEN</td>
+                <td>1</td>
+            </tr>
+            
+        </tbody>
+    </table>
+</main>
+
+
+    </div>
+    
+
+    
+
+    
+    <script>
+    document.getElementById('nav-music').style.display = 'none';
+    document.getElementById("progress-simulator").addEventListener("submit", (e) => {
+        if (e.submitter.name === "reset") {
+            toggleReset(true);
+            doGlitch(false);
+            document.getElementById("shortcuts").checked = false;
+            e.preventDefault();
+        } else {
+            localStorage.setItem(e.submitter.name, e.submitter.value);
+        }
+    });
+    addStyles();
+
+    function toggleReset(which) {
+        $('#loop-reset').toggleClass('loop-resetting', which);
+    }
+
+    function addStyles() {
+        const changeFavicon = (url) => {
+            const e = Array.from(document.getElementsByTagName("link"))
+                .filter(e => e.rel === "icon")[0];
+            e.href = url;
+        }
+        const addSheet = (url) => {
+            const e = document.createElement("link");
+            e.rel = "stylesheet";
+            e.href = url;
+            document.getElementsByTagName("head")[0].appendChild(e);
+        }
+
+        const seasons = ["spring", "summer", "autumn", "winter"];
+        let current_main_round = localStorage.getItem("round");
+        const endgame_unlocked = localStorage.getItem("endgame") === "true";
+
+        const matches = new RegExp(`\\?(${seasons.join("|")})`).exec(document.URL);
+        if (matches && matches[1]) {
+            current_main_round = matches[1];
+        }
+
+        if (endgame_unlocked) {
+            addSheet("/static/css/endgame.css");
+            changeFavicon("/static/images/favicon-endgame.ico");
+            const nodes = document.getElementsByClassName("energy-nodes-info");
+            console.log(nodes);
+            if (nodes.length > 0) {
+                nodes[0].style.display = "block";
+            }
+        } else if (current_main_round === "concert") {
+            addSheet("/static/css/concert.css");
+            changeFavicon("/static/images/favicon-concert.ico");
+            // also add the concert music
+            document.getElementById('nav-music').style.display = 'inline-block';
+            const audio = document.getElementById("music-audio");
+            if (audio) {
+                audio.addEventListener('play', () => {
+                    audio.volume = localStorage.getItem('music-audio-volume') ?? 0.5;
+                });
+                audio.addEventListener('volumechange', () => {
+                    localStorage.setItem('music-audio-volume', audio.volume);
+                });
+            }
+        } else if (seasons.includes(current_main_round)) {
+            addSheet("/static/css/season.css");
+            addSheet(`/static/css/${current_main_round}.css`);
+            changeFavicon(`/static/images/favicon-${current_main_round}.ico`);
+        } else {
+            addSheet("/static/css/blue.css");
+            changeFavicon("/static/images/favicon-blue.ico");
+        }
+    }
+
+    registerOnGlitchHook((ex) => {
+        document.getElementById('background-glitch-wrapper').style.display = 'initial';
+    });
+    </script>
+    
+</body>
+</html>

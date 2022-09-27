@@ -1,0 +1,484 @@
+
+
+
+
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+<title>Solution: Just Wait an Hour</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <meta property="og:title" content="Galactic Puzzle Hunt 2022">
+    <meta property="og:description" content="Registration for this year's Galactic Puzzle Hunt is now open!">
+    <meta property="og:image" content="https://galacticpuzzlehunt.com/static/images/banner.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:slnt,CASL,CRSV,MONO@-3,0.5,1,1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/skeleton.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.formset/1.2.2/jquery.formset.min.js"></script>
+    <script src="/jsi18n/"></script>
+    <script src="/static/js/sorttable.js"></script>
+    <script src="/static/js/tray.js"></script>
+    <script src="/static/js/notify.js"></script>
+    <script src="/static/js/time.js"></script>
+    
+    
+    <link rel="icon" sizes="16x16 32x32 48x48 64x64" href="/static/images/favicon.ico" type="image/vnd.microsoft.icon">
+    
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92192633-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-92192633-1');
+</script>
+
+</head>
+<body>
+    
+    <div id="background-glitch-wrapper" class="background-glitch">
+        <div class="glitch-1"></div>
+        <div class="glitch-2"></div>
+        <div class="glitch-3"></div>
+    </div>
+    
+    
+    <input id="shortcuts" type="checkbox">
+    
+    <nav>
+        <span class="tray">
+            <span id="tray-timer"></span>
+            <div class="top-tabs">
+                <a href="/">
+                    Home
+                </a>
+                
+                
+                <a href="/story">
+                    Story
+                </a>
+                
+                
+                <a class="selected-tab" href="/puzzles">
+                    Puzzles
+                </a>
+                
+                <a href="/teams">
+                    Teams
+                </a>
+                
+                
+                <a href="/errata">
+                    Updates
+                </a>
+                
+                
+                
+                
+                <a id="nav-music" href="#">
+                    <label for="music" title="Music" style="margin-bottom: 0; font-weight: normal; cursor: pointer;">Music</label>
+                </a>
+                <input id="music" type="checkbox">
+                <div class="shortcuts music">
+                    <audio id="music-audio" controls src="/static/puzzle_resources/worlds-end-concert/music-audio.mp3">
+                        There should be a music player here.
+                    </audio>
+                </div>
+                
+                
+            </div>
+            <div class="top-left-actions">
+                
+<a href="/puzzle/just-wait-an-hour" class="btn">Back to the puzzle</a>
+
+            </div>
+        </span>
+        <div class="top-right-actions">
+        
+        <label for="shortcuts" title="Simulator">Simulator </label>
+        
+        
+        </div>
+    </nav>
+    
+    <div class="shortcuts">
+        <form id="progress-simulator">
+        <div>Current round:</div>
+        <button class="btn" type="submit" name="round" value="forward">⬆️</button>
+        <button class="btn" type="submit" name="round" value="spring">🌸</button>
+        <button class="btn" type="submit" name="round" value="summer">☀️</button>
+        <button class="btn" type="submit" name="round" value="autumn">🍂</button>
+        <button class="btn" type="submit" name="round" value="winter">☃️</button>
+        <button class="btn" type="submit" name="round" value="concert">🎤</button>
+        <button class="btn" type="submit" name="round" value="none">None</button>
+        <div>Endgame:</div>
+        <button class="btn" type="submit" name="endgame" value="true">Unlock</button>
+        <button class="btn" type="submit" name="endgame" value="false">Reset</button>
+        <div>Reset:</div>
+        <button class="btn" type="submit" name="reset" value="reset">Reset</button>
+        </form>
+    </div>
+    
+    
+    
+    
+    
+    <div id="loop-reset">
+        <form>
+            <svg viewBox="-30 160 720 320">
+                <defs>
+                    <path id="loop-end-path" d="m 370,240 c 38.29044,0 74.26676,18.33512 96.83716,49.26624 l -76.8369,30.73478 V 270 L 300,330 261.03858,309.74192 c 19.60706,-42.51188 62.14674,-69.74008 108.9623,-69.74306 z m 106.15758,64.22738 c 6.65282,12.65518 10.9906,26.39738 12.80876,40.57862 l -38.96532,5.19538 z"/>
+                </defs>
+                <foreignObject width="720" height="480" clip-path="url(#loop-end-clip)" class="loop-shade">
+                    <aside class="loop-shade" xmlns="http://www.w3.org/1999/xhtml" style="width: 100%; height: 100%;"></aside>
+                </foreignObject>
+                <clipPath id="loop-end-clip"><use href="#loop-end-path"/></clipPath>
+                <use href="#loop-end-path"/>
+                <path d="M 490,400 600,330 450,350 490,280 390,320 V 270 L 300,330 50,200 170,380 50,400"/>
+            </svg>
+            <div>THE END</div>
+            <p>You can reset once per minute.</p>
+            <table>
+                <tr id="loop-reset-btn-row-reset">
+                    <td><button class="btn" disabled>Reset</button></td>
+                    <td>Start over from the beginning of the exam.</td>
+                </tr>
+                <tr id="loop-reset-btn-row-restore">
+                    <td><button class="btn" disabled>Jump</button></td>
+                    <td>Start over, but resubmit your previous answers to bring you back to this point.</td>
+                </tr>
+                <tr>
+                    <td><a class="btn" href="javascript:toggleReset(false)">Stay</a></td>
+                    <td>Look at this page a bit longer. Make sure to save your work.</td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    
+    <script>
+
+    
+    
+    let glitchTriggerFuncs = [];
+    let glitchTriggerReceived = false;
+    let glitchTriggerExReceived = false;
+    let glitchPageLoaded = false;
+    function processGlitchFuncs(ex) {
+        glitchTriggerFuncs.forEach((func) => {
+            func(ex);
+        });
+    }
+    function doGlitch(ex) {
+        glitchTriggerReceived = true;
+        if (ex) {
+            glitchTriggerExReceived = true;
+        }
+        if (glitchPageLoaded) {
+            processGlitchFuncs(ex);
+        }
+    }
+    window.addEventListener('load', () => {
+        glitchPageLoaded = true;
+        if (glitchTriggerExReceived) {
+            processGlitchFuncs(true);
+        }
+        else if (glitchTriggerReceived) {
+            processGlitchFuncs(false);
+        }
+    }, false);
+    
+    
+    
+    function registerOnGlitchHook(func) {
+        if (glitchTriggerExReceived) {
+            func(true);
+        }
+        else if (glitchTriggerReceived) {
+            func(false);
+        }
+        glitchTriggerFuncs.push(func);
+    }
+    
+
+    
+    
+    </script>
+    <div class="content">
+        
+
+<style>
+h2 {
+    font-size: 2.5rem;
+    font-weight: normal;
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+
+h4 {
+    font-size: 2rem;
+    font-weight: normal;
+    margin: 2rem 0;
+}
+</style>
+
+<h1>
+    Solution <span style="font-weight: 300">Just Wait an Hour</span>
+    <div class="solved-title-marker">Answer <span class="solved-title-answer spoiler">A TO Z</span></div>
+</h1>
+
+<main class="puzzle-main">
+    <h2 style="margin-top: 0">
+        Written by
+        
+Lewis Chen
+
+    </h2>
+
+    
+    <p>As the title suggests, just wait an hour and the answer should be fairly evident.</p>
+<p>Wait, you’re telling me that this round restarts after staying on the page for four minutes? Oops. I guess we should figure out how to determine what the state of the puzzle will look like in 1 hour, based on the information that we can see for the four minutes that we can access the puzzle, and extrapolate the answer from there.</p>
+<h3>Top left (color grid)</h3>
+<p>This is a color grid where each cell slowly rotates around the entire color wheel. You can measure the periods of each cell to be successive primes starting from 7 seconds up to 107. So, in order to determine what the grid looks like in 3600 seconds, it suffices to look at the state of each cell at 3600 mod p seconds. Doing so gives a grid of red with a teal <strong>A</strong> superimposed.</p>
+<h3>Top right (uppercase letters)</h3>
+<p>The text changes once per second. Taking the first few blocks of text from the start of the puzzle, we can note a few patterns. First, the length of the text is always 12 characters. Furthermore, looking at each character position individually reveals that each of them follows a different pattern. They are as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Calculation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>product of digits+1 mod 26</td>
+<td>3600 -&gt; 4*7*1*1 = 28 = 2 mod 26 = B</td>
+</tr>
+<tr>
+<td>product of distinct odd prime factors mod 26</td>
+<td>3600 -&gt; 3*5 = 15 = O</td>
+</tr>
+<tr>
+<td>QWERTYUIOP... order</td>
+<td>3600 = 12 mod 26; top row has 10 letters. 2nd letter in 2nd row = S</td>
+</tr>
+<tr>
+<td>sum of A1Z26 of roman numeral representation mod 26</td>
+<td>3600 = MMMDC = 13*3+4+3=46 = 20 mod 26 = T</td>
+</tr>
+<tr>
+<td>sum of digits when written in hexadecimal mod 26</td>
+<td>3600 = 0xe10; e+1+0=15 = O</td>
+</tr>
+<tr>
+<td>Prime factorize, then convert each prime factor p to n, where p is the nth prime. Finally take the sum of the new numbers mod 26</td>
+<td>3600 = 2^4*3^2*5^2; 1*4+2*2+3*2=14 = N</td>
+</tr>
+<tr>
+<td>reinterpret as base 19 number, then mod 26</td>
+<td>3*19^3 + 6*19^2 = 22743 = 19 mod 26 = S</td>
+</tr>
+<tr>
+<td>nth prime mod 26</td>
+<td>3600th prime = 33613 = 21 mod 26 = U</td>
+</tr>
+<tr>
+<td>v_3(n) (how many factors of 3 n has)</td>
+<td>3^2 divides 3600 but not 3^3, so B</td>
+</tr>
+<tr>
+<td>length of number written out mod 26</td>
+<td>3600 = “threethousandsixhundred” = 23 letters = W</td>
+</tr>
+<tr>
+<td>nth digit of e</td>
+<td>3600th digit of e (including 2) is 1 = A</td>
+</tr>
+<tr>
+<td>F_(n-1) mod 26</td>
+<td>F_3599 mod 26 = 25 = Y</td>
+</tr>
+</tbody>
+</table>
+<p>Then, compute the values for 3600. Doing so gives the message BOSTONSUBWAY which clues the letter <strong>T</strong>.</p>
+<p>Useful tools to help find and compute the terms include OEIS and WolframAlpha. Of particular note, the 10th function has some ambiguity over whether to include the word “and” when spelling out numbers. You can verify that “and” should not be included by looking at values over 100 (about two minutes in). Also, for some of the sequences it might be helpful to look at successive differences between letters.</p>
+<h3>Bottom left (lowercase letters)</h3>
+<p>Observing the text in the initial seconds, it turns out that the text initially is Caesar shifted forward by 1, 2, 3, 4, up to 9. This can be done by either taking the pairwise difference of successive strings, or noting the letter frequency of the strings. However, this pattern breaks afterwards. Taking differences, the next string keeps the letters in the even position the same, while shifting the odd positions forward by 1.</p>
+<p>This behavior turns out to describe the Gronsfeld cipher with keys 1, 2, 3, ..., which is essentially Vigenere but using numbers instead as a key. You can then compute the 3600th string (i.e. after 3599 encipherments) fairly quickly by batching Gronsfeld ciphers of the same key length, by doing a bit of math as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Encipherment</th>
+<th>Total action</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(start)</td>
+<td>-</td>
+<td>ajjjwkobayyrltmqhkkdxhnrlnndtuldhsrklvwo</td>
+</tr>
+<tr>
+<td>1–9</td>
+<td>Shift all letters forward by 45. (Vigenere T)</td>
+<td>tcccpdhutrrkemfjaddwqagkeggwmnewalkdeoph</td>
+</tr>
+<tr>
+<td>10–99</td>
+<td>90 total; first digit is average 5; second digit is average 4.5. So shift odd letters by 450 and even letters by 405. (Vigenere IP)</td>
+<td>brkrxspjbgzzmbnyisllypozmvolucmliassmdxw</td>
+</tr>
+<tr>
+<td>100–999</td>
+<td>900 total; Averages 5, 4.5, 4.5; Shift letters 4500, 4050, 4050 repeating (Vigenere CUU)</td>
+<td>dletrmrdvittovhacmnfsritopinowofccmmoxry</td>
+</tr>
+<tr>
+<td>1000–2999</td>
+<td>2000 total; Averages 1.5, 4.5, 4.5, 4.5; Shift letters 3000, 9000, 9000, 9000 repeating (Vigenere KEEE)</td>
+<td>npixbqvhfmxxyzlemqrjcvmxytmryasjmgqqybvc</td>
+</tr>
+<tr>
+<td>3000–3599</td>
+<td>600 total; Averages 3, 2.5, 4.5, 4.5; Shift letters 1800, 1500, 2700, 2700 repeating (Vigenere GSWW)</td>
+<td>thethirdletterhasinfinitelinesofsymmetry</td>
+</tr>
+</tbody>
+</table>
+<p>Alternatively you could write a program to perform the encipherments. At any rate, the message to be read at the hour mark is “the third letter has infinite lines of symmetry” which gives the letter O.</p>
+<h3>Bottom right (dots and line)</h3>
+<p>The dots travel in a straight line with constant velocity; when they hit the edges of the canvas they bounce perfectly, inverting the axis of direction of the wall that they bounced off. It’s also true that the velocity is exactly 5 pixels per second for each dot, which could help with confirming the velocities, and the angles from horizontal are pi/22, 2pi/22, …, 10pi/22. This exact fact is not required to solve the puzzle, but teams that notice this can directly compute the position of the dots. An important fact as a result is that regardless of how the dots bounce, no two dots will ever travel in a parallel direction.</p>
+<p>This allows one to match up dots from different timestamps without having to watch the intervening seconds, as long as one can determine the direction that the dots are traveling. This can be done with taking a few screenshots about 5 seconds apart, and then measuring the directions that the dots are traveling. With the line, you only need to match the endpoints of the line; one of the endpoints should always be traveling nearly horizontally while the other one should always be traveling nearly vertically.</p>
+<p>When taking screenshots, the exact dimensions of the box is 350 pixels, but if you save the image the dimensions are 400 pixels. Either way let this value be L. There are two approaches that the author is aware of. The former requires a bit more measurement but is probably more natural to come up with, and the latter requires less measurement.</p>
+<h4>Approach 1</h4>
+<p>First, we may take two screenshots at approximately 5 seconds apart (say, at 2:30 and 2:35) in order to get a rough idea of the velocities of the dots. (We will want to be careful to note whether a dot reflects across a wall, and reflect the coordinate if so.)</p>
+<p>Next, using this rough velocity estimate, we can measure the screenshots at a longer interval, for example 150 seconds apart (with 0:00). If our measurements were at most 1px off, then we can calculate estimated positions and be at most 30px off. We can then refine our velocity estimate by adjusting our predicted position at most 30px away.</p>
+<p>We can then multiply the displacement vector at 150 seconds by 56 * 60 / 150 to get the desired displacement vector at an hour, to a precision of 22px. Note that teams may use different numbers with differing tradeoffs in terms of precision and effort.</p>
+<h4>Approach 2</h4>
+<p>We can get the exact state of the dots after 4 minutes using the Stay functionality. If we knew the initial state of the dots, we could perform a linear combination of the two states to get the state at 1 hour, as 56 minutes (the time remaining after 4 minutes) is exactly 14 * 4 minutes. Since it’s very difficult to input answers to get the initial state exactly, the next best time is to do it at the next divisor of 56 minutes. 56 minutes / 15 = 3 minutes 44 seconds exactly, so we should take note of the position at the moment when the timer changes from 3:45 to 3:44, creating a multiplier of 15 instead of 14. (If getting the position of the dots is too hard at 3:44 due to the loop being too slow to execute, then taking the position at 3:30 and multiplying by 16 would work as well.)</p>
+<p>Given these two states, you can then compute the state of the dots 1 hour in. (If the velocity is flipped in a certain axis, you’ll need to do a bit of work to make things linear—in particular, you’ll want to reflect over that axis and add L pixels (the size of the box) and later take things modulo 2L pixels.)</p>
+<p>Finally, you can multiply the 3 minute 44 seconds displacement vector by 15 in order to get the state 1 hour in. If you made measurements accurate to 1px originally, all of the dots will be accurate to within 15px in the new image, which should be enough to resolve the image.</p>
+<h4>Finishing up</h4>
+<p>Either way, if we compute the positions of the dots to enough precision, it turns out that the dots will make the letter <strong>Z</strong>. Reading off the letter should be relatively insensitive to small changes in time, as all of the dots are traveling roughly in the same direction (all southwest) at the 1 hour mark, so the letter should still be readable even if it is computed a few seconds too early or late.</p>
+<p>Thus, reading off the letters in standard reading order gives the answer <strong>A TO Z</strong>.</p>
+
+    
+    
+    <h2 id="authors-notes">Author&rsquo;s Notes</h2>
+    <p>This puzzle’s original concept started as just a lot of dots moving from some letter forms to another (as a fairly literal interpretation of the answer), but I suspect that trying to track the positions of hundreds of dots is probably not very fun. So it instead became a set of four minipuzzles about extrapolation, with the dots featuring in only one of the minipuzzles.</p>
+<p>Other outtakes: the lowercase letters part originally was successive applications of Vigenere with keys that were the spelled out numbers, but that basically required the use of programming to compute and so was cut. I also briefly considered dots orbiting around a central point but that is probably too similar to the color grid puzzle.</p>
+    
+
+    
+    
+
+    
+    <div class="puzzle-main-corner puzzle-main-corner-1"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-2"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-3"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-4"></div>
+    
+</main>
+
+
+    </div>
+    
+
+    
+
+    
+    <script>
+    document.getElementById('nav-music').style.display = 'none';
+    document.getElementById("progress-simulator").addEventListener("submit", (e) => {
+        if (e.submitter.name === "reset") {
+            toggleReset(true);
+            doGlitch(false);
+            document.getElementById("shortcuts").checked = false;
+            e.preventDefault();
+        } else {
+            localStorage.setItem(e.submitter.name, e.submitter.value);
+        }
+    });
+    addStyles();
+
+    function toggleReset(which) {
+        $('#loop-reset').toggleClass('loop-resetting', which);
+    }
+
+    function addStyles() {
+        const changeFavicon = (url) => {
+            const e = Array.from(document.getElementsByTagName("link"))
+                .filter(e => e.rel === "icon")[0];
+            e.href = url;
+        }
+        const addSheet = (url) => {
+            const e = document.createElement("link");
+            e.rel = "stylesheet";
+            e.href = url;
+            document.getElementsByTagName("head")[0].appendChild(e);
+        }
+
+        const seasons = ["spring", "summer", "autumn", "winter"];
+        let current_main_round = localStorage.getItem("round");
+        const endgame_unlocked = localStorage.getItem("endgame") === "true";
+
+        const matches = new RegExp(`\\?(${seasons.join("|")})`).exec(document.URL);
+        if (matches && matches[1]) {
+            current_main_round = matches[1];
+        }
+
+        if (endgame_unlocked) {
+            addSheet("/static/css/endgame.css");
+            changeFavicon("/static/images/favicon-endgame.ico");
+            const nodes = document.getElementsByClassName("energy-nodes-info");
+            console.log(nodes);
+            if (nodes.length > 0) {
+                nodes[0].style.display = "block";
+            }
+        } else if (current_main_round === "concert") {
+            addSheet("/static/css/concert.css");
+            changeFavicon("/static/images/favicon-concert.ico");
+            // also add the concert music
+            document.getElementById('nav-music').style.display = 'inline-block';
+            const audio = document.getElementById("music-audio");
+            if (audio) {
+                audio.addEventListener('play', () => {
+                    audio.volume = localStorage.getItem('music-audio-volume') ?? 0.5;
+                });
+                audio.addEventListener('volumechange', () => {
+                    localStorage.setItem('music-audio-volume', audio.volume);
+                });
+            }
+        } else if (seasons.includes(current_main_round)) {
+            addSheet("/static/css/season.css");
+            addSheet(`/static/css/${current_main_round}.css`);
+            changeFavicon(`/static/images/favicon-${current_main_round}.ico`);
+        } else {
+            addSheet("/static/css/blue.css");
+            changeFavicon("/static/images/favicon-blue.ico");
+        }
+    }
+
+    registerOnGlitchHook((ex) => {
+        document.getElementById('background-glitch-wrapper').style.display = 'initial';
+    });
+    </script>
+    
+</body>
+</html>

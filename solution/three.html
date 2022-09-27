@@ -1,0 +1,431 @@
+
+
+
+
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+<title>Solution: Three</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <meta property="og:title" content="Galactic Puzzle Hunt 2022">
+    <meta property="og:description" content="Registration for this year's Galactic Puzzle Hunt is now open!">
+    <meta property="og:image" content="https://galacticpuzzlehunt.com/static/images/banner.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:slnt,CASL,CRSV,MONO@-3,0.5,1,1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/skeleton.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.formset/1.2.2/jquery.formset.min.js"></script>
+    <script src="/jsi18n/"></script>
+    <script src="/static/js/sorttable.js"></script>
+    <script src="/static/js/tray.js"></script>
+    <script src="/static/js/notify.js"></script>
+    <script src="/static/js/time.js"></script>
+    
+    
+    <link rel="icon" sizes="16x16 32x32 48x48 64x64" href="/static/images/favicon.ico" type="image/vnd.microsoft.icon">
+    
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92192633-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-92192633-1');
+</script>
+
+</head>
+<body>
+    
+    <div id="background-glitch-wrapper" class="background-glitch">
+        <div class="glitch-1"></div>
+        <div class="glitch-2"></div>
+        <div class="glitch-3"></div>
+    </div>
+    
+    
+    <input id="shortcuts" type="checkbox">
+    
+    <nav>
+        <span class="tray">
+            <span id="tray-timer"></span>
+            <div class="top-tabs">
+                <a href="/">
+                    Home
+                </a>
+                
+                
+                <a href="/story">
+                    Story
+                </a>
+                
+                
+                <a class="selected-tab" href="/puzzles">
+                    Puzzles
+                </a>
+                
+                <a href="/teams">
+                    Teams
+                </a>
+                
+                
+                <a href="/errata">
+                    Updates
+                </a>
+                
+                
+                
+                
+                <a id="nav-music" href="#">
+                    <label for="music" title="Music" style="margin-bottom: 0; font-weight: normal; cursor: pointer;">Music</label>
+                </a>
+                <input id="music" type="checkbox">
+                <div class="shortcuts music">
+                    <audio id="music-audio" controls src="/static/puzzle_resources/worlds-end-concert/music-audio.mp3">
+                        There should be a music player here.
+                    </audio>
+                </div>
+                
+                
+            </div>
+            <div class="top-left-actions">
+                
+<a href="/puzzle/three" class="btn">Back to the puzzle</a>
+
+            </div>
+        </span>
+        <div class="top-right-actions">
+        
+        <label for="shortcuts" title="Simulator">Simulator </label>
+        
+        
+        </div>
+    </nav>
+    
+    <div class="shortcuts">
+        <form id="progress-simulator">
+        <div>Current round:</div>
+        <button class="btn" type="submit" name="round" value="forward">⬆️</button>
+        <button class="btn" type="submit" name="round" value="spring">🌸</button>
+        <button class="btn" type="submit" name="round" value="summer">☀️</button>
+        <button class="btn" type="submit" name="round" value="autumn">🍂</button>
+        <button class="btn" type="submit" name="round" value="winter">☃️</button>
+        <button class="btn" type="submit" name="round" value="concert">🎤</button>
+        <button class="btn" type="submit" name="round" value="none">None</button>
+        <div>Endgame:</div>
+        <button class="btn" type="submit" name="endgame" value="true">Unlock</button>
+        <button class="btn" type="submit" name="endgame" value="false">Reset</button>
+        <div>Reset:</div>
+        <button class="btn" type="submit" name="reset" value="reset">Reset</button>
+        </form>
+    </div>
+    
+    
+    
+    
+    
+    <div id="loop-reset">
+        <form>
+            <svg viewBox="-30 160 720 320">
+                <defs>
+                    <path id="loop-end-path" d="m 370,240 c 38.29044,0 74.26676,18.33512 96.83716,49.26624 l -76.8369,30.73478 V 270 L 300,330 261.03858,309.74192 c 19.60706,-42.51188 62.14674,-69.74008 108.9623,-69.74306 z m 106.15758,64.22738 c 6.65282,12.65518 10.9906,26.39738 12.80876,40.57862 l -38.96532,5.19538 z"/>
+                </defs>
+                <foreignObject width="720" height="480" clip-path="url(#loop-end-clip)" class="loop-shade">
+                    <aside class="loop-shade" xmlns="http://www.w3.org/1999/xhtml" style="width: 100%; height: 100%;"></aside>
+                </foreignObject>
+                <clipPath id="loop-end-clip"><use href="#loop-end-path"/></clipPath>
+                <use href="#loop-end-path"/>
+                <path d="M 490,400 600,330 450,350 490,280 390,320 V 270 L 300,330 50,200 170,380 50,400"/>
+            </svg>
+            <div>THE END</div>
+            <p>You can reset once per minute.</p>
+            <table>
+                <tr id="loop-reset-btn-row-reset">
+                    <td><button class="btn" disabled>Reset</button></td>
+                    <td>Start over from the beginning of the exam.</td>
+                </tr>
+                <tr id="loop-reset-btn-row-restore">
+                    <td><button class="btn" disabled>Jump</button></td>
+                    <td>Start over, but resubmit your previous answers to bring you back to this point.</td>
+                </tr>
+                <tr>
+                    <td><a class="btn" href="javascript:toggleReset(false)">Stay</a></td>
+                    <td>Look at this page a bit longer. Make sure to save your work.</td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    
+    <script>
+
+    
+    
+    let glitchTriggerFuncs = [];
+    let glitchTriggerReceived = false;
+    let glitchTriggerExReceived = false;
+    let glitchPageLoaded = false;
+    function processGlitchFuncs(ex) {
+        glitchTriggerFuncs.forEach((func) => {
+            func(ex);
+        });
+    }
+    function doGlitch(ex) {
+        glitchTriggerReceived = true;
+        if (ex) {
+            glitchTriggerExReceived = true;
+        }
+        if (glitchPageLoaded) {
+            processGlitchFuncs(ex);
+        }
+    }
+    window.addEventListener('load', () => {
+        glitchPageLoaded = true;
+        if (glitchTriggerExReceived) {
+            processGlitchFuncs(true);
+        }
+        else if (glitchTriggerReceived) {
+            processGlitchFuncs(false);
+        }
+    }, false);
+    
+    
+    
+    function registerOnGlitchHook(func) {
+        if (glitchTriggerExReceived) {
+            func(true);
+        }
+        else if (glitchTriggerReceived) {
+            func(false);
+        }
+        glitchTriggerFuncs.push(func);
+    }
+    
+
+    
+    
+    </script>
+    <div class="content">
+        
+
+<style>
+h2 {
+    font-size: 2.5rem;
+    font-weight: normal;
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+
+h4 {
+    font-size: 2rem;
+    font-weight: normal;
+    margin: 2rem 0;
+}
+</style>
+
+<h1>
+    Solution <span style="font-weight: 300">Three</span>
+    <div class="solved-title-marker">Answer <span class="solved-title-answer spoiler">DEUTSCHE MARK</span></div>
+</h1>
+
+<main class="puzzle-main">
+    <h2 style="margin-top: 0">
+        Written by
+        
+Alan Huang
+
+    </h2>
+
+    
+    
+<p>We can enter things in the answer submission box. If we enter a correct answer, we get a different question or a letter.
+
+<p>There are exactly three accepted answers for the country in the United Kingdom: England, Ireland, and Scotland. This is not accurate today, but it was true for a certain period of history. All of the questions in the puzzle follow this pattern. They fall into the following three groups, although completely understanding the structure is not necessary to solve the puzzle, as long as we can discover answers by combining research with trial and error.
+
+<ul>
+<li>If the question just reads &ldquo;the country in,&rdquo; then it refers to a single country made of three constituent parts. It is considered to begin when the united country is declared and end when one of the parts becomes independent.
+<li>If the question reads &ldquo;the country in what used to be,&rdquo; then it refers to a period when a formerly united country is considered to be split into three parts.
+<li>If the question reads &ldquo;the country in what will be,&rdquo; then it refers to a period when three countries exist prior to their unification into a single state. (Some countries fall into both of these categories, but are phrased as one or the other.)
+</ul>
+
+<p>The graph of questions is shown below. Of the three answers to each question, the first in alphabetical order always takes us to a country earlier in history that significantly overlapped in territory. The last in alphabetical order takes us to a country later in history that significantly overlapped in territory. The middle answer takes us to a country elsewhere in the world that overlapped in time. These transitions are indicated by the arrows that are shown when we navigate between questions, which match the directions in the diagram.
+
+<p style="text-align: center"><img src="three.svg" style="width: 80%">
+
+<p>When we enter an answer but there&rsquo;s no available destination in the corresponding direction, we receive a letter instead. Aside from Francia, we can then associate each &ldquo;earlier&rdquo; letter with the beginning of the time period, and each &ldquo;later&rdquo; letter with the end.
+
+<p>As an example, the answers for the United Kingdom are England, Ireland, and Scotland. Since England is the alphabetically earliest, it brings us to an earlier country on the same territory, namely the Roman Empire. The middle answer, Ireland, brings us to Gran Colombia, which existed concurrently with the United Kingdom. Scotland has no later country to move to, so it gives us W, and we should associate this with the end of the time period, which is 1922.
+
+<p>When we reach West Germany, we are also presented with a schematic version of the diagram:
+
+<p style="text-align: center"><img src="/static/puzzle_resources/three-0ea2d3.svg">
+
+<p>The diagram indicates that where we currently are is important, and that we only care about the relative ordering of dates, not exact years. If we read all the letters in chronological order, we get CURRENCY TWO WDS. We therefore want the currency of West Germany, the <b>DEUTSCHE MARK</b>.
+
+
+    
+    
+    <h2 id="authors-notes">Author&rsquo;s Notes</h2>
+    <p>I wanted to write a puzzle about history, as I think this area of social studies is often neglected in puzzling compared to (say) geography or linguistics. Unfortunately, there is of course a reason for this: history is messy and inexact, and it&rsquo;s hard to find data that both lines up with what you need and is something historians actually agree on.</p>
+<p>Regardless, even if you didn&rsquo;t have that much fun, I hope at least you learned something new.</p>
+<p><em>Gallia est omnis divisa in partes tres...</em></p>
+    
+
+    
+    
+    <h2 id="appendix">
+Appendix: Notes on countries
+</h2>
+    
+<style>dt { font-weight: bold }</style>
+
+<p>There is often some wiggle room in interpretation, but the goal is for the puzzle to provide enough information to communicate the intent.
+
+<dl>
+<dt>Rome (two wds)</dt>
+<dd>The time period used is the interval where the <b>Gallic Empire</b> and <b>Palmyrene Empire</b> had seceded from the <b>Roman Empire</b>, for a few years around 270 AD during the Crisis of the Third Century.</dd>
+
+<dt>China (one wd)</dt>
+<dd>While many smaller states existed at various points concurrently, both China and Korea have a standard set of Three Kingdoms, in this case <b>Wei</b>, <b>Han</b> (<b>Shu</b> is also accepted), and <b>Wu</b> (which are sometimes given two-character names to disambiguate them). There is some fudging here: in order to overlap with Rome, China needs to be extended to the end of the &ldquo;Three Kingdoms period,&rdquo; by which time there had already only been two kingdoms for several years.</dd>
+
+<dt>Korea (one wd)</dt>
+<dd>The time period is considered to end when <b>Silla</b> conquers the other states of <b>Baekje</b> and <b>Goguryeo</b> in the 660s AD.</dd>
+
+<dt>Francia (two wds)</dt>
+<dd>The time period used is from the Treaty of Verdun in 843, which divided the Frankish or Carolingian Empire into <b>West Francia</b>, <b>Middle Francia</b>, and <b>East Francia</b>, to the partition of Middle Francia soon afterward.</dd>
+
+<dt>Kalmar Union (one wd)</dt>
+<dd>The Kalmar Union combined <b>Denmark</b>, <b>Sweden</b>, and <b>Norway</b>, along with their possessions including Finland, Greenland, and Iceland. While they also included a few islands that are today Scottish, these are not treated as a substantial territorial overlap. The time period is considered to end when Sweden leaves the union in 1523.</dd>
+
+<dt>Spain (one wd)</dt>
+<dd>This is a slightly awkward case. The narrow interval in the diagram above spans from the fall of Granada at the end of the Reconquista, which left the crowns of <b>Castile</b>, <b>Aragon</b>, and <b>Navarre</b> covering all of mainland Spain, to the absorption of Navarre in the 1510s. However, Castile and Aragon were already in personal union, which ought to count as one by analogy with the Kalmar Union. Since Spain doesn&rsquo;t give any letters, though, it could perhaps safely be interpreted as beginning with the establishment of the personal union in 1469 or ending with the later official merging of Castile and Aragon after the War of the Spanish Succession, without affecting extraction.</dd>
+
+<dt>United Kingdom</dt>
+<dd>The United Kingdom of Great Britain and Ireland only came into existence with the Acts of Union 1800 incorporating <b>Ireland</b>; prior to this <b>England</b> and <b>Scotland</b> formed the Kingdom of Great Britain. The time period ends with Irish independence in 1922. Wales was considered part of England at the time.</dd>
+
+<dt>Gran Colombia (one wd)</dt>
+<dd>Another awkward case: Gran Colombia&rsquo;s successor states are definitely <b>Colombia</b>, <b>Ecuador</b>, and <b>Venezuela</b>, although it does not seem to ever have been divided into those three parts per se during its existence. Panama was considered part of Colombia at the time.</dd>
+
+<dt>Poland (one wd)</dt>
+<dd>The time period spans from the Partitions of Poland at the end of the 18th century between <b>Russia</b>, <b>Austria</b>, and <b>Prussia</b> to its reconstitution after World War I. The various Polish revolts in the interim are not counted as revivals of the Polish state, although the start date could theoretically be moved to the dissolution of the Duchy of Warsaw in 1815 without affecting extraction.</dd>
+
+<dt>Morocco (one wd)</dt>
+<dd>The time period is considered to start when Morocco was divided into three parts with the creation of the <b>Tangier</b> International Zone alongside the preexisting protectorates of <b>France</b> and <b>Spain</b>, and end with the unification of Morocco as a sovereign state.</dd>
+
+<dt>Germany (two wds)</dt>
+<dd>Germany was split into the four Allied occupation zones and then into <b>West Germany</b> and <b>East Germany</b>, but the <b>Saar Protectorate</b> also existed until 1956 when it rejoined West Germany.</dd>
+
+<dt>Kingdom of the Netherlands (one wd)</dt>
+<dd>&ldquo;The <b>Netherlands</b>&rdquo; is one component of the Kingdom of the Netherlands, the other members of which have varied over time. When it was organized in 1954, those were <b>Suriname</b> and the Netherlands <b>Antilles</b>. The time period ends when Suriname leaves the union in 1975.</dd>
+</dl>
+
+    
+
+    
+    <div class="puzzle-main-corner puzzle-main-corner-1"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-2"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-3"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-4"></div>
+    
+</main>
+
+
+    </div>
+    
+
+    
+
+    
+    <script>
+    document.getElementById('nav-music').style.display = 'none';
+    document.getElementById("progress-simulator").addEventListener("submit", (e) => {
+        if (e.submitter.name === "reset") {
+            toggleReset(true);
+            doGlitch(false);
+            document.getElementById("shortcuts").checked = false;
+            e.preventDefault();
+        } else {
+            localStorage.setItem(e.submitter.name, e.submitter.value);
+        }
+    });
+    addStyles();
+
+    function toggleReset(which) {
+        $('#loop-reset').toggleClass('loop-resetting', which);
+    }
+
+    function addStyles() {
+        const changeFavicon = (url) => {
+            const e = Array.from(document.getElementsByTagName("link"))
+                .filter(e => e.rel === "icon")[0];
+            e.href = url;
+        }
+        const addSheet = (url) => {
+            const e = document.createElement("link");
+            e.rel = "stylesheet";
+            e.href = url;
+            document.getElementsByTagName("head")[0].appendChild(e);
+        }
+
+        const seasons = ["spring", "summer", "autumn", "winter"];
+        let current_main_round = localStorage.getItem("round");
+        const endgame_unlocked = localStorage.getItem("endgame") === "true";
+
+        const matches = new RegExp(`\\?(${seasons.join("|")})`).exec(document.URL);
+        if (matches && matches[1]) {
+            current_main_round = matches[1];
+        }
+
+        if (endgame_unlocked) {
+            addSheet("/static/css/endgame.css");
+            changeFavicon("/static/images/favicon-endgame.ico");
+            const nodes = document.getElementsByClassName("energy-nodes-info");
+            console.log(nodes);
+            if (nodes.length > 0) {
+                nodes[0].style.display = "block";
+            }
+        } else if (current_main_round === "concert") {
+            addSheet("/static/css/concert.css");
+            changeFavicon("/static/images/favicon-concert.ico");
+            // also add the concert music
+            document.getElementById('nav-music').style.display = 'inline-block';
+            const audio = document.getElementById("music-audio");
+            if (audio) {
+                audio.addEventListener('play', () => {
+                    audio.volume = localStorage.getItem('music-audio-volume') ?? 0.5;
+                });
+                audio.addEventListener('volumechange', () => {
+                    localStorage.setItem('music-audio-volume', audio.volume);
+                });
+            }
+        } else if (seasons.includes(current_main_round)) {
+            addSheet("/static/css/season.css");
+            addSheet(`/static/css/${current_main_round}.css`);
+            changeFavicon(`/static/images/favicon-${current_main_round}.ico`);
+        } else {
+            addSheet("/static/css/blue.css");
+            changeFavicon("/static/images/favicon-blue.ico");
+        }
+    }
+
+    registerOnGlitchHook((ex) => {
+        document.getElementById('background-glitch-wrapper').style.display = 'initial';
+    });
+    </script>
+    
+</body>
+</html>

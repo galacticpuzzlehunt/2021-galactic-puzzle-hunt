@@ -1,0 +1,372 @@
+
+
+
+
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+<title>Solution: Hibernating and Flying South</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <meta property="og:title" content="Galactic Puzzle Hunt 2022">
+    <meta property="og:description" content="Registration for this year's Galactic Puzzle Hunt is now open!">
+    <meta property="og:image" content="https://galacticpuzzlehunt.com/static/images/banner.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:slnt,CASL,CRSV,MONO@-3,0.5,1,1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/skeleton.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.formset/1.2.2/jquery.formset.min.js"></script>
+    <script src="/jsi18n/"></script>
+    <script src="/static/js/sorttable.js"></script>
+    <script src="/static/js/tray.js"></script>
+    <script src="/static/js/notify.js"></script>
+    <script src="/static/js/time.js"></script>
+    
+    
+    <link rel="icon" sizes="16x16 32x32 48x48 64x64" href="/static/images/favicon.ico" type="image/vnd.microsoft.icon">
+    
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92192633-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-92192633-1');
+</script>
+
+</head>
+<body>
+    
+    <div id="background-glitch-wrapper" class="background-glitch">
+        <div class="glitch-1"></div>
+        <div class="glitch-2"></div>
+        <div class="glitch-3"></div>
+    </div>
+    
+    
+    <input id="shortcuts" type="checkbox">
+    
+    <nav>
+        <span class="tray">
+            <span id="tray-timer"></span>
+            <div class="top-tabs">
+                <a href="/">
+                    Home
+                </a>
+                
+                
+                <a href="/story">
+                    Story
+                </a>
+                
+                
+                <a class="selected-tab" href="/puzzles">
+                    Puzzles
+                </a>
+                
+                <a href="/teams">
+                    Teams
+                </a>
+                
+                
+                <a href="/errata">
+                    Updates
+                </a>
+                
+                
+                
+                
+                <a id="nav-music" href="#">
+                    <label for="music" title="Music" style="margin-bottom: 0; font-weight: normal; cursor: pointer;">Music</label>
+                </a>
+                <input id="music" type="checkbox">
+                <div class="shortcuts music">
+                    <audio id="music-audio" controls src="/static/puzzle_resources/worlds-end-concert/music-audio.mp3">
+                        There should be a music player here.
+                    </audio>
+                </div>
+                
+                
+            </div>
+            <div class="top-left-actions">
+                
+<a href="/puzzle/hibernating-and-flying-south" class="btn">Back to the puzzle</a>
+
+            </div>
+        </span>
+        <div class="top-right-actions">
+        
+        <label for="shortcuts" title="Simulator">Simulator </label>
+        
+        
+        </div>
+    </nav>
+    
+    <div class="shortcuts">
+        <form id="progress-simulator">
+        <div>Current round:</div>
+        <button class="btn" type="submit" name="round" value="forward">⬆️</button>
+        <button class="btn" type="submit" name="round" value="spring">🌸</button>
+        <button class="btn" type="submit" name="round" value="summer">☀️</button>
+        <button class="btn" type="submit" name="round" value="autumn">🍂</button>
+        <button class="btn" type="submit" name="round" value="winter">☃️</button>
+        <button class="btn" type="submit" name="round" value="concert">🎤</button>
+        <button class="btn" type="submit" name="round" value="none">None</button>
+        <div>Endgame:</div>
+        <button class="btn" type="submit" name="endgame" value="true">Unlock</button>
+        <button class="btn" type="submit" name="endgame" value="false">Reset</button>
+        <div>Reset:</div>
+        <button class="btn" type="submit" name="reset" value="reset">Reset</button>
+        </form>
+    </div>
+    
+    
+    
+    
+    
+    <div id="loop-reset">
+        <form>
+            <svg viewBox="-30 160 720 320">
+                <defs>
+                    <path id="loop-end-path" d="m 370,240 c 38.29044,0 74.26676,18.33512 96.83716,49.26624 l -76.8369,30.73478 V 270 L 300,330 261.03858,309.74192 c 19.60706,-42.51188 62.14674,-69.74008 108.9623,-69.74306 z m 106.15758,64.22738 c 6.65282,12.65518 10.9906,26.39738 12.80876,40.57862 l -38.96532,5.19538 z"/>
+                </defs>
+                <foreignObject width="720" height="480" clip-path="url(#loop-end-clip)" class="loop-shade">
+                    <aside class="loop-shade" xmlns="http://www.w3.org/1999/xhtml" style="width: 100%; height: 100%;"></aside>
+                </foreignObject>
+                <clipPath id="loop-end-clip"><use href="#loop-end-path"/></clipPath>
+                <use href="#loop-end-path"/>
+                <path d="M 490,400 600,330 450,350 490,280 390,320 V 270 L 300,330 50,200 170,380 50,400"/>
+            </svg>
+            <div>THE END</div>
+            <p>You can reset once per minute.</p>
+            <table>
+                <tr id="loop-reset-btn-row-reset">
+                    <td><button class="btn" disabled>Reset</button></td>
+                    <td>Start over from the beginning of the exam.</td>
+                </tr>
+                <tr id="loop-reset-btn-row-restore">
+                    <td><button class="btn" disabled>Jump</button></td>
+                    <td>Start over, but resubmit your previous answers to bring you back to this point.</td>
+                </tr>
+                <tr>
+                    <td><a class="btn" href="javascript:toggleReset(false)">Stay</a></td>
+                    <td>Look at this page a bit longer. Make sure to save your work.</td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    
+    <script>
+
+    
+    
+    let glitchTriggerFuncs = [];
+    let glitchTriggerReceived = false;
+    let glitchTriggerExReceived = false;
+    let glitchPageLoaded = false;
+    function processGlitchFuncs(ex) {
+        glitchTriggerFuncs.forEach((func) => {
+            func(ex);
+        });
+    }
+    function doGlitch(ex) {
+        glitchTriggerReceived = true;
+        if (ex) {
+            glitchTriggerExReceived = true;
+        }
+        if (glitchPageLoaded) {
+            processGlitchFuncs(ex);
+        }
+    }
+    window.addEventListener('load', () => {
+        glitchPageLoaded = true;
+        if (glitchTriggerExReceived) {
+            processGlitchFuncs(true);
+        }
+        else if (glitchTriggerReceived) {
+            processGlitchFuncs(false);
+        }
+    }, false);
+    
+    
+    
+    function registerOnGlitchHook(func) {
+        if (glitchTriggerExReceived) {
+            func(true);
+        }
+        else if (glitchTriggerReceived) {
+            func(false);
+        }
+        glitchTriggerFuncs.push(func);
+    }
+    
+
+    
+    
+    </script>
+    <div class="content">
+        
+
+<style>
+h2 {
+    font-size: 2.5rem;
+    font-weight: normal;
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+
+h4 {
+    font-size: 2rem;
+    font-weight: normal;
+    margin: 2rem 0;
+}
+</style>
+
+<h1>
+    Solution <span style="font-weight: 300">Hibernating and Flying South</span>
+    <div class="solved-title-marker">Answer <span class="solved-title-answer spoiler">THYME SCALE</span></div>
+</h1>
+
+<main class="puzzle-main">
+    <h2 style="margin-top: 0">
+        Written by
+        
+Ben Yang
+
+    </h2>
+
+    
+    <p>We have the following answers, displayed in this order on the metapuzzle page.</p>
+<table><thead><tr><th>Puzzle Titles</th><th>Puzzle Answers</th></tr></thead><tbody><tr><td>Everything Everywhere All at Once</td><td><b>B</b>UILDINGCONSTRUCTION</td></tr><tr><td>A Winding Walk</td><td><b>A</b>SSORTEDCOLORS</td></tr><tr><td>Maze</td><td><b>N</b>UTS</td></tr><tr><td>Galactic History Exam</td><td><b>J</b>UMPEDUP</td></tr><tr><td>Somewhere</td><td><b>O</b>VERFLIGHT</td></tr><tr><td>The Dining Philosophers</td><td><b>L</b>OCKEDOUT</td></tr><tr><td>Oversimplified</td><td><b>E</b>AGLET</td></tr><tr><td>Pocket Guide to Travel</td><td><b>V</b>INEWHIP</td></tr><tr><td>✝️🔤🧩</td><td><b>E</b>NTOMOLOGY</td></tr><tr><td>Reap What You Sow</td><td><b>L</b>OAM</td></tr></tbody></table>
+
+<p>We start by noticing that the first letters of the answers in the order given spell out BANJO LEVEL. This, combined with the theming of the round as four seasonal variations, leads us to find the <a href="https://banjokazooie.fandom.com/wiki/Click_Clock_Wood">Click Clock Wood</a> level of Banjo-Kazooie, which similarly has four different versions, each corresponding to a different season.</p>
+<p>Further research shows that Click Clock Wood has 10 jiggies, a collectible represented by a gold puzzle piece. The fact that there are also 10 answers in this round suggests we wish to correspond these two sets. There are actually two such correspondences we find. The first is from the semantic meaning of the answers to the steps needed to obtain each jiggy.</p>
+<table><thead><tr><th>Puzzle Titles</th><th>Puzzle Answers</th><th>Jiggy (Semantic)</th></tr></thead><tbody><tr><td>Everything Everywhere All at Once</td><td>BUILDINGCONSTRUCTION</td><td>inside the treehouse that is built up as the seasons progress</td></tr><tr><td>A Winding Walk</td><td>ASSORTEDCOLORS</td><td>from collecting all five Jinjos (blue, green, orange, purple, and yellow)</td></tr><tr><td>Maze</td><td>NUTS</td><td>from giving acorns to Nabnut the squirrel</td></tr><tr><td>Galactic History Exam</td><td>JUMPEDUP</td><td>found after jumping across a series of leaf platforms</td></tr><tr><td>Somewhere</td><td>OVERFLIGHT</td><td>near the top of the tree, obtained by flying to it (either from a flight pad, or as a bee)</td></tr><tr><td>The Dining Philosophers</td><td>LOCKEDOUT</td><td>from Gnawty the beaver after breaking the boulder blocking the entrance to his home</td></tr><tr><td>Oversimplified</td><td>EAGLET</td><td>from the fully-grown Eyrie the eagle after hatching and taking care of him</td></tr><tr><td>Pocket Guide to Travel</td><td>VINEWHIP</td><td>inside the room in the tree full of Whipcrack enemies, which resemble vines and thrash back and forth</td></tr><tr><td>✝️🔤🧩</td><td>ENTOMOLOGY</td><td>from defeating the Zubbas inside the hive</td></tr><tr><td>Reap What You Sow</td><td>LOAM</td><td>from growing the flower</td></tr></tbody></table>
+
+<p>The other correspondence is based on the availability of the puzzles in various seasons. The methods for obtaining the jiggies may require some steps to be taken in certain seasons, and the jiggy itself may only be obtained in some of the seasons. Similarly, puzzles may be unavailable or only have parts available in different seasons, and the answer submission box may only be present in some of them.</p>
+<table><thead><tr><th>Puzzle Titles</th><th>Puzzle Answers</th><th>Puzzle Seasonality</th><th>Jiggy (Availability)</th><th>Jiggy Seasonality</th></tr></thead><tbody><tr><td>Everything Everywhere All at Once</td><td>BUILDINGCONSTRUCTION</td><td>separate parts in all 4 seasons, answer submission only in winter</td><td>from the fully-grown Eyrie the eagle after hatching and taking care of him</td><td>Eyrie needs to be hatched in spring, needs to be fed in summer and autumn, and will give the jiggy in winter</td></tr><tr><td>A Winding Walk</td><td>ASSORTEDCOLORS</td><td>incomplete puzzle in summer, full puzzle in autumn</td><td>inside the treehouse that is built up as the seasons progress</td><td>the jiggy in the treehouse can be collected in either summer or autumn, but it is easier in autumn when the floor is complete</td></tr><tr><td>Maze</td><td>NUTS</td><td>all seasons</td><td>inside the room in the tree full of Whipcrack enemies, which resemble vines and thrash back and forth</td><td>the jiggy in the room of whipcracks is accessible in any season</td></tr><tr><td>Galactic History Exam</td><td>JUMPEDUP</td><td>minimeta with 2 parts in spring, 1 part each in rest of seasons</td><td>from collecting all five Jinjos (blue, green, orange, purple, and yellow)</td><td>the green and pink jinjos are in spring, yellow is in summer, orange in autumn, and blue in winter</td></tr><tr><td>Somewhere</td><td>OVERFLIGHT</td><td>autumn</td><td>from giving acorns to Nabnut the squirrel</td><td>collecting acorns for Nabnut happens entirely within autumn</td></tr><tr><td>The Dining Philosophers</td><td>LOCKEDOUT</td><td>spring and winter</td><td>near the top of the tree, obtained by flying to it (either from a flight pad, or as a bee)</td><td>you can fly to this jiggy as a bee (only available in spring) or from a flight pad (only available in winter)</td></tr><tr><td>Oversimplified</td><td>EAGLET</td><td>parts in summer, autumn, answer submission only in autumn</td><td>from Gnawty the beaver after breaking the boulder blocking the entrance to his home</td><td>in summer, the water is low enough for you to destroy the boulder, and in autumn you enter Gnawty&rsquo;s house to receive the jiggy</td></tr><tr><td>Pocket Guide to Travel</td><td>VINEWHIP</td><td>summer</td><td>from defeating the Zubbas inside the hive</td><td>fighting the Zubbas inside their hive is only possible in summer</td></tr><tr><td>✝️🔤🧩</td><td>ENTOMOLOGY</td><td>separate parts in spring, summer, autumn, answer submission only in autumn</td><td>from growing the flower</td><td>you need to plant eggs to sprout the flower in spring, need to water the flower using Gobi the camel in summer and autumn, and get the jiggy once it blooms in autumn</td></tr><tr><td>Reap What You Sow</td><td>LOAM</td><td>summer and autumn</td><td>found after jumping across a series of leaf platforms</td><td>this jiggy only appears in summer and autumn</td></tr></tbody></table>
+
+<p>From these two correspondences, we can reorder the puzzles into a cycle, starting with the one marked with a ★. There are two possible cycle orders, but only one of them has answer lengths that make the given indices valid. Thus, we choose the order in which a puzzle&rsquo;s availability indicates the next puzzle in the cycle. That is, we consider each puzzle as associated with the jiggy that matches the semantic meaning of the puzzle&rsquo;s answer. The availability of that puzzle across seasons matches the availability of the jiggy associated with the next puzzle in the cycle. This is also the more natural of the two orderings, as we expect solvers to consider the puzzle answer as more of an intrinsic property of the puzzle, whereas the availability is more of an auxiliary property.</p>
+<table><thead><tr><th>Puzzle Titles</th><th>Puzzle Answers</th><th>Jiggy (Semantic)</th><th>Jiggy (Availability)</th><th>Given Index</th></tr></thead><tbody><tr><td>Maze</td><td>NUTS</td><td>from giving acorns to Nabnut the squirrel</td><td>inside the room in the tree full of Whipcrack enemies, which resemble vines and thrash back and forth</td><td>3</td></tr><tr><td>Pocket Guide to Travel</td><td>VINEWHIP</td><td>inside the room in the tree full of Whipcrack enemies, which resemble vines and thrash back and forth</td><td>from defeating the Zubbas inside the hive</td><td>6</td></tr><tr><td>✝️🔤🧩</td><td>ENTOMOLOGY</td><td>from defeating the Zubbas inside the hive</td><td>from growing the flower</td><td>10</td></tr><tr><td>Reap What You Sow</td><td>LOAM</td><td>from growing the flower</td><td>found after jumping across a series of leaf platforms</td><td>4</td></tr><tr><td>Galactic History Exam</td><td>JUMPEDUP</td><td>found after jumping across a series of leaf platforms</td><td>from collecting all five Jinjos (blue, green, orange, purple, and yellow)</td><td>5</td></tr><tr><td>A Winding Walk</td><td>ASSORTEDCOLORS</td><td>from collecting all five Jinjos (blue, green, orange, purple, and yellow)</td><td>inside the treehouse that is built up as the seasons progress</td><td>2</td></tr><tr><td>Everything Everywhere All at Once</td><td>BUILDINGCONSTRUCTION</td><td>inside the treehouse that is built up as the seasons progress</td><td>from the fully-grown Eyrie the eagle after hatching and taking care of him</td><td>9</td></tr><tr><td>Oversimplified</td><td>EAGLET</td><td>from the fully-grown Eyrie the eagle after hatching and taking care of him</td><td>from Gnawty the beaver after breaking the boulder blocking the entrance to his home</td><td>2</td></tr><tr><td>The Dining Philosophers</td><td>LOCKEDOUT</td><td>from Gnawty the beaver after breaking the boulder blocking the entrance to his home</td><td>near the top of the tree, obtained by flying to it (either from a flight pad, or as a bee)</td><td>1</td></tr><tr><td>Somewhere</td><td>OVERFLIGHT</td><td>near the top of the tree, obtained by flying to it (either from a flight pad, or as a bee)</td><td>from giving acorns to Nabnut the squirrel</td><td>3</td></tr></tbody></table>
+
+<p>Now we use the given indices to index into the puzzle answers in this cycle order, and obtain our answer, <strong>THYME SCALE</strong>.</p>
+
+    
+    
+    <h2 id="authors-notes">Author&rsquo;s Notes</h2>
+    <p>One of the initial answers for this meta was SEASONED XO. I really liked the triple meaning on &ldquo;seasoned&rdquo; (though I guess they all come from the same etymological root), and the double meaning of XO as the sauce and executive officer. Unfortunately, testsolving showed that the meanings of XO weren&rsquo;t that widely known, and the X was too much of a single-point of failure in getting the final answer.</p>
+<p>Another anecdote is that the factchecker for this puzzle found two alternate ways to collect jiggies that we chose not to fully reflect in this puzzle. These choices were made to prioritize solver experience (based on the sources they are likely to find and use during the hunt) over factual correctness (what is actually possible in the game). For the jiggy that is intended to be reached by leaf platforms, it is possible to drop down onto it and skip the leaves altogether. However, since getting above it in the first place would involve jumping upwards (as the jiggy only appears in seasons where flight is not available), it remained technically correct to keep the answer JUMPED UP associated with it. The second discovery was that the jiggy in Gnawty&rsquo;s house can be collected in either autumn or winter, rather than only in autumn, as the puzzle implies. This could have been reflected by making the second part plus answer submission box available in winter as well as in autumn. However, given that this possibility is almost never mentioned in online sources, we ultimately decided that the inclusion of it would confuse solvers more than it would help.</p>
+    
+
+    
+    
+
+    
+    <div class="puzzle-main-corner puzzle-main-corner-1"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-2"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-3"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-4"></div>
+    
+</main>
+
+
+    </div>
+    
+
+    
+
+    
+    <script>
+    document.getElementById('nav-music').style.display = 'none';
+    document.getElementById("progress-simulator").addEventListener("submit", (e) => {
+        if (e.submitter.name === "reset") {
+            toggleReset(true);
+            doGlitch(false);
+            document.getElementById("shortcuts").checked = false;
+            e.preventDefault();
+        } else {
+            localStorage.setItem(e.submitter.name, e.submitter.value);
+        }
+    });
+    addStyles();
+
+    function toggleReset(which) {
+        $('#loop-reset').toggleClass('loop-resetting', which);
+    }
+
+    function addStyles() {
+        const changeFavicon = (url) => {
+            const e = Array.from(document.getElementsByTagName("link"))
+                .filter(e => e.rel === "icon")[0];
+            e.href = url;
+        }
+        const addSheet = (url) => {
+            const e = document.createElement("link");
+            e.rel = "stylesheet";
+            e.href = url;
+            document.getElementsByTagName("head")[0].appendChild(e);
+        }
+
+        const seasons = ["spring", "summer", "autumn", "winter"];
+        let current_main_round = localStorage.getItem("round");
+        const endgame_unlocked = localStorage.getItem("endgame") === "true";
+
+        const matches = new RegExp(`\\?(${seasons.join("|")})`).exec(document.URL);
+        if (matches && matches[1]) {
+            current_main_round = matches[1];
+        }
+
+        if (endgame_unlocked) {
+            addSheet("/static/css/endgame.css");
+            changeFavicon("/static/images/favicon-endgame.ico");
+            const nodes = document.getElementsByClassName("energy-nodes-info");
+            console.log(nodes);
+            if (nodes.length > 0) {
+                nodes[0].style.display = "block";
+            }
+        } else if (current_main_round === "concert") {
+            addSheet("/static/css/concert.css");
+            changeFavicon("/static/images/favicon-concert.ico");
+            // also add the concert music
+            document.getElementById('nav-music').style.display = 'inline-block';
+            const audio = document.getElementById("music-audio");
+            if (audio) {
+                audio.addEventListener('play', () => {
+                    audio.volume = localStorage.getItem('music-audio-volume') ?? 0.5;
+                });
+                audio.addEventListener('volumechange', () => {
+                    localStorage.setItem('music-audio-volume', audio.volume);
+                });
+            }
+        } else if (seasons.includes(current_main_round)) {
+            addSheet("/static/css/season.css");
+            addSheet(`/static/css/${current_main_round}.css`);
+            changeFavicon(`/static/images/favicon-${current_main_round}.ico`);
+        } else {
+            addSheet("/static/css/blue.css");
+            changeFavicon("/static/images/favicon-blue.ico");
+        }
+    }
+
+    registerOnGlitchHook((ex) => {
+        document.getElementById('background-glitch-wrapper').style.display = 'initial';
+    });
+    </script>
+    
+</body>
+</html>

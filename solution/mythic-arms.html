@@ -1,0 +1,387 @@
+
+
+
+
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+<title>Solution: Mythic Arms</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <meta property="og:title" content="Galactic Puzzle Hunt 2022">
+    <meta property="og:description" content="Registration for this year's Galactic Puzzle Hunt is now open!">
+    <meta property="og:image" content="https://galacticpuzzlehunt.com/static/images/banner.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:slnt,CASL,CRSV,MONO@-3,0.5,1,1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/skeleton.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.formset/1.2.2/jquery.formset.min.js"></script>
+    <script src="/jsi18n/"></script>
+    <script src="/static/js/sorttable.js"></script>
+    <script src="/static/js/tray.js"></script>
+    <script src="/static/js/notify.js"></script>
+    <script src="/static/js/time.js"></script>
+    
+    
+    <link rel="icon" sizes="16x16 32x32 48x48 64x64" href="/static/images/favicon.ico" type="image/vnd.microsoft.icon">
+    
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92192633-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-92192633-1');
+</script>
+
+</head>
+<body>
+    
+    <div id="background-glitch-wrapper" class="background-glitch">
+        <div class="glitch-1"></div>
+        <div class="glitch-2"></div>
+        <div class="glitch-3"></div>
+    </div>
+    
+    
+    <input id="shortcuts" type="checkbox">
+    
+    <nav>
+        <span class="tray">
+            <span id="tray-timer"></span>
+            <div class="top-tabs">
+                <a href="/">
+                    Home
+                </a>
+                
+                
+                <a href="/story">
+                    Story
+                </a>
+                
+                
+                <a class="selected-tab" href="/puzzles">
+                    Puzzles
+                </a>
+                
+                <a href="/teams">
+                    Teams
+                </a>
+                
+                
+                <a href="/errata">
+                    Updates
+                </a>
+                
+                
+                
+                
+                <a id="nav-music" href="#">
+                    <label for="music" title="Music" style="margin-bottom: 0; font-weight: normal; cursor: pointer;">Music</label>
+                </a>
+                <input id="music" type="checkbox">
+                <div class="shortcuts music">
+                    <audio id="music-audio" controls src="/static/puzzle_resources/worlds-end-concert/music-audio.mp3">
+                        There should be a music player here.
+                    </audio>
+                </div>
+                
+                
+            </div>
+            <div class="top-left-actions">
+                
+<a href="/puzzle/mythic-arms" class="btn">Back to the puzzle</a>
+
+            </div>
+        </span>
+        <div class="top-right-actions">
+        
+        <label for="shortcuts" title="Simulator">Simulator </label>
+        
+        
+        </div>
+    </nav>
+    
+    <div class="shortcuts">
+        <form id="progress-simulator">
+        <div>Current round:</div>
+        <button class="btn" type="submit" name="round" value="forward">⬆️</button>
+        <button class="btn" type="submit" name="round" value="spring">🌸</button>
+        <button class="btn" type="submit" name="round" value="summer">☀️</button>
+        <button class="btn" type="submit" name="round" value="autumn">🍂</button>
+        <button class="btn" type="submit" name="round" value="winter">☃️</button>
+        <button class="btn" type="submit" name="round" value="concert">🎤</button>
+        <button class="btn" type="submit" name="round" value="none">None</button>
+        <div>Endgame:</div>
+        <button class="btn" type="submit" name="endgame" value="true">Unlock</button>
+        <button class="btn" type="submit" name="endgame" value="false">Reset</button>
+        <div>Reset:</div>
+        <button class="btn" type="submit" name="reset" value="reset">Reset</button>
+        </form>
+    </div>
+    
+    
+    
+    
+    
+    <div id="loop-reset">
+        <form>
+            <svg viewBox="-30 160 720 320">
+                <defs>
+                    <path id="loop-end-path" d="m 370,240 c 38.29044,0 74.26676,18.33512 96.83716,49.26624 l -76.8369,30.73478 V 270 L 300,330 261.03858,309.74192 c 19.60706,-42.51188 62.14674,-69.74008 108.9623,-69.74306 z m 106.15758,64.22738 c 6.65282,12.65518 10.9906,26.39738 12.80876,40.57862 l -38.96532,5.19538 z"/>
+                </defs>
+                <foreignObject width="720" height="480" clip-path="url(#loop-end-clip)" class="loop-shade">
+                    <aside class="loop-shade" xmlns="http://www.w3.org/1999/xhtml" style="width: 100%; height: 100%;"></aside>
+                </foreignObject>
+                <clipPath id="loop-end-clip"><use href="#loop-end-path"/></clipPath>
+                <use href="#loop-end-path"/>
+                <path d="M 490,400 600,330 450,350 490,280 390,320 V 270 L 300,330 50,200 170,380 50,400"/>
+            </svg>
+            <div>THE END</div>
+            <p>You can reset once per minute.</p>
+            <table>
+                <tr id="loop-reset-btn-row-reset">
+                    <td><button class="btn" disabled>Reset</button></td>
+                    <td>Start over from the beginning of the exam.</td>
+                </tr>
+                <tr id="loop-reset-btn-row-restore">
+                    <td><button class="btn" disabled>Jump</button></td>
+                    <td>Start over, but resubmit your previous answers to bring you back to this point.</td>
+                </tr>
+                <tr>
+                    <td><a class="btn" href="javascript:toggleReset(false)">Stay</a></td>
+                    <td>Look at this page a bit longer. Make sure to save your work.</td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    
+    <script>
+
+    
+    
+    let glitchTriggerFuncs = [];
+    let glitchTriggerReceived = false;
+    let glitchTriggerExReceived = false;
+    let glitchPageLoaded = false;
+    function processGlitchFuncs(ex) {
+        glitchTriggerFuncs.forEach((func) => {
+            func(ex);
+        });
+    }
+    function doGlitch(ex) {
+        glitchTriggerReceived = true;
+        if (ex) {
+            glitchTriggerExReceived = true;
+        }
+        if (glitchPageLoaded) {
+            processGlitchFuncs(ex);
+        }
+    }
+    window.addEventListener('load', () => {
+        glitchPageLoaded = true;
+        if (glitchTriggerExReceived) {
+            processGlitchFuncs(true);
+        }
+        else if (glitchTriggerReceived) {
+            processGlitchFuncs(false);
+        }
+    }, false);
+    
+    
+    
+    function registerOnGlitchHook(func) {
+        if (glitchTriggerExReceived) {
+            func(true);
+        }
+        else if (glitchTriggerReceived) {
+            func(false);
+        }
+        glitchTriggerFuncs.push(func);
+    }
+    
+
+    
+    
+    </script>
+    <div class="content">
+        
+
+<style>
+h2 {
+    font-size: 2.5rem;
+    font-weight: normal;
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+
+h4 {
+    font-size: 2rem;
+    font-weight: normal;
+    margin: 2rem 0;
+}
+</style>
+
+<h1>
+    Solution <span style="font-weight: 300">Mythic Arms</span>
+    <div class="solved-title-marker">Answer <span class="solved-title-answer spoiler">MONOTHEISTIC</span></div>
+</h1>
+
+<main class="puzzle-main">
+    <h2 style="margin-top: 0">
+        Written by
+        
+Dai Yang
+
+    </h2>
+
+    
+    <style>
+.puzzle-main td:first-child {
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+</style>
+
+<p>There are 17 clue phrases in the puzzle that have been mangled by applying various word transformations, and disguised using all caps without spaces. Once we figure out the transformation for each one, we can separate the phrases into a main phrase and a (shorter) extra phrase. Each main phrase gives an answer, and when the corresponding transformation is applied to that answer, we get the name of a character from the <em>Fire Emblem</em> series. The clue phrases are presented alphabetically by the name of the <em>Fire Emblem</em> character, and the fire emojis are also there to indicate the <em>Fire Emblem</em> connection.</p>
+<table><tr><th>Mangled clue</th><th>Unmangled clue</th><th>Transformation</th><th>Extra phrase</th><th>Main phrase answer</th><th>FE character</th></tr><tr><td>QEEFUNCTTEOOGLEVERRATIONALFEOCIALAEETWORKBENCECEOPULAROEELIEFSVENOERAZIL</td><td>DEFUNCT GOOGLE IRRATIONAL SOCIAL NETWORK ONCE POPULAR BELIEFS IN BRAZIL</td><td>Shift first letter by 13, insert E after</td><td>IRRATIONAL BELIEFS</td><td>ORKUT</td><td>BERKUT</td></tr><tr><td>GALAIANAORAGAELICAFORAINSANCEARESOLUEA</td><td>GALATIAN OR GAELIC FOR INSTANCE RESOLUTE</td><td>Remove T, insert A at end</td><td>RESOLUTE</td><td>CELTIC</td><td>CELICA</td></tr><tr><td>EIMINAEILIFEINIRUTAEFEIINOCIEIETARETLUDANUEILCYCROTOMEIDILS</td><td>ANIME FILM FEATURING ICONIC UNADULTERATED MOTORCYCLE SLIDE</td><td>Reverse, replace first letter with EI</td><td>UNADUL&shy;TERATED</td><td>AKIRA</td><td>EIRIKA</td></tr><tr><td>LEGALESTLEIALEGSINWITHSIXNRIHETORWINGS</td><td>LEGAL CELESTIAL BEINGS WITH SIX INHERITOR WINGS</td><td>Delete first letter then swap the 4th and 5th letters with the 2nd and 3rd letters (if the word has at least 6 letters)</td><td>LEGAL INHERITOR</td><td>SERAPHIM</td><td>EPHRAIM</td></tr><tr><td>ESTLEIALLADYEGSINWITHSIXWINGSOTEUNRPART</td><td>CELESTIAL LADY BEINGS WITH SIX WINGS COUNTERPART</td><td>Delete first letter then swap the 4th and 5th letters with the 2nd and 3rd letters (if the word has at least 6 letters)</td><td>LADY COUN&shy;TERPART</td><td>SERAPHIM</td><td>EPHRAIM</td></tr><tr><td>YAESTABLISHMENTASPROVIDINIGFOOIDSTRATEGISYTANYDLODGINIGFOIRTRAVELERYS</td><td>A ESTABLISHMENTS PROVIDING FOOD STRATEGIST AND LODGING FOR TRAVELERS</td><td>Insert the vowel before the first vowel (wrapping around; Y is a vowel), before last letter</td><td>A STRATEGIST</td><td>INNS</td><td>INNES</td></tr><tr><td>GIVIUNNAIUEIUFPOSTUIUENOVELIIUTWIUOINSPIRIUDAIURMYSTEIUYHUIUTRELEVANIUETHEIUE</td><td>GIVEN NAME OF POSTURE NOVELIST WHO INSPIRED A OR MYSTERY HUNT RELEVANCE THEME</td><td>Replace 2nd to last letter with IU</td><td>POSTURE OR RELEVANCE</td><td>JULES</td><td>JULIUS</td></tr><tr><td>YWHEREUSHAHSVTRANSCENDINGQORIGINATETREALITYHFROM</td><td>WHERE SHAHS TRANSCENDING ORIGINATE REALITY FROM</td><td>Insert first letter shifted by 2 before first letter</td><td>TRANS&shy;CENDING REALITY</td><td>IRAN</td><td>KIRAN</td></tr><tr><td>RINOINGOBSOOVEROOFUNOOARYBOOL</td><td>RINGING OBSERVER OF FUNERARY BELL</td><td>Replace middle letter(s) with O</td><td>OBSERVER</td><td>KNELL</td><td>KNOLL</td></tr><tr><td>YNENVOYEIWIFETHTHATRRORBAJACOBDAMARRIEDRALATEREEDELEGATE</td><td>ENVOY WIFE THAT OR JACOB MARRIED LATER DELEGATE</td><td>Insert last letter and 2nd letter before first letter</td><td>ENVOY OR DELEGATE</td><td>RACHEL</td><td>L&rsquo;ARACHEL</td></tr><tr><td>THEMATICBOWMAWITHFEMIIECOMMODEMEAORADPURPLEPHOEHAIRSTATE</td><td>THEMATIC BOWMAN WITH FEMININE COMMON DEMEANOR AND PURPLE PHONE HAIR STATE</td><td>Remove N</td><td>COMMON PHONE STATE</td><td>LEON</td><td>LEO</td></tr><tr><td>MAYSNBETSNHEMATICNSSWORDFIGHSNTERWHWEOSNSECULTURALMULTISNHERITASNGEWWEASEWIWENSPISNREDBYTSNHEMEWONGOWELSTRACK</td><td>MAYBE THEMATIC SWORDFIGHTER WHOSE CULTURAL MULTI HERITAGE WAS INSPIRED BY THE MONGOLS TRACK</td><td>For every cardinal direction (E/S/W/N) insert the adjacent cardinal directions 2 places before it (SN/WE/NS/EW) (if it&rsquo;s not the first letter of the word)</td><td>MAYBE MULTI TRACK</td><td>LYN</td><td>LEWYN</td></tr><tr><td>OTOFTOALARGTOEOFRORPOSSIBLFROYUNCOUNTABLTOEWORSHIFROPNUMBEFRORSITTOE</td><td>OF A LARGE OR POSSIBLY UNCOUNTABLE WORSHIP NUMBER SITE</td><td>If last letter is in [A-M] insert TO before it; if last letter is in [N-Z] insert FRO before it</td><td>WORSHIP SITE</td><td>MANY</td><td>MANFROY</td></tr><tr><td>SLARGESTTSTSTYPEEPESETHNICCICSOFFOFSGROUPPUPSWORLDWIDEEDESPROJECTIONNON</td><td>LARGEST TYPE ETHNIC OF GROUP WORLDWIDE PROJECTION</td><td>Insert S before first letter, insert last letter, 2nd to last letter, last letter after last letter</td><td>TYPE OF PROJECTION</td><td>HAN</td><td>SHANNAN</td></tr><tr><td>DHHENCLOSESHAREARFOSHDUELISTOTSAMBITIONEHHCOMPET</td><td>ENCLOSED AREAS FOR DUELISTS TO AMBITIONS COMPETE</td><td>Move last letter before first letter, insert as many H’s after it as there are E’s</td><td>AMBITIONS</td><td>ARENAS</td><td>SHARENA</td></tr><tr><td>TDEVILISHTHADTTURBITFIGHTINGTGAMITBADTGUITWITHTREDTHAIR</td><td>DEVILISH HAD TURBO FIGHTING GAME BAD GUY WITH RED HAIR</td><td>Add T before first letter, change last letter to I if it is a vowel (including Y)</td><td>HAD</td><td>AKUMA</td><td>TAKUMI</td></tr><tr><td>MOSTMALEXOOSEORBRIEFXIXHTINGXIXOROUS</td><td>MOST MALE GOOSE OR BRIEF SIGHTING VIGOROUS</td><td>Change the first G and any preceding consonants to X</td><td>MOST VIGOROUS</td><td>GANDER</td><td>XANDER</td></tr></table>
+
+<p>The presentation of the clues with fire emojis inside a rectangular card suggests a card game, and <em>Fire Emblem 0 (Cipher)</em> is a card game featuring <em>Fire Emblem</em> characters. All of the <em>Fire Emblem</em> characters found appear in said card game, sometimes on multiple cards. Each of the extra phrases clues a word that uniquely identifies a Cipher card.</p>
+<table><tr><th>FE character</th><th>Extra phrase</th><th>Extra phrase answer</th><th>Name of Cipher card</th></tr><tr><td>BERKUT</td><td>IRRATIONAL BELIEFS</td><td>DELUSIONS</td><td>Delusions of Supremacy</td></tr><tr><td>CELICA</td><td>RESOLUTE</td><td>DETERMINED</td><td>Determined to Save the World</td></tr><tr><td>EIRIKA</td><td>UNADULTERATED</td><td>PURE</td><td>Storm of Pure Kindness</td></tr><tr><td>EPHRAIM</td><td>LEGAL INHERITOR</td><td>HEIR</td><td>Royal Heir to the Sacred Twin</td></tr><tr><td>EPHRAIM</td><td>LADY COUNTERPART</td><td>LORD</td><td>Sacred Twin Lord</td></tr><tr><td>INNES</td><td>A STRATEGIST</td><td>STRATEGICIAN</td><td>King and Strategician</td></tr><tr><td>JULIUS</td><td>POSTURE OR RELEVANCE</td><td>BEARING</td><td>Shadow-Bearing Imperial Prince</td></tr><tr><td>KIRAN</td><td>TRANSCENDING REALITY</td><td>OTHERWORLDLY</td><td>Otherworldly Great Hero</td></tr><tr><td>KNOLL</td><td>OBSERVER</td><td>WATCHER</td><td>Watcher of Darkness</td></tr><tr><td>L&rsquo;ARACHEL</td><td>ENVOY OR DELEGATE</td><td>EMISSARY</td><td>Emissary of Righteousness and Order</td></tr><tr><td>LEO</td><td>COMMON PHONE STATE</td><td>CHARGING</td><td>Mage Prince Charging Through Deep Darkness</td></tr><tr><td>LEWYN</td><td>MAYBE MULTI TRACK</td><td>DRIFTING</td><td>Drifting Prince of Wind</td></tr><tr><td>MANFROY</td><td>WORSHIP SITE</td><td>CHURCH</td><td>Archbishop of the Loptr Church</td></tr><tr><td>SHANNAN</td><td>TYPE OF PROJECTION</td><td>ASTRAL</td><td>Astral Sword Sovereign</td></tr><tr><td>SHARENA</td><td>AMBITIONS</td><td>DREAMS</td><td>Dreams of Befriending All Heroes!</td></tr><tr><td>TAKUMI</td><td>HAD</td><td>POSSESSED</td><td>Possessed Demon Prince</td></tr><tr><td>XANDER</td><td>MOST VIGOROUS</td><td>STRONGEST</td><td>Nohr&rsquo;s Strongest Knight</td></tr></table>
+
+<p>Below the clue phrases there is a large relationship diagram. The diagram contains 35 entities, consisting of 17 entities with question marks, and 18 entities with a letter and number. This suggests that we should fill out the blanks with question marks using the 17 Cipher cards, but the fact that EPHRAIM appears twice implies that it is not the characters themselves who should go into the blanks.</p>
+<p>The title Mythic Arms suggests that we should consider the weapons associated with these characters. We notice that every Cipher card contains a reference to Norse mythology via one of the skill names on the card, which are also the names of legendary weapons associated with these characters. Note that LOPTOUS refers to LOPTR, which is a pseudonym for LOKI, and IVALDI refers to the Sons of Ivaldi.</p>
+<table><tr><th>Character</th><th>Title</th><th>Weapon</th></tr><tr><td>BERKUT</td><td>Delusions of Supremacy</td><td>KRIEMHILD</td></tr><tr><td>CELICA</td><td>Determined to Save the World</td><td>RAGNAROK</td></tr><tr><td>EIRIKA</td><td>Storm of Pure Kindness</td><td>SIEGLINDE</td></tr><tr><td>EPHRAIM</td><td>Royal Heir to the Sacred Twin</td><td>SIEGMUND</td></tr><tr><td>EPHRAIM</td><td>Sacred Twin Lord</td><td>GARM</td></tr><tr><td>INNES</td><td>King and Strategician</td><td>NIDHOGG</td></tr><tr><td>JULIUS</td><td>Shadow-Bearing Imperial Prince</td><td>LOPTOUS</td></tr><tr><td>KIRAN</td><td>Otherworldly Great Hero</td><td>BREIDABLIK</td></tr><tr><td>KNOLL</td><td>Watcher of Darkness</td><td>GLEIPNIR</td></tr><tr><td>L&rsquo;ARACHEL</td><td>Emissary of Righteousness and Order</td><td>IVALDI</td></tr><tr><td>LEO</td><td>Mage Prince Charging Through Deep Darkness</td><td>BRYNHILDR</td></tr><tr><td>LEWYN</td><td>Drifting Prince of Wind</td><td>FORSETI</td></tr><tr><td>MANFROY</td><td>Archbishop of the Loptr Church</td><td>JORMUNGAND</td></tr><tr><td>SHANNAN</td><td>Astral Sword Sovereign</td><td>BALMUNG</td></tr><tr><td>SHARENA</td><td>Dreams of Befriending All Heroes!</td><td>FENSALIR</td></tr><tr><td>TAKUMI</td><td>Possessed Demon Prince</td><td>SKADI</td></tr><tr><td>XANDER</td><td>Nohr&rsquo;s Strongest Knight</td><td>SIEGFRIED</td></tr></table>
+
+<p>Using these entities from Norse mythology, we can fill out the relationship diagram and identify the missing entities.</p>
+<p><img src="mythic-arms.svg"></p>
+<p>Legend:</p>
+<ul>
+<li>Black lines denote descendancy</li>
+<li>Red lines denote killing, possibly mutual</li>
+<li>Blue lines denote siblingship</li>
+<li>Green lines denote place of dwelling</li>
+<li>Pink lines denote marriage</li>
+<li>Brown lines denote miscellaneous relationships which are further clarified using emojis, for instance the 🏇 emoji appears twice and signifies that ODIN rode SLEIPNIR while SIEGFRIED rode GRANI, who is a descendent of SLEIPNIR.</li>
+</ul>
+<p>Once we have all the entities, we can order them based on the letter and index into their name using the adjacent number.</p>
+<table><tr><th>Figure in Norse mythology</th><th>Letter</th><th>Index</th><th>Extracted letter</th></tr><tr><td>GUNTHER</td><td>A</td><td>5</td><td>H</td></tr><tr><td>GRANI</td><td>B</td><td>3</td><td>A</td></tr><tr><td>VIDARR</td><td>C</td><td>1</td><td>V</td></tr><tr><td>SINFJOTLI</td><td>D</td><td>2</td><td>I</td></tr><tr><td>FENRIR</td><td>E</td><td>3</td><td>N</td></tr><tr><td>FRIGG</td><td>F</td><td>4</td><td>G</td></tr><tr><td>RATATOSKR</td><td>G</td><td>6</td><td>O</td></tr><tr><td>NJORDR</td><td>H</td><td>1</td><td>N</td></tr><tr><td>BALDR</td><td>I</td><td>3</td><td>L</td></tr><tr><td>TYR</td><td>J</td><td>2</td><td>Y</td></tr><tr><td>VOLSUNG</td><td>K</td><td>2</td><td>O</td></tr><tr><td>AGNARR</td><td>L</td><td>3</td><td>N</td></tr><tr><td>REGIN</td><td>M</td><td>2</td><td>E</td></tr><tr><td>ODIN</td><td>N</td><td>2</td><td>D</td></tr><tr><td>SLEIPNIR</td><td>O</td><td>3</td><td>E</td></tr><tr><td>FAFNIR</td><td>P</td><td>5</td><td>I</td></tr><tr><td>ATLI</td><td>Q</td><td>2</td><td>T</td></tr><tr><td>HRYM</td><td>R</td><td>3</td><td>Y</td></tr></table>
+
+<p>Note that some entity names may have multiple anglicized forms. The answers above utilize the main form used on Wikipedia as of the time of writing. The extracted letter ends up being identical regardless of which variant is used, e.g. ATLI / ATTILA / ETZEL all extract to the letter T. An exception is GUNTHER / GUNNAR, where GUNTHER specifically is required.</p>
+<p>Doing so gives us the phrase HAVING ONLY ONE DEITY, which yields the answer <strong>MONOTHEISTIC</strong>.</p>
+
+    
+    
+
+    
+    
+
+    
+    <div class="puzzle-main-corner puzzle-main-corner-1"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-2"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-3"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-4"></div>
+    
+</main>
+
+
+    </div>
+    
+
+    
+
+    
+    <script>
+    document.getElementById('nav-music').style.display = 'none';
+    document.getElementById("progress-simulator").addEventListener("submit", (e) => {
+        if (e.submitter.name === "reset") {
+            toggleReset(true);
+            doGlitch(false);
+            document.getElementById("shortcuts").checked = false;
+            e.preventDefault();
+        } else {
+            localStorage.setItem(e.submitter.name, e.submitter.value);
+        }
+    });
+    addStyles();
+
+    function toggleReset(which) {
+        $('#loop-reset').toggleClass('loop-resetting', which);
+    }
+
+    function addStyles() {
+        const changeFavicon = (url) => {
+            const e = Array.from(document.getElementsByTagName("link"))
+                .filter(e => e.rel === "icon")[0];
+            e.href = url;
+        }
+        const addSheet = (url) => {
+            const e = document.createElement("link");
+            e.rel = "stylesheet";
+            e.href = url;
+            document.getElementsByTagName("head")[0].appendChild(e);
+        }
+
+        const seasons = ["spring", "summer", "autumn", "winter"];
+        let current_main_round = localStorage.getItem("round");
+        const endgame_unlocked = localStorage.getItem("endgame") === "true";
+
+        const matches = new RegExp(`\\?(${seasons.join("|")})`).exec(document.URL);
+        if (matches && matches[1]) {
+            current_main_round = matches[1];
+        }
+
+        if (endgame_unlocked) {
+            addSheet("/static/css/endgame.css");
+            changeFavicon("/static/images/favicon-endgame.ico");
+            const nodes = document.getElementsByClassName("energy-nodes-info");
+            console.log(nodes);
+            if (nodes.length > 0) {
+                nodes[0].style.display = "block";
+            }
+        } else if (current_main_round === "concert") {
+            addSheet("/static/css/concert.css");
+            changeFavicon("/static/images/favicon-concert.ico");
+            // also add the concert music
+            document.getElementById('nav-music').style.display = 'inline-block';
+            const audio = document.getElementById("music-audio");
+            if (audio) {
+                audio.addEventListener('play', () => {
+                    audio.volume = localStorage.getItem('music-audio-volume') ?? 0.5;
+                });
+                audio.addEventListener('volumechange', () => {
+                    localStorage.setItem('music-audio-volume', audio.volume);
+                });
+            }
+        } else if (seasons.includes(current_main_round)) {
+            addSheet("/static/css/season.css");
+            addSheet(`/static/css/${current_main_round}.css`);
+            changeFavicon(`/static/images/favicon-${current_main_round}.ico`);
+        } else {
+            addSheet("/static/css/blue.css");
+            changeFavicon("/static/images/favicon-blue.ico");
+        }
+    }
+
+    registerOnGlitchHook((ex) => {
+        document.getElementById('background-glitch-wrapper').style.display = 'initial';
+    });
+    </script>
+    
+</body>
+</html>

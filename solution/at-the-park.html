@@ -1,0 +1,529 @@
+
+
+
+
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+<title>Solution: At the Park</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <meta property="og:title" content="Galactic Puzzle Hunt 2022">
+    <meta property="og:description" content="Registration for this year's Galactic Puzzle Hunt is now open!">
+    <meta property="og:image" content="https://galacticpuzzlehunt.com/static/images/banner.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:slnt,CASL,CRSV,MONO@-3,0.5,1,1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/skeleton.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.formset/1.2.2/jquery.formset.min.js"></script>
+    <script src="/jsi18n/"></script>
+    <script src="/static/js/sorttable.js"></script>
+    <script src="/static/js/tray.js"></script>
+    <script src="/static/js/notify.js"></script>
+    <script src="/static/js/time.js"></script>
+    
+    
+    <link rel="icon" sizes="16x16 32x32 48x48 64x64" href="/static/images/favicon.ico" type="image/vnd.microsoft.icon">
+    
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92192633-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-92192633-1');
+</script>
+
+</head>
+<body>
+    
+    <div id="background-glitch-wrapper" class="background-glitch">
+        <div class="glitch-1"></div>
+        <div class="glitch-2"></div>
+        <div class="glitch-3"></div>
+    </div>
+    
+    
+    <input id="shortcuts" type="checkbox">
+    
+    <nav>
+        <span class="tray">
+            <span id="tray-timer"></span>
+            <div class="top-tabs">
+                <a href="/">
+                    Home
+                </a>
+                
+                
+                <a href="/story">
+                    Story
+                </a>
+                
+                
+                <a class="selected-tab" href="/puzzles">
+                    Puzzles
+                </a>
+                
+                <a href="/teams">
+                    Teams
+                </a>
+                
+                
+                <a href="/errata">
+                    Updates
+                </a>
+                
+                
+                
+                
+                <a id="nav-music" href="#">
+                    <label for="music" title="Music" style="margin-bottom: 0; font-weight: normal; cursor: pointer;">Music</label>
+                </a>
+                <input id="music" type="checkbox">
+                <div class="shortcuts music">
+                    <audio id="music-audio" controls src="/static/puzzle_resources/worlds-end-concert/music-audio.mp3">
+                        There should be a music player here.
+                    </audio>
+                </div>
+                
+                
+            </div>
+            <div class="top-left-actions">
+                
+<a href="/puzzle/at-the-park" class="btn">Back to the puzzle</a>
+
+            </div>
+        </span>
+        <div class="top-right-actions">
+        
+        <label for="shortcuts" title="Simulator">Simulator </label>
+        
+        
+        </div>
+    </nav>
+    
+    <div class="shortcuts">
+        <form id="progress-simulator">
+        <div>Current round:</div>
+        <button class="btn" type="submit" name="round" value="forward">⬆️</button>
+        <button class="btn" type="submit" name="round" value="spring">🌸</button>
+        <button class="btn" type="submit" name="round" value="summer">☀️</button>
+        <button class="btn" type="submit" name="round" value="autumn">🍂</button>
+        <button class="btn" type="submit" name="round" value="winter">☃️</button>
+        <button class="btn" type="submit" name="round" value="concert">🎤</button>
+        <button class="btn" type="submit" name="round" value="none">None</button>
+        <div>Endgame:</div>
+        <button class="btn" type="submit" name="endgame" value="true">Unlock</button>
+        <button class="btn" type="submit" name="endgame" value="false">Reset</button>
+        <div>Reset:</div>
+        <button class="btn" type="submit" name="reset" value="reset">Reset</button>
+        </form>
+    </div>
+    
+    
+    
+    
+    
+    <div id="loop-reset">
+        <form>
+            <svg viewBox="-30 160 720 320">
+                <defs>
+                    <path id="loop-end-path" d="m 370,240 c 38.29044,0 74.26676,18.33512 96.83716,49.26624 l -76.8369,30.73478 V 270 L 300,330 261.03858,309.74192 c 19.60706,-42.51188 62.14674,-69.74008 108.9623,-69.74306 z m 106.15758,64.22738 c 6.65282,12.65518 10.9906,26.39738 12.80876,40.57862 l -38.96532,5.19538 z"/>
+                </defs>
+                <foreignObject width="720" height="480" clip-path="url(#loop-end-clip)" class="loop-shade">
+                    <aside class="loop-shade" xmlns="http://www.w3.org/1999/xhtml" style="width: 100%; height: 100%;"></aside>
+                </foreignObject>
+                <clipPath id="loop-end-clip"><use href="#loop-end-path"/></clipPath>
+                <use href="#loop-end-path"/>
+                <path d="M 490,400 600,330 450,350 490,280 390,320 V 270 L 300,330 50,200 170,380 50,400"/>
+            </svg>
+            <div>THE END</div>
+            <p>You can reset once per minute.</p>
+            <table>
+                <tr id="loop-reset-btn-row-reset">
+                    <td><button class="btn" disabled>Reset</button></td>
+                    <td>Start over from the beginning of the exam.</td>
+                </tr>
+                <tr id="loop-reset-btn-row-restore">
+                    <td><button class="btn" disabled>Jump</button></td>
+                    <td>Start over, but resubmit your previous answers to bring you back to this point.</td>
+                </tr>
+                <tr>
+                    <td><a class="btn" href="javascript:toggleReset(false)">Stay</a></td>
+                    <td>Look at this page a bit longer. Make sure to save your work.</td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    
+    <script>
+
+    
+    
+    let glitchTriggerFuncs = [];
+    let glitchTriggerReceived = false;
+    let glitchTriggerExReceived = false;
+    let glitchPageLoaded = false;
+    function processGlitchFuncs(ex) {
+        glitchTriggerFuncs.forEach((func) => {
+            func(ex);
+        });
+    }
+    function doGlitch(ex) {
+        glitchTriggerReceived = true;
+        if (ex) {
+            glitchTriggerExReceived = true;
+        }
+        if (glitchPageLoaded) {
+            processGlitchFuncs(ex);
+        }
+    }
+    window.addEventListener('load', () => {
+        glitchPageLoaded = true;
+        if (glitchTriggerExReceived) {
+            processGlitchFuncs(true);
+        }
+        else if (glitchTriggerReceived) {
+            processGlitchFuncs(false);
+        }
+    }, false);
+    
+    
+    
+    function registerOnGlitchHook(func) {
+        if (glitchTriggerExReceived) {
+            func(true);
+        }
+        else if (glitchTriggerReceived) {
+            func(false);
+        }
+        glitchTriggerFuncs.push(func);
+    }
+    
+
+    
+    
+    </script>
+    <div class="content">
+        
+
+<style>
+h2 {
+    font-size: 2.5rem;
+    font-weight: normal;
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+
+h4 {
+    font-size: 2rem;
+    font-weight: normal;
+    margin: 2rem 0;
+}
+</style>
+
+<h1>
+    Solution <span style="font-weight: 300">At the Park</span>
+    <div class="solved-title-marker">Answer <span class="solved-title-answer spoiler">MILLENNIALS</span></div>
+</h1>
+
+<main class="puzzle-main">
+    <h2 style="margin-top: 0">
+        Written by
+        
+Josh Alman and Jakob Weisblat
+
+    </h2>
+
+    
+    <p>We open the puzzle and are greeted with a textbox asking us what park we want to visit. Each time we visit a park, a clue is slowly revealed to us over the course of the remaining time before the asteroid hits.</p>
+<p>Trying different parks, we get the sense that there are a fair number of different clues out there, though we may occasionally see a repeat when we type two alphabetically similar parks in.</p>
+<p>It seems like the clues are referring to particular places, but it’s not obvious which ones. There are a lot of ways for us to get the next realization: <b>the parks in question are <i>ballparks</i>&nbsp;! This is a puzzle about the stadiums in Major League Baseball.</b></p>
+<ul>
+<li>The clues have a lot of suspicious elements: longest events lasting more than 6.5 hours, a park with a roof, many numbered sections, an employee who can do his job from two different directions, etc</li>
+<li>Some of the parks’ clues can be used to trace a path back to the park itself; for example, Citi Field’s clue is likely solvable in reverse by a person familiar with the New York City subway system, or Oracle Park’s clue can likely be tracked down to the SF MoMA which then tells you a rough area to look for a park in San Francisco, one where Giants have been. </li>
+<li>Some of the clues have elements that might be recognized as suspicious by a baseball fan. For example, the LoanDepot Park clue mentions walking 60 feet and six inches (the distance from the pitcher’s mound to home plate).</li>
+</ul>
+<p>Now we can solve the clues by figuring out what baseball park they are closest to alphabetically and thus what park the clues we have are actually for. Once we have enough letters, we might infer that the cluephrase starts with ANSWER TO THE PUZZLE IS and focus on the ending. The extracted letters are as follows:</p>
+<table><tr><th>Park</th><th>Extracted Letter</th></tr><tr><td>American Family Field</td><td>A</td></tr><tr><td>Angel Stadium</td><td>N</td></tr><tr><td>Busch Stadium</td><td>S</td></tr><tr><td>Chase Field</td><td>W</td></tr><tr><td>Citi Field</td><td>E</td></tr><tr><td>Citizens Bank Park</td><td>R</td></tr><tr><td>Comerica Park</td><td>T</td></tr><tr><td>Coors Field</td><td>O</td></tr><tr><td>Dodger Stadium</td><td>T</td></tr><tr><td>Fenway Park</td><td>H</td></tr><tr><td>Globe Life Field</td><td>E</td></tr><tr><td>Great American Ball Park</td><td>P</td></tr><tr><td>Guaranteed Rate Field</td><td>U</td></tr><tr><td>Kauffman Stadium</td><td>Z</td></tr><tr><td>LoanDepot Park</td><td>Z</td></tr><tr><td>Minute Maid Park</td><td>L</td></tr><tr><td>Nationals Park</td><td>E</td></tr><tr><td>Oracle Park</td><td>I</td></tr><tr><td>Oriole Park at Camden Yards</td><td>S</td></tr><tr><td>Petco Park</td><td>M</td></tr><tr><td>PNC Park</td><td>I</td></tr><tr><td>Progressive Field</td><td>L</td></tr><tr><td>RingCentral Coliseum</td><td>L</td></tr><tr><td>Rogers Centre</td><td>E</td></tr><tr><td>T-Mobile Park</td><td>N</td></tr><tr><td>Target Field</td><td>N</td></tr><tr><td>Tropicana Field</td><td>I</td></tr><tr><td>Truist Park</td><td>A</td></tr><tr><td>Wrigley Field</td><td>L</td></tr><tr><td>Yankee Stadium</td><td>S</td></tr></table>
+
+<p>Answer to the puzzle is: <strong>MILLENNIALS</strong>.</p>
+
+    
+    
+    <h2 id="authors-notes">Author&rsquo;s Notes</h2>
+    <p>We came up with this puzzle while at a Yankees game; initially the clues were going to be more like traditional runarounds around the stadiums, but it turns out it’s surprisingly annoying to get good pictures of different places in stadiums, so we went with this instead.</p>
+<p>The first draft of this puzzle had the alternate cluephrase ANSWER TO THIS PUZZLE IS MILLENIALS. Unfortunately, millennials has two Ns so we had to rewrite a lot of clues.</p>
+    
+
+    
+    
+    <h2 id="appendix">
+Appendix: Solving the clues
+</h2>
+    <h3>American Family Field</h3>
+<blockquote>
+<p>The construction of this park was met with a lot of controversy. The local government had to raise taxes in order to fund it. Over time, a number of unexpected complications cost the city even more money, including a major element of the roof that needed to be replaced. That roof is shaped like a word which could also describe most of the people here. What is the second letter of that word?</p>
+</blockquote>
+<p><i>Solution Notes:</i> The roof is FAN-shaped; see for instance <a href="https://www.mlb.com/brewers/ballpark/roof-status">here</a> or <a href="https://en.wikipedia.org/wiki/American_Family_Field">here</a>. The second letter of FAN is A.</p>
+<h3>Angel Stadium</h3>
+<blockquote>
+<p>Although this park has been open for more than 50 years, the longest ever event held there took place only 8 years ago. It lasted more than six and a half hours. It was so long that some employees who were supposed to have a day off were called in to help out. One of them, a visitor from the east coast, would normally start working at the beginning of the event, rather than joining part-way through. (Work is in his name, after all.) He was born in a city with a 9-letter name; what is its 5th letter?</p>
+</blockquote>
+<p><i>Solution Notes:</i> The longest game at Angel Stadium was a 6-hour, 31-minute game between the Angels and Red Sox on August 9, 2014 (see <a href="https://en.wikipedia.org/wiki/Angel_Stadium#Baseball">here</a>). Reading articles or play-by-plays of that game (e.g. <a href="https://www.baseball-reference.com/boxes/ANA/ANA201408090.shtml">here</a> or <a href="https://www.espn.com/mlb/playbyplay?gameId=340809103">here</a>) we see that Brandon Workman from the Red Sox started pitching in the 19th inning. He was born in Arlington. The fifth letter of ARLINGTON is N.</p>
+<h3>Busch Stadium</h3>
+<blockquote>
+<p>This is your first time coming to this park, but before you can go to the park proper you’re going to have to park! Luckily, you’ve printed out the park’s official parking map from the “directions” part of the park’s website. You start driving around the nearby streets, looking for parking. You pass the train station, and then you pass between two parking sites before turning left on a street named for something that grows on trees. The area near the park is crowded, so you turn right when the street ends to get farther away. Continue until you reach another street named for something that grows on trees, and turn onto it. You’ll pass one parking opportunity on the left (though it seems like you really shouldn’t park there), one on the right, and two more on the left before you turn back toward the park. Continue until you reach a parking lot whose name is very thematic; at last, you find parking there. What was the first letter of the last street you passed before entering the lot?</p>
+</blockquote>
+<p><i>Solution Notes:</i> 
+The <a href="https://www.mlb.com/cardinals/ballpark/directions">directions page</a> contains a <a href="https://img.mlbstatic.com/mlb-images/image/upload/mlb/vz7wha7iyzerefmnlczv.pdf">map helpfully showing all the parking in the area.</a> Start at the METRO Link station right next to the park, head north on 8th street. Turn left on Walnut, right on 12th Street (Tucker Blvd.), right on Chestnut Street (not parking in the parking garage on the left right after the turn because, despite it being marked on this map, google street view shows that it is for permit holders only and violators will be towed). Turn right on Broadway and continue to Cardinal parking lot between Spruce and Poplar streets. The first letter of SPRUCE is S.</p>
+<h3>Chase Field</h3>
+<blockquote>
+<p>Gather your climbing gear. Climb up to start in the center of the most prominent bank logo. There are two large red and white birds that you can climb to without going up or down. Go to the closer one. From there,  orient yourself toward the ground, then go straight until you get right below a mountain. Turn 90 degrees to your right, then go straight until you get to a banner. To your right, there should be in an area describing some recent and not-so-recent events. What is the last letter in alphabetical order that appears in the three large blocks of text that area?</p>
+</blockquote>
+<p><i>Solution Notes:</i> You’re climbing around the ads and screen in the outfield of the park, and will need a recent photo like <a href="https://twitter.com/ChaseField/status/1286834594562506752/photo/1">this one</a> from the Chase Field Twitter account. You start in the center of the Chase Field logo, go right to the University of Phoenix ad (as opposed to the Chick-Fil-A ad on the left), down to the Coors Light strike zone, left to Banner Health, then up to the list of championships won by the Diamondbacks. All three blocks of text (NL West Champions, World Champions, Wild Card) contain W.</p>
+<h3>Citi Field</h3>
+<blockquote>
+<p>Leave the park and head south around 500 feet, passing a parking lot. Take the stairs up and get on a train. Take the train for 19 stops, then get off. Take a staircase up to a mezzanine, and then another staircase up to another platform. Take a train from this platform and go for one stop. Get off, and go downstairs, heading west about a thousand feet and eventually up some stairs to end up in a recently renovated building named for a sociologist. You’ll want to wait here to find out where to go for your next train. When you do get on that train, head northeast and get off after one stop (28 minutes), at a station whose enumeration is (3 8). What is the last letter of that stop?</p>
+</blockquote>
+<p><i>Solution Notes:</i> Take the 7 from Mets–Willets Point station to Times Square–42nd Street. Transfer to the 1/2/3 (<a href="http://www.projectsubwaynyc.com/x-ray-area-maps">useful diagrams of the station</a> can be found on the internet, from which we can follow the staircase directions, or we can guess it’s the 1/2/3 or also try the N/Q/R/W and the A/C/E and see which one makes the next clue make sense). Get off at 34th Street–Penn Station and head west to Moynihan Train Hall. Take the Amtrak Northeast Regional to New Rochelle. The last letter of New Rochelle is E.</p>
+<h3>Citizens Bank Park</h3>
+<blockquote>
+<p>Visit the climbing area at the northeast corner of the park. Start at the bottom left corner of city hall, and then climb to the tip of the pointiest building. Then climb over to the eyes of the monster. Next, climb to where there are two Ls next to each other, and then climb to the chevron that is part of one of the building’s facades. Finaly, head to the part of the tallest building that is covered up by part of city hall. What letter did you trace out?</p>
+</blockquote>
+<p><i>Solution Notes:</i></p>
+<p><img alt="" src="R.png" />
+It’s an R!</p>
+<h3>Comerica Park</h3>
+<blockquote>
+<p>In a park this big, you might expect people to play soccer all the time, but you ask some locals and they tell you it’s only happened once. That’s curious, so you investigate that time. That game ended in a 5–3 penalty shootout after a 1–1 draw. Consider the number of the player who scored first. Subtract two and take the corresponding letter in the name of the city you’re in.</p>
+</blockquote>
+<p><i>Solution Notes:</i></p>
+<p>In July of 2017, Comerica Park played host to a soccer game in the International Champions Cup between AS Roma and Paris Saint-Germain. A highlight video or <a href="https://www.espn.com/soccer/match/_/gameId/477287">game summary</a> will show that the first goal was scored by Marquinhos, number 5, for PSG. The third letter of Detroit is T.</p>
+<h3>Coors Field</h3>
+<blockquote>
+<p>Sit down in the park, fall asleep, and wake up on August 8, 2019 to the sound of a loud concert going on. You’ll want to watch the concert and wait until a song is played that shares its name with a 1902 song. Three songs after that, you’ll hear a song that has a name in its name that has a new connotation these days that it didn’t have when the song was written. Consider the word that goes before that name in its new meaning (it should be 6 letters long). Now take that 6-letter word, and divorce it from its modern meaning; if you asked someone 30 years ago what that word meant, they’d probably tell you it was a member of a certain category. Now, wait until a song is played that has that category word in its name. What is the first letter of the word after the category word in question?</p>
+</blockquote>
+<p><i>Solution Notes:</i> It’s a Billy Joel concert. The <a href="https://www.setlist.fm/setlist/billy-joel/2019/coors-field-denver-co-39fa51b.html#">setlist</a> can be found online. The Entertainer is also a 1902 song. Three songs later, a song mentions Alexa, which now has the connotation of Amazon Alexa. 30 years ago, Amazon was most likely to be thought of as a river, or maybe a rainforest. The word rainforest doesn’t appear in a later song, but The River of Dreams is a song that appears later in the concert. The first letter of OF is O.</p>
+<h3>Dodger Stadium</h3>
+<blockquote>
+<p>In July of 2022 a star-studded event happened in this park, something that has happened here only once before. There was a lot of fanfare about it, and it was televised with much commentary. Among all the people who went home before the end of the event, take the one with the longest last name. Their first name is relatively short. What is the last letter of their last name?</p>
+</blockquote>
+<p><i>Solution Notes:</i>
+This refers to the <a href="https://www.espn.com/mlb/playbyplay/_/gameId/401356757">2022 MLB all-star game</a>. Paul Goldschmidt is the longest-last-named person who scored (i.e., went home). Goldschmidt ends with T.</p>
+<h3>Fenway Park</h3>
+<blockquote>
+<p>On an evening just over a month ago, there was a grim scene at this park. Some guests from abroad came and caused a commotion, wreaking havoc in ways which had never been done here before. One particularly grand event which happened that evening hadn’t happened anywhere previously since 2017. That event name has enumeration (6 3 4 5 4); what is the second letter of the second word?</p>
+</blockquote>
+<p><i>Solution Notes:</i> The event in question is Raimel Tapia’s INSIDE THE PARK GRAND SLAM against the Red Sox on July 22, 2022. <a href="https://www.youtube.com/watch?v=Ojr-_L3IHc4&ab_channel=MLB">Check it out</a>! The second letter of THE is H.</p>
+<h3>Globe Life Field</h3>
+<blockquote>
+<p>This park is pretty new, but a lot of cool stuff has happened there even so. There was a six-day event held here in 2020, which started off with a very short concert by a popular band. That band, which is based in Texas, has a ten-letter name. What is the second letter in the name?</p>
+</blockquote>
+<p><i>Solution Notes:</i> In 2020, Globe Life field hosted the entire World Series (an unusual thing&emdash;normally, it is held in the two teams’ ballparks but for COVID-19 reasons it was held in one (neutral) stadium). Pentatonix performed the national anthem before the first game. PENTATONIX has E as its second letter.</p>
+<h3>Great American Ball Park</h3>
+<blockquote>
+<p>You’re feeling hungry. Very hungry. Like, probably the hungriest you’ve ever felt. Fortunately, this park offers the perfect experience for you, at stands in two different locations. Make a beeline for the nearest one. Gorge yourself on many foods. One of them is a kind of corn. What is the first letter of that kind of corn?</p>
+</blockquote>
+<p><i>Solution Notes:</i> Great American Ball Park has <a href="https://www.mlb.com/reds/tickets/specials/ayce">All You Can Eat Stands</a> that serve soda, popcorn, peanuts, chips, and hot dogs. You’re only allowed 5 hot dogs, though, so I hope that’s all you can eat! The “kind of corn” is, of course, POPCORN, whose first letter is P.</p>
+<h3>Guaranteed Rate Field</h3>
+<blockquote>
+<p>On May 9, 2022, a Canadian whose last name sounds like he should be in the construction business did something never done before in this park. This achievement involved two separate events, each of which ended in a different (three-digit) numbered place in the park. Add together the two numbers, add six, and divide by ten. What letter is at that position in the alphabet?</p>
+</blockquote>
+<p><i>Solution Notes:</i> That day, the Cleveland Guardians’ Josh Naylor hit a three-run home run and a grand slam, both after the eighth inning, setting an MLB record. One of these hits landed in section 101, and one landed in section 103. We can watch highlight videos of the game (like this one: <a href="https://www.youtube.com/watch?v=rAubajHOB7A">Josh Naylor launches a Grand Slam in the 9th and a home run in the 11th!</a>) and compare to a stadium map to determine these numbers. 204 + 6 is 210, and the 21st letter of the alphabet is U.</p>
+<h3>Kauffman Stadium</h3>
+<blockquote>
+<p>For this one, you’re gonna have to stay at home and send a drone around the park. The drone should be equipped with skywriting capabilities.  Start the drone out at a place whose number is an area code in the state of Rhode Island. Then send it to the place with the highest number. Then, send it to a place whose number is the same digit repeated three times. Now, consider which places in the park have Leyland numbers as their numbers. Send the drone to the one of these with the smaller number. From where you’re standing, what letter did the drone spell out? Don’t forget that the world exists in three dimensions!</p>
+</blockquote>
+<p><i>Solution Notes:</i> The drone starts out in section 401 (high up, left field), then goes to section 439 (high up, right field). Then it goes to section 111 (low, left field) then section 145 (low, right field). From home plate, where you’re standing, it spells out a Z.</p>
+<h3>LoanDepot Park</h3>
+<blockquote>
+<p>In 2017, a man who was born in Oklahoma cracked an aquarium in this park. Go back in time to the moment that happened, and start at the crack. Walk about 55 feet directly to the east. Turn 45 degrees to the right, then walk 60 feet and 6 inches straight ahead. You should arrive right in front of a man whose work is now headquartered in the capital. Back in 2009, that man worked for an organization from Utah. What was the eighth and final letter in the name of that organization?</p>
+</blockquote>
+<p><i>Solution Notes:</i> The crack was caused by a foul ball hit by J.T. Realmuto on June 2, 2017. You can watch it happen <a href="https://www.mlb.com/marlins/video/must-c-foul-cracks-fish-tank-c1456083483">here</a>, and see that the crack occurred to the catcher’s right. Consulting a map of the park, such as <a href="https://img.mlbstatic.com/mlb-images/image/private/q_100/mlb/iev582pl4wpytyyxz9pi">this one</a>, shows that the crack occurred about 55 feet west of home plate, so walking 55 feet east gets you back to home. 60 feet and 6 inches in front of home plate is the pitcher’s mound. Returning to our video, we see that Patrick Corbin from the Diamondbacks was on the mound and threw the pitch. His <a href="https://en.wikipedia.org/wiki/Patrick_Corbin">Wikipedia page</a> tells us that in 2009 he pitched for the Orem Owlz from Orem, Utah, whose eighth letter is Z.</p>
+<h3>Minute Maid Park</h3>
+<blockquote>
+<p>The park has sent you here to verify that the numbers listed in their “facts and figures” page are correct. There are a lot of places to sit in this park... let’s count them! Start with the number in the area named for a nearby street. Next, subtract the number in the area named for something really hard. Divide the result by fifty, and add five. What is the corresponding letter in the alphabet?</p>
+</blockquote>
+<p><i>Solution Notes:</i> The <a href="https://www.mlb.com/astros/ballpark/information/facts-and-figures">facts and figures page</a> shows that there are 681 seats in the Crawford boxes (named for Crawford street) and 331 in the Diamond club, so we compute (681 − 331)/50 + 5 = 12, giving us an L.</p>
+<h3>Nationals Park</h3>
+<blockquote>
+<p>At most events at this park, participants get to participate in an exciting ritual. About three quarters of the way through the event (or sometimes a bit later, depending on how happy the locals are), everyone joins together in singing a traditional song. This tradition has remained mostly unchanged for a long time, though they sometimes try out small modern variations. One major example was on July 29, 2020, when they played one extra song as part of the ritual, in honor of some visitors to the park. Those visitors had been displaced by the pandemic, and the locals wanted them to feel more at home. That song has a three-word name. What is the last letter of the second word?</p>
+</blockquote>
+<p><i>Solution Notes:</i> The ritual is the seventh inning stretch! On the day in question, the Blue Jays were technically the “home team” at Nationals Park, since they couldn’t play in Toronto due to COVID regulations. The Nationals kindly played the Blue Jays’ seventh inning stretch song, OK BLUE JAYS, to make them feel at home. See, for instance, <a href="https://dailyhive.com/vancouver/ok-blue-jays-song-plays-in-washington">here</a>. The last letter of BLUE is E.</p>
+<h3>Oracle Park</h3>
+<blockquote>
+<p>Giants have been here, you can just tell. So you scale yourself up to the size of a giant, and you look around. One building to the northwest is taller than you, so you decide to go have a look at it. On your way over there, you stub your toe on an elevated roadway whose number is a multiple of 16, causing siginificant damage to it, and you decide that maybe you ought to be a little more careful. You decide to go to a museum instead; you turn left about 40 degrees and head about the same distance you were going to head anyway, but a little more careful not to crush anyone or anything. When you get there, you shrink back to normal person size in order to look at the art. You wander the museum and are captivated by what appears to be three blank canvas panels hung next to each other. What is the third letter of the name of the art piece?</p>
+</blockquote>
+<p><i>Solution Notes:</i> Head toward Salesforce Tower, but stub your toe on I-80. Then decide to go to SF MoMA instead. Look at <a href="https://www.sfmoma.org/artwork/98.308.A-C/">this work</a> called <i>White Painting</i>. The third letter is I.</p>
+<h3>Oriole Park at Camden Yards</h3>
+<blockquote>
+<p>Enter this park (whose name is five words long!) from the east. You’ll walk down a particular street whose name sounds like the name of a US state. As you walk along the street, you’ll see a pub and a BBQ joint, as well as a local gift shop. But, watch your head! It’s surprisingly common for flying objects to land here! It’s happened at least 115 times since the park opened about 30 years ago. The first time was done by a guy who comes from an organization associated with a particular animal. What’s the last letter of the six-letter name of that organization?</p>
+</blockquote>
+<p><i>Solution Notes:</i> The street in question is Eutaw Street, which you can read all about <a href="https://www.mlb.com/orioles/ballpark/information/eutaw-street">here</a>. That page lists every home run which landed on Eutaw Street, including the first by Mickey Tettleton of the Detroit Tigers on April 20, 1992. The last letter of TIGERS is S.</p>
+<h3>Petco Park</h3>
+<blockquote>
+<p>A major contracts exchange in early August meant that two park employees from out east will be spending a lot more time here at this park. One of them is quite versatile, and is able to do his job from two different directions! He’s so well-respected that in 2019, he was invited to a ceremonial event in Cleveland to celebrate outstanding park employees. Nonetheless, the locals are more excited about the other one of them, whose move was anticipated for weeks; what is the third letter of the name of the country they were born in?</p>
+</blockquote>
+<p><i>Solution Notes:</i> The “contracts exchange” described here was the big <a href="https://www.espn.com/mlb/story/_/id/34334378/san-diego-padres-agree-trade-washington-nationals-slugger-juan-soto-sources-say">trade</a> in early August between the Padres and Nationals. The Padres acquired Josh Bell (who is a switch hitter, and played in the 2019 All-Star game in Cleveland) and more famously, Juan Soto. Soto was born in the DOMINICAN REPUBLIC, whose third letter is M.</p>
+<h3>PNC Park</h3>
+<blockquote>
+<p>At this park, you’re going to walk around and visit different people. That may involve moving around, but at least you won’t have to do any time travel—you can stick around in 2022. Start out by saying hi to someone who is surprisingly tall. Next, visit someone who did a certain run 24 times last year. Now, visit someone whose last name sounds like he could have a career measuring delivery vehicles. Conclude your journey at someone who hasn’t been around very long whose first name also refers to a university. Consider the letter you have traced in the ground as you walked around the park. What letter comes five before it in the alphabet?</p>
+</blockquote>
+<p><i>Solution Notes:</i> First, visit Oneil Cruz, the tallest shortstop in MLB history. Then visit Bryan Reynolds in center field. Then visit Josh VanMeter at second base. Visit rookie Cal Mitchell in right field. Drawing lines on the field, we spell out an N. Five letters before N in the alphabet is I.</p>
+<h3>Progressive Field</h3>
+<blockquote>
+<p>There’s nothing happening here yet, so you decide to walk out the north exit.  On your way out, you stop to look at some really big people. The one in the middle is doing something pretty cool, and you stop to watch, but he doesn’t really make any progress. Eventually, you get bored and head back inside. You head toward the largest part of the building whose number is a multiple of 37, but on your way up the second staircase, you get distracted and stop to look at a dog, and accidentally head west when you mean to head east. You decide to sit down where you end up anyway, and you look WNW where everyone else is looking. Sitting down again, you get bored and think back to that guy you were looking at earlier. He sure moved cities a lot, huh? A few years into the job he’s most famous for, he took a four year leave where his workplace shared its name with a US state. He also had other jobs, including as the first president of an association headquartered in a very large city. After he retired, he moved to a town close to his old workplace named after the owner of a mill. He must have moved because he liked small towns. He was born in a small town, after all. What’s the third letter of the county he was born in? By the way, you probably don’t need to remember where you’re sitting right now or any of those other cities you were thinking about.</p>
+</blockquote>
+<p><i>Solution Notes:</i> The statue is of Bob Feller. He was born in Iowa, in Dallas County. The third letter of DALLAS is L.</p>
+<h3>RingCentral Coliseum</h3>
+<blockquote>
+<p>This park has a mountain that is usually closed to visitors, but occasionally it is opened. The last time this happened, many thousands of people flocked to the park. A famous rapper helped to start off the event. What is the fifth letter of his (real) first name?</p>
+</blockquote>
+<p><i>Solution Notes:</i>&nbsp; <a href="https://en.wikipedia.org/wiki/Mount_Davis_(Oakland)">Mount Davis</a> is a section of the stadium that is usually closed off but opens for large events, such as the <a href="https://en.wikipedia.org/wiki/2019_American_League_Wild_Card_Game">2019 AL Wild Card Game</a>. That game had its first pitch thrown by MC Hammer, AKA Stanley Kirk Burrell. The fifth letter of Stanley is L.</p>
+<h3>Rogers Centre</h3>
+<blockquote>
+<p>It’s a nice and sunny day here at the park, so you decide to partake in your favorite activity: hiding in the shade so that you don’t have to turn up your phone brightness too much, and then scrolling through twitter! Visit the park’s twitter account. Even though they haven’t been active in over 5 years, they have some great tweets. Look through their tweets for a while. Next, go to the most recent tweet that the park liked, and take the two-word phrase which is repeated twice in that tweet. One of the park’s last few retweets starts with the same first three letters as that phrase. That tweet also tags a particular person. Go to that person’s twitter profile. What is the third letter of the last word of their first tweet (all the way back in 2009!)?</p>
+</blockquote>
+<p><i>Solution Notes:</i> The most recent tweet <a href="https://twitter.com/RogersCentre/likes">linked by</a> the Rogers Centre, by @DelmeHerbert, was on <a href="https://twitter.com/DelmeHerbert/status/878409454601089028">June 23, 2017</a> and repeats “well done” twice. The Rogers Centre recently retweeted <a href="https://twitter.com/BlueJays/status/757986070365601796">this tweet</a> welcoming @MelvinUptonJr to the team. His <a href="https://twitter.com/MelvinUptonJr/status/7065687479">first tweet</a>’s last word is FIELD, whose third letter is E.</p>
+<h3>T-Mobile Park</h3>
+<blockquote>
+<p>There’s a type of event that is so rare that one hasn’t happened in over ten years. The last time one happened was in 2012, and perhaps surprisingly, this type of event happened three times that year. Two of those were in this park, causing quite a commotion! Consider the one that happened somewhere else in that year. The person responsible was born in Alabama. What is the last letter of their last name?</p>
+</blockquote>
+<p><i>Solution Notes:</i> The type of event described is a perfect game. From a <a href="https://en.wikipedia.org/wiki/List_of_Major_League_Baseball_perfect_games">list of all perfect games</a>, we see that the 2012 perfect game not at T-Mobile Park was pitched by Matt Cain (at AT&amp;T Park). The last letter of his last name is N.</p>
+<h3>Target Field</h3>
+<blockquote>
+<p>Find the two tallest poles in the park. Start on the ground at their midpoint. Walk directly east until you hit a wall. Jump about 125 feet up in the air, and then stay there, hovering until the sign in front of you lights up. Count the number of letters that light up in blue. Either light blue or dark blue counts. Let that number be X. Now look at the letters which lit up in red. What is the Xth such letter from left to right on the sign?</p>
+</blockquote>
+<p><i>Solution Notes:</i> The two poles are the foul poles, so their midpoint is in the center of the outfield. From a map of the park, we see that the pitcher’s mound in this park is directly east of home plate. Hence, going east from where we start and jumping up gets us to the light-up Twins sign in the center of the outfield. Consulting a picture such as <a href="https://i.pinimg.com/originals/c1/3a/4a/c13a4aee9e69ca468ca3a5e6b6a9d1f6.jpg">this one</a> we see that there are four blue letters (M on one player, and STP on the other), and the red letters spell TWINS, whose fourth letter is N.</p>
+<h3>Tropicana Field</h3>
+<blockquote>
+<p>Start at the part of the park that sounds like it should be in a different state. Head down some stairs. You find yourself in a place that is numbered with the product of two primes. Turn right and head onward, elbowing past anyone who is indignant that you’re passing them like this. Continue onward through 21 areas, and pause to admire the view. Continue through another 25 areas until you see an animal. What is the sixth letter of the third word of the name of the exhibit that animal is in?</p>
+</blockquote>
+<p><i>Solution Notes:</i> Start at the Louisiana Hot Sauce Left Field Ledge. Head down into section 143. Walk all the way around the stadium, passing by home plate, to get the the Rays Touch Experience. The sixth letter of experience is I.</p>
+<h3>Truist Park</h3>
+<blockquote>
+<p>In 2021, a major multi-day event took place in this park and one other park. Count the number of people who came to the park for each of the days of the event here. Find the two days whose attendance numbers are closest to one another, and take the difference between those two numbers. Subtract two and take the corresponding letter of the city you’re in.</p>
+</blockquote>
+<p><i>Solution Notes:</i> The 2021 World Series took place in part at Truist Park. Games 4 and 5 had attendance numbers 43,125 and 43,122 respectively. The difference is 3, subtract two to get 1. The first letter of ATLANTA is A.</p>
+<h3>Wrigley Field</h3>
+<blockquote>
+<p>Jump into a wormhole, and reemerge in June 2019. Each of the five nights from June 18, 2019 to June 22, 2019, just before midnight, go to the center of the beach nearest this park, get in a helicopter, and fly to the center of this park. On your way into the park, you’ll pass a single flag flying on a large masthead, displaying one of two letters. Thinking of the first of those two letters in alphabetical order as 0, and the other as 1, the five flags you see on those five nights give a 5-bit binary number. Let X be that number. What is the Xth letter of the alphabet?</p>
+</blockquote>
+<p><i>Solution Notes:</i> Starting at Montrose Beach in Chicago and flying to Wrigley Field, we pass over the <a href="https://en.wikipedia.org/wiki/Cubs_Win_Flag">Cubs Win Flag</a> each evening. The Cubs played home games each of those days, whose <a href="https://www.baseball-almanac.com/teamstats/schedule.php?y=2019&t=CHN">results</a> were LWWLL. Since the Cubs fly a W flag for wins and a L flag for losses, this spells 01100, which is 12 in binary, giving an L.</p>
+<h3>Yankee Stadium</h3>
+<blockquote>
+<p>Build a time machine, acquire fuel, and find an inconspicuous part of the park to disappear from. Travel back in time to the day that the local zoo opened, then go forward in time 110 years, then go back in time 4 days, then wait until 8:24 pm on that day. Within the next eight minutes, a very exciting moment will happen. If you’re in the right place, you’ll be able to catch it. That place is right behind an ad for a Japanese company. What’s the second-to-last letter of that company’s name?</p>
+</blockquote>
+<p><i>Solution Notes:</i> The local zoo is the <a href="https://en.wikipedia.org/wiki/Bronx_Zoo">Bronx Zoo</a>, which opened on November 8, 1899. You thus travel to 8:24 pm on November 4, 2009. This was <a href="https://www.baseball-reference.com/boxes/NYA/NYA200911040.shtml">game 6</a> of the 2009 World Series at Yankee Stadium, which started at 7:58 pm, so the event in question happened about half an hour into the game. From a <a href="https://www.youtube.com/watch?v=8s_Bvy1Q1jw&ab_channel=ClassicPhilliesTV">video of the game</a> (the game starts at about 17:10 in that video), we find that the moment in question is a <a href="https://youtu.be/8s_Bvy1Q1jw?t=2710">home run</a> which lands behind an ad for KOMATSU, whose second-to-last letter is S.</p>
+    
+
+    
+    <div class="puzzle-main-corner puzzle-main-corner-1"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-2"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-3"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-4"></div>
+    
+</main>
+
+
+    </div>
+    
+
+    
+
+    
+    <script>
+    document.getElementById('nav-music').style.display = 'none';
+    document.getElementById("progress-simulator").addEventListener("submit", (e) => {
+        if (e.submitter.name === "reset") {
+            toggleReset(true);
+            doGlitch(false);
+            document.getElementById("shortcuts").checked = false;
+            e.preventDefault();
+        } else {
+            localStorage.setItem(e.submitter.name, e.submitter.value);
+        }
+    });
+    addStyles();
+
+    function toggleReset(which) {
+        $('#loop-reset').toggleClass('loop-resetting', which);
+    }
+
+    function addStyles() {
+        const changeFavicon = (url) => {
+            const e = Array.from(document.getElementsByTagName("link"))
+                .filter(e => e.rel === "icon")[0];
+            e.href = url;
+        }
+        const addSheet = (url) => {
+            const e = document.createElement("link");
+            e.rel = "stylesheet";
+            e.href = url;
+            document.getElementsByTagName("head")[0].appendChild(e);
+        }
+
+        const seasons = ["spring", "summer", "autumn", "winter"];
+        let current_main_round = localStorage.getItem("round");
+        const endgame_unlocked = localStorage.getItem("endgame") === "true";
+
+        const matches = new RegExp(`\\?(${seasons.join("|")})`).exec(document.URL);
+        if (matches && matches[1]) {
+            current_main_round = matches[1];
+        }
+
+        if (endgame_unlocked) {
+            addSheet("/static/css/endgame.css");
+            changeFavicon("/static/images/favicon-endgame.ico");
+            const nodes = document.getElementsByClassName("energy-nodes-info");
+            console.log(nodes);
+            if (nodes.length > 0) {
+                nodes[0].style.display = "block";
+            }
+        } else if (current_main_round === "concert") {
+            addSheet("/static/css/concert.css");
+            changeFavicon("/static/images/favicon-concert.ico");
+            // also add the concert music
+            document.getElementById('nav-music').style.display = 'inline-block';
+            const audio = document.getElementById("music-audio");
+            if (audio) {
+                audio.addEventListener('play', () => {
+                    audio.volume = localStorage.getItem('music-audio-volume') ?? 0.5;
+                });
+                audio.addEventListener('volumechange', () => {
+                    localStorage.setItem('music-audio-volume', audio.volume);
+                });
+            }
+        } else if (seasons.includes(current_main_round)) {
+            addSheet("/static/css/season.css");
+            addSheet(`/static/css/${current_main_round}.css`);
+            changeFavicon(`/static/images/favicon-${current_main_round}.ico`);
+        } else {
+            addSheet("/static/css/blue.css");
+            changeFavicon("/static/images/favicon-blue.ico");
+        }
+    }
+
+    registerOnGlitchHook((ex) => {
+        document.getElementById('background-glitch-wrapper').style.display = 'initial';
+    });
+    </script>
+    
+</body>
+</html>

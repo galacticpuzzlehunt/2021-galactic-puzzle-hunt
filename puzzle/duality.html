@@ -1,0 +1,1395 @@
+
+
+
+
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+<title>Duality</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <meta property="og:title" content="Galactic Puzzle Hunt 2022">
+    <meta property="og:description" content="Registration for this year's Galactic Puzzle Hunt is now open!">
+    <meta property="og:image" content="https://galacticpuzzlehunt.com/static/images/banner.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:slnt,CASL,CRSV,MONO@-3,0.5,1,1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/skeleton.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.formset/1.2.2/jquery.formset.min.js"></script>
+    <script src="/jsi18n/"></script>
+    <script src="/static/js/sorttable.js"></script>
+    <script src="/static/js/tray.js"></script>
+    <script src="/static/js/notify.js"></script>
+    <script src="/static/js/time.js"></script>
+    
+    
+    <link rel="icon" sizes="16x16 32x32 48x48 64x64" href="/static/images/favicon.ico" type="image/vnd.microsoft.icon">
+    
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92192633-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-92192633-1');
+</script>
+
+</head>
+<body>
+    
+    <div id="background-glitch-wrapper" class="background-glitch">
+        <div class="glitch-1"></div>
+        <div class="glitch-2"></div>
+        <div class="glitch-3"></div>
+    </div>
+    
+    
+    <input id="shortcuts" type="checkbox">
+    
+    <nav>
+        <span class="tray">
+            <span id="tray-timer"></span>
+            <div class="top-tabs">
+                <a href="/">
+                    Home
+                </a>
+                
+                
+                <a href="/story">
+                    Story
+                </a>
+                
+                
+                <a class="selected-tab" href="/puzzles">
+                    Puzzles
+                </a>
+                
+                <a href="/teams">
+                    Teams
+                </a>
+                
+                
+                <a href="/errata">
+                    Updates
+                </a>
+                
+                
+                
+                
+                <a id="nav-music" href="#">
+                    <label for="music" title="Music" style="margin-bottom: 0; font-weight: normal; cursor: pointer;">Music</label>
+                </a>
+                <input id="music" type="checkbox">
+                <div class="shortcuts music">
+                    <audio id="music-audio" controls src="/static/puzzle_resources/worlds-end-concert/music-audio.mp3">
+                        There should be a music player here.
+                    </audio>
+                </div>
+                
+                
+            </div>
+            <div class="top-left-actions">
+                
+
+
+
+
+<a href="/post-hunt-solve/duality" class="btn">Check your answer spoiler-free</a>
+
+
+
+<a href="/solution/duality" class="btn">View solution</a>
+<a href="/stats/duality" class="btn">Stats</a>
+
+
+            </div>
+        </span>
+        <div class="top-right-actions">
+        
+        <label for="shortcuts" title="Simulator">Simulator </label>
+        
+        
+        </div>
+    </nav>
+    
+    <div class="shortcuts">
+        <form id="progress-simulator">
+        <div>Current round:</div>
+        <button class="btn" type="submit" name="round" value="forward">⬆️</button>
+        <button class="btn" type="submit" name="round" value="spring">🌸</button>
+        <button class="btn" type="submit" name="round" value="summer">☀️</button>
+        <button class="btn" type="submit" name="round" value="autumn">🍂</button>
+        <button class="btn" type="submit" name="round" value="winter">☃️</button>
+        <button class="btn" type="submit" name="round" value="concert">🎤</button>
+        <button class="btn" type="submit" name="round" value="none">None</button>
+        <div>Endgame:</div>
+        <button class="btn" type="submit" name="endgame" value="true">Unlock</button>
+        <button class="btn" type="submit" name="endgame" value="false">Reset</button>
+        <div>Reset:</div>
+        <button class="btn" type="submit" name="reset" value="reset">Reset</button>
+        </form>
+    </div>
+    
+    
+    
+    
+    
+    <div id="loop-reset">
+        <form>
+            <svg viewBox="-30 160 720 320">
+                <defs>
+                    <path id="loop-end-path" d="m 370,240 c 38.29044,0 74.26676,18.33512 96.83716,49.26624 l -76.8369,30.73478 V 270 L 300,330 261.03858,309.74192 c 19.60706,-42.51188 62.14674,-69.74008 108.9623,-69.74306 z m 106.15758,64.22738 c 6.65282,12.65518 10.9906,26.39738 12.80876,40.57862 l -38.96532,5.19538 z"/>
+                </defs>
+                <foreignObject width="720" height="480" clip-path="url(#loop-end-clip)" class="loop-shade">
+                    <aside class="loop-shade" xmlns="http://www.w3.org/1999/xhtml" style="width: 100%; height: 100%;"></aside>
+                </foreignObject>
+                <clipPath id="loop-end-clip"><use href="#loop-end-path"/></clipPath>
+                <use href="#loop-end-path"/>
+                <path d="M 490,400 600,330 450,350 490,280 390,320 V 270 L 300,330 50,200 170,380 50,400"/>
+            </svg>
+            <div>THE END</div>
+            <p>You can reset once per minute.</p>
+            <table>
+                <tr id="loop-reset-btn-row-reset">
+                    <td><button class="btn" disabled>Reset</button></td>
+                    <td>Start over from the beginning of the exam.</td>
+                </tr>
+                <tr id="loop-reset-btn-row-restore">
+                    <td><button class="btn" disabled>Jump</button></td>
+                    <td>Start over, but resubmit your previous answers to bring you back to this point.</td>
+                </tr>
+                <tr>
+                    <td><a class="btn" href="javascript:toggleReset(false)">Stay</a></td>
+                    <td>Look at this page a bit longer. Make sure to save your work.</td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    
+    <script>
+
+    
+    
+    let glitchTriggerFuncs = [];
+    let glitchTriggerReceived = false;
+    let glitchTriggerExReceived = false;
+    let glitchPageLoaded = false;
+    function processGlitchFuncs(ex) {
+        glitchTriggerFuncs.forEach((func) => {
+            func(ex);
+        });
+    }
+    function doGlitch(ex) {
+        glitchTriggerReceived = true;
+        if (ex) {
+            glitchTriggerExReceived = true;
+        }
+        if (glitchPageLoaded) {
+            processGlitchFuncs(ex);
+        }
+    }
+    window.addEventListener('load', () => {
+        glitchPageLoaded = true;
+        if (glitchTriggerExReceived) {
+            processGlitchFuncs(true);
+        }
+        else if (glitchTriggerReceived) {
+            processGlitchFuncs(false);
+        }
+    }, false);
+    
+    
+    
+    function registerOnGlitchHook(func) {
+        if (glitchTriggerExReceived) {
+            func(true);
+        }
+        else if (glitchTriggerReceived) {
+            func(false);
+        }
+        glitchTriggerFuncs.push(func);
+    }
+    
+
+    
+    
+    </script>
+    <div class="content">
+        
+
+<h1>
+    Duality
+    
+    
+</h1>
+
+
+
+<main class="puzzle-main clipboard-container">
+    
+    
+    
+    
+<style>
+div.centerer {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+.puzzle-main { background-color: #ccc; color: #999; }
+.puzzle-main a { color: #999; }
+.duality table { table-layout: fixed; }
+.duality tr td {
+	border: 1px solid #999;
+	border-bottom: 1px solid #999;
+	padding: 12px;
+}
+div.duality-td-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: left;
+	font-size: 14px;
+	line-height: 16px;
+	overflow: hidden;
+	width: 400px;
+	height: 400px;
+}
+div.duality-td-content span.puzzle-type {
+	font-size: 18px;
+	line-height: 20px;
+}
+div.duality-td-content p {
+	margin: 0px;
+}
+div.duality-td-content img {
+	width: 250px;
+	height: 250px;
+	margin-left: 75px;
+}
+.puzzle-main img {
+	width: 70%;
+}
+table.copy-only-table tr, td {
+	border-bottom: 0px;
+}
+</style>
+<p>In each of the puzzles below, shade some cells in the grid, possibly including cells containing clues.</p>
+
+<table class="duality no-copy">
+	<tr>
+		<td><div class="duality-td-content"><span class="puzzle-type">Kurotto</span>
+<p>Each number in an unshaded cell indicates the number of shaded cells in connected groups sharing an edge with that cell.</p>
+<img src="/static/puzzle_resources/duality/kurotto.png"/>
+<a href="https://swaroopg92.github.io/penpa-edit/?m=solve&p=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">Solve this puzzle using Penpa+.</a></div>
+		</td>
+		<td><div class="duality-td-content"><span class="puzzle-type">Chocona</span>
+<p>Each number indicates the number of shaded cells in that region.
+The shaded cells must form rectangles independently of region borders, and the rectangles must not touch orthogonally.</p>
+<img src="/static/puzzle_resources/duality/chocona.png"/>
+<a href="https://swaroopg92.github.io/penpa-edit/?m=solve&p=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">Solve this puzzle using Penpa+.</a></div>
+		</td>
+	</tr>
+	<tr>
+		<td><div class="duality-td-content"><span class="puzzle-type">Tapa</span>
+<p>The numbers in an unshaded cell indicate the lengths of consecutive shaded blocks among the orthogonally and diagonally neighboring cells, in no particular order.
+The shaded cells must form a single orthogonally connected group, and no 2x2 square may be entirely shaded.</p>
+<img src="/static/puzzle_resources/duality/tapa.png"/>
+<a href="https://swaroopg92.github.io/penpa-edit/?m=solve&p=1VpbjyO30X2fX2HoKQEaXrFb97eNY/vFcS67HwxDGBjaWXl34NmZjUYTO1rYv92nWIcj1YwOiQD5HgLdml0iWXW6WCyS5/6fD5vdtktjew+LDr94TdIif/rFLH/GfL2+3t9sV5+93nzcdC8f9u/vdqvPvt7cbK7211efvd5tb9/eb/f77e6+e7/ff7xfvXjRj/v0+Tv+5ePD4XCzff9wu//86u7DCy++ePuwubne/7vr/vrVV92Pm5v77cWaHV5erEdp1I16fNLo8rfDq9/Wo1GXLi8+Hf6x+nT4YbW+/LU7/N/xcnG8fLX6NErT0WpA3Zn/zP1n4T/L/NOP/Sf5T+8/g/9M/Mdb6b2V3usNXm/weoPXG7ze4PUGrzd4vcF7H7z3wVuZeCsTrzfxehOvN/F6E6838XoTrzf1elPvfeq9T72Vqbcy9XpTrzf1ejOvN/N6M68383ozrzfz3mfe+8xbmXkrc68393pzrzf3enOvN/d6c683Zz3vfeG9L7yVhbey8HoLr7fweguvt/B6S6+39HpLr7f03pfe+9JbWXorS6+Xxl4xjb1mGnvVNPa6aeyV05h+MqajjOkpY7rKmO0ltpdYP7F+8bPiaMXTiqvR1xKdLdHbEt0t0d8SHS71rN+zPn0u0ekSvS7R7RL9LtHxEj0v0fUSfS/R+dKE9SesT/9LdMBED0x0wUQfTHTCRC9MdMNEP0x0xDRl/Snr0xcTnTHRGxPdMdEfEx0y0SMTXTLRJxOdMs1Yf8769MtEx0z0zETXTPTNROdM9M5E90z0z5QdFLHjW8QOwziHHxt1o0sfwGuLReWGabsezU9uoPn1aHq8Yf2Hf5gnry1aHO9AVbR60k/2UvwphXuwwP52es+8CN2FWzAEfztpP/uGtXZyyx7DGtfHOwb0yR1AkFaf8P19/v4qf/f5+zWia3cY8vef8/c4f0/z9zf5P18Cvj4NXW/jo08WXScowAQvTFEAVF7AFGPDxQtzFKCcFzAB2cDxwrLrbfTkQj9GAcZ7IXW9+XsuDGjanDMXJqhjnpQLM6hjjz0X5ujHokkuLFM3GLxWwEU3lE5x0Q0GXy4MQzfYOMiFybwbzGlzYYap87EwRR1zay8sOtwoBdQx5L0wQ6G0NkWnNlS8MEGhqDNFpxbPvdCjUNSZQmsbbq6bNV006FHHfNXtgToWXdxS9GOhLBcWwM2ipqMDQCws5wI6xY2CKEAsnfY94LWZyx8JGrCp0Qs9CjBhMba/4ZnazJYLEzwsMyEXYFxvc0kuzCzDgAm5sEADFr1zYQl0LNZaARcwgQ3gAsaxAVw4BrmO+ZvFTdcA9liQcw2gqCHqGsAECx+uAYxbwDjXAA0sSwNLIIrBRg2AtVnqGgBEw8A1ALyGjmsA4yxiuwYwzsKrawDj7AG7BkDHAlcuzIHOoqCzQAPL0sASxiU2gAtowAZwAU8s6ADe7CGuAYyzEOAawDgL7K4BjDN/cw2AjoVM1wDo2BzsGqABmzxdAxhnM51rAK8q8OICGhR0AG92WNcAxtkslQsDjLMpxTWAceb+rgHQsWDtGgAdm/5dAxhn03ZuegzjLIa4Bnj0BV5cQIOCDuDN48c1gHEWu10DGGeTmWsA42w0ugZAx6YJ1wDoWObhGsA4SxhcAxhngcs1wKMv8OICGhR0AG8ezq4BjLOZ2TWAcTaNugZAx4KDOx/QsQnCNQA6lvS4BjDOJgHXAMZZtHQNgE6BFxfQoKADeHN0cQ1gnAUu1wDGWeByDYCOxSrXAOjY1OgaAB3Lt1wDGGdJkmsA4yxEuwZAp8CLC2hQ0AG8Odh5p7DHsgXvFIDYZOmdAhCbh71TAGJzovsb7LGMzDuFPTYVeKcApCCKC3RaAAGiOdy6xwNRS4G8YGPhNCKF4BDGaRgywXuDI4VnGuB97NTMtsnICzYAT8NgiEghOIRxGoZM8N7gSOGZBqxtBnQnt1F/GntDGAwRKQSHME7DkAneGxwpPGCbdr1g/nYa8EPsDWEwRKQQHMI4DUMmeG/wKpvr3ZUtvp3OMiHgh9gbwuBpRArBIYzTMGSCK+cEwwsWVE+mtjDLhIAfY28IgyEiheAQxmkYP5bVeMEi+el8Gqa2MMuEgB9ibwiDISKF4BAGraVSHi1t+jidxMN8Gqa2MMuEgB9ibwiDISKFSFHGac6RQuYQJvEwn4apLcwyIeCH2BvCYAhPj+PUciSD9zF7MuD7hIT5u5w2f5G/J/l7ltPpuW1lXFysYaLty8TX9H/vHjZ0sHczur+7+eH+Yffj5mo7WuUtny7fu3348Ga7C7du7u4+3lzfxv9dv7u9223Piuzm9u27c/9/c7d7+6T1nzc3N+GG74eFW1fXu6ubeGu/uw7lzW5393O482Gzfx9uvNnssXd2//76Y2xpe7uPCuw3UcXNT5snvX042vzrxeiXUf6sLeh2PbbMPh2Wq8PL7vC1r17L5ll3+Dv2xv6yOnxrW2O2jTbk9Vr+U4/LL3mZcP1d/oPd/cLvpjGuv+USEZff49KB+eEb25DrDn9brQ+vu5F19Kdc2y5HH+7+BV1dEStj3+8NrFmPTvBwyf3D27ufHvjfZCvQl67vq6Kv9UJ9TQXqa5eurl09VZe2/T+ru7z81Z9E+k82Jke7d282f+gRqMsn/dGeFWKHEiGSKBEimxIhzgmRraiVCDFQiRC2lAjhTYkQLZVIo2EzgxJpu2xuUCJtl80bSqTtstxPibRdtjOnRPop2/ylRBoNm9uUSNtls5sSabts5lMibZdlr0qk7bLdRyXST9k2DJRIo2FZtBJpuyyPViJtl+XYSqTtsvxbibRdtvGnRPop20anEmk0bB0gRJb7K5G2y9YFSqTtsjWDEmm7bD2hRBW79FO2vWYl0mjYSkaJtF22llEibZetc5RI22VrICXSdtmhjhLpp2yHP0qk0bC1mBJpu/JhkpRpy/J2vpRp2/LhlJRV8gc7xJKySgZhh11SVsHFFpZSVrHPFpdSVrGvliDVMqRailTJkfKhnZRVnnslTcoHflJWwcXWxlJWsa+SK+VDRSmr2FdJl/Khk5RV7KtkTPkwU8oquFSSpnwQKmUV+yp5Uz5ElbKKfZXUKR/ASlnNvspzr6RP+UBXyiq42P6ilFXsq+RQ+bRSyir2VdKofOAsZRX7KplUPkOVstp6r4KL7ZbKxWDFvko+lQ/JpaxiXyWlygfsUlZb0FaeeyWtygf2ciWscPGD/f/m2bZ3k7DN/vjxtTOPu6WcJ+BSzkNxKec5uZTz6FzKeZqu5OWAXcp55q7k5RheycvJvJKXw3olL+f3Sl6O9IX88ZRfycvBv5IXLoCSF3qAkhfGgJIXEoGUk1cg5aQaSDnZB1JOQoKUk6Mg5aQtSDmZDFJOcoPEn3wHJS8UCPn8yYqQ/kOihJIX7oT0X9IplLwwLOT4IelCjj/yMOT4JjVDysnWkO2TwCHHLzkd0j7SPCQ+ZH5IfEkGkc+H/BA5fkkZkf5BFon0LxJLJH7kmkj8SD+R+JGRIvEjSUXiR96KxI9UFokf2S0SPxJeJH7kwEj8SIupzY/H5coZ/EiekfiRTyPxI8VGzh9k3Uj8SMSR+JGbI/EjXUfiRwaPnD9I6qnlD8cl3Rn8SP2R+JENJPEjQUjiR86QxI80IokfmUUSP5KNJH7kH0n8SEmq5VfHZe+Z+EviksSPXCaJH+lNEj8yniR+JEHJ+Yu8KIkfqVISP7KnJH4kVNXyz+PWwBn8SLuS+JGJJfEjOUviR76WxI8ULokfWV0SPxK9JH7kfkn8SAer5efH7ZMz+JE0JvEjj0zOD6SWSfzINpP4kYAm8SMnTeJHmpqcH8hck/iRzFZbv1Ty80fKm8SPLDiJH4lxEj9y5SR+pM9J/Miok/iRZCfxI+9O4kcqnsSH7DyJDwl7Eh9y+CQ+pPXJ+E+mn8SH5D+JD/mAEh9SBCU+ZA3W1r/Hbcrz+Xcrf27lh638pzW/t+avVnxuxZ/W+KrhU2iQtfVNa33Ryp9b+WEr/2nN7635qxWfW/GnNf5q+yeF11lbf7XWF638uZUftvKf1vzemr9a8bkVn6r7S2Sl1tanrfVXa33Ryp9b+WEr/2nN7635qxW/a/tvhVNbW7+31qet9VdrfdHIn1v5YSv/ac3vrfmtvj9JRnBlf6O1fm+tT5vrr9b6opU/t/LDVv7Tmv+r+7fkM9f2f1r7G631e2t92lp/tdYXrfy5lR+28qPa/nZhY9f2x1r7P639jdb6vbU+ba2/WuuLVv7cyh+r+//kktf2D1v7Y639n9b+Rmv93lqfttZfrfVFK7+u5T+FCV/bv5bjs8mX/4UU87vdWZY5bp8hmuPuWUI57z/jlOP+M/a4dficQI67ZzjkuPuURo5bz5nkuPmMTI57gk9urT6llJtWT1nl1tUzYrl1dcotB1c/X/0O">Solve this puzzle using Penpa+.</a></div>
+		</td>
+		<td><div class="duality-td-content"><span class="puzzle-type">Corral</span>
+<p>Each number in a cell (shaded or unshaded) indicates the number of unshaded cells connected horizontally or vertically to the cell, including itself if it is also unshaded.
+The unshaded cells must form a single orthogonally connected group, and all shaded cells must be orthogonally connected to the edge of the grid, possibly via other shaded cells.</p>
+<img src="/static/puzzle_resources/duality/corral.png"/>
+<a href="https://swaroopg92.github.io/penpa-edit/?m=solve&p=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">Solve this puzzle using Penpa+.</a></div>
+		</td>
+	</tr>
+	<tr>
+		<td><div class="duality-td-content"><span class="puzzle-type">Stostone</span>
+<p>At least one cell in each region must be shaded, and the shaded cells within a region must form an orthogonally connected group, called a “stone”. No two stones (in different regions) may be orthogonally adjacent to each other.
+If all stones fall down, they must cover exactly the bottom half of the grid. </p>
+<img src="/static/puzzle_resources/duality/stostone.png"/>
+<a href="https://swaroopg92.github.io/penpa-edit/?m=solve&p=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">Solve this puzzle using Penpa+.</a></div>
+		</td>
+		<td><div class="duality-td-content"><span class="puzzle-type">Paint by Numbers</span>
+<p>The numbers to the left or top of the grid indicate the lengths of consecutive groups of shaded cells in that row or column in order, from left to right or from top to bottom. A question mark may represent any positive integer.</p>
+<img src="/static/puzzle_resources/duality/paintbynumbers.png"/>
+<a href="https://swaroopg92.github.io/penpa-edit/?m=solve&p=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">Solve this puzzle using Penpa+.</a></div>
+		</td>
+	</tr>
+</table>
+
+<div class="copy-only">
+	<table class="copy-only-table">
+		<tr><td style="border-top: 1px solid #999; border-left: 1px solid #999"></td><td colspan="14" style="border-top: 1px solid #999"><b>Kurotto</b></td><td style="border-top: 1px solid #999"></td><td style="border-top: 1px solid #999; border-left: 1px solid #999"></td><td style="border-top: 1px solid #999" colspan="14"><b>Chocona</b></td><td style="border-top: 1px solid #999; border-right: 1px solid #999"></td></tr>
+		<tr><td style="border-left: 1px solid #999"></td><td colspan="14" >Each number in an unshaded cell indicates the number of shaded cells in connected groups sharing an edge with that cell.</td><td></td><td style="border-left: 1px solid #999"></td><td colspan="14">Each number indicates the number of shaded cells in that region. The shaded cells must form rectangles independently of region borders, and the rectangles must not touch orthogonally.</td><td style="border-right: 1px solid #999"></td></tr>
+		<tr>
+			<td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-top: 3px solid #999; border-left: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999">5</td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999; border-right: 3px solid #999">
+			<td></td><td></td><td></td><td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-top: 3px solid #999; border-left: 3px solid #999">4</td>
+		  <td style="border-top: 3px solid #999"></td>
+	    <td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999; border-left: 3px solid #999">4</td>
+		  <td style="border-top: 3px solid #999"></td>
+	    <td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+		  <td style="border-top: 3px solid #999; border-left: 3px solid #999"></td>
+	    <td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999; border-right: 3px solid #999"></td>
+			<td></td><td></td><td style="border-right: 1px solid #999"></td>
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>10</td>
+			<td>9</td>
+			<td></td>
+			<td></td>
+			<td style="border-right: 3px solid #999">5</td>
+			<td></td><td></td><td></td><td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td></td>
+			<td style="border-top: 3px solid #999; border-left: 3px solid #999">2</td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td></td>
+			<td></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td></td>
+			<td style="border-right: 3px solid #999"></td>
+			<td></td><td></td><td style="border-right: 1px solid #999"></td>
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td>7</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td style="border-right: 3px solid #999"></td>
+			<td></td><td></td><td></td><td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td></td>
+			<td style="border-top: 3px solid #999; border-left: 3px solid #999"></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td style="border-left: 3px solid #999; border-top: 3px solid #999"></td>
+			<td></td>
+			<td style="border-top: 3px solid #999; border-left: 3px solid #999">1</td>
+			<td style="border-left: 3px solid #999; border-right: 3px solid #999"></td>
+			<td></td><td></td><td style="border-right: 1px solid #999"></td>
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-left: 3px solid #999">6</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>10</td>
+			<td></td>
+			<td></td>
+			<td>7</td>
+			<td></td>
+			<td style="border-right: 3px solid #999"></td>
+			<td></td><td></td><td></td><td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999; border-left: 3px solid #999">2</td>
+			<td></td>
+			<td style="border-top: 3px solid #999; border-left: 3px solid #999">12</td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td></td>
+			<td></td>
+			<td style="border-left: 3px solid #999; border-right: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999; border-right: 3px solid #999">1</td>
+			<td></td><td></td><td style="border-right: 1px solid #999"></td>
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td></td>
+			<td>1</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>7</td>
+			<td>21</td>
+			<td>8</td>
+			<td style="border-right: 3px solid #999"></td>
+			<td></td><td></td><td></td><td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-top: 3px solid #999; border-left: 3px solid #999">2</td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-left: 3px solid #999; border-right: 3px solid #999"></td>
+			<td></td><td></td><td style="border-right: 1px solid #999"></td>
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td>3</td>
+			<td>4</td>
+			<td>6</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>7</td>
+			<td></td>
+			<td style="border-right: 3px solid #999"></td>
+			<td></td><td></td><td></td><td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-top: 3px solid #999; border-left: 3px solid #999"></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999; border-left: 3px solid #999">2</td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td></td>
+			<td style="border-right: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999; border-right: 3px solid #999"></td>
+			<td></td><td></td><td style="border-right: 1px solid #999"></td>
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td></td>
+			<td>8</td>
+			<td></td>
+			<td></td>
+			<td>1</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td style="border-right: 3px solid #999">4</td>
+			<td></td><td></td><td></td><td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999; border-left: 3px solid #999;"></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999; border-left: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999; border-left: 3px solid #999"></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999; border-left: 3px solid #999"></td>
+			<td style="border-right: 3px solid #999"></td>
+			<td></td><td></td><td style="border-right: 1px solid #999"></td>
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>18</td>
+			<td style="border-right: 3px solid #999"></td>
+			<td></td><td></td><td></td><td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td></td>
+			<td></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999; border-left: 3px solid #999">2</td>
+			<td></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td style="border-right: 3px solid #999"></td>
+			<td></td><td></td><td style="border-right: 1px solid #999"></td>
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-left: 3px solid #999">2</td>
+			<td></td>
+			<td></td>
+			<td>5</td>
+			<td>7</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td style="border-right: 3px solid #999"></td>
+			<td></td><td></td><td></td><td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-left: 3px solid #999; border-bottom: 3px solid #999"></td>
+			<td></td>
+			<td style="border-top: 3px solid #999; border-left: 3px solid #999"></td>
+			<td></td>
+			<td style="border-left: 3px solid #999; border-bottom: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999; border-left: 3px solid #999"></td>
+			<td></td>
+			<td></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-left: 3px solid #999; border-right: 3px solid #999"></td>
+			<td></td><td></td><td style="border-right: 1px solid #999"></td>
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-left: 3px solid #999; border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999">0</td>
+			<td style="border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999"></td>
+			<td style="border-right: 3px solid #999; border-bottom: 3px solid #999"></td>
+			<td></td><td></td><td></td><td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-left: 3px solid #999; border-bottom: 3px solid #999">4</td>
+			<td style="border-top: 3px solid #999; border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999"></td>
+			<td style="border-left: 3px solid #999; border-bottom: 3px solid #999">6</td>
+			<td style="border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999"></td>
+			<td style="border-right: 3px solid #999; border-bottom: 3px solid #999"></td>
+			<td style="border-right: 3px solid #999; border-bottom: 3px solid #999"></td>
+			<td></td><td></td><td style="border-right: 1px solid #999"></td>
+		</tr>
+		<tr><td style="border-left: 1px solid #999; border-bottom: 1px solid #999"></td><td style="border-bottom: 1px solid #999" colspan="14"><a href="https://swaroopg92.github.io/penpa-edit/?m=solve&p=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">Solve this puzzle using Penpa+.</a></td><td style="border-bottom: 1px solid #999"></td><td style="border-left: 1px solid #999; border-bottom: 1px solid #999;"></td><td style="border-bottom: 1px solid #999" colspan="14"><a href="https://swaroopg92.github.io/penpa-edit/?m=solve&p=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">Solve this puzzle using Penpa+.</a><td style="border-bottom: 1px solid #999; border-right: 1px solid #999"></td></tr>
+		<tr><td style="border-left: 1px solid #999"></td><td colspan="14"><b>Tapa</b></td><td></td><td style="border-left: 1px solid #999"></td><td colspan="14"><b>Corral</b></td><td style="border-right: 1px solid #999"></td></tr>
+		<tr><td style="border-left: 1px solid #999"></td><td colspan="14">The numbers in an unshaded cell indicate the lengths of consecutive shaded blocks among the orthogonally and diagonally neighboring cells, in no particular order. The shaded cells must form a single orthogonally connected group, and no 2x2 square may be entirely shaded.</td><td></td><td style="border-left: 1px solid #999"></td><td colspan="14">Each number in a cell (shaded or unshaded) indicates the number of unshaded cells connected horizontally or vertically to the cell, including itself if it is also unshaded. The unshaded cells must form a single orthogonally connected group, and all shaded cells must be orthogonally connected to the edge of the grid, possibly via other shaded cells.</td><td style="border-right: 1px solid #999"></td></tr>
+		<tr>
+			<td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-top: 3px solid #999; border-left: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999">1</td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999">2</td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999; border-right: 3px solid #999"></td>
+			<td></td><td></td><td></td><td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-top: 3px solid #999; border-left: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999">7</td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999; border-right: 3px solid #999"></td>
+			<td></td><td></td><td style="border-right: 1px solid #999"></td>
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td style="border-right: 3px solid #999"></td>
+			<td></td><td></td><td></td><td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td>6</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>4</td>
+			<td></td>
+			<td></td>
+			<td style="border-right: 3px solid #999"></td>
+			<td></td><td></td><td style="border-right: 1px solid #999"></td>
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>7</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>5</td>
+			<td style="border-right: 3px solid #999"></td>
+			<td></td><td></td><td></td><td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td style="border-right: 3px solid #999"></td>
+			<td></td><td></td><td style="border-right: 1px solid #999"></td>
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td></td>
+			<td>7</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td style="border-right: 3px solid #999"></td>
+			<td></td><td></td><td></td><td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td>6</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td style="border-right: 3px solid #999"></td>
+			<td></td><td></td><td style="border-right: 1px solid #999"></td>
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>&apos;3,2</td>
+			<td></td>
+			<td></td>
+			<td>&apos;2,1</td>
+			<td></td>
+			<td style="border-right: 3px solid #999"></td>
+			<td></td><td></td><td></td><td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>3</td>
+			<td>4</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td style="border-right: 3px solid #999"></td>
+			<td></td><td></td><td style="border-right: 1px solid #999"></td>
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td></td>
+			<td>&apos;3,1,1</td>
+			<td></td>
+			<td></td>
+			<td>&apos;2,1,1</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td style="border-right: 3px solid #999"></td>
+			<td></td><td></td><td></td><td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td style="border-right: 3px solid #999"></td>
+			<td></td><td></td><td style="border-right: 1px solid #999"></td>
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>&apos;5,1</td>
+			<td></td>
+			<td style="border-right: 3px solid #999"></td>
+			<td></td><td></td><td></td><td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>3</td>
+			<td></td>
+			<td style="border-right: 3px solid #999"></td>
+			<td></td><td></td><td style="border-right: 1px solid #999"></td>
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td>&apos;2,2</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>&apos;3,1</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td style="border-right: 3px solid #999"></td>
+			<td></td><td></td><td></td><td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td style="border-right: 3px solid #999"></td>
+			<td></td><td></td><td style="border-right: 1px solid #999"></td>
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td style="border-right: 3px solid #999"></td>
+			<td></td><td></td><td></td><td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td></td>
+			<td></td>
+			<td>3</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>4</td>
+			<td style="border-right: 3px solid #999"></td>
+			<td></td><td></td><td style="border-right: 1px solid #999"></td>
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-left: 3px solid #999; border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999">4</td>
+			<td style="border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999">4</td>
+			<td style="border-right: 3px solid #999; border-bottom: 3px solid #999"></td>
+			<td></td><td></td><td></td><td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-left: 3px solid #999; border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999">4</td>
+			<td style="border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999"></td>
+			<td style="border-right: 3px solid #999; border-bottom: 3px solid #999"></td>
+			<td></td><td></td><td style="border-right: 1px solid #999"></td>
+		</tr>
+		<tr><td style="border-left: 1px solid #999; border-bottom: 1px solid #999"></td><td colspan="14" style="border-bottom: 1px solid #999"><a href="https://swaroopg92.github.io/penpa-edit/?m=solve&p=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">Solve this puzzle using Penpa+.</a></td><td style="border-bottom: 1px solid #999"></td><td style="border-left: 1px solid #999; border-bottom: 1px solid #999"></td><td colspan="14" style="border-bottom: 1px solid #999"><a href="https://swaroopg92.github.io/penpa-edit/?m=solve&p=1VpbjyO30X2fX2HoKQEaXrFb9zfHsf3iOBdvYBjCwNDOyrsDa0cbjeazo4X9232KdTij2tEhESDfQ6Bbs0skq04Xi0Xy3P/rYXPYdmls72HR4RevSVrkT7+Y5c+Yr5e3x9129cnn+8Nhs+s+ezi+3R9Wn3y12W1ujrc3n7w8bO9e32+Px+3hvnt7PL6/X7140Y/79Okb/uX9w+m02759uDt+erN/98KLL14/bHa3x3933V+//LL7cbO7316t2eX11XqURt2oxyeNrn87ffvbejTq0vXVh9M/Vh9OP6zW1792p38+XS6eLr9dfRil6Wg1oO7Mf+b+s/CfZf7px/6T/Kf3n8F/Jv7jrfTeSu/1Bq83eL3B6w1eb/B6g9cbvN7gvQ/e++CtTLyVidebeL2J15t4vYnXm3i9ideber2p9z713qfeytRbmXq9qdeber2Z15t5vZnXm3m9mdebee8z733mrcy8lbnXm3u9udebe72515t7vbnXm7Oe977w3hfeysJbWXi9hddbeL2F11t4vaXXW3q9pddbeu9L733prSy9laXXS2OvmMZeM429ahp73TT2ymlMPxnTUcb0lDFdZcz2EttLrJ9Yv/hZcbTiacXV6GuJzpbobYnuluhviQ6XetbvWZ8+l+h0iV6X6HaJfpfoeImel+h6ib6X6HxpwvoT1qf/JTpgogcmumCiDyY6YaIXJrphoh8mOmKasv6U9emLic6Y6I2J7pjoj4kOmeiRiS6Z6JOJTplmrD9nffplomMmemaiayb6ZqJzJnpnonsm+mfKDorY8Q1ih2G2Hs1HnQlG1z4s16PZ0w2zfj2aPN2wbsM/zHHXo+HsBhQNVbIrhL9k8OOdZx1lIM/uQOW0+oDv7/P3l/m7z98vEQ2705C//5y/x/l7mr+/zv/5Aub2aeh68+c+WTScoAA9vDBFAch5AZOCubcX5ihAFS9gyjBH98Ky683bc6EfowA7vZC63vwzFwY0bc6UCxPUsSefCzOoY48pF+box6DLhWXqBhuwVsBFN5ROcdENNhRyYRi6wfw2FybzbjAny4UZJrvHwhR1zA29sOhwoxRQx3D2wgyF0toUnZpre2GCQlFnik4t/nqhR6GoM4XWNjxcN2u6aNCjjjmb2wN1LBq4pejHQk8uLICbRTlHB4BYGM0FdIobBVGAWDrte8BrM40/EjRgU5kXehRgwmJsf8MztZkoFyZ4WGZCLsC43mJ/LswsJ4AJubBAAxZtc2EJdCw2WgEXMIEN4ALGsQFcOAa5jvmbxTnXAPZYUHINoKgh6hrABBvurgGMW8A41wANLEsDSyCa2AAuoAEbwAU0YAO48EfiGsA4i7CuAYyzcOgawDh7wK4B0LFAkwtzoLMo6CzQwLI0sIRxiQ3gAhqwAVzAEws6gDd7iGsA4yy2uwYwzgKxawDjzN9cA6BjIc41ADo2Z7oGaMAmO9cAxtnM5BrAqwq8uIAGBR3Amx3WNYBxNqvkwgDjbApwDWCcub9rAHQsuLoGQMema9cAxtk0m5sewziLIa4BHn2BFxfQoKADePP4cQ1gnM1nrgGMs/jnGsA4G42uAdCx+OoaAB3LFFwDGGcTvGsA4yxwuQZ49AVeXECDgg7gzcPZNYBxNpO6BjDOpj3XAOhYcHDnAzo2obgGQMeSFNcAxllq4RrAOIuWrgHQKfDiAhoUdABvji6uAYyzwOUawDgLXK4B0LFY5RoAHZvKXAOgY/mRawDjLKlxDWCchWjXAOgUeHEBDQo6gDcHO+8U9tjs7p0CEJuKvVMAYvOmdwpAbFJzf4M9lkF5p7DHpgLvFIAURHGBTgsgQDSHW/d4IGopixdsLJxHpBAcwjgNQyZ4b3Ck8EwDvI+dmtk2GXnBBuB5GAwRKQSHME7DkAneGxwpPNOAtc2A7uQ26s9jbwiDISKF4BDGaRgywXuDI4UHbNOuF8zfzgN+iL0hDIaIFIJDGKdhyATvDV5lc727ssW381kmBPwQe0MYPI9IITiEcRqGTHDlnGB4wYLq2dQWZpkQ8GPsDWEwRKQQHMI4DePHshovWCQ/n0/D1BZmmRDwQ+wNYTBEpBAcwqC1VMqjpU0f55N4mE/D1BZmmRDwQ+wNYTBEpBApyjjNOVLIHMIkHubTMLWFWSYE/BB7QxgM4elxnFqOZPA+Zk8GfJ+QMH+X0+bP8/ckf89yOj23rYerqzVMtJ2U+Jr+793DBgz2Wkb3+90P9w+HHzc329Eqb9F0+d7dw7tX20O4tdvv3+9u7+L/bt/c7Q/biyK7uX395tL/X+0Prz9q/efNbhdu+A5WuHVze7jZxVvHw20obw6H/c/hzrvN8W248WpzxG7X/dvb97Gl7d0xKnDcRBU3P20+6u3dk82/Xo1+GeXP2oJu12OL68NpuTp91p2+woLubLOrO/0de1l/WZ2+sa0s2/Ya8not/6nH5Re8TLj+Lv/B7n7ud9MY19/4tdX7HpcOzA9f2wZad/rban162Y2soz/l2nY5erf/P+jqilgZ+3SvYM16dIaHS+4fXu9/euB/k61AP3N9vy36Wi/U11Sgvnbp6trVBXXNiv9ndZfXv/qTSP/JRuLo8ObV5g89AnX5pD/as0LsUCJEEiVCZFMixDkhshW1EiEGKhHClhIhvCkRoqUSaTRsZlAibZfNDUqk7bJ5Q4m0XZb7KZG2y3bSlEg/ZZu/lEijYXObEmm7bHZTIm2XzXxKpO2y7FWJtF22jaVE+inbhoESaTQsi1YibZfl0Uqk7bIcW4m0XZZ/K5G2y3ZElUg/Zds3VSKNhq0DhMhyfyXSdtm6QIm0XbZmUCJtl60nlKhil37KtjesRBoNW8kokbbL1jJKpO2ydY4SabtsDaRE2i47hFEi/ZTtsEaJNBq2FlMibVc+/JEybVk+JJIybVs+TJKySv5gh05SVskg7HBKyiq42MJSyir22eJSyir21RKkWoZUS5EqOVI+ZJOyynOvpEn5gE7KKrjY2ljKKvZVcqV8CChlFfsq6VI+QJSyin2VjCkfPkpZBZdK0pQPLqWsYl8lb8qHnlJWsa+SOuUDUymr2Vd57pX0KR/ASlkFF9tflLKKfZUcKp9NSlnFvkoalQ+IpaxiXyWTyofLUlZb71Vwsd1SuRis2FfJp/KhtpRV7KukVPlAXMpqC9rKc6+kVfmAXa6EFS5+EP/fPNv2bhK22R8/vnbmcbeU8wRcynkoLuU8J5dyHp1LOU/TlbwcsEs5z9yVvBzDK3k5mVfycliv5OX8XsnLkb6QP57yK3k5+FfywgVQ8kIPUPLCGFDyQiKQcvIKpJxUAykn+0DKSUiQcnIUpJy0BSknk0HKSW6Q+JPvoOSFAiGfP1kR0n9IlFDywp2Q/ks6hZIXhoUcPyRdyPFHHoYc36RmSDnZGrJ9Ejjk+CWnQ9pHmofEh8wPiS/JIPL5kB8ixy8pI9I/yCKR/kViicSPXBOJH+knEj8yUiR+JKlI/MhbkfiRyiLxI7tF4kfCi8SPHBiJH2kxtfnxablyAT+SZyR+5NNI/EixkfMHWTcSPxJxJH7k5kj8SNeR+JHBI+cPknpq+cPTku4CfqT+SPzIBpL4kSAk8SNnSOJHGpHEj8wiiR/JRhI/8o8kfqQk1fKrp2XvhfhL4pLEj1wmiR/pTRI/Mp4kfiRByfmLvCiJH6lSEj+ypyR+JFTV8s+nrYEL+JF2JfEjE0viR3KWxI98LYkfKVwSP7K6JH4kekn8yP2S+JEOVsvPn7ZPLuBH0pjEjzwyOT+QWibxI9tM4kcCmsSPnDSJH2lqcn4gc03iRzJbbf1Syc8fKW8SP7LgJH4kxkn8yJWT+JE+J/Ejo07iR5KdxI+8O4kfqXgSH7LzJD4k7El8yOGT+JDWJ+M/mX4SH5L/JD7kA0p8SBGU+JA1WFv/Pm1TXs6/W/lzKz9s5T+t+b01f7Xicyv+tMZXDZ9Cg6ytb1rri1b+3MoPW/lPa35vzV+t+NyKP63xV9s/KbzO2vqrtb5o5c+t/LCV/7Tm99b81YrPrfhU3V8iK7W2Pm2tv1rri1b+3MoPW/lPa35vzV+t+F3bfyuc2tr6vbU+ba2/WuuLRv7cyg9b+U9rfm/Nb/X9STKCK/sbrfV7a33aXH+11het/LmVH7byn9b8X92/JZ+5tv/T2t9ord9b69PW+qu1vmjlz638sJUf1fa3Cxu7tj/W2v9p7W+01u+t9Wlr/dVaX7Ty51b+WN3/J5e8tn/Y2h9r7f+09jda6/fW+rS1/mqtL1r5dS3/KUz42v61HJ9NvvwvpJjvDxdZ5rh9gWiOuxcJ5bz/jFOO+8/Y49bhcwI57l7gkOPuxzRy3HrOJMfNZ2Ry3BN8cmv1Y0q5afUxq9y6ekYst67OueXg6uer3wE=">Solve this puzzle using Penpa+.</a></td><td style="border-right: 1px solid #999; border-bottom: 1px solid #999"></td></tr>
+		<tr><td style="border-left: 1px solid #999"></td><td colspan="14"><b>Stostone</b></td><td></td><td style="border-left: 1px solid #999"></td><td colspan="14"><b>Paint by Numbers</b></td><td style="border-right: 1px solid #999"></td></tr>
+		<tr><td style="border-left: 1px solid #999"></td><td colspan="14">At least one cell in each region must be shaded, and the shaded cells within a region must form an orthogonally connected group, called a “stone”. No two stones (in different regions) may be orthogonally adjacent to each other. If all stones fall down, they must cover exactly the bottom half of the grid.</td><td></td><td style="border-left: 1px solid #999"></td><td colspan="14">The numbers to the left or top of the grid indicate the lengths of consecutive groups of shaded cells in that row or column in order, from left to right or from top to bottom. A question mark may represent any positive integer.</td><td style="border-right: 1px solid #999"></td></tr>
+		<tr>
+			<td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-top: 3px solid #999; border-left: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999; border-left: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999; border-left: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999; border-right: 3px solid #999"></td>
+			<td></td><td></td><td></td><td style="border-left: 1px solid #999"></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>?</td>
+			<td></td>
+			<td style="border-right: 3px solid #999"></td>
+			<td style="border-right: 1px solid #999"></td>
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-top: 3px solid #999; border-left: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td></td>
+			<td></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td></td>
+			<td></td>
+			<td style="border-right: 3px solid #999"></td>
+			<td></td><td></td><td></td><td style="border-left: 1px solid #999"></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td style="border-left: 3px solid #999">?</td>
+			<td></td>
+			<td>?</td>
+			<td>2</td>
+			<td></td>
+			<td></td>
+			<td>2</td>
+			<td>?</td>
+			<td>?</td>
+			<td style="border-right: 3px solid #999">?</td>
+			<td style="border-right: 1px solid #999"></td>
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td></td>
+			<td style="border-top: 3px solid #999; border-left: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999; border-left: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td></td>
+			<td style="border-right: 3px solid #999"></td>
+			<td></td><td></td><td></td><td style="border-left: 1px solid #999"></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td style="border-left: 3px solid #999">?</td>
+			<td></td>
+			<td>1</td>
+			<td>?</td>
+			<td>?</td>
+			<td></td>
+			<td>?</td>
+			<td>?</td>
+			<td>2</td>
+			<td style="border-right: 3px solid #999">?</td>
+			<td style="border-right: 1px solid #999"></td>
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-top: 3px solid #999; border-left: 3px solid #999"></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td></td>
+			<td style="border-top: 3px solid #999; border-left: 3px solid #999"></td>
+			<td></td>
+			<td></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td></td>
+			<td style="border-right: 3px solid #999"></td>
+			<td></td><td></td><td></td><td style="border-left: 1px solid #999"></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td style="border-left: 3px solid #999">?</td>
+			<td>?</td>
+			<td>?</td>
+			<td>1</td>
+			<td>2</td>
+			<td>5</td>
+			<td>?</td>
+			<td>?</td>
+			<td>?</td>
+			<td style="border-right: 3px solid #999">2</td>
+			<td style="border-right: 1px solid #999"></td>
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td></td>
+			<td style="border-top: 3px solid #999; border-left: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999; border-left: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999; border-right: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999; border-right: 3px solid #999"></td>
+			<td></td><td></td><td></td><td style="border-top: 3px solid #999; border-left: 1px solid #999"></td>
+			<td style="border-top: 3px solid #999">?</td>
+			<td style="border-top: 3px solid #999">1</td>
+			<td style="border-top: 3px solid #999">?</td>
+			<td style="border-top: 3px solid #999">?</td>
+			<td style="border-top: 3px solid #999; border-left: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999; border-right: 3px solid #999"></td>
+			<td style="border-right: 1px solid #999"></td>
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999; border-left: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td></td>
+			<td></td>
+			<td style="border-left: 3px solid #999; border-right: 3px solid #999"></td>
+			<td></td><td></td><td></td><td style="border-left: 1px solid #999"></td>
+			<td></td>
+			<td></td>
+			<td>?</td>
+			<td>3</td>
+			<td style="border-left: 3px solid #999"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td style="border-right: 3px solid #999"></td>
+			<td style="border-right: 1px solid #999"></td>
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td></td>
+			<td></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td></td>
+			<td></td>
+			<td style="border-left: 3px solid #999; border-right: 3px solid #999"></td>
+			<td></td><td></td><td></td><td style="border-left: 1px solid #999"></td>
+			<td></td>
+			<td>3</td>
+			<td>?</td>
+			<td>?</td>
+			<td style="border-left: 3px solid #999"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td style="border-right: 3px solid #999"></td>
+			<td style="border-right: 1px solid #999"></td>
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-top: 3px solid #999; border-left: 3px solid #999"></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td style="border-top: 3px solid #999; border-left: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999; border-left: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999; "></td>
+			<td style="border-top: 3px solid #999; border-right: 3px solid #999"></td>
+			<td></td><td></td><td></td><td style="border-left: 1px solid #999">?</td>
+			<td>?</td>
+			<td>?</td>
+			<td>?</td>
+			<td>?</td>
+			<td style="border-left: 3px solid #999"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td style="border-right: 3px solid #999"></td>
+			<td style="border-right: 1px solid #999"></td>
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-top: 3px solid #999; border-left: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-left: 3px solid #999"></td>
+			<td></td>
+			<td style="border-right: 3px solid #999"></td>
+			<td></td><td></td><td></td><td style="border-left: 1px solid #999"></td>
+			<td></td>
+			<td>?</td>
+			<td>?</td>
+			<td>1</td>
+			<td style="border-left: 3px solid #999"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td style="border-right: 3px solid #999"></td>
+			<td style="border-right: 1px solid #999"></td>
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #999"></td><td></td><td></td>
+			<td style="border-left: 3px solid #999; border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999"></td>
+			<td style="border-right: 3px solid #999; border-bottom: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999; border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999"></td>
+			<td style="border-left: 3px solid #999; border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999"></td>
+			<td style="border-right: 3px solid #999; border-bottom: 3px solid #999"></td>
+			<td></td><td></td><td></td><td style="border-left: 1px solid #999"></td>
+			<td></td>
+			<td></td>
+			<td>?</td>
+			<td>4</td>
+			<td style="border-left: 3px solid #999"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td style="border-right: 3px solid #999"></td>
+			<td style="border-right: 1px solid #999"></td>
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #999"></td>
+			<td colspan="14"><a href="https://swaroopg92.github.io/penpa-edit/?m=solve&p=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">Solve this puzzle using Penpa+.</a></td>
+			<td></td><td style="border-left: 1px solid #999"></td>
+			<td></td>
+			<td></td>
+			<td>?</td>
+			<td>?</td>
+			<td style="border-left: 3px solid #999"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td style="border-right: 3px solid #999"></td>
+			<td style="border-right: 1px solid #999"></td>
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #999"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td style="border-left: 1px solid #999"></td>
+			<td></td>
+			<td></td>
+			<td>?</td>
+			<td>2</td>
+			<td style="border-left: 3px solid #999"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td style="border-right: 3px solid #999"></td>
+			<td style="border-right: 1px solid #999"></td>
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #999"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td style="border-left: 1px solid #999"></td>
+			<td></td>
+			<td></td>
+			<td>1</td>
+			<td>?</td>
+			<td style="border-left: 3px solid #999"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td style="border-right: 3px solid #999"></td>
+			<td style="border-right: 1px solid #999"></td>
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #999"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td style="border-left: 1px solid #999; border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999">1</td>
+			<td style="border-bottom: 3px solid #999">?</td>
+			<td style="border-bottom: 3px solid #999">?</td>
+			<td style="border-bottom: 3px solid #999">?</td>
+			<td style="border-left: 3px solid #999; border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999"></td>
+			<td style="border-right: 3px solid #999; border-bottom: 3px solid #999"></td>
+			<td style="border-right: 1px solid #999"></td>
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #999; border-bottom: 1px solid #999"></td>
+			<td style="border-bottom: 1px solid #999"></td>
+			<td style="border-bottom: 1px solid #999"></td>
+			<td style="border-bottom: 1px solid #999"></td>
+			<td style="border-bottom: 1px solid #999"></td>
+			<td style="border-bottom: 1px solid #999"></td>
+			<td style="border-bottom: 1px solid #999"></td>
+			<td style="border-bottom: 1px solid #999"></td>
+			<td style="border-bottom: 1px solid #999"></td>
+			<td style="border-bottom: 1px solid #999"></td>
+			<td style="border-bottom: 1px solid #999"></td>
+			<td style="border-bottom: 1px solid #999"></td>
+			<td style="border-bottom: 1px solid #999"></td>
+			<td style="border-bottom: 1px solid #999"></td>
+			<td style="border-bottom: 1px solid #999"></td>
+			<td style="border-bottom: 1px solid #999"></td>
+			<td style="border-left: 1px solid #999; border-bottom: 1px solid #999"></td>
+			<td style="border-bottom: 1px solid #999" colspan="14"><a href="https://swaroopg92.github.io/penpa-edit/?m=solve&p=1Vxdb1vHEX33rzD41AIXMXcv7yWplyJNk7ykbtq4CALBCGhbsYXIlitRTSIj+e2Zj7OyhtSZRYH2oeDX3T3c5ezsubOzH8Prf93srs6GMulz3AzLochjXm7sVTaSlld7PDvfX5ydPP56d/5u//jFL4+f3rx9cXZ1PXx6s39zeXXy+Mvdxe7l/vzl42dXZ+9eXZ/t94q+2e/fX588eVKXtXzyGl95f3N7e3H25ubd/pOXl2+fePLJq5vdxfn+l2H42xdfDD/sLq7PHp1O8sPyev7odFEWw6LKqyye/3b7zW+ni8VQnj/6cPuPkw+335+cPv91uP3nx8vNx8tvTj4s6nJxMkr54h/VP0b/WPnH5B+zf6z9Y+MfW/sYvZbRaxm9ltFrGb2W0WsZvZbRy6283MrLrbzcysutvNzKy6283Mp/feW/vvJaJq9l8lomr2XyWiavZfJaJi83ebnZy81ebvZys5ebvdzs5Wb/9dl/ffZaZq9l7bWsvZa117L2WtZey9rLrb3c2sttvNzGy2283MbLbbzcxn9947++8Vo2XsvGa9l6LVuvZeu1bL2WrZfbermtl9t6ubL0gmXpJcvSi5ally1LF6EsXYay9MrK0msrS6+uLFFfQX0F9RXUV1C+oHxB+YLyBeVBxAImFlCxgIsFZCxgYwEdC/hYQMgCRhZQsoCTBTQs4GEBEcuI8iPKg5kF1CzgZgE5C9hZQM8CfhYQtIChBRQt4GgBSQt4WUDMAmaWCeUnlAdVC7haQNYCthbQtYCvBYQtYGwBZQs4W0DaAtYWELWAqQVULWuUX6M8uFtA3gL2igHEJ+QBgQsYXEDhAg4XkLiAxQU0LmBuAXULuFu2KL9FeZC5gM0FdC7gcwWfK/gsZhWfsGXgcwWfK/hcwecK/lbwt4K/taB8QXnwuYLPFXyu4HMFn2szrHeWFfU129qMa7OuzbyCvxX8reBvhVGtsKoVfK7gcwWfK/hcwecKPlfwuYLPFXyu4HMFnyv4XMHfCv5W8LfCylaY2Qo+V/C5gs8VfK7gcwWfK/hcwecKPlfwuYLPFXyu4G8Ffyv4W2F2K+xuBZ8r+FzB5wo+V/C5gs8VfK7gcwWfK/hcwecKPlfwt4K/FfytsMMVhriCzxV8ruBzBZ8r+FzB5wo+V/C5gs8j+DyCzyP4PIK/I/g7gr8j7PEIezyCzyP4PILPI/g8gs8j+DyCzyP4PILPI/g8gs8j+DyCvyP4O4K/I+zxCHs8Ng+huQjNR7hzEiBPcxOan9AcBfB5BJ9H8Hk0PosT81ScGOXA6eJPi0ENwuK5D6MxQ2qNGVL9qbpNdxlSb8jQDg1FtGdjhjQhZNggepAjzTIX7WPOoSg2tB7kSGMPcky8+znawUFgG3rjd7SzDnKOJFSDdJBzJLN2cvwt7e7TxXQ/RzrqoJ6jVigZYo7SItasHX/wHav5vjxKhoPvHNWshucgx0qN93LUOBzkHP26GoyYc9zvepMf5JgOQ85Rv6sJCDk22BzkHNZjA1DQhg0J8Tt6M50uVvdy1FzH76jhjjlHt5EZ1dA7Zubirx/dFmaSwnfMOB1857C/zGDdy5Fbu5x8kPfv7P0Le6/2/kymL8PtaO9/sfelvU/2/pV953MxC6v1PKy0+2rRmcNaEiKHJzaSEBE8sR1Wav4tIRO7lY4BniiSEB14okpClOaJURKiZU+sJCHd4olJEtKznhAJdMTwhEigw4YnRAK1OZ4QCVSzltiKBKpUTYxagVoMQ5ZStd6clqjyozp4W2Il4ugIaolZBb3XhEnHEk3IxTCpQbdE2Q6T3kiWkFnupHeMJab1MOmNYAlR4qTctcR2GmalpCbkYpiVe5YYx2FWklliqsOsbLLEWqbOSiRPKNLKrKWMjtOekNr0fvSE/E6TQC4kAdnkQhKQWi4kgfbIxTC3bpQLSTQJRCEfE6IqyUBClCgZSIh6JQMtFcVLBhKzKKT16bQSValXYokqSlRXyTUq6lUT590oildOO8WkS1qfribprKaQ1SjdqLeiJWS5QTLQ9Vvper3ZvQkiTvtRuZBE08EsOlCnyBOiA/WMXCGig9YLyt5JfQlRjPBAZNMB3RJVpFbzaYlR2qN20hKTtFQVbwlR/KQWyxIi26yyaUIuhAcitSWkPbO2xxLSUut6TegtM+kA6RKIODo6uQQijo7nlliJOOokugQijva2SyDiqLvkEogO1GdxCUQcdRxcAhFHvVGXQFkFcfQ+nXQ+4BKIODoaugQijnrGLoGIo+6pJWYRRynmEog46qi5BKJ49ZZcAhFHRy6XQMRRP9glUCpDHDUOk7oELoGIo6OvSyDiqE/uEog46hi7BCKO8toS8japi+gSSG+rn+YSiDg6UroEIo564C6B3j8QRy3SpLx2CUQcZbxLIOLoveASiDh6l7gEIo7ePy6BroRBHLkQCSCOXIgETRwxKLMaFJdAb1qIo2ZwUpfHJRBx1LtwCUQcnYe4BCKOTgZcAhFHDbFLILdzo7JcyE3bxBEqz43KciESNHGEymZDXAIhkg5SLoGIo96MSyDi6AzIJRBxdBriEog4av1dAuF1o7JciARNHKHy3KgsFyJBE0eobIbLJRAi6aDoEog46j25BCKOriW4BCKOTuhdAhFHhxyXQHjdqCwXIkETR6g8NyrLhRiHJo5Q2aylSSCjzKSDsEsg4qi35hKIOLqK4RKIOLqU4BKIODrOuQTC60ZluRAJmjhC5blRWS5EgiaOUNlMtP+oSnDfIgXjEO7TcMsE9gYihT4N6g0tVatsCR0BgxkMFikYh3CfhlsmsDcQKfRpUK8OEm5uJRFsbzCDwSIF4xDu03DLBPYGIoU+1THLLawkgsEPtjeYwWCRgnEI92m4ZQJ7A5F0NHOjKokwygSDH2xvMIP3LVIwDuE+DbdMYK+N6G5HJXF/aAujTDD40fYGMxgsUjAO4T4Nt0yjsrlSYTwNQ1sYZYLBD7Y3mMFgkYJxCPdpo7L5b2EQD+NpGNrCKBMMfrC9wQwGixSMQ6OyOY3BcwiDeBhPw9AWRplg8IPtDWYwWCSnskwavrWpw2f2vrL32aYUa90vefToVBaFbSfo4PF/nCn7R7JVtLi+vPj++ubqh93Ls8WJ7TANlvfOtrJC1sXl5fuL83fxe+ev311enT0IaebZq9cPff/F5dWrg9p/2l1chAzfigtZL8+vXl7ErP3VeUjvrq4ufwo5b3f7NyHjxW4v23bXb87fx5rO3u2jAPtdFHH34+7g195+bPOvjxY/L+x1WgcZA6rs0H243Z7cfjrcfumT4rZXN9z+Xbbi/npy+1R34nTXbrTZq32pyuXnfrlZyvW39gXN/cxzi+Y+xTRbLr+TS1fM91/p/t9w+/XJ6e2zYaE/9GcrrZeLt5f/FlldEE3LNuMLac3p4p4+HLm+eXX54w2+W3Q+/qnL+02TV38F8qoIkFcvXVy9ekBcbcX/WNzt81+9J8p/sg+6uHr9YvcH2SmQbvNX+aP2l9gKBonlYJBYMgaJXWOQWDkGic1jkFhABok9ZJBYRwLpqhyDuDZ0SZdBXBs66DCIa0MHJAbxdumQxCDeLh2uGMTbpV4Zg3i71GNjEO9l9eYYxLWhWzoM4trQRR4GcW3oWM4grg0dzRnE26UjPYN4u9QLYBBvlzq7DOLtUkeYQbyXdcmHQVwbuhzEIK4NXbVhENeGrnMwiLdL/X0G8XbpXIBBvF06T2AQb5fOIRjEe1nnFwzi2tAVYgZxbejqMYO4NnQng0FcGzpVYhBvl06jGMTbZedUKMZbZltxFONtsw07ivG+tk08inGt2FYfxRK96CIGxRK96D4wxZL26YSUYkn7dLpKsaR9iUNm25oUS9qX+GS26UmxRC+JW2ZbohRL9JJ4ZrZhSrFEL4mbZWeiKJa0TxcCKJa0L/HQ7NwVxZL2JU6andmiWKKXxE+z814US/SSuGp2VoxhibNmZ8oolrQv8bzsPBrFkvYlLpudZWNY4rTZmTeKJf2e+G12Xo5iiV4S183O2lEs0Uvivdk5PYol7UtcMTv2QLGkfYkPZ+cDKZa0L3Hj7GwhxRK9JJ6cnUukWKKXxJmzM40US/SSeGZ2yIRiSfv04AnFkvYlTp2duaRY1j7e73Zek2LJikvi19lZT4oliy6JX2fnRCmWrLsk/pmdMaVY0j49HkSxpH2JX2fnWCmWtS9ZWEr8OjsXS7FspS3RS7bWli22Zatt2XJb4p/ZuV2KJe1LFs/sgBfFkvYlfp2dF6ZY0u+JX2dnjemaZ6KXxK+zc8oUy9ZYE70kfp2de6ZY0r7EP7Mz0xRL2pf4dXbemmJJ+xK/zs5qUyzRS+LX2TlviiV6Sfw6OyNOsUQviX9m58splrQvWV6zA5UUS9qX+HV2rp1iSb8nfp2diadYopfEr7Pz9BRL9JL4dXYWn2JJ+xL/zM7xUyxpX7LgZkdiKZa0L/HrLH6AYkm/J36dxR5QLNs4ynaOkq2jxK+z+AaKJftAiX9mB5Epxttnh5Pp9le2NZa0L/HrLCaDYsn2WOLXWTwHxRK9JH6dxYLQvb9EL4lfZ3EkFEval/hnFoNCsaR92Y5otiWa7Ymmm6JJv2fbotm+aLYxmvh1Fl9DsUQv1K/z2Jz/5jF+/xlZ7ZKwbLx8XxQn+ymOw/4Ux/l/hreQAIojSoDiCBygOGIJKI7wAooj4oDiCEKgOOISKI5QBYojeoHhLaCB4HcxDqx8C3tgeIuEYHgLjmB4i5dI+tdCKAh+F1XB8BZowfAWe8HwFo7B8BahwfAWtEHwuzgOhrfQDoa3aA+GtwAQiiMmhOIIE6E4IkcojmASiiO+hOIIOaE4olAojsAUhrdYFYa38BWGt4gWhrcgF4a3uBfGnxYKw/AWHcPwFjDD8BZDQ+8fhNVQ+4JIG2rfEXzD8BaPw/AWosPwFrXD7FsL5KH9i9geiiPch+KIAKI4goIoPxEnlIxfdlCf2j9EE9H+RYARtX+IOaL2D2FI1P4hMonaPwQrUfuH+CVq/xDSRO0fopyS8d1iG6j+EAtF9YfwKHp/IWKK6g9BVFR/iKui+kOoFdUfoq+o/hCQRfWHGK3E/7FwEKo/RHJR/SG4i+oP8V7UviEEjOoPUWFUfwgUo/pD7BjVH8LJqP4QYZb4hxZBQ/WHODSqP4SmUf0hWo3qDwFsdHxBTBvVH8LcqP4Q+Ub1h2A4qj/ExyX+swUdUf0hio7qD4F1VH+ItaP6Q/gd1R8i8uj4jiA9qj/E7VH9IZSP6g/Rfcn8wuK0qP4QA0j1h7BAqj9EClL9IXiQ6g/xhFR/CDGk/hWiDqn+EIhI9YfYxGT+ZaFtVH+IYKT6Q1Aj1R/iHKn+EPpI9YdoSKo/BEhS/SFmkvq3CKOk+kNkZTI/tWhAqj/EX1L9ISST6g9RmlR/CNyk+kMsJ9Ufwjup/hDxSfWHIFDqHyIuNJm/WwAl1R+iR6n+EFBK9YcYU6o/hJ1S/SESleoPwalUf4hXpfpDCCvVH6Jas/WBnv/c8w97/k9vfO+NXz373LM/vfurx59k/nYXppvNL3r+c88/7Pk/vfG9N3717HPP/vTur2R+fBdknM2/evOLnv/c8w97/k9vfO+NXz373LM/2fpDC5HO5qe9+VdvftHzn3v+Yc//6Y3vvfGrZ5+z9Z0W4J3N33vz0978qze/6PjPPf+w5//0xvfe+JWun7Xw9GR9ozd/781Pu/Ov3vyi5z/3/MOe/9Mb35Px7S64Plv/6a1v9Obvvflpb/7Vm1/0/Oeef9jzf5Lx7e6vAbL1sd76T299ozd/781Pe/Ov3vyi5z/3/MNsfb39sUG2fthbH+ut//TWN3rz9978tDf/6s0vev4zHd+6f8vwM/6/4PLqwb8wkOwH/sVAch/8twLkH/1hgeQf/TWB/uDxvxNI7gN/UCC5h/9RIFnHf1MgmUf/VCB55M8KtNbD/ytQqQ7/skB/6uhfC/Sn7v9xgfwRhF39Dg==">Solve this puzzle using Penpa+.</a></td>
+			<td style="border-right: 1px solid #999; border-bottom: 1px solid #999"></td>
+		</tr>
+	</table>
+</div>
+
+<p>Each question mark is a valid letter.</p>
+
+<div class="centerer no-copy"><img src="/static/puzzle_resources/duality/duality-final.png"></div>
+
+<div class="copy-only">
+	<table class="copy-only-table">
+		<tr>
+			<td style="border-top: 3px solid #999; border-left: 3px solid #999">?</td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999">?</td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999"></td>
+			<td style="border-top: 3px solid #999; border-right: 3px solid #999"></td>
+		</tr>
+		<tr>
+			<td style="border-left: 3px solid #999"></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td style="border-right: 3px solid #999">?</td>
+		</tr>
+		<tr>
+			<td style="border-left: 3px solid #999"></td>
+			<td></td>
+			<td>?</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td style="border-right: 3px solid #999"></td>
+		</tr>
+		<tr>
+			<td style="border-left: 3px solid #999"></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>?</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td style="border-right: 3px solid #999"></td>
+		</tr>
+		<tr>
+			<td style="border-left: 3px solid #999"></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>?</td>
+			<td style="border-right: 3px solid #999"></td>
+		</tr>
+		<tr>
+			<td style="border-left: 3px solid #999"></td>
+			<td>?</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td style="border-right: 3px solid #999"></td>
+		</tr>
+		<tr>
+			<td style="border-left: 3px solid #999"></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>?</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td style="border-right: 3px solid #999"></td>
+		</tr>
+		<tr>
+			<td style="border-left: 3px solid #999"></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>?</td>
+			<td></td>
+			<td style="border-right: 3px solid #999"></td>
+		</tr>
+		<tr>
+			<td style="border-left: 3px solid #999">?</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td style="border-right: 3px solid #999"></td>
+		</tr>
+		<tr>
+			<td style="border-left: 3px solid #999; border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999">?</td>
+			<td style="border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999"></td>
+			<td style="border-bottom: 3px solid #999"></td>
+			<td style="border-right: 3px solid #999; border-bottom: 3px solid #999">?</td>
+		</tr>
+	</table>
+</div>
+
+<button class="btn clipboard-button"></button>
+
+    
+    
+
+    
+    <div class="puzzle-main-corner puzzle-main-corner-1"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-2"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-3"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-4"></div>
+    
+</main>
+
+<script src="/static/js/copyjack.js"></script>
+
+
+    </div>
+    
+
+    
+
+    
+    <script>
+    document.getElementById('nav-music').style.display = 'none';
+    document.getElementById("progress-simulator").addEventListener("submit", (e) => {
+        if (e.submitter.name === "reset") {
+            toggleReset(true);
+            doGlitch(false);
+            document.getElementById("shortcuts").checked = false;
+            e.preventDefault();
+        } else {
+            localStorage.setItem(e.submitter.name, e.submitter.value);
+        }
+    });
+    addStyles();
+
+    function toggleReset(which) {
+        $('#loop-reset').toggleClass('loop-resetting', which);
+    }
+
+    function addStyles() {
+        const changeFavicon = (url) => {
+            const e = Array.from(document.getElementsByTagName("link"))
+                .filter(e => e.rel === "icon")[0];
+            e.href = url;
+        }
+        const addSheet = (url) => {
+            const e = document.createElement("link");
+            e.rel = "stylesheet";
+            e.href = url;
+            document.getElementsByTagName("head")[0].appendChild(e);
+        }
+
+        const seasons = ["spring", "summer", "autumn", "winter"];
+        let current_main_round = localStorage.getItem("round");
+        const endgame_unlocked = localStorage.getItem("endgame") === "true";
+
+        const matches = new RegExp(`\\?(${seasons.join("|")})`).exec(document.URL);
+        if (matches && matches[1]) {
+            current_main_round = matches[1];
+        }
+
+        if (endgame_unlocked) {
+            addSheet("/static/css/endgame.css");
+            changeFavicon("/static/images/favicon-endgame.ico");
+            const nodes = document.getElementsByClassName("energy-nodes-info");
+            console.log(nodes);
+            if (nodes.length > 0) {
+                nodes[0].style.display = "block";
+            }
+        } else if (current_main_round === "concert") {
+            addSheet("/static/css/concert.css");
+            changeFavicon("/static/images/favicon-concert.ico");
+            // also add the concert music
+            document.getElementById('nav-music').style.display = 'inline-block';
+            const audio = document.getElementById("music-audio");
+            if (audio) {
+                audio.addEventListener('play', () => {
+                    audio.volume = localStorage.getItem('music-audio-volume') ?? 0.5;
+                });
+                audio.addEventListener('volumechange', () => {
+                    localStorage.setItem('music-audio-volume', audio.volume);
+                });
+            }
+        } else if (seasons.includes(current_main_round)) {
+            addSheet("/static/css/season.css");
+            addSheet(`/static/css/${current_main_round}.css`);
+            changeFavicon(`/static/images/favicon-${current_main_round}.ico`);
+        } else {
+            addSheet("/static/css/blue.css");
+            changeFavicon("/static/images/favicon-blue.ico");
+        }
+    }
+
+    registerOnGlitchHook((ex) => {
+        document.getElementById('background-glitch-wrapper').style.display = 'initial';
+    });
+    </script>
+    
+</body>
+</html>

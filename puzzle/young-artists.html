@@ -1,0 +1,501 @@
+
+
+
+
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+<title>Young Artists</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <meta property="og:title" content="Galactic Puzzle Hunt 2022">
+    <meta property="og:description" content="Registration for this year's Galactic Puzzle Hunt is now open!">
+    <meta property="og:image" content="https://galacticpuzzlehunt.com/static/images/banner.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:slnt,CASL,CRSV,MONO@-3,0.5,1,1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/skeleton.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.formset/1.2.2/jquery.formset.min.js"></script>
+    <script src="/jsi18n/"></script>
+    <script src="/static/js/sorttable.js"></script>
+    <script src="/static/js/tray.js"></script>
+    <script src="/static/js/notify.js"></script>
+    <script src="/static/js/time.js"></script>
+    
+    
+    <link rel="icon" sizes="16x16 32x32 48x48 64x64" href="/static/images/favicon.ico" type="image/vnd.microsoft.icon">
+    
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92192633-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-92192633-1');
+</script>
+
+</head>
+<body>
+    
+    <div id="background-glitch-wrapper" class="background-glitch">
+        <div class="glitch-1"></div>
+        <div class="glitch-2"></div>
+        <div class="glitch-3"></div>
+    </div>
+    
+    
+    <input id="shortcuts" type="checkbox">
+    
+    <nav>
+        <span class="tray">
+            <span id="tray-timer"></span>
+            <div class="top-tabs">
+                <a href="/">
+                    Home
+                </a>
+                
+                
+                <a href="/story">
+                    Story
+                </a>
+                
+                
+                <a class="selected-tab" href="/puzzles">
+                    Puzzles
+                </a>
+                
+                <a href="/teams">
+                    Teams
+                </a>
+                
+                
+                <a href="/errata">
+                    Updates
+                </a>
+                
+                
+                
+                
+                <a id="nav-music" href="#">
+                    <label for="music" title="Music" style="margin-bottom: 0; font-weight: normal; cursor: pointer;">Music</label>
+                </a>
+                <input id="music" type="checkbox">
+                <div class="shortcuts music">
+                    <audio id="music-audio" controls src="/static/puzzle_resources/worlds-end-concert/music-audio.mp3">
+                        There should be a music player here.
+                    </audio>
+                </div>
+                
+                
+            </div>
+            <div class="top-left-actions">
+                
+
+
+
+
+<a href="/post-hunt-solve/young-artists" class="btn">Check your answer spoiler-free</a>
+
+
+
+<a href="/solution/young-artists" class="btn">View solution</a>
+<a href="/stats/young-artists" class="btn">Stats</a>
+
+
+            </div>
+        </span>
+        <div class="top-right-actions">
+        
+        <label for="shortcuts" title="Simulator">Simulator </label>
+        
+        
+        </div>
+    </nav>
+    
+    <div class="shortcuts">
+        <form id="progress-simulator">
+        <div>Current round:</div>
+        <button class="btn" type="submit" name="round" value="forward">⬆️</button>
+        <button class="btn" type="submit" name="round" value="spring">🌸</button>
+        <button class="btn" type="submit" name="round" value="summer">☀️</button>
+        <button class="btn" type="submit" name="round" value="autumn">🍂</button>
+        <button class="btn" type="submit" name="round" value="winter">☃️</button>
+        <button class="btn" type="submit" name="round" value="concert">🎤</button>
+        <button class="btn" type="submit" name="round" value="none">None</button>
+        <div>Endgame:</div>
+        <button class="btn" type="submit" name="endgame" value="true">Unlock</button>
+        <button class="btn" type="submit" name="endgame" value="false">Reset</button>
+        <div>Reset:</div>
+        <button class="btn" type="submit" name="reset" value="reset">Reset</button>
+        </form>
+    </div>
+    
+    
+    
+    
+    
+    <div id="loop-reset">
+        <form>
+            <svg viewBox="-30 160 720 320">
+                <defs>
+                    <path id="loop-end-path" d="m 370,240 c 38.29044,0 74.26676,18.33512 96.83716,49.26624 l -76.8369,30.73478 V 270 L 300,330 261.03858,309.74192 c 19.60706,-42.51188 62.14674,-69.74008 108.9623,-69.74306 z m 106.15758,64.22738 c 6.65282,12.65518 10.9906,26.39738 12.80876,40.57862 l -38.96532,5.19538 z"/>
+                </defs>
+                <foreignObject width="720" height="480" clip-path="url(#loop-end-clip)" class="loop-shade">
+                    <aside class="loop-shade" xmlns="http://www.w3.org/1999/xhtml" style="width: 100%; height: 100%;"></aside>
+                </foreignObject>
+                <clipPath id="loop-end-clip"><use href="#loop-end-path"/></clipPath>
+                <use href="#loop-end-path"/>
+                <path d="M 490,400 600,330 450,350 490,280 390,320 V 270 L 300,330 50,200 170,380 50,400"/>
+            </svg>
+            <div>THE END</div>
+            <p>You can reset once per minute.</p>
+            <table>
+                <tr id="loop-reset-btn-row-reset">
+                    <td><button class="btn" disabled>Reset</button></td>
+                    <td>Start over from the beginning of the exam.</td>
+                </tr>
+                <tr id="loop-reset-btn-row-restore">
+                    <td><button class="btn" disabled>Jump</button></td>
+                    <td>Start over, but resubmit your previous answers to bring you back to this point.</td>
+                </tr>
+                <tr>
+                    <td><a class="btn" href="javascript:toggleReset(false)">Stay</a></td>
+                    <td>Look at this page a bit longer. Make sure to save your work.</td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    
+    <script>
+
+    
+    
+    let glitchTriggerFuncs = [];
+    let glitchTriggerReceived = false;
+    let glitchTriggerExReceived = false;
+    let glitchPageLoaded = false;
+    function processGlitchFuncs(ex) {
+        glitchTriggerFuncs.forEach((func) => {
+            func(ex);
+        });
+    }
+    function doGlitch(ex) {
+        glitchTriggerReceived = true;
+        if (ex) {
+            glitchTriggerExReceived = true;
+        }
+        if (glitchPageLoaded) {
+            processGlitchFuncs(ex);
+        }
+    }
+    window.addEventListener('load', () => {
+        glitchPageLoaded = true;
+        if (glitchTriggerExReceived) {
+            processGlitchFuncs(true);
+        }
+        else if (glitchTriggerReceived) {
+            processGlitchFuncs(false);
+        }
+    }, false);
+    
+    
+    
+    function registerOnGlitchHook(func) {
+        if (glitchTriggerExReceived) {
+            func(true);
+        }
+        else if (glitchTriggerReceived) {
+            func(false);
+        }
+        glitchTriggerFuncs.push(func);
+    }
+    
+
+    
+    
+    </script>
+    <div class="content">
+        
+
+<h1>
+    Young Artists
+    
+    
+</h1>
+
+
+
+<main class="puzzle-main clipboard-container">
+    
+    
+    
+    
+<style>
+.puzzle-main {
+    text-align: center;
+}
+
+.puzzle-main img {
+    width: 450px;
+}
+
+.blanks {
+    font-family: Recursive, monospace;
+}
+</style>
+
+<p><img src="/static/puzzle_resources/young-artists/01.png"></p>
+<p><img src="/static/puzzle_resources/young-artists/02.png"></p>
+<p><img src="/static/puzzle_resources/young-artists/03.png"></p>
+<p><img src="/static/puzzle_resources/young-artists/04.png"></p>
+<p><img src="/static/puzzle_resources/young-artists/05.png"></p>
+<p><img src="/static/puzzle_resources/young-artists/06.png"></p>
+<p><img src="/static/puzzle_resources/young-artists/07.png"></p>
+<p><img src="/static/puzzle_resources/young-artists/08.png"></p>
+<p><img src="/static/puzzle_resources/young-artists/09.png"></p>
+<p><img src="/static/puzzle_resources/young-artists/10.png"></p>
+<p><img src="/static/puzzle_resources/young-artists/11.png"></p>
+<p><img src="/static/puzzle_resources/young-artists/12.png"></p>
+<p><img src="/static/puzzle_resources/young-artists/13.png"></p>
+<p><img src="/static/puzzle_resources/young-artists/14.png"></p>
+<p><img src="/static/puzzle_resources/young-artists/15.png"></p>
+<p><img src="/static/puzzle_resources/young-artists/16.png"></p>
+<p><img src="/static/puzzle_resources/young-artists/17.png"></p>
+<p><img src="/static/puzzle_resources/young-artists/18.png"></p>
+<p><img src="/static/puzzle_resources/young-artists/19.png"></p>
+<p><img src="/static/puzzle_resources/young-artists/20.png"></p>
+<p><img src="/static/puzzle_resources/young-artists/21.png"></p>
+<p><img src="/static/puzzle_resources/young-artists/22.png"></p>
+<p><img src="/static/puzzle_resources/young-artists/23.png"></p>
+
+<p class="blanks">
+____ _____ ___ ______’<br>
+______ _____ ___(_)_ ___ ______’
+</p>
+
+<p class="blanks">
+____ _________ __ _______’_ __ ___’_ _____ __ ______<br>
+_____ ____ _ __(_)__ ___ ____ _______ __ _______
+</p>
+
+<p class="blanks">
+_________ ____ _____ __ ___<br>
+_____ __ ___ _____ ___ ___<br>
+___’_ __ ____ ___ ____ ____<br>
+___’_ ____<br>
+__’__ ____ ___ ___ __’__ (_)_____ ____
+</p>
+
+<p class="blanks">
+______ __ __ ____ ________ ____-____<br>
+__________ ___ _____(_) ___
+</p>
+
+<p class="blanks">
+______ _ _____ _____ __ _____ ___ ____ _ _(_) ___ ____
+</p>
+
+<p class="blanks">
+___ __ ___ ____ ___ _’_ ______ ____ __(_)_<br>
+___ ___’__ ___ _____ _____ __ _________
+</p>
+
+<p class="blanks">
+’_____ ___ __ __ _____ ___ __ ___<br>
+____ ____ __(_)__ ___ ___ ____ _____
+</p>
+
+<p class="blanks">
+_’_ _____ ___(_) ____ ____<br>
+____ ___ ______ _______ __ __ ______
+</p>
+
+<p class="blanks">
+____ ___ ______ _____ ___ ___ ______<br>
+__ ___ (_)_______ ____ ___ _____
+</p>
+
+<p class="blanks">
+_____’ __ _ _______<br>
+_(_)___’ __ __ _______
+</p>
+
+<p class="blanks">
+_______’ ___ _____ _______ ____ ____<br>
+_____’ ’__ __ ____ ____ (_)___
+</p>
+
+<p class="blanks">
+_ ____ ____ _ ___ ____ _____ ___ _’_ _ _______ _______ ____ (_)__
+</p>
+
+<p class="blanks">
+___ ____(_) ____ ___ ______ ___ ______<br>
+_ _______ ___ ___ __ ____
+</p>
+
+<p class="blanks">
+_____ ___’_ __ ___ ______<br>
+___ ____ ___’__ _____ ____ __ ____ ____ _(_)_____ __ ___ _______
+</p>
+
+<p class="blanks">
+__(_)___ ____ ______ ___ __<br>
+__________ _______
+</p>
+
+<p class="blanks">
+___’__ ____ ___ ____ ___ (_)__ ___ ___ __ _______ __ ___ ____
+</p>
+
+<p class="blanks">
+___ _ ____ ____ __ ____ (_)_____
+</p>
+
+<p class="blanks">
+____ ____ _ ______<br>
+____ __ ___ ___ ____ (_)____ __ __
+</p>
+
+<p class="blanks">
+_ ____ ___ ____ ____ ____ _____ ___ ___’_ ____ __ ____<br>
+_ ____ ___ ___ __’_ _______’ ___ __________ __ ______’<br>
+___’_ ____ ___ _____ _____ ___ _ ____ ___ ___ __’_ ___(_)___’
+</p>
+
+<p class="blanks">
+___ ___ __ ____<br>
+___ ___ __(_)____
+</p>
+
+<p class="blanks">
+___ _____ __ ____ _._. __ ___ ____ __ _____ __<br>
+__ ________ __ ___ ____ ____ __<br>
+__ ___ ____ ___ ___ ___ ____ ____ (_)___
+</p>
+
+<p class="blanks">
+___ ____ __ ____ __ __ __ ____ _____<br>
+_(_)_ ____ ___ ____ __ ____
+</p>
+
+<p class="blanks">
+___ _____ ____’_ ____ ____ _____ ____ _____ ___(_)__’ __ ___ ________
+</p>
+
+<button class="btn clipboard-button"></button>
+
+    
+    
+
+    
+    <div class="puzzle-main-corner puzzle-main-corner-1"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-2"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-3"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-4"></div>
+    
+</main>
+
+<script src="/static/js/copyjack.js"></script>
+
+
+    </div>
+    
+
+    
+
+    
+    <script>
+    document.getElementById('nav-music').style.display = 'none';
+    document.getElementById("progress-simulator").addEventListener("submit", (e) => {
+        if (e.submitter.name === "reset") {
+            toggleReset(true);
+            doGlitch(false);
+            document.getElementById("shortcuts").checked = false;
+            e.preventDefault();
+        } else {
+            localStorage.setItem(e.submitter.name, e.submitter.value);
+        }
+    });
+    addStyles();
+
+    function toggleReset(which) {
+        $('#loop-reset').toggleClass('loop-resetting', which);
+    }
+
+    function addStyles() {
+        const changeFavicon = (url) => {
+            const e = Array.from(document.getElementsByTagName("link"))
+                .filter(e => e.rel === "icon")[0];
+            e.href = url;
+        }
+        const addSheet = (url) => {
+            const e = document.createElement("link");
+            e.rel = "stylesheet";
+            e.href = url;
+            document.getElementsByTagName("head")[0].appendChild(e);
+        }
+
+        const seasons = ["spring", "summer", "autumn", "winter"];
+        let current_main_round = localStorage.getItem("round");
+        const endgame_unlocked = localStorage.getItem("endgame") === "true";
+
+        const matches = new RegExp(`\\?(${seasons.join("|")})`).exec(document.URL);
+        if (matches && matches[1]) {
+            current_main_round = matches[1];
+        }
+
+        if (endgame_unlocked) {
+            addSheet("/static/css/endgame.css");
+            changeFavicon("/static/images/favicon-endgame.ico");
+            const nodes = document.getElementsByClassName("energy-nodes-info");
+            console.log(nodes);
+            if (nodes.length > 0) {
+                nodes[0].style.display = "block";
+            }
+        } else if (current_main_round === "concert") {
+            addSheet("/static/css/concert.css");
+            changeFavicon("/static/images/favicon-concert.ico");
+            // also add the concert music
+            document.getElementById('nav-music').style.display = 'inline-block';
+            const audio = document.getElementById("music-audio");
+            if (audio) {
+                audio.addEventListener('play', () => {
+                    audio.volume = localStorage.getItem('music-audio-volume') ?? 0.5;
+                });
+                audio.addEventListener('volumechange', () => {
+                    localStorage.setItem('music-audio-volume', audio.volume);
+                });
+            }
+        } else if (seasons.includes(current_main_round)) {
+            addSheet("/static/css/season.css");
+            addSheet(`/static/css/${current_main_round}.css`);
+            changeFavicon(`/static/images/favicon-${current_main_round}.ico`);
+        } else {
+            addSheet("/static/css/blue.css");
+            changeFavicon("/static/images/favicon-blue.ico");
+        }
+    }
+
+    registerOnGlitchHook((ex) => {
+        document.getElementById('background-glitch-wrapper').style.display = 'initial';
+    });
+    </script>
+    
+</body>
+</html>

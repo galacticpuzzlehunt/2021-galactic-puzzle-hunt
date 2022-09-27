@@ -1,0 +1,448 @@
+
+
+
+
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+<title>Solution: Young Artists</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <meta property="og:title" content="Galactic Puzzle Hunt 2022">
+    <meta property="og:description" content="Registration for this year's Galactic Puzzle Hunt is now open!">
+    <meta property="og:image" content="https://galacticpuzzlehunt.com/static/images/banner.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:slnt,CASL,CRSV,MONO@-3,0.5,1,1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/skeleton.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.formset/1.2.2/jquery.formset.min.js"></script>
+    <script src="/jsi18n/"></script>
+    <script src="/static/js/sorttable.js"></script>
+    <script src="/static/js/tray.js"></script>
+    <script src="/static/js/notify.js"></script>
+    <script src="/static/js/time.js"></script>
+    
+    
+    <link rel="icon" sizes="16x16 32x32 48x48 64x64" href="/static/images/favicon.ico" type="image/vnd.microsoft.icon">
+    
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92192633-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-92192633-1');
+</script>
+
+</head>
+<body>
+    
+    <div id="background-glitch-wrapper" class="background-glitch">
+        <div class="glitch-1"></div>
+        <div class="glitch-2"></div>
+        <div class="glitch-3"></div>
+    </div>
+    
+    
+    <input id="shortcuts" type="checkbox">
+    
+    <nav>
+        <span class="tray">
+            <span id="tray-timer"></span>
+            <div class="top-tabs">
+                <a href="/">
+                    Home
+                </a>
+                
+                
+                <a href="/story">
+                    Story
+                </a>
+                
+                
+                <a class="selected-tab" href="/puzzles">
+                    Puzzles
+                </a>
+                
+                <a href="/teams">
+                    Teams
+                </a>
+                
+                
+                <a href="/errata">
+                    Updates
+                </a>
+                
+                
+                
+                
+                <a id="nav-music" href="#">
+                    <label for="music" title="Music" style="margin-bottom: 0; font-weight: normal; cursor: pointer;">Music</label>
+                </a>
+                <input id="music" type="checkbox">
+                <div class="shortcuts music">
+                    <audio id="music-audio" controls src="/static/puzzle_resources/worlds-end-concert/music-audio.mp3">
+                        There should be a music player here.
+                    </audio>
+                </div>
+                
+                
+            </div>
+            <div class="top-left-actions">
+                
+<a href="/puzzle/young-artists" class="btn">Back to the puzzle</a>
+
+            </div>
+        </span>
+        <div class="top-right-actions">
+        
+        <label for="shortcuts" title="Simulator">Simulator </label>
+        
+        
+        </div>
+    </nav>
+    
+    <div class="shortcuts">
+        <form id="progress-simulator">
+        <div>Current round:</div>
+        <button class="btn" type="submit" name="round" value="forward">⬆️</button>
+        <button class="btn" type="submit" name="round" value="spring">🌸</button>
+        <button class="btn" type="submit" name="round" value="summer">☀️</button>
+        <button class="btn" type="submit" name="round" value="autumn">🍂</button>
+        <button class="btn" type="submit" name="round" value="winter">☃️</button>
+        <button class="btn" type="submit" name="round" value="concert">🎤</button>
+        <button class="btn" type="submit" name="round" value="none">None</button>
+        <div>Endgame:</div>
+        <button class="btn" type="submit" name="endgame" value="true">Unlock</button>
+        <button class="btn" type="submit" name="endgame" value="false">Reset</button>
+        <div>Reset:</div>
+        <button class="btn" type="submit" name="reset" value="reset">Reset</button>
+        </form>
+    </div>
+    
+    
+    
+    
+    
+    <div id="loop-reset">
+        <form>
+            <svg viewBox="-30 160 720 320">
+                <defs>
+                    <path id="loop-end-path" d="m 370,240 c 38.29044,0 74.26676,18.33512 96.83716,49.26624 l -76.8369,30.73478 V 270 L 300,330 261.03858,309.74192 c 19.60706,-42.51188 62.14674,-69.74008 108.9623,-69.74306 z m 106.15758,64.22738 c 6.65282,12.65518 10.9906,26.39738 12.80876,40.57862 l -38.96532,5.19538 z"/>
+                </defs>
+                <foreignObject width="720" height="480" clip-path="url(#loop-end-clip)" class="loop-shade">
+                    <aside class="loop-shade" xmlns="http://www.w3.org/1999/xhtml" style="width: 100%; height: 100%;"></aside>
+                </foreignObject>
+                <clipPath id="loop-end-clip"><use href="#loop-end-path"/></clipPath>
+                <use href="#loop-end-path"/>
+                <path d="M 490,400 600,330 450,350 490,280 390,320 V 270 L 300,330 50,200 170,380 50,400"/>
+            </svg>
+            <div>THE END</div>
+            <p>You can reset once per minute.</p>
+            <table>
+                <tr id="loop-reset-btn-row-reset">
+                    <td><button class="btn" disabled>Reset</button></td>
+                    <td>Start over from the beginning of the exam.</td>
+                </tr>
+                <tr id="loop-reset-btn-row-restore">
+                    <td><button class="btn" disabled>Jump</button></td>
+                    <td>Start over, but resubmit your previous answers to bring you back to this point.</td>
+                </tr>
+                <tr>
+                    <td><a class="btn" href="javascript:toggleReset(false)">Stay</a></td>
+                    <td>Look at this page a bit longer. Make sure to save your work.</td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    
+    <script>
+
+    
+    
+    let glitchTriggerFuncs = [];
+    let glitchTriggerReceived = false;
+    let glitchTriggerExReceived = false;
+    let glitchPageLoaded = false;
+    function processGlitchFuncs(ex) {
+        glitchTriggerFuncs.forEach((func) => {
+            func(ex);
+        });
+    }
+    function doGlitch(ex) {
+        glitchTriggerReceived = true;
+        if (ex) {
+            glitchTriggerExReceived = true;
+        }
+        if (glitchPageLoaded) {
+            processGlitchFuncs(ex);
+        }
+    }
+    window.addEventListener('load', () => {
+        glitchPageLoaded = true;
+        if (glitchTriggerExReceived) {
+            processGlitchFuncs(true);
+        }
+        else if (glitchTriggerReceived) {
+            processGlitchFuncs(false);
+        }
+    }, false);
+    
+    
+    
+    function registerOnGlitchHook(func) {
+        if (glitchTriggerExReceived) {
+            func(true);
+        }
+        else if (glitchTriggerReceived) {
+            func(false);
+        }
+        glitchTriggerFuncs.push(func);
+    }
+    
+
+    
+    
+    </script>
+    <div class="content">
+        
+
+<style>
+h2 {
+    font-size: 2.5rem;
+    font-weight: normal;
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+
+h4 {
+    font-size: 2rem;
+    font-weight: normal;
+    margin: 2rem 0;
+}
+</style>
+
+<h1>
+    Solution <span style="font-weight: 300">Young Artists</span>
+    <div class="solved-title-marker">Answer <span class="solved-title-answer spoiler">I AM THE WALRUS</span></div>
+</h1>
+
+<main class="puzzle-main">
+    <h2 style="margin-top: 0">
+        Written by
+        
+Colin Lu and Anderson Wang
+
+    </h2>
+
+    
+    
+<style>
+.blanks, .blanks-table td:first-child {
+    font-family: Recursive, monospace;
+}
+</style>
+
+<p>Each image represents the lyrics to a popular song. From top to bottom, these are:</p>
+
+<table>
+<tr><th>Song</th><th>Artist</th><th>Lyrics</th></tr>
+<tr><td>7 Rings</td><td>Ariana Grande</td><td>Yeah, breakfast at Tiffany’s and bottles of bubbles<br>Girls with tattoos who like getting in trouble</td></tr>
+<tr><td>All of Me</td><td>John Legend</td><td>’Cause all of me loves all of you<br>Love your curves and all your edges</td></tr>
+<tr><td>American Boy</td><td>Estelle</td><td>I just met this five foot seven guy who’s just my type<br>Like the way he’s speakin’, his confidence is peakin’<br>Don’t like his baggy jeans but I might like what’s underneath them</td></tr>
+<tr><td>Blank Space</td><td>Taylor Swift</td><td>Got a long list of ex-lovers</td></tr>
+<tr><td>Call Me Maybe</td><td>Carly Rae Jepsen</td><td>Your stare was holdin’<br>Ripped jeans, skin was showin’</td></tr>
+<tr><td>Closer</td><td>The Chainsmokers ft. Halsey</td><td>Pull the sheets right off the corner<br>Of the mattress that you stole</td></tr>
+<tr><td>Drive By</td><td>Train</td><td>You moved to west L.A. or New York or Santa Fe<br>Or wherever to get away from me<br>Oh, but that one night<br>Was more than just right</td></tr>
+<tr><td>Feel Good Inc.</td><td>Gorillaz</td><td>Laughin’ gas, these hazmats, fast cats<br>Linin’ ’em up like ass cracks</td></tr>
+<tr><td>Hotline Bling</td><td>Drake</td><td>You used to call me on my cell phone<br>Late night when you need my love</td></tr>
+<tr><td>I Love It (I Don’t Care)</td><td>Icona Pop</td><td>I crashed my car into the bridge<br>I watched, I let it burn</td></tr>
+<tr><td>I Want It That Way</td><td>Backstreet Boys</td><td>You are my fire<br>The one desire</td></tr>
+<tr><td>Livin’ La Vida Loca</td><td>Ricky Martin</td><td>She’ll make you take your clothes off and go dancing in the rain</td></tr>
+<tr><td>New Rules</td><td>Dua Lipa</td><td>Three: Don’t be his friend<br>You know you’re gonna wake up in his bed in the morning</td></tr>
+<tr><td>Old Town Road</td><td>Lil Nas X</td><td>Ridin’ on a tractor<br>Lean all in my bladder</td></tr>
+<tr><td>Royals</td><td>Lorde</td><td>But every song’s like Gold teeth, Grey Goose, trippin’ in the bathroom</td></tr>
+<tr><td>Starships</td><td>Nicki Minaj</td><td>Starships, were meant to fly<br>Hands up and touch the sky<br>Let’s do this one last time<br>Can’t stop<br>We’re higher than a motherfucka</td></tr>
+<tr><td>Stay</td><td>Zedd and Alessia Cara</td><td>Living on my sofa, drinking rum and cola<br>Underneath the rising sun</td></tr>
+<tr><td>Summertime Sadness</td><td>Lana Del Rey</td><td>Kiss me hard before you go<br>Summertime sadness</td></tr>
+<tr><td>Telephone</td><td>Lady Gaga</td><td>Out in the club and I’m sippin’ that bub <br>And you’re not gonna reach my telephone</td></tr>
+<tr><td>Thrift Shop</td><td>Macklemore & Ryan Lewis</td><td>I’m gonna pop some tags<br>Only got twenty dollars in my pocket</td></tr>
+<tr><td>Tik Tok</td><td>Kesha</td><td>Before I leave, brush my teeth with a bottle of Jack</td></tr>
+<tr><td>Truth Hurts</td><td>Lizzo</td><td>I just took a DNA test, turns out I’m a hundred percent that bitch</td></tr>
+<tr><td>Uptown Funk</td><td>Mark Ronson ft. Bruno Mars</td><td>Stop, wait a minute<br>Fill my cup, put some liquor in it</td></tr>
+</table>
+
+<p>The songs are ordered alphabetically by title, which can help with confirmation or narrowing down the search space. There are 23 songs and 23 groups of blanks at the bottom, so we want to pair them up.</p>
+
+<p>We can see that the lyrics often almost fit into the blanks, but not quite — for example, the line “Before I leave, brush my teeth with a bottle of Jack” is close to “<span class="blanks">______ _ _____ _____ __ _____ ___ ____ _ _(_) ___ ____</span>”, but some of the later words don’t match. Also, each image has one or more things crossed out with a red X, which isn’t reflected in the lyrics anywhere.</p>
+
+<p>Some other relevant observations include:</p>
+
+<ul>
+<li>The object(s) crossed out with an X always correspond to the parts of the lyrics that don’t match up with the blanks (for example, the “bottle of Jack” in “Tik Tok”).
+<li>The letter singled out with parentheses in each group of blanks is always in the part of the lyrics that doesn’t match up.
+<li>The objects that are crossed out are often not family-friendly, such as explicit language or alcohol references.
+</ul>
+
+<p>These all suggest the main aha, which is that we need to use the <a href="https://en.wikipedia.org/wiki/Kidz_Bop">Kidz Bop</a> versions of the songs (which is also hinted at by the title). In particular, Kidz Bop covers are notorious for aggressively changing lyrics that might even be a little inappropriate or suggestive, often with nonsensical results.</p>
+
+<p>Indeed, if we look up the Kidz Bop versions, the lyrics now fit into the blanks:</p>
+
+<table class="blanks-table">
+<tr><th>Blanks</th><th>Original lyrics</th><th>Kidz Bop lyrics</th><th>Letter</th></tr>
+<tr><td>____ _____ ___ ______’<br>______ _____ ___(_)_ ___ ______’</td><td>Your stare was holdin’<br>Ripped jeans, skin was showin’</td><td>Your stare was holdin’<br>Ripped jeans, smile was showin’</td><td>L</td></tr>
+<tr><td>____ _________ __ _______’_ __ ___’_ _____ __ ______<br>_____ ____ _ __(_)__ ___ ____ _______ __ _______</td><td>Yeah, breakfast at Tiffany’s and bottles of bubbles<br>Girls with tattoos who like getting in trouble</td><td>Yeah, breakfast at Tiffany’s, it won’t burst my bubble<br>Girls with a dream who like getting in trouble</td><td>E</td></tr>
+<tr><td>_________ ____ _____ __ ___<br>_____ __ ___ _____ ___ ___<br>___’_ __ ____ ___ ____ ____<br>___’_ ____<br>__’__ ____ ___ ___ __’__ (_)_____ ____</td><td>Starships, were meant to fly<br>Hands up and touch the sky<br>Let’s do this one last time<br>Can’t stop<br>We’re higher than a motherfucka</td><td>Starships, were meant to fly<br>Hands up and touch the sky<br>Let’s do this one last time<br>Can’t stop<br>We’re Kidz Bop and we’re taking over</td><td>T</td></tr>
+<tr><td>______ __ __ ____ ________ ____-____<br>__________ ___ _____(_) ___</td><td>Living on my sofa, drinking rum and cola<br>Underneath the rising sun</td><td>Living on my sofa, drinking Coca-Cola<br>Underneath the midday sun</td><td>Y</td></tr>
+<tr><td>______ _ _____ _____ __ _____ ___ ____ _ _(_) ___ ____</td><td>Before I leave, brush my teeth with a bottle of Jack</td><td>Before I leave, brush my teeth and then I go and pack</td><td>O</td></tr>
+<tr><td>___ __ ___ ____ ___ _’_ ______ ____ __(_)_<br>___ ___’__ ___ _____ _____ __ _________</td><td>Out in the club and I’m sippin’ that bub<br>And you’re not gonna reach my telephone</td><td>Out in the club and I’m eating that grub<br>And you’re not gonna reach my telephone</td><td>U</td></tr>
+<tr><td>’_____ ___ __ __ _____ ___ __ ___<br>____ ____ __(_)__ ___ ___ ____ _____</td><td>’Cause all of me loves all of you<br>Love your curves and all your edges</td><td>’Cause all of me loves all of you<br>Love your words and all your edges</td><td>R</td></tr>
+<tr><td>_’_ _____ ___(_) ____ ____<br>____ ___ ______ _______ __ __ ______</td><td>I’m gonna pop some tags<br>Only got twenty dollars in my pocket</td><td>I’m gonna rock some tags<br>Only got twenty dollars in my pocket</td><td>K</td></tr>
+<tr><td>____ ___ ______ _____ ___ ___ ______<br>__ ___ (_)_______ ____ ___ _____</td><td>Pull the sheets right off the corner<br>Of the mattress that you stole</td><td>Pull the sheets right off the corner<br>Of the notebook that you stole</td><td>N</td></tr>
+<tr><td>_____’ __ _ _______<br>_(_)___’ __ __ _______</td><td>Ridin’ on a tractor<br>Lean all in my bladder</td><td>Ridin’ on a tractor<br>Ridin’ on my bladder</td><td>I</td></tr>
+<tr><td>_______’ ___ _____ _______ ____ ____<br>_____’ ’__ __ ____ ____ (_)___</td><td>Laughin’ gas, these hazmats, fast cats<br>Linin’ ’em up like ass cracks</td><td>Laughin’ gas, these hazmats, fast cats<br>Linin’ ’em up like fast cats</td><td>C</td></tr>
+<tr><td>_ ____ ____ _ ___ ____ _____ ___ _’_ _ _______ _______ ____ (_)__</td><td>I just took a DNA test, turns out I’m a hundred percent that bitch</td><td>I just took a DNA test, turns out I’m a hundred percent that kid</td><td>K</td></tr>
+<tr><td>___ ____(_) ____ ___ ______ ___ ______<br>_ _______ ___ ___ __ ____</td><td>I crashed my car into the bridge<br>I watched, I let it burn</td><td>You drove your car across the bridge.<br>I watched, you let it turn</td><td>E</td></tr>
+<tr><td>_____ ___’_ __ ___ ______<br>___ ____ ___’__ _____ ____ __ ____ ____ _(_)_____ __ ___ _______</td><td>Three: Don’t be his friend<br>You know you’re gonna wake up in his bed in the morning</td><td>Three: Don’t be his friend<br>You know you’re gonna meet up with your friends in the morning</td><td>R</td></tr>
+<tr><td>__(_)___ ____ ______ ___ __<br>__________ _______</td><td>Kiss me hard before you go<br>Summertime sadness</td><td>Listen hard before you go<br>Summertime sadness</td><td>S</td></tr>
+<tr><td>___’__ ____ ___ ____ ___ (_)__ ___ ___ __ _______ __ ___ ____</td><td>She’ll make you take your clothes off and go dancing in the rain</td><td>She’ll make you take the day off and go dancing in the rain</td><td>D</td></tr>
+<tr><td>___ _ ____ ____ __ ____ (_)_____</td><td>Got a long list of ex-lovers</td><td>Got a long list of some others</td><td>O</td></tr>
+<tr><td>____ ____ _ ______<br>____ __ ___ ___ ____ (_)____ __ __</td><td>Stop, wait a minute<br>Fill my cup, put some liquor in it</td><td>Stop, wait a minute<br>Fill my cup, put some water in it</td><td>W</td></tr>
+<tr><td>_ ____ ___ ____ ____ ____ _____ ___ ___’_ ____ __ ____<br>_ ____ ___ ___ __’_ _______’ ___ __________ __ ______’<br>___’_ ____ ___ _____ _____ ___ _ ____ ___ ___ __’_ ___(_)___’</td><td>I just met this five foot seven guy who’s just my type<br>I like the way he’s speakin’, his confidence is peakin’<br>Don’t like his baggy jeans but I might like what’s underneath them</td><td>I just met this four foot seven boy who’s just my type<br>I like the way he’s speakin’, his confidence is peakin’<br>Don’t like his baggy jeans but I like the way he’s thinkin’</td><td>N</td></tr>
+<tr><td>___ ___ __ ____<br>___ ___ __(_)____</td><td>You are my fire<br>The one desire</td><td>You are my fire<br>The one inspire</td><td>S</td></tr>
+<tr><td>___ _____ __ ____ _._. __ ___ ____ __ _____ __<br>__ ________ __ ___ ____ ____ __<br>__ ___ ____ ___ ___ ___ ____ ____ (_)___</td><td>You moved to west L.A. or New York or Santa Fe<br>Or wherever to get away from me<br>Oh, but that one night was more than just right</td><td>You moved to west L.A. or New York or Santa Fe<br>Or wherever to get away from me<br>Oh, but that one day was more than okay</td><td>O</td></tr>
+<tr><td>___ ____ __ ____ __ __ __ ____ _____<br>_(_)_ ____ ___ ____ __ ____</td><td>You used to call me on my cell phone<br>Late night when you need my love</td><td>You used to call me on my cell phone<br>Any time you need to talk</td><td>N</td></tr>
+<tr><td>___ _____ ____’_ ____ ____ _____ ____ _____ ___(_)__’ __ ___ ________</td><td>But every song’s like gold teeth, Grey Goose, trippin’ in the bathroom</td><td>But every song’s like gold teeth, Gold Goose, singin’ in the bathroom</td><td>G</td></tr>
+</table>
+
+<p>(When writing this puzzle, we preserved apostrophes to distinguish between things like “singing” and “singin’”, but otherwise removed most punctuation.)</p>
+
+<p>Note that some online lyric sources may not be accurate, so for a few of these it’s probably easiest to listen to the actual songs to get the lyrics. Also, two of these songs (Livin’ La Vida Loca, I Want It That Way) have “redo” versions, which is essentially when Kidz Bop did a cover of the song in their early days when they weren’t so strict about lyrics, and then released another version later on with more censoring—in these cases, we always use the “redo” lyrics (and the first version has unchanged lyrics so it doesn’t fit).</p>
+
+<p>Reading the singled-out letters in the given order gives LET YOUR KNICKERS DOWN SONG. The line “You let your knickers down” appears in The Beatles song <b>I AM THE WALRUS</b>, which is the answer.</p>
+
+
+    
+    
+    <h2 id="authors-notes">Author&rsquo;s Notes</h2>
+    
+<p><iframe width="560" height="315" src="https://www.youtube.com/embed/aSgkYo8S3Zc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+
+<p>Anderson: We found about two-thirds of the lyrics from looking through listicles and other online compilations, and combed through all the Kidz Bop album tracklists to find the rest. Needless to say, our YouTube recommendations might be a little wonky right now...</p>
+
+<p>Thanks to Colin for doing the excellent art, and Ben for also subjecting himself to Kidz Bop to help us find more candidates when a shorter cluephrase didn’t work out.</p>
+
+    
+
+    
+    
+
+    
+    <div class="puzzle-main-corner puzzle-main-corner-1"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-2"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-3"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-4"></div>
+    
+</main>
+
+
+    </div>
+    
+
+    
+
+    
+    <script>
+    document.getElementById('nav-music').style.display = 'none';
+    document.getElementById("progress-simulator").addEventListener("submit", (e) => {
+        if (e.submitter.name === "reset") {
+            toggleReset(true);
+            doGlitch(false);
+            document.getElementById("shortcuts").checked = false;
+            e.preventDefault();
+        } else {
+            localStorage.setItem(e.submitter.name, e.submitter.value);
+        }
+    });
+    addStyles();
+
+    function toggleReset(which) {
+        $('#loop-reset').toggleClass('loop-resetting', which);
+    }
+
+    function addStyles() {
+        const changeFavicon = (url) => {
+            const e = Array.from(document.getElementsByTagName("link"))
+                .filter(e => e.rel === "icon")[0];
+            e.href = url;
+        }
+        const addSheet = (url) => {
+            const e = document.createElement("link");
+            e.rel = "stylesheet";
+            e.href = url;
+            document.getElementsByTagName("head")[0].appendChild(e);
+        }
+
+        const seasons = ["spring", "summer", "autumn", "winter"];
+        let current_main_round = localStorage.getItem("round");
+        const endgame_unlocked = localStorage.getItem("endgame") === "true";
+
+        const matches = new RegExp(`\\?(${seasons.join("|")})`).exec(document.URL);
+        if (matches && matches[1]) {
+            current_main_round = matches[1];
+        }
+
+        if (endgame_unlocked) {
+            addSheet("/static/css/endgame.css");
+            changeFavicon("/static/images/favicon-endgame.ico");
+            const nodes = document.getElementsByClassName("energy-nodes-info");
+            console.log(nodes);
+            if (nodes.length > 0) {
+                nodes[0].style.display = "block";
+            }
+        } else if (current_main_round === "concert") {
+            addSheet("/static/css/concert.css");
+            changeFavicon("/static/images/favicon-concert.ico");
+            // also add the concert music
+            document.getElementById('nav-music').style.display = 'inline-block';
+            const audio = document.getElementById("music-audio");
+            if (audio) {
+                audio.addEventListener('play', () => {
+                    audio.volume = localStorage.getItem('music-audio-volume') ?? 0.5;
+                });
+                audio.addEventListener('volumechange', () => {
+                    localStorage.setItem('music-audio-volume', audio.volume);
+                });
+            }
+        } else if (seasons.includes(current_main_round)) {
+            addSheet("/static/css/season.css");
+            addSheet(`/static/css/${current_main_round}.css`);
+            changeFavicon(`/static/images/favicon-${current_main_round}.ico`);
+        } else {
+            addSheet("/static/css/blue.css");
+            changeFavicon("/static/images/favicon-blue.ico");
+        }
+    }
+
+    registerOnGlitchHook((ex) => {
+        document.getElementById('background-glitch-wrapper').style.display = 'initial';
+    });
+    </script>
+    
+</body>
+</html>

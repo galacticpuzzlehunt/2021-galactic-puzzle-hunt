@@ -1,0 +1,394 @@
+
+
+
+
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+<title>Solution: Make Your Own Puzzle Hunt</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <meta property="og:title" content="Galactic Puzzle Hunt 2022">
+    <meta property="og:description" content="Registration for this year's Galactic Puzzle Hunt is now open!">
+    <meta property="og:image" content="https://galacticpuzzlehunt.com/static/images/banner.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:slnt,CASL,CRSV,MONO@-3,0.5,1,1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/skeleton.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.formset/1.2.2/jquery.formset.min.js"></script>
+    <script src="/jsi18n/"></script>
+    <script src="/static/js/sorttable.js"></script>
+    <script src="/static/js/tray.js"></script>
+    <script src="/static/js/notify.js"></script>
+    <script src="/static/js/time.js"></script>
+    
+    
+    <link rel="icon" sizes="16x16 32x32 48x48 64x64" href="/static/images/favicon.ico" type="image/vnd.microsoft.icon">
+    
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92192633-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-92192633-1');
+</script>
+
+</head>
+<body>
+    
+    <div id="background-glitch-wrapper" class="background-glitch">
+        <div class="glitch-1"></div>
+        <div class="glitch-2"></div>
+        <div class="glitch-3"></div>
+    </div>
+    
+    
+    <input id="shortcuts" type="checkbox">
+    
+    <nav>
+        <span class="tray">
+            <span id="tray-timer"></span>
+            <div class="top-tabs">
+                <a href="/">
+                    Home
+                </a>
+                
+                
+                <a href="/story">
+                    Story
+                </a>
+                
+                
+                <a class="selected-tab" href="/puzzles">
+                    Puzzles
+                </a>
+                
+                <a href="/teams">
+                    Teams
+                </a>
+                
+                
+                <a href="/errata">
+                    Updates
+                </a>
+                
+                
+                
+                
+                <a id="nav-music" href="#">
+                    <label for="music" title="Music" style="margin-bottom: 0; font-weight: normal; cursor: pointer;">Music</label>
+                </a>
+                <input id="music" type="checkbox">
+                <div class="shortcuts music">
+                    <audio id="music-audio" controls src="/static/puzzle_resources/worlds-end-concert/music-audio.mp3">
+                        There should be a music player here.
+                    </audio>
+                </div>
+                
+                
+            </div>
+            <div class="top-left-actions">
+                
+<a href="/puzzle/make-your-own-puzzle-hunt" class="btn">Back to the puzzle</a>
+
+            </div>
+        </span>
+        <div class="top-right-actions">
+        
+        <label for="shortcuts" title="Simulator">Simulator </label>
+        
+        
+        </div>
+    </nav>
+    
+    <div class="shortcuts">
+        <form id="progress-simulator">
+        <div>Current round:</div>
+        <button class="btn" type="submit" name="round" value="forward">⬆️</button>
+        <button class="btn" type="submit" name="round" value="spring">🌸</button>
+        <button class="btn" type="submit" name="round" value="summer">☀️</button>
+        <button class="btn" type="submit" name="round" value="autumn">🍂</button>
+        <button class="btn" type="submit" name="round" value="winter">☃️</button>
+        <button class="btn" type="submit" name="round" value="concert">🎤</button>
+        <button class="btn" type="submit" name="round" value="none">None</button>
+        <div>Endgame:</div>
+        <button class="btn" type="submit" name="endgame" value="true">Unlock</button>
+        <button class="btn" type="submit" name="endgame" value="false">Reset</button>
+        <div>Reset:</div>
+        <button class="btn" type="submit" name="reset" value="reset">Reset</button>
+        </form>
+    </div>
+    
+    
+    
+    
+    
+    <div id="loop-reset">
+        <form>
+            <svg viewBox="-30 160 720 320">
+                <defs>
+                    <path id="loop-end-path" d="m 370,240 c 38.29044,0 74.26676,18.33512 96.83716,49.26624 l -76.8369,30.73478 V 270 L 300,330 261.03858,309.74192 c 19.60706,-42.51188 62.14674,-69.74008 108.9623,-69.74306 z m 106.15758,64.22738 c 6.65282,12.65518 10.9906,26.39738 12.80876,40.57862 l -38.96532,5.19538 z"/>
+                </defs>
+                <foreignObject width="720" height="480" clip-path="url(#loop-end-clip)" class="loop-shade">
+                    <aside class="loop-shade" xmlns="http://www.w3.org/1999/xhtml" style="width: 100%; height: 100%;"></aside>
+                </foreignObject>
+                <clipPath id="loop-end-clip"><use href="#loop-end-path"/></clipPath>
+                <use href="#loop-end-path"/>
+                <path d="M 490,400 600,330 450,350 490,280 390,320 V 270 L 300,330 50,200 170,380 50,400"/>
+            </svg>
+            <div>THE END</div>
+            <p>You can reset once per minute.</p>
+            <table>
+                <tr id="loop-reset-btn-row-reset">
+                    <td><button class="btn" disabled>Reset</button></td>
+                    <td>Start over from the beginning of the exam.</td>
+                </tr>
+                <tr id="loop-reset-btn-row-restore">
+                    <td><button class="btn" disabled>Jump</button></td>
+                    <td>Start over, but resubmit your previous answers to bring you back to this point.</td>
+                </tr>
+                <tr>
+                    <td><a class="btn" href="javascript:toggleReset(false)">Stay</a></td>
+                    <td>Look at this page a bit longer. Make sure to save your work.</td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    
+    <script>
+
+    
+    
+    let glitchTriggerFuncs = [];
+    let glitchTriggerReceived = false;
+    let glitchTriggerExReceived = false;
+    let glitchPageLoaded = false;
+    function processGlitchFuncs(ex) {
+        glitchTriggerFuncs.forEach((func) => {
+            func(ex);
+        });
+    }
+    function doGlitch(ex) {
+        glitchTriggerReceived = true;
+        if (ex) {
+            glitchTriggerExReceived = true;
+        }
+        if (glitchPageLoaded) {
+            processGlitchFuncs(ex);
+        }
+    }
+    window.addEventListener('load', () => {
+        glitchPageLoaded = true;
+        if (glitchTriggerExReceived) {
+            processGlitchFuncs(true);
+        }
+        else if (glitchTriggerReceived) {
+            processGlitchFuncs(false);
+        }
+    }, false);
+    
+    
+    
+    function registerOnGlitchHook(func) {
+        if (glitchTriggerExReceived) {
+            func(true);
+        }
+        else if (glitchTriggerReceived) {
+            func(false);
+        }
+        glitchTriggerFuncs.push(func);
+    }
+    
+
+    
+    
+    </script>
+    <div class="content">
+        
+
+<style>
+h2 {
+    font-size: 2.5rem;
+    font-weight: normal;
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+
+h4 {
+    font-size: 2rem;
+    font-weight: normal;
+    margin: 2rem 0;
+}
+</style>
+
+<h1>
+    Solution <span style="font-weight: 300">Make Your Own Puzzle Hunt</span>
+    <div class="solved-title-marker">Answer <span class="solved-title-answer spoiler">HALLEY&#x27;S COMET</span></div>
+</h1>
+
+<main class="puzzle-main">
+    <h2 style="margin-top: 0">
+        Written by
+        
+Josh Alman and Nathan Pinsker
+
+    </h2>
+
+    
+    <style>
+.puzzle-main code {
+  overflow: initial;
+  white-space: initial;
+}
+</style>
+
+<p>As instructed by the flavor text, our first task is to make six puzzles for a 2022 puzzle hunt. For each puzzle, the editor has given constraints about what the puzzle must look like. It&rsquo;s up to us to submit puzzle ideas and listen to their feedback to converge on an acceptable puzzle that extracts to a real English word. If we make an unacceptable submission, the editor will tell us what&rsquo;s wrong with it, though sometimes their hints are rather vague.</p>
+<p>A key observation that we make over the course of constructing these puzzles, and which is helpful for constructing some of the tougher ones, is that each of the six puzzles we make has a mechanical similarity with one of the puzzles in the first round of the hunt (The Exam, the puzzles found at the 2022 URL <a href="https://2022.galacticpuzzlehunt.com/">2022.galacticpuzzlehunt.com</a>). Since there are six puzzles in the hunt we are making, but seven puzzles in the first round, one of the puzzles&mdash;Extreme Anagrams&mdash;is not associated with any of our puzzles.</p>
+<p>Once we have created at least 5 of the 6 puzzles successfully, we are given access to the meta puzzle corresponding to our puzzles and their answers. As we might expect, that meta puzzle ultimately uses a similar mechanic to Extreme Anagrams. Solving that meta puzzle (which, as we describe below, likely involves redoing some of the earlier puzzles as well) gives the cluephrase THE ANSWER TO THE ORIGINAL PUZZLE. The final answer is thus the same as the final answer to Extreme Anagrams, namely, <strong>HALLEY&rsquo;S COMET</strong>.</p>
+<p>Below we describe how each puzzle works, and how each is related to a puzzle from the first round of the hunt.</p>
+<h5>Akari</h5>
+<p>We must submit an 8x8 Akari puzzle with at least 10 white squares, whose white squares form a connected component. The letters are derived as in <a href="/puzzle/naval-conflict">Naval Conflict</a>&rsquo;s second, hidden answer. We treat the lighted cells as bishops and use the original 8x8 extraction grid from the puzzle, reading off any letter in a white cell that isn&rsquo;t attacked by the bishops. As indicated by the puzzle instructions, black squares &ldquo;block&rdquo; bishop attacks.</p>
+<p>Here is an example valid Akari grid (paste it into the Akari subpuzzle page):</p>
+<pre><code>[[0,0,0,0,0,3,3,0], [3,3,0,0,4,0,0,0], [0,0,0,4,1,4,0,2], [3,0,0,0,4,0,0,0], [0,0,0,0,0,4,0,0], [0,0,0,0,0,0,0,3], [0,4,0,3,0,0,0,0], [3,1,3,1,2,2,0,3]]
+</code></pre>
+<h5>Crossword Clue</h5>
+<p>We should give a list of one-word crossword clues and their answers. Each answer must be a synonym of the clue. Inspired by <a href="/puzzle/shared-samples">Shared Samples</a>, each should extract to the same letter in two different ways: First, by taking the first letter of the answer, and second, by converting the vowels used in the clue word to 5-bit binary and reading the resulting number as a letter (A=1, B=2, ...). For example, the clue TOP with answer BEST extracts to the letter B, which is the first letter of BEST, and also written in binary as 00010 (corresponding to whether A,E,I,O,U, respectively, are in TOP). Concatenating the letters from each clue gives the answer to the puzzle.</p>
+<h5>Drawing</h5>
+<p>Submit a pixel drawing. The answer is gotten by counting the number of white holes in each black connected component, converting that number to a letter (0=A, 1=B, …), then reading top-to-bottom, left-to-right. This corresponds to the extraction step for the second answer of <a href="/puzzle/eclairs-and-more">Eclairs and More…</a>, where one counts the number of holes in various objects and converts them to letters in a similar way.</p>
+<h5>Image</h5>
+<p>As in <a href="/puzzle/whats-the-difference">What&rsquo;s the Difference?</a>, we should submit an image with EXIF data containing a location.</p>
+<p>The location is broken into two-digit chunks and converted to letters; then a word is read from the letters, alternating between latitude and longitude chunks. For example, the location <code>(6.212009, 15.140114)</code> will be broken up into <code>06 15 21 14 20 01 09 14</code>, which resolves to FOUNTAIN.</p>
+<h5>Multiple Choice</h5>
+<p>Simply follow the instructions! Here’s an example for the answer &ldquo;cat&rdquo; (paste it into the Multiple Choice subpuzzle page):</p>
+<pre><code>[&quot;cat&quot;, &quot;hello&quot;, &quot;dog&quot;, &quot;fox&quot;, &quot;leftmost&quot;, &quot;cat&quot;, &quot;dog&quot;, &quot;fox&quot;, &quot;cat&quot;, &quot;hello&quot;, &quot;leftmost&quot;, &quot;answer&quot;, &quot;cat&quot;, &quot;hello&quot;, &quot;leftmost&quot;, &quot;answer&quot;, &quot;cat&quot;, &quot;car&quot;, &quot;fat&quot;, &quot;hat&quot;, &quot;cat&quot;, &quot;hello&quot;, &quot;leftmost&quot;, &quot;answer&quot;, &quot;cat&quot;, &quot;pat&quot;, &quot;axes&quot;, &quot;answer&quot;, &quot;cat&quot;, &quot;hello&quot;, &quot;optional&quot;, &quot;option&quot;, &quot;cat&quot;, &quot;hello&quot;, &quot;leftmost&quot;, &quot;answer&quot;]
+</code></pre>
+<p>(This puzzle is loosely based on <a href="/puzzle/your-puzzle">Nobody Knows…</a>, in that it has 9 multiple-choice questions with 4 answers each. We originally planned to require the correct answer for each question have the same index as your answer for the corresponding question in Nobody Knows…, but weren&rsquo;t able to find a satisfying way to clue this, or to get it to work cleanly within the time loop framework.)</p>
+<h5>Topic</h5>
+<p>Each submission needs to be a Wikipedia article with a number in it. We can index that number into the title of the article to get a letter. (For example, &ldquo;Seven Samurai&rdquo; gives an A.) We must submit at least 8 topics with different indices; once we do, the returned word is the concatenation of the submitted letters.</p>
+<p>(We originally tested with the first paragraphs of articles instead of the title. While that was more thematic with <a href="/puzzle/wordless">Wordless</a>, we decided that it wasn&rsquo;t worth the tedium it might introduce.)</p>
+<h5>Meta</h5>
+<p>The meta puzzle consists of a single clue in the style of the puzzle <a href="/puzzle/extreme-anagrams">Extreme Anagrams</a>: AAE EEEGHH II LLN NOOPRRST TTUWZZ. Anagraming this yields THE ANSWER TO THE ORIGINAL PUZZLE as mentioned above.</p>
+<p>However, we are not simply given the clue. Rather, each letter of the clue is given as an index into the answer of one of our six puzzles that we made. If that letter is not in the answer to the corresponding puzzle, then a ? is given instead. For instance, the first A is given as an index into our answer to the Akari puzzle; if our current answer to Akari does not have an A in it, then a ? is given instead. We likely have to make new versions of some of the 6 puzzles to get more of the letters of the clue phrase. Hopefully the fact that the letters are given in alphabetical order somewhat narrows the search space.</p>
+
+    
+    
+    <h2 id="authors-notes">Author&rsquo;s Notes</h2>
+    <p>We tried to design this so that making the puzzles involved some of the skills that one really uses to make puzzle hunt-style puzzles: designing logic puzzles with strange letter constraints, using online tools to search for words that will make a clue work, etc. If you enjoyed this, we hope you try your hand at making a real puzzle hunt puzzle as well!</p>
+<p>We&rsquo;re sorry if this puzzle spoiled any intro round puzzles for anyone. Those puzzles really are very good, and we had a lot of fun riffing off of them.</p>
+<p>The general idea of a &ldquo;Make Your Own Puzzle Hunt&rdquo; puzzle, where you have to design and then re-design puzzles to fit in with a meta, is one that we had been considering for at least a year. The idea to tie all the puzzles together by relating them to the intro round was only inspired much later in the development process when our editors were able to assign us this answer.</p>
+<p>As we were developing this puzzle, Huntinality released another puzzle with <a href="https://2022.huntinality.com/puzzles/make_your_own_puzzlehunt">(almost!) the same title</a>. We were briefly worried about overlap, but that puzzle fortunately focuses on a very different aspect of making a puzzle hunt, namely, choosing the parameters for the hunt (number of puzzles and rounds, theme for the hunt, what day the hunt starts on, etc) rather than designing puzzles.</p>
+    
+
+    
+    
+
+    
+    <div class="puzzle-main-corner puzzle-main-corner-1"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-2"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-3"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-4"></div>
+    
+</main>
+
+
+    </div>
+    
+
+    
+
+    
+    <script>
+    document.getElementById('nav-music').style.display = 'none';
+    document.getElementById("progress-simulator").addEventListener("submit", (e) => {
+        if (e.submitter.name === "reset") {
+            toggleReset(true);
+            doGlitch(false);
+            document.getElementById("shortcuts").checked = false;
+            e.preventDefault();
+        } else {
+            localStorage.setItem(e.submitter.name, e.submitter.value);
+        }
+    });
+    addStyles();
+
+    function toggleReset(which) {
+        $('#loop-reset').toggleClass('loop-resetting', which);
+    }
+
+    function addStyles() {
+        const changeFavicon = (url) => {
+            const e = Array.from(document.getElementsByTagName("link"))
+                .filter(e => e.rel === "icon")[0];
+            e.href = url;
+        }
+        const addSheet = (url) => {
+            const e = document.createElement("link");
+            e.rel = "stylesheet";
+            e.href = url;
+            document.getElementsByTagName("head")[0].appendChild(e);
+        }
+
+        const seasons = ["spring", "summer", "autumn", "winter"];
+        let current_main_round = localStorage.getItem("round");
+        const endgame_unlocked = localStorage.getItem("endgame") === "true";
+
+        const matches = new RegExp(`\\?(${seasons.join("|")})`).exec(document.URL);
+        if (matches && matches[1]) {
+            current_main_round = matches[1];
+        }
+
+        if (endgame_unlocked) {
+            addSheet("/static/css/endgame.css");
+            changeFavicon("/static/images/favicon-endgame.ico");
+            const nodes = document.getElementsByClassName("energy-nodes-info");
+            console.log(nodes);
+            if (nodes.length > 0) {
+                nodes[0].style.display = "block";
+            }
+        } else if (current_main_round === "concert") {
+            addSheet("/static/css/concert.css");
+            changeFavicon("/static/images/favicon-concert.ico");
+            // also add the concert music
+            document.getElementById('nav-music').style.display = 'inline-block';
+            const audio = document.getElementById("music-audio");
+            if (audio) {
+                audio.addEventListener('play', () => {
+                    audio.volume = localStorage.getItem('music-audio-volume') ?? 0.5;
+                });
+                audio.addEventListener('volumechange', () => {
+                    localStorage.setItem('music-audio-volume', audio.volume);
+                });
+            }
+        } else if (seasons.includes(current_main_round)) {
+            addSheet("/static/css/season.css");
+            addSheet(`/static/css/${current_main_round}.css`);
+            changeFavicon(`/static/images/favicon-${current_main_round}.ico`);
+        } else {
+            addSheet("/static/css/blue.css");
+            changeFavicon("/static/images/favicon-blue.ico");
+        }
+    }
+
+    registerOnGlitchHook((ex) => {
+        document.getElementById('background-glitch-wrapper').style.display = 'initial';
+    });
+    </script>
+    
+</body>
+</html>

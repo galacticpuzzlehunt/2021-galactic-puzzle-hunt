@@ -1,0 +1,571 @@
+
+
+
+
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+<title>At the Park</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <meta property="og:title" content="Galactic Puzzle Hunt 2022">
+    <meta property="og:description" content="Registration for this year's Galactic Puzzle Hunt is now open!">
+    <meta property="og:image" content="https://galacticpuzzlehunt.com/static/images/banner.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:slnt,CASL,CRSV,MONO@-3,0.5,1,1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/skeleton.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.formset/1.2.2/jquery.formset.min.js"></script>
+    <script src="/jsi18n/"></script>
+    <script src="/static/js/sorttable.js"></script>
+    <script src="/static/js/tray.js"></script>
+    <script src="/static/js/notify.js"></script>
+    <script src="/static/js/time.js"></script>
+    
+    
+    <link rel="icon" sizes="16x16 32x32 48x48 64x64" href="/static/images/favicon.ico" type="image/vnd.microsoft.icon">
+    
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92192633-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-92192633-1');
+</script>
+
+</head>
+<body>
+    
+    <div id="background-glitch-wrapper" class="background-glitch">
+        <div class="glitch-1"></div>
+        <div class="glitch-2"></div>
+        <div class="glitch-3"></div>
+    </div>
+    
+    
+    <input id="shortcuts" type="checkbox">
+    
+    <nav>
+        <span class="tray">
+            <span id="tray-timer"></span>
+            <div class="top-tabs">
+                <a href="/">
+                    Home
+                </a>
+                
+                
+                <a href="/story">
+                    Story
+                </a>
+                
+                
+                <a class="selected-tab" href="/puzzles">
+                    Puzzles
+                </a>
+                
+                <a href="/teams">
+                    Teams
+                </a>
+                
+                
+                <a href="/errata">
+                    Updates
+                </a>
+                
+                
+                
+                
+                <a id="nav-music" href="#">
+                    <label for="music" title="Music" style="margin-bottom: 0; font-weight: normal; cursor: pointer;">Music</label>
+                </a>
+                <input id="music" type="checkbox">
+                <div class="shortcuts music">
+                    <audio id="music-audio" controls src="/static/puzzle_resources/worlds-end-concert/music-audio.mp3">
+                        There should be a music player here.
+                    </audio>
+                </div>
+                
+                
+            </div>
+            <div class="top-left-actions">
+                
+
+
+
+
+<a href="/post-hunt-solve/at-the-park" class="btn">Check your answer spoiler-free</a>
+
+
+
+<a href="/solution/at-the-park" class="btn">View solution</a>
+<a href="/stats/at-the-park" class="btn">Stats</a>
+
+
+            </div>
+        </span>
+        <div class="top-right-actions">
+        
+        <label for="shortcuts" title="Simulator">Simulator </label>
+        
+        
+        </div>
+    </nav>
+    
+    <div class="shortcuts">
+        <form id="progress-simulator">
+        <div>Current round:</div>
+        <button class="btn" type="submit" name="round" value="forward">⬆️</button>
+        <button class="btn" type="submit" name="round" value="spring">🌸</button>
+        <button class="btn" type="submit" name="round" value="summer">☀️</button>
+        <button class="btn" type="submit" name="round" value="autumn">🍂</button>
+        <button class="btn" type="submit" name="round" value="winter">☃️</button>
+        <button class="btn" type="submit" name="round" value="concert">🎤</button>
+        <button class="btn" type="submit" name="round" value="none">None</button>
+        <div>Endgame:</div>
+        <button class="btn" type="submit" name="endgame" value="true">Unlock</button>
+        <button class="btn" type="submit" name="endgame" value="false">Reset</button>
+        <div>Reset:</div>
+        <button class="btn" type="submit" name="reset" value="reset">Reset</button>
+        </form>
+    </div>
+    
+    
+    
+    
+    
+    <div id="loop-reset">
+        <form>
+            <svg viewBox="-30 160 720 320">
+                <defs>
+                    <path id="loop-end-path" d="m 370,240 c 38.29044,0 74.26676,18.33512 96.83716,49.26624 l -76.8369,30.73478 V 270 L 300,330 261.03858,309.74192 c 19.60706,-42.51188 62.14674,-69.74008 108.9623,-69.74306 z m 106.15758,64.22738 c 6.65282,12.65518 10.9906,26.39738 12.80876,40.57862 l -38.96532,5.19538 z"/>
+                </defs>
+                <foreignObject width="720" height="480" clip-path="url(#loop-end-clip)" class="loop-shade">
+                    <aside class="loop-shade" xmlns="http://www.w3.org/1999/xhtml" style="width: 100%; height: 100%;"></aside>
+                </foreignObject>
+                <clipPath id="loop-end-clip"><use href="#loop-end-path"/></clipPath>
+                <use href="#loop-end-path"/>
+                <path d="M 490,400 600,330 450,350 490,280 390,320 V 270 L 300,330 50,200 170,380 50,400"/>
+            </svg>
+            <div>THE END</div>
+            <p>You can reset once per minute.</p>
+            <table>
+                <tr id="loop-reset-btn-row-reset">
+                    <td><button class="btn" disabled>Reset</button></td>
+                    <td>Start over from the beginning of the exam.</td>
+                </tr>
+                <tr id="loop-reset-btn-row-restore">
+                    <td><button class="btn" disabled>Jump</button></td>
+                    <td>Start over, but resubmit your previous answers to bring you back to this point.</td>
+                </tr>
+                <tr>
+                    <td><a class="btn" href="javascript:toggleReset(false)">Stay</a></td>
+                    <td>Look at this page a bit longer. Make sure to save your work.</td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    
+    <script>
+
+    
+    
+    let glitchTriggerFuncs = [];
+    let glitchTriggerReceived = false;
+    let glitchTriggerExReceived = false;
+    let glitchPageLoaded = false;
+    function processGlitchFuncs(ex) {
+        glitchTriggerFuncs.forEach((func) => {
+            func(ex);
+        });
+    }
+    function doGlitch(ex) {
+        glitchTriggerReceived = true;
+        if (ex) {
+            glitchTriggerExReceived = true;
+        }
+        if (glitchPageLoaded) {
+            processGlitchFuncs(ex);
+        }
+    }
+    window.addEventListener('load', () => {
+        glitchPageLoaded = true;
+        if (glitchTriggerExReceived) {
+            processGlitchFuncs(true);
+        }
+        else if (glitchTriggerReceived) {
+            processGlitchFuncs(false);
+        }
+    }, false);
+    
+    
+    
+    function registerOnGlitchHook(func) {
+        if (glitchTriggerExReceived) {
+            func(true);
+        }
+        else if (glitchTriggerReceived) {
+            func(false);
+        }
+        glitchTriggerFuncs.push(func);
+    }
+    
+
+    
+    
+    </script>
+    <div class="content">
+        
+
+<h1>
+    At the Park
+    
+    
+</h1>
+
+
+<script>
+function getLoopEndTime() {
+
+    return Date.now();
+
+}
+function getFrozen() {
+
+    return true;
+
+}
+</script>
+
+
+<main class="puzzle-main clipboard-container">
+    
+    
+    
+    
+<style>
+  #visit-btn {
+    text-decoration: none;
+    margin-left: 0.2em;
+  }
+  .visit-btn-disabled#visit-btn {
+    color: #aea49c;
+    cursor: not-allowed;
+  }
+</style>
+You can ask for any park, but we&rsquo;ve only written clues for so many parks, so if you
+type in an unfamiliar park we&rsquo;ll just give you the clues for a different park instead. During the hunt, you could only visit one park, across the entire team, in each 4-minute interval.
+<form id="form1">
+    <label for="park">What park do you want to visit?</label>
+    <input id="park" autofocus></input>
+    <a href="#" class="delete-row" id="visit-btn" style="display: inline-block" onclick="submit(event)">&#x2794;</a>
+</form>
+<span id="clue"></span>
+<script>
+    let frozen = false;
+    function ts(n) {
+        return (n % 10000000) / 1000
+    }
+    // protocol:
+    //  - when you submit the park, send a message with {park: "whatever", submit_now: true}
+    //  - to ask for an update, send a message with {park: "", submit_now: false}
+    // server sends:
+    //  - {text: "clue text"}
+    //  - {park: "park name"}
+    let have_data_until = Date.now() - 1;
+    const offset = Math.random() * 5000 + 5000;
+    let curr_text = '';
+    let curr_disp = '';
+    let curr_offset = 0;
+    let curr_timer = undefined;
+
+
+    PUZZLE_DATA = {
+        'American Family Field': 'The construction of this park was met with a lot of controversy. The local government had to raise taxes in order to fund it. Over time, a number of unexpected complications cost the city even more money, including a major element of the roof that needed to be replaced. That roof is shaped like a word which could also describe most of the people here. What is the second letter of that word?',
+        'Angel Stadium': 'Although this park has been open for more than 50 years, the longest ever event held there took place only 8 years ago. It lasted more than six and a half hours. It was so long that some employees who were supposed to have a day off were called in to help out. One of them, a visitor from the east coast, would normally start working at the beginning of the event, rather than joining near the end. (Work is in his name, after all.) He was born in a city with a 9-letter name; what is its 5th letter?',
+        'Busch Stadium': 'This is your first time coming to this park, but before you can go to the park proper you\'re going to have to park! Luckily, you\'ve printed out the park\'s official parking map from the "directions" part of the park\'s website. You start driving around the nearby streets, looking for parking. You pass the train station, and then you pass between two parking sites before turning left on a street named for something that grows on trees. The area near the park is crowded, so you turn right when the street ends to get farther away. Continue until you reach another street named for something that grows on trees, and turn onto it. You\'ll pass one parking opportunity on the left (though it seems like you really shouldn\'t park there), one on the right, and two more on the left before you turn back toward the park. Continue until you reach a parking lot whose name is very thematic; at last, you find parking there. What was the first letter of the last street you passed before entering the lot?',
+        'Chase Field': 'Gather your climbing gear. Climb up to start in the center of the most prominent bank logo. There are two large red and white birds that you can climb to without going up or down. Go to the closer one. From there,  orient yourself toward the ground, then go straight until you get right below a mountain. Turn 90 degrees to your right, then go straight until you get to a banner. To your right, there should be in an area describing some recent and not-so-recent events. What is the last letter in alphabetical order that appears in the three large blocks of text that area?',
+        'Citi Field': "Leave the park and head south around 500 feet, passing a parking lot. Take the stairs up and get on a train. Take the train for 19 stops, then get off. Take a staircase up to a mezzanine, and then another staircase up to another platform. Take a train from this platform and go for one stop. Get off, and go downstairs, heading west about a thousand feet and eventually up some stairs to end up in a recently renovated building named for a sociologist. You'll want to wait here to find out where to go for your next train. When you do get on that train, head northeast and get off after one stop (28 minutes), at a station whose enumeration is (3 8). What is the last letter of that stop?",
+        'Citizens Bank Park': "Visit the climbing area at the northeast corner of the park. Start at the bottom left corner of city hall, and then climb to the tip of the pointiest building. Then climb over to the eyes of the monster. Next, climb to where there are two Ls next to each other, and then climb to the chevron that is part of one of the building's facades. Finaly, head to the part of the tallest building that is covered up by part of city hall. What letter did you trace out?",
+        'Comerica Park': "In a park this big, you might expect people to play soccer all the time, but you ask some locals and they tell you it's only happened once. That's curious, so you investigate that time. That game ended in a 5-3 penalty shootout after a 1-1 draw. Consider the number of the player who scored first. Subtract two and take the corresponding letter in the name of the city you're in.",
+        'Coors Field': "Sit down in the park, fall asleep, and wake up on August 8, 2019 to the sound of a loud concert going on. You'll want to watch the concert and wait until a song is played that shares its name with a 1902 song. Three songs after that, you'll hear a song that has a name in its name that has a new connotation these days that it didn't have when the song was written. Consider the word that goes before that name in its new meaning (it should be 6 letters long). Now take that 6-letter word, and divorce it from its modern meaning; if you asked someone 30 years ago what that word meant, they'd probably tell you it was a member of a certain category. Now, wait until a song is played that has that category word in its name. What is the first letter of the word after the category word in question?",
+        'Dodger Stadium': 'In July of 2022 a star-studded event happened in this park, something has happened here only once before. There was a lot of fanfare about it, and it was televised with much commentary. Among all the people who went home before the end of the event, take the one with the longest last name. Their first name is relatively short. What is the last letter of their last name?',
+        'Fenway Park': "On an evening just over a month ago, there was a grim scene at this park. Some guests from abroad came and caused a commotion, wreaking havok in ways which had never been done here before. One particularly grand event which happened that evening hadn't happened anywhere previously since 2017. That event name has enumeration (6 3 4 5 4); what is the second letter of the second word?",
+        'Globe Life Field': 'This park is pretty new, but a lot of cool stuff has happened there even so. There was a six-day event held here in 2020, which started off with a very short concert by a popular band. That band, which is based in Texas, has a ten-letter name. What is the second letter in the name?',
+        'Great American Ball Park': "You're feeling hungry. Very hungry. Like, probably the hungriest you've ever felt. Fortunately, this park offers the perfect experience for you, at stands in two different locations. Make a beeline for the nearest one. Gorge yourself on many foods. One of them is a kind of corn. What is the first letter of that kind of corn?",
+        'Guaranteed Rate Field': 'On May 9, 2022, a Canadian whose last name sounds like he should be in the construction business did something never done before in this park. This achievement involved two separate events, each of which ended in a different (three-digit) numbered place in the park. Add together the two numbers, add six, and divide by ten. What letter is at that position in the alphabet?',
+        'Kauffman Stadium': "For this one, you're gonna have to stay at home and send a drone around the park. The drone should be equipped with skywriting capabilities.  Start the drone out at a place whose number is an area code in the state of Rhode Island. Then send it to the place with the highest number. Then, send it to a place whose number is the same digit repeated three times. Now, consider which places in the park have Leyland numbers as their numbers. Send the drone to the one of these with the smaller number. From where you're standing, what letter did the drone spell out? Don't forget that the world exists in three dimensions!",
+        'LoanDepot Park': 'In 2017, a man who was born in Oklahoma cracked an aquarium in this park. Go back in time to the moment that happened, and start at the crack. Walk about 55 feet directly to the east. Turn 45 degrees to the right, then walk 60 feet and 6 inches straight ahead. You should arrive right in front of a man whose work is now headquartered in the capital. Back in 2009, that man worked for an organization from Utah. What was the eighth and final letter in the name of that organization?',
+        'Minute Maid Park': 'The park has sent you here to verify that the numbers listed in their "facts and figures" page are correct. There are a lot of places to sit in this park... let\'s count them! Start with the number in the area named for a nearby street. Next, subtract the number in the area named for something really hard. Divide the result by fifty, and add five. What is the corresponding letter in the alphabet?',
+        'Nationals Park': 'At most events at this park, participants get to participate in an exciting ritual. About three quarters of the way through the event (or sometimes a bit later, depending on how happy the locals are), everyone joins together in singing a traditional song. This tradition has remained mostly unchanged for a long time, though they sometimes try out small modern variations. One major example was on July 29, 2020, when they played one extra song as part of the ritual, in honor of some visitors to the park. Those visitors had been displaced by the pandemic, and the locals wanted them to feel more at home. That song has a three-word name. What is the last letter of the second word?',
+        'Oracle Park': 'Giants have been here, you can just tell. So you scale yourself up to the size of a giant, and you look around. One building to the northwest is taller than you, so you decide to go have a look at it. On your way over there, you stub your toe on an elevated roadway whose number is a multiple of 16, causing siginificant damage to it, and you decide that maybe you ought to be a little more careful. You decide to go to a museum instead; you turn left about 40 degrees and head about the same distance you were going to head anyway, but a little more careful not to crush anyone or anything. When you get there, you shrink back to normal person size in order to look at the art. You wander the museum and are captivated by what appears to be three blank canvas panels hung next to each other. What is the third letter of the name of the art piece?',
+        'Oriole Park at Camden Yards': "Enter this park (whose name is five words long!) from the east. You'll walk down a particular street whose name sounds like the name of a US state. As you walk along the street, you'll see a pub and a BBQ joint, as well as a local gift shop. But, watch your head! It's surprisingly common for flying objects to land here! It's happened at least 115 times since the park opened about 30 years ago. The first time was done by a guy who comes from an organization associated with a particular animal. What's the last letter of the six-letter name of that organization?",
+        'Petco Park': "A major contracts exchange in early August meant that two park employees from out east will be spending a lot more time here at this park. One of them is quite versatile, and is able to do his job from two different directions! He's so well-respected that in 2019, he was invited to a ceremonial event in Cleveland to celebrate outstanding park employees. Nonetheless, the locals are more excited about the other one of them, whose move was anticipated for weeks; what is the third letter of the name of the country they were born in?",
+        'PNC Park': "At this park, you're going to walk around and visit different people. That may involve moving around, but at least you won't have to do any time travel - you can stick around in 2022. Start out by saying hi to someone who is surprisingly tall. Next, visit someone who did a certain run 24 times last year. Now, visit someone whose last name sounds like he could have a career measuring delivery vehicles. Conclude your journey at someone who hasn't been around very long whose first name also refers to a university. Consider the letter you have traced in the ground as you walked around the park. What letter comes five before it in the alphabet?",
+        'Progressive Field': "There's nothing happening here yet, so you decide to walk out the north exit.  On your way out, you stop to look at some really big people. The one in the middle is doing something pretty cool, and you stop to watch, but he doesn't really make any progress. Eventually, you get bored and head back inside. You head toward the largest part of the building whose number is a multiple of 37, but on your way up the second staircase, you get distracted and stop to look at a dog, and accidentally head west when you mean to head east. You decide to sit down where you end up anyway, and you look WNW where everyone else is looking. Sitting down again, you get bored and think back to that guy you were looking at earlier. He sure moved cities a lot, huh? A few years into the job he's most famous for, he took a four year leave where his workplace shared its name with a US state. He also had other jobs, including as the first president of an association headquartered in a very large city. After he retired, he moved to a town close to his old workplace named after the owner of a mill. He must have moved because he liked small towns. He was born in a small town, after all. What's the third letter of the county he was born in? By the way, you probably don't need to remember where you're sitting right now or any of those other cities you were thinking about.",
+        'RingCentral Coliseum': 'This park has a mountain that is usually closed to visitors, but occasionally it is opened. The last time this happened, many thousands of people flocked to the park. A famous rapper helped to start off the event. What is the fifth letter of his (real) first name?',
+        'Rogers Centre': "It's a nice and sunny day here at the park, so you decide to partake in your favorite activity: hiding in the shade so that you don't have to turn up your phone brightness too much, and then scrolling through twitter! Visit the park's twitter account. Even though they haven't been active in over 5 years, they have some great tweets. Look through their tweets for a while. Next, go to the most recent tweet that the park liked, and take the two-word phrase which is repeated twice in that tweet. One of the park's last few retweets starts with the same first three letters as that phrase. That tweet also tags a particular person. Go to that person's twitter profile. What is the third letter of the last word of their first tweet (all the way back in 2009!)?",
+        'T-Mobile Park': "There's a type of event that is so rare that one hasn't happened in over ten years. The last time one happened was in 2012, and perhaps surprisingly, this type of event happened three times that year. Two of those were in this park, causing quite a commotion! Consider the one that happened somewhere else in that year. The person responsible was born in Alabama. What is the last letter of their last name?",
+        'Target Field': 'Find the two tallest poles in the park. Start on the ground at their midpoint. Walk directly east until you hit a wall. Jump about 125 feet up in the air, and then stay there, hovering until the sign in front of you lights up. Count the number of letters that light up in blue. Either light blue or dark blue counts. Let that number be X. Now look at the letters which lit up in red. What is the Xth such letter from left to right on the sign?',
+        'Tropicana Field': "Start at the part of the park that sounds like it should be in a different state. Head down some stairs. You find yourself in a place that is numbered with the product of two primes. Turn right and head onward, elbowing past anyone who is indignant that you're passing them like this. Continue onward through 21 areas, and pause to admire the view. Continue through another 25 areas until you see an animal. What is the sixth letter of the third word of the name of the exhibit that animal is in?",
+        'Truist Park': "In 2021, a major multi-day event took place in this park and one other park. Count the number of people who came to the park for each of the days of the event here. Find the two days whose attendance numbers are closest to one another, and take the difference between those two numbers. Subtract two and take the corresponding letter of the city you're in.",
+        'Wrigley Field': "Jump into a wormhole, and reemerge in June 2019. Each of the five nights from June 18, 2019 to June 22, 2019, just before midnight, go to the center of the beach nearest this park, get in a helicopter, and fly to the center of this park. On your way into the park, you'll pass a single flag flying on a large masthead, displaying one of two letters. Thinking of the first of those two letters in alphabetical order as 0, and the other as 1, the five flags you see on those five nights give a 5-bit binary number. Let X be that number. What is the Xth letter of the alphabet?",
+        'Yankee Stadium': "Build a time machine, acquire fuel, and find an inconspicuous part of the park to disappear from. Travel back in time to the day that the local zoo opened, then go forward in time 110 years, then go back in time 4 days, then wait until 8:24 pm on that day. Within the next eight minutes, a very exciting moment will happen. If you're in the right place, you'll be able to catch it. That place is right behind an ad for a Japanese company. What's the second-to-last letter of that company's name?",
+    }
+    
+    function get_clean_string(s) {
+        return s.toUpperCase().replace(/[^a-z]/gi, '');
+    }
+    
+    PARKS = Object.keys(PUZZLE_DATA)
+    PARKS_CLEAN = PARKS.map(x => get_clean_string(x))
+    PARKS_CLEAN.sort()
+    
+    PARKS.forEach(park => {
+      PUZZLE_DATA[get_clean_string(park)] = PUZZLE_DATA[park]
+    })
+    
+      function isLetter(str) {
+        return str.length === 1 && str.match(/[a-z]/i);
+      }
+      function ord(str){return str.charCodeAt(0);}
+    function dist(s1, s2) {
+        if (s1.length < s2.length)
+            return dist(s2,s1);
+        if (s2.length === 0)
+            return 0.1*s1.length
+        if (!isLetter(s1.charAt(0)))
+            return dist(s1.substring(1),s2);
+        if (!isLetter(s2.charAt(0)))
+            return dist(s2.substring(1),s1);
+        return 0.1*dist(s1.substring(1),s2.substring(1)) + Math.abs(ord(s1.charAt(0).toUpperCase())-ord(s2.charAt(0).toUpperCase()))
+    }
+    function bisect(list, element) {
+        for (const [i,v] of list.entries()) {
+            if (element <= v) {
+                return i;
+            }
+        }
+        return list.length;
+    }
+            
+    function get_clue(park) {
+        park = get_clean_string(park);
+        if (park in PARKS_CLEAN)
+          return PUZZLE_DATA[park];
+        pos = bisect(PARKS_CLEAN, park);
+        if (pos == 0)
+            return PUZZLE_DATA[PARKS[pos]];
+        if (pos == (PARKS.length))
+            return PUZZLE_DATA[PARKS[-1]];
+        else {
+            a=PARKS_CLEAN[pos-1];b=PARKS_CLEAN[pos]
+            if (dist(a,park) < dist(park,b))
+                return PUZZLE_DATA[a];
+            else
+                return PUZZLE_DATA[b];
+        }
+    }
+    
+    
+    function updateText() {
+        if (curr_timer !== undefined) {
+            clearInterval(curr_timer);
+        }
+        if (curr_text.length !== curr_disp.length) {
+            curr_offset = 2.5*60*1000 / (curr_text.length - curr_disp.length);
+        } else {
+            curr_offset = 0;
+        }
+        if (curr_offset != 0) {
+            curr_timer = setInterval(() => {
+                if (frozen) return;
+                if (curr_disp.length < curr_text.length) {
+                    curr_disp += curr_text.charAt(curr_disp.length);
+                    $("#clue").text(curr_disp);
+                }
+            }, curr_offset);
+        }
+    }
+
+    function onUpdate(events) {
+        for (const { type, y, x, cell } of events) {
+            if (type === 'cell') game.cells[y][x] = cell; makeCell(y, x);
+        }
+    }
+
+    function onHtmlMessage(data) {
+        const mainElement = document.getElementsByClassName('flex-container')[0];
+        mainElement.innerHTML = data;
+        mainElement.classList.remove('flex-container');
+    }
+
+    function disableInterface() {
+        $("#park").prop("disabled", true);
+        const visitBtn = document.getElementById('visit-btn');
+        visitBtn.style.transition = 'initial';
+        visitBtn.classList.add('visit-btn-disabled');
+        visitBtn.onclick = (e) => { e.preventDefault(); return false; }
+    }
+
+    function getState(park) {
+        if (frozen) return;
+        if (!containsAnyLetter(park)) return;
+        // console.log("down", data);
+        disableInterface();
+        clue = get_clue(park);
+        if (clue !== undefined) {
+            curr_text = clue;
+            updateText();
+
+            have_data_until = Date.now() + offset;
+            have_data_until = Date.now() + 100000000;
+        }
+    }
+    function submit(e) {
+        console.log("submitting.")
+        e.preventDefault();
+        getState($("#park").val());
+        return false;
+    }
+    $("#form1").submit(submit)
+
+    function showOopsMessage() {
+        onHtmlMessage(OOPS);
+    }
+
+    function containsAnyLetter(str) {
+        if (str === undefined) {
+            return false;
+        }
+        return (str.length !== 0) && (/[a-zA-Z]/.test(str));
+    }
+
+
+    $(document).ready(() => {
+        $("#park").val("")
+        console.log($("#park").val(), "current")
+    })
+
+    registerOnGlitchHook((ex) => {
+        disableInterface();
+        if (ex) {
+            frozen = true;
+        }
+    });
+</script>
+
+    
+    
+
+    
+    <div class="puzzle-main-corner puzzle-main-corner-1"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-2"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-3"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-4"></div>
+    
+</main>
+
+<script src="/static/js/copyjack.js"></script>
+
+
+    </div>
+    
+
+    
+
+    
+    <script>
+    document.getElementById('nav-music').style.display = 'none';
+    document.getElementById("progress-simulator").addEventListener("submit", (e) => {
+        if (e.submitter.name === "reset") {
+            toggleReset(true);
+            doGlitch(false);
+            document.getElementById("shortcuts").checked = false;
+            e.preventDefault();
+        } else {
+            localStorage.setItem(e.submitter.name, e.submitter.value);
+        }
+    });
+    addStyles();
+
+    function toggleReset(which) {
+        $('#loop-reset').toggleClass('loop-resetting', which);
+    }
+
+    function addStyles() {
+        const changeFavicon = (url) => {
+            const e = Array.from(document.getElementsByTagName("link"))
+                .filter(e => e.rel === "icon")[0];
+            e.href = url;
+        }
+        const addSheet = (url) => {
+            const e = document.createElement("link");
+            e.rel = "stylesheet";
+            e.href = url;
+            document.getElementsByTagName("head")[0].appendChild(e);
+        }
+
+        const seasons = ["spring", "summer", "autumn", "winter"];
+        let current_main_round = localStorage.getItem("round");
+        const endgame_unlocked = localStorage.getItem("endgame") === "true";
+
+        const matches = new RegExp(`\\?(${seasons.join("|")})`).exec(document.URL);
+        if (matches && matches[1]) {
+            current_main_round = matches[1];
+        }
+
+        if (endgame_unlocked) {
+            addSheet("/static/css/endgame.css");
+            changeFavicon("/static/images/favicon-endgame.ico");
+            const nodes = document.getElementsByClassName("energy-nodes-info");
+            console.log(nodes);
+            if (nodes.length > 0) {
+                nodes[0].style.display = "block";
+            }
+        } else if (current_main_round === "concert") {
+            addSheet("/static/css/concert.css");
+            changeFavicon("/static/images/favicon-concert.ico");
+            // also add the concert music
+            document.getElementById('nav-music').style.display = 'inline-block';
+            const audio = document.getElementById("music-audio");
+            if (audio) {
+                audio.addEventListener('play', () => {
+                    audio.volume = localStorage.getItem('music-audio-volume') ?? 0.5;
+                });
+                audio.addEventListener('volumechange', () => {
+                    localStorage.setItem('music-audio-volume', audio.volume);
+                });
+            }
+        } else if (seasons.includes(current_main_round)) {
+            addSheet("/static/css/season.css");
+            addSheet(`/static/css/${current_main_round}.css`);
+            changeFavicon(`/static/images/favicon-${current_main_round}.ico`);
+        } else {
+            addSheet("/static/css/blue.css");
+            changeFavicon("/static/images/favicon-blue.ico");
+        }
+    }
+
+    registerOnGlitchHook((ex) => {
+        document.getElementById('background-glitch-wrapper').style.display = 'initial';
+    });
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,615 @@
+
+
+
+
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+<title>Solution: Somewhere</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <meta property="og:title" content="Galactic Puzzle Hunt 2022">
+    <meta property="og:description" content="Registration for this year's Galactic Puzzle Hunt is now open!">
+    <meta property="og:image" content="https://galacticpuzzlehunt.com/static/images/banner.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:slnt,CASL,CRSV,MONO@-3,0.5,1,1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/skeleton.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.formset/1.2.2/jquery.formset.min.js"></script>
+    <script src="/jsi18n/"></script>
+    <script src="/static/js/sorttable.js"></script>
+    <script src="/static/js/tray.js"></script>
+    <script src="/static/js/notify.js"></script>
+    <script src="/static/js/time.js"></script>
+    
+    
+    <link rel="icon" sizes="16x16 32x32 48x48 64x64" href="/static/images/favicon.ico" type="image/vnd.microsoft.icon">
+    
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92192633-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-92192633-1');
+</script>
+
+</head>
+<body>
+    
+    <div id="background-glitch-wrapper" class="background-glitch">
+        <div class="glitch-1"></div>
+        <div class="glitch-2"></div>
+        <div class="glitch-3"></div>
+    </div>
+    
+    
+    <input id="shortcuts" type="checkbox">
+    
+    <nav>
+        <span class="tray">
+            <span id="tray-timer"></span>
+            <div class="top-tabs">
+                <a href="/">
+                    Home
+                </a>
+                
+                
+                <a href="/story">
+                    Story
+                </a>
+                
+                
+                <a class="selected-tab" href="/puzzles">
+                    Puzzles
+                </a>
+                
+                <a href="/teams">
+                    Teams
+                </a>
+                
+                
+                <a href="/errata">
+                    Updates
+                </a>
+                
+                
+                
+                
+                <a id="nav-music" href="#">
+                    <label for="music" title="Music" style="margin-bottom: 0; font-weight: normal; cursor: pointer;">Music</label>
+                </a>
+                <input id="music" type="checkbox">
+                <div class="shortcuts music">
+                    <audio id="music-audio" controls src="/static/puzzle_resources/worlds-end-concert/music-audio.mp3">
+                        There should be a music player here.
+                    </audio>
+                </div>
+                
+                
+            </div>
+            <div class="top-left-actions">
+                
+<a href="/puzzle/somewhere" class="btn">Back to the puzzle</a>
+
+            </div>
+        </span>
+        <div class="top-right-actions">
+        
+        <label for="shortcuts" title="Simulator">Simulator </label>
+        
+        
+        </div>
+    </nav>
+    
+    <div class="shortcuts">
+        <form id="progress-simulator">
+        <div>Current round:</div>
+        <button class="btn" type="submit" name="round" value="forward">⬆️</button>
+        <button class="btn" type="submit" name="round" value="spring">🌸</button>
+        <button class="btn" type="submit" name="round" value="summer">☀️</button>
+        <button class="btn" type="submit" name="round" value="autumn">🍂</button>
+        <button class="btn" type="submit" name="round" value="winter">☃️</button>
+        <button class="btn" type="submit" name="round" value="concert">🎤</button>
+        <button class="btn" type="submit" name="round" value="none">None</button>
+        <div>Endgame:</div>
+        <button class="btn" type="submit" name="endgame" value="true">Unlock</button>
+        <button class="btn" type="submit" name="endgame" value="false">Reset</button>
+        <div>Reset:</div>
+        <button class="btn" type="submit" name="reset" value="reset">Reset</button>
+        </form>
+    </div>
+    
+    
+    
+    
+    
+    <div id="loop-reset">
+        <form>
+            <svg viewBox="-30 160 720 320">
+                <defs>
+                    <path id="loop-end-path" d="m 370,240 c 38.29044,0 74.26676,18.33512 96.83716,49.26624 l -76.8369,30.73478 V 270 L 300,330 261.03858,309.74192 c 19.60706,-42.51188 62.14674,-69.74008 108.9623,-69.74306 z m 106.15758,64.22738 c 6.65282,12.65518 10.9906,26.39738 12.80876,40.57862 l -38.96532,5.19538 z"/>
+                </defs>
+                <foreignObject width="720" height="480" clip-path="url(#loop-end-clip)" class="loop-shade">
+                    <aside class="loop-shade" xmlns="http://www.w3.org/1999/xhtml" style="width: 100%; height: 100%;"></aside>
+                </foreignObject>
+                <clipPath id="loop-end-clip"><use href="#loop-end-path"/></clipPath>
+                <use href="#loop-end-path"/>
+                <path d="M 490,400 600,330 450,350 490,280 390,320 V 270 L 300,330 50,200 170,380 50,400"/>
+            </svg>
+            <div>THE END</div>
+            <p>You can reset once per minute.</p>
+            <table>
+                <tr id="loop-reset-btn-row-reset">
+                    <td><button class="btn" disabled>Reset</button></td>
+                    <td>Start over from the beginning of the exam.</td>
+                </tr>
+                <tr id="loop-reset-btn-row-restore">
+                    <td><button class="btn" disabled>Jump</button></td>
+                    <td>Start over, but resubmit your previous answers to bring you back to this point.</td>
+                </tr>
+                <tr>
+                    <td><a class="btn" href="javascript:toggleReset(false)">Stay</a></td>
+                    <td>Look at this page a bit longer. Make sure to save your work.</td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    
+    <script>
+
+    
+    
+    let glitchTriggerFuncs = [];
+    let glitchTriggerReceived = false;
+    let glitchTriggerExReceived = false;
+    let glitchPageLoaded = false;
+    function processGlitchFuncs(ex) {
+        glitchTriggerFuncs.forEach((func) => {
+            func(ex);
+        });
+    }
+    function doGlitch(ex) {
+        glitchTriggerReceived = true;
+        if (ex) {
+            glitchTriggerExReceived = true;
+        }
+        if (glitchPageLoaded) {
+            processGlitchFuncs(ex);
+        }
+    }
+    window.addEventListener('load', () => {
+        glitchPageLoaded = true;
+        if (glitchTriggerExReceived) {
+            processGlitchFuncs(true);
+        }
+        else if (glitchTriggerReceived) {
+            processGlitchFuncs(false);
+        }
+    }, false);
+    
+    
+    
+    function registerOnGlitchHook(func) {
+        if (glitchTriggerExReceived) {
+            func(true);
+        }
+        else if (glitchTriggerReceived) {
+            func(false);
+        }
+        glitchTriggerFuncs.push(func);
+    }
+    
+
+    
+    
+    </script>
+    <div class="content">
+        
+
+<style>
+h2 {
+    font-size: 2.5rem;
+    font-weight: normal;
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+
+h4 {
+    font-size: 2rem;
+    font-weight: normal;
+    margin: 2rem 0;
+}
+</style>
+
+<h1>
+    Solution <span style="font-weight: 300">Somewhere</span>
+    <div class="solved-title-marker">Answer <span class="solved-title-answer spoiler">OVERFLIGHT</span></div>
+</h1>
+
+<main class="puzzle-main">
+    <h2 style="margin-top: 0">
+        Written by
+        
+Alan Huang
+
+    </h2>
+
+    
+    <p>We start by trying to match directions to starting points. Finding the right
+combinations can be tricky, but the matches are intended to be fairly
+self-confirming. We can also work backward by for example trying to think of
+well-known US places that are famous for races or universities, although this
+is likely to be harder.</p>
+<p>There are fifteen sets of directions, so we may imagine that three of them
+correspond to each starting point. However, some are implausible — there is no
+capital on a northern coast we can reasonably get to, for instance, and deserts
+and isthmuses are also in short supply in eastern North America. Furthermore,
+the row of ten blanks at the bottom suggests we may want a set of ten of some
+kind. We can in fact make ten matches, listed below in puzzle order:</p>
+<table>
+<thead>
+<tr>
+<th>Start</th>
+<th>Notes</th>
+<th>End</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Boston, MA</td>
+<td>Take I-90 west to the Buffalo-Niagara Falls area, then cross through Ontario to Detroit. The University of Michigan is located here.</td>
+<td>Ann Arbor, MI</td>
+</tr>
+<tr>
+<td>Chicago, IL</td>
+<td>Head toward Indianapolis until you reach Lafayette.</td>
+<td>Buck Creek, IN</td>
+</tr>
+<tr>
+<td>Pittsburgh, PA</td>
+<td>Cross the Appalachians to Washington, DC, then take I-66 west. The opening battle of the American Civil War was fought here.</td>
+<td>Bull Run, VA</td>
+</tr>
+<tr>
+<td>Boston, MA</td>
+<td>Battleship Cove is located here on the east side of Narragansett Bay.</td>
+<td>Fall River, MA</td>
+</tr>
+<tr>
+<td>Richmond, VA</td>
+<td>The inlet is the New River near Jacksonville.</td>
+<td>Half Moon, NC</td>
+</tr>
+<tr>
+<td>Atlanta, GA</td>
+<td>The triangles are the Piedmont Triad and the Research Triangle.</td>
+<td>High Point, NC</td>
+</tr>
+<tr>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td>Richmond, VA</td>
+<td>Turn at Daytona Beach (known for the Daytona 500) and pass through Ocala National Forest.</td>
+<td>Silver Springs, FL</td>
+</tr>
+<tr>
+<td>Chicago, IL</td>
+<td>Take the Mississippi River to New Orleans, then head west to Houston.</td>
+<td>Sugar Land, TX</td>
+</tr>
+<tr>
+<td>Pittsburgh, PA</td>
+<td>Follow the Ohio River to Cincinnati.</td>
+<td>White Oak, OH</td>
+</tr>
+<tr>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td>Atlanta, GA</td>
+<td>Pass Lake Apopka while heading toward Orlando, which is known for its many theme parks.</td>
+<td>Winter Garden, FL</td>
+</tr>
+<tr>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+</tbody>
+</table>
+<p>We should notice the following facts that can help us with the matching:</p>
+<ul>
+<li>A &ldquo;major road&rdquo; here always refers to an interstate highway.</li>
+<li>If the clue reads &ldquo;head [direction]&rdquo;, that means as the crow flies, not on a road.</li>
+<li>The destination places all have two-word names, and are in alphabetical order.</li>
+</ul>
+<p>This last point is interesting since we also have two destinations per starting point. Combining these produces phrases that sound like plausible place names — and they are, only in fictional universes instead of the real world.</p>
+<table>
+<thead>
+<tr>
+<th>Start</th>
+<th>First</th>
+<th>Second</th>
+<th>Result</th>
+<th>Universe</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Atlanta, GA</td>
+<td>High Point</td>
+<td>Winter Garden</td>
+<td>Highgarden</td>
+<td>Westeros</td>
+</tr>
+<tr>
+<td>Boston, MA</td>
+<td>Fall River</td>
+<td>Ann Arbor</td>
+<td>Fallarbor</td>
+<td><em>Pokémon</em></td>
+</tr>
+<tr>
+<td>Chicago, IL</td>
+<td>Buck Creek</td>
+<td>Sugar Land</td>
+<td>Buckland</td>
+<td>Middle-Earth</td>
+</tr>
+<tr>
+<td>Pittsburgh, PA</td>
+<td>White Oak</td>
+<td>Bull Run</td>
+<td>Whiterun</td>
+<td><em>Skyrim</em></td>
+</tr>
+<tr>
+<td>Richmond, VA</td>
+<td>Silver Springs</td>
+<td>Half Moon</td>
+<td>Silvermoon</td>
+<td><em>Warcraft</em></td>
+</tr>
+</tbody>
+</table>
+<p>We can match these with the remaining directions (again in puzzle order):</p>
+<table>
+<thead>
+<tr>
+<th>Start</th>
+<th>Notes</th>
+<th>End</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Silvermoon</td>
+<td>The lake is Darrowmere Lake; then cross the ocean south to Dun Morogh.</td>
+<td>Ironforge</td>
+</tr>
+<tr>
+<td>Fallarbor</td>
+<td>The desert is on Route 111; then turn east at Mauville City.</td>
+<td>Lilycove</td>
+</tr>
+<tr>
+<td>Buckland</td>
+<td>Leave the Shire, passing north of the Old Forest, through Bree, and south of Weathertop.</td>
+<td>Rivendell</td>
+</tr>
+<tr>
+<td>Highgarden</td>
+<td>Head to King&rsquo;s Landing, then through the Neck into the North.</td>
+<td>Winterfell</td>
+</tr>
+<tr>
+<td>Whiterun</td>
+<td>Follow the White River into Eastmarch, then head north.</td>
+<td>Winterhold</td>
+</tr>
+</tbody>
+</table>
+<p>Now we can look at the numbers associated with each set of directions. If we take the real and fictional locations separately, we notice that the latter have the numbers 1, 2, 3, 4, 5. Therefore, these provide an ordering for the starting locations. The other numbers look like indices, but what do we index into? We&rsquo;ve already used the real destinations to create the fictional starting points, but we haven&rsquo;t used the fictional destinations yet.</p>
+<table>
+<thead>
+<tr>
+<th>Start</th>
+<th>Real 1</th>
+<th>#</th>
+<th>Real 2</th>
+<th>#</th>
+<th>Fictional</th>
+<th>#</th>
+<th>Letters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Boston, MA</td>
+<td>Fall River</td>
+<td>6</td>
+<td>Ann Arbor</td>
+<td>7</td>
+<td>Lilycove</td>
+<td>1</td>
+<td>OV</td>
+</tr>
+<tr>
+<td>Chicago, IL</td>
+<td>Buck Creek</td>
+<td>4</td>
+<td>Sugar Land</td>
+<td>1</td>
+<td>Rivendell</td>
+<td>2</td>
+<td>ER</td>
+</tr>
+<tr>
+<td>Atlanta, GA</td>
+<td>High Point</td>
+<td>7</td>
+<td>Winter Garden</td>
+<td>9</td>
+<td>Winterfell</td>
+<td>3</td>
+<td>FL</td>
+</tr>
+<tr>
+<td>Richmond, VA</td>
+<td>Silver Springs</td>
+<td>1</td>
+<td>Half Moon</td>
+<td>8</td>
+<td>Ironforge</td>
+<td>4</td>
+<td>IG</td>
+</tr>
+<tr>
+<td>Pittsburgh, PA</td>
+<td>White Oak</td>
+<td>7</td>
+<td>Bull Run</td>
+<td>4</td>
+<td>Winterhold</td>
+<td>5</td>
+<td>HT</td>
+</tr>
+</tbody>
+</table>
+<p>Indexing by the two real-world numbers associated with each fictional destination gives us the desired ten letters, <strong>OVERFLIGHT</strong>.</p>
+
+    
+    
+    <h2 id="authors-notes">Author&rsquo;s Notes</h2>
+    <p>While the title is not expected to be directly helpful to solvers, it was chosen both to be a compound word like the city names, and to evoke &ldquo;Somewhere Over the Rainbow&rdquo; — since we&rsquo;re not in Kansas anymore.</p>
+<p>Contrary to popular belief, south and southeast are actually distinct directions.</p>
+    
+
+    
+    
+
+    
+    <div class="puzzle-main-corner puzzle-main-corner-1"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-2"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-3"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-4"></div>
+    
+</main>
+
+
+    </div>
+    
+
+    
+
+    
+    <script>
+    document.getElementById('nav-music').style.display = 'none';
+    document.getElementById("progress-simulator").addEventListener("submit", (e) => {
+        if (e.submitter.name === "reset") {
+            toggleReset(true);
+            doGlitch(false);
+            document.getElementById("shortcuts").checked = false;
+            e.preventDefault();
+        } else {
+            localStorage.setItem(e.submitter.name, e.submitter.value);
+        }
+    });
+    addStyles();
+
+    function toggleReset(which) {
+        $('#loop-reset').toggleClass('loop-resetting', which);
+    }
+
+    function addStyles() {
+        const changeFavicon = (url) => {
+            const e = Array.from(document.getElementsByTagName("link"))
+                .filter(e => e.rel === "icon")[0];
+            e.href = url;
+        }
+        const addSheet = (url) => {
+            const e = document.createElement("link");
+            e.rel = "stylesheet";
+            e.href = url;
+            document.getElementsByTagName("head")[0].appendChild(e);
+        }
+
+        const seasons = ["spring", "summer", "autumn", "winter"];
+        let current_main_round = localStorage.getItem("round");
+        const endgame_unlocked = localStorage.getItem("endgame") === "true";
+
+        const matches = new RegExp(`\\?(${seasons.join("|")})`).exec(document.URL);
+        if (matches && matches[1]) {
+            current_main_round = matches[1];
+        }
+
+        if (endgame_unlocked) {
+            addSheet("/static/css/endgame.css");
+            changeFavicon("/static/images/favicon-endgame.ico");
+            const nodes = document.getElementsByClassName("energy-nodes-info");
+            console.log(nodes);
+            if (nodes.length > 0) {
+                nodes[0].style.display = "block";
+            }
+        } else if (current_main_round === "concert") {
+            addSheet("/static/css/concert.css");
+            changeFavicon("/static/images/favicon-concert.ico");
+            // also add the concert music
+            document.getElementById('nav-music').style.display = 'inline-block';
+            const audio = document.getElementById("music-audio");
+            if (audio) {
+                audio.addEventListener('play', () => {
+                    audio.volume = localStorage.getItem('music-audio-volume') ?? 0.5;
+                });
+                audio.addEventListener('volumechange', () => {
+                    localStorage.setItem('music-audio-volume', audio.volume);
+                });
+            }
+        } else if (seasons.includes(current_main_round)) {
+            addSheet("/static/css/season.css");
+            addSheet(`/static/css/${current_main_round}.css`);
+            changeFavicon(`/static/images/favicon-${current_main_round}.ico`);
+        } else {
+            addSheet("/static/css/blue.css");
+            changeFavicon("/static/images/favicon-blue.ico");
+        }
+    }
+
+    registerOnGlitchHook((ex) => {
+        document.getElementById('background-glitch-wrapper').style.display = 'initial';
+    });
+    </script>
+    
+</body>
+</html>

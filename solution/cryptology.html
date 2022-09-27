@@ -1,0 +1,690 @@
+
+
+
+
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+<title>Solution: Cryptology</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <meta property="og:title" content="Galactic Puzzle Hunt 2022">
+    <meta property="og:description" content="Registration for this year's Galactic Puzzle Hunt is now open!">
+    <meta property="og:image" content="https://galacticpuzzlehunt.com/static/images/banner.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:slnt,CASL,CRSV,MONO@-3,0.5,1,1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/skeleton.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.formset/1.2.2/jquery.formset.min.js"></script>
+    <script src="/jsi18n/"></script>
+    <script src="/static/js/sorttable.js"></script>
+    <script src="/static/js/tray.js"></script>
+    <script src="/static/js/notify.js"></script>
+    <script src="/static/js/time.js"></script>
+    
+    
+    <link rel="icon" sizes="16x16 32x32 48x48 64x64" href="/static/images/favicon.ico" type="image/vnd.microsoft.icon">
+    
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92192633-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-92192633-1');
+</script>
+
+</head>
+<body>
+    
+    <div id="background-glitch-wrapper" class="background-glitch">
+        <div class="glitch-1"></div>
+        <div class="glitch-2"></div>
+        <div class="glitch-3"></div>
+    </div>
+    
+    
+    <input id="shortcuts" type="checkbox">
+    
+    <nav>
+        <span class="tray">
+            <span id="tray-timer"></span>
+            <div class="top-tabs">
+                <a href="/">
+                    Home
+                </a>
+                
+                
+                <a href="/story">
+                    Story
+                </a>
+                
+                
+                <a class="selected-tab" href="/puzzles">
+                    Puzzles
+                </a>
+                
+                <a href="/teams">
+                    Teams
+                </a>
+                
+                
+                <a href="/errata">
+                    Updates
+                </a>
+                
+                
+                
+                
+                <a id="nav-music" href="#">
+                    <label for="music" title="Music" style="margin-bottom: 0; font-weight: normal; cursor: pointer;">Music</label>
+                </a>
+                <input id="music" type="checkbox">
+                <div class="shortcuts music">
+                    <audio id="music-audio" controls src="/static/puzzle_resources/worlds-end-concert/music-audio.mp3">
+                        There should be a music player here.
+                    </audio>
+                </div>
+                
+                
+            </div>
+            <div class="top-left-actions">
+                
+<a href="/puzzle/cryptology" class="btn">Back to the puzzle</a>
+
+            </div>
+        </span>
+        <div class="top-right-actions">
+        
+        <label for="shortcuts" title="Simulator">Simulator </label>
+        
+        
+        </div>
+    </nav>
+    
+    <div class="shortcuts">
+        <form id="progress-simulator">
+        <div>Current round:</div>
+        <button class="btn" type="submit" name="round" value="forward">⬆️</button>
+        <button class="btn" type="submit" name="round" value="spring">🌸</button>
+        <button class="btn" type="submit" name="round" value="summer">☀️</button>
+        <button class="btn" type="submit" name="round" value="autumn">🍂</button>
+        <button class="btn" type="submit" name="round" value="winter">☃️</button>
+        <button class="btn" type="submit" name="round" value="concert">🎤</button>
+        <button class="btn" type="submit" name="round" value="none">None</button>
+        <div>Endgame:</div>
+        <button class="btn" type="submit" name="endgame" value="true">Unlock</button>
+        <button class="btn" type="submit" name="endgame" value="false">Reset</button>
+        <div>Reset:</div>
+        <button class="btn" type="submit" name="reset" value="reset">Reset</button>
+        </form>
+    </div>
+    
+    
+    
+    
+    
+    <div id="loop-reset">
+        <form>
+            <svg viewBox="-30 160 720 320">
+                <defs>
+                    <path id="loop-end-path" d="m 370,240 c 38.29044,0 74.26676,18.33512 96.83716,49.26624 l -76.8369,30.73478 V 270 L 300,330 261.03858,309.74192 c 19.60706,-42.51188 62.14674,-69.74008 108.9623,-69.74306 z m 106.15758,64.22738 c 6.65282,12.65518 10.9906,26.39738 12.80876,40.57862 l -38.96532,5.19538 z"/>
+                </defs>
+                <foreignObject width="720" height="480" clip-path="url(#loop-end-clip)" class="loop-shade">
+                    <aside class="loop-shade" xmlns="http://www.w3.org/1999/xhtml" style="width: 100%; height: 100%;"></aside>
+                </foreignObject>
+                <clipPath id="loop-end-clip"><use href="#loop-end-path"/></clipPath>
+                <use href="#loop-end-path"/>
+                <path d="M 490,400 600,330 450,350 490,280 390,320 V 270 L 300,330 50,200 170,380 50,400"/>
+            </svg>
+            <div>THE END</div>
+            <p>You can reset once per minute.</p>
+            <table>
+                <tr id="loop-reset-btn-row-reset">
+                    <td><button class="btn" disabled>Reset</button></td>
+                    <td>Start over from the beginning of the exam.</td>
+                </tr>
+                <tr id="loop-reset-btn-row-restore">
+                    <td><button class="btn" disabled>Jump</button></td>
+                    <td>Start over, but resubmit your previous answers to bring you back to this point.</td>
+                </tr>
+                <tr>
+                    <td><a class="btn" href="javascript:toggleReset(false)">Stay</a></td>
+                    <td>Look at this page a bit longer. Make sure to save your work.</td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    
+    <script>
+
+    
+    
+    let glitchTriggerFuncs = [];
+    let glitchTriggerReceived = false;
+    let glitchTriggerExReceived = false;
+    let glitchPageLoaded = false;
+    function processGlitchFuncs(ex) {
+        glitchTriggerFuncs.forEach((func) => {
+            func(ex);
+        });
+    }
+    function doGlitch(ex) {
+        glitchTriggerReceived = true;
+        if (ex) {
+            glitchTriggerExReceived = true;
+        }
+        if (glitchPageLoaded) {
+            processGlitchFuncs(ex);
+        }
+    }
+    window.addEventListener('load', () => {
+        glitchPageLoaded = true;
+        if (glitchTriggerExReceived) {
+            processGlitchFuncs(true);
+        }
+        else if (glitchTriggerReceived) {
+            processGlitchFuncs(false);
+        }
+    }, false);
+    
+    
+    
+    function registerOnGlitchHook(func) {
+        if (glitchTriggerExReceived) {
+            func(true);
+        }
+        else if (glitchTriggerReceived) {
+            func(false);
+        }
+        glitchTriggerFuncs.push(func);
+    }
+    
+
+    
+    
+    </script>
+    <div class="content">
+        
+
+<style>
+h2 {
+    font-size: 2.5rem;
+    font-weight: normal;
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+
+h4 {
+    font-size: 2rem;
+    font-weight: normal;
+    margin: 2rem 0;
+}
+</style>
+
+<h1>
+    Solution <span style="font-weight: 300">Cryptology</span>
+    <div class="solved-title-marker">Answer <span class="solved-title-answer spoiler">THUNDERSTORM</span></div>
+</h1>
+
+<main class="puzzle-main">
+    <h2 style="margin-top: 0">
+        Written by
+        
+Jenna Himawan
+
+    </h2>
+
+    
+    <p>The puzzle is presented as an audio file, a reading of cryptic clues and enumerations, and a series of blanks where
+1 blank is colored in each row.</p>
+<p>The clues and explanations are as follows.</p>
+<table>
+<thead>
+<tr>
+<th>Clue</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Evil force wielder almost infiltrates grand parties featuring English resting places (10)</td>
+<td>G + RAV(E)(SIT(-h))ES</td>
+</tr>
+<tr>
+<td>Toerags flip torrid news centerpieces occupying chairs (5 4)</td>
+<td>SE(WE + RR)&lt;ATS</td>
+</tr>
+<tr>
+<td>Pastime involving yeast, propagated via speakerphone support, lacks carbon (5 6)</td>
+<td>BREAD (&ldquo;bred&rdquo;) + BA(-c)KING</td>
+</tr>
+<tr>
+<td>Backward dark elf starts to obsequiously supply top three Instagram lexical histories (4 7)</td>
+<td>WORD&lt; + O + RIG + INS(-tagram)</td>
+</tr>
+<tr>
+<td>Dipstick sheriff hides parasites (5)</td>
+<td>dipsTICKSheriff</td>
+</tr>
+<tr>
+<td>Elderly soldier intrudes upon Taiwanese American director Lee (5)</td>
+<td>A(GI)NG</td>
+</tr>
+<tr>
+<td>Plier visits haggard devils (4 7)</td>
+<td>&lt;pliervisits&gt; = EVILSPIRITS</td>
+</tr>
+<tr>
+<td>Kiss upsetting Rio navy is superpower (1-3 6)</td>
+<td>X + &lt;rionavyis&gt; = X + RAYVISION</td>
+</tr>
+<tr>
+<td>Finally, reef tsunami waves reach apprehensive, nervous marine creatures (6)</td>
+<td>Ending letters of &ldquo;reeF tsunamI ... nervouS&rdquo; = FISHES</td>
+</tr>
+<tr>
+<td>Tourist dispatches report: dough almost covers road! (9)</td>
+<td>POST + CA(RD)S(-h)</td>
+</tr>
+<tr>
+<td>Universe&rsquo;s end destroyed Cathay peoples (3 10)</td>
+<td>&lt;cathaypeoples&gt; = THEAPOCALYPSE</td>
+</tr>
+<tr>
+<td>Farm residents&rsquo; holy books follow ray focus (4)</td>
+<td>rAy + NTS</td>
+</tr>
+<tr>
+<td>Vehicle bumper sticker initially forms energy sources (5)</td>
+<td>CAR + B + S</td>
+</tr>
+<tr>
+<td>Track runners pour second original treacle first (6)</td>
+<td>T + RAIN + S</td>
+</tr>
+<tr>
+<td>Ancestry documentation, omitting first Emily, overhangs chubby person who looks backwards (6 5)</td>
+<td>FA((-e)MILY)T + REES&lt;</td>
+</tr>
+<tr>
+<td>Physique ringing essential succulent orange variety (5)</td>
+<td>B(aLOe)OD</td>
+</tr>
+<tr>
+<td>Those people continue without gravity, making large orb (3 4)</td>
+<td>THEM + (-g)O ON</td>
+</tr>
+</tbody>
+</table>
+<p>Now, we have to figure out what to do with the blanks. It turns out that each of these cryptic answers can be used to
+find a corresponding word or phrase ending in -ology that fits in the blank. FISHES -&gt; ICHTHYOLOGY and BLOOD -&gt; HEMATOLOGY
+provide good break-ins.</p>
+<p>However, some of these cryptic answers are pretty weird or don&rsquo;t have obvious corresponding -ologies (e.g. SEWER RATS, X-RAY VISION).
+By Googling words in groups, we can find that these are all topics covered on Alie Ward&rsquo;s podcast Ologies. All episodes
+on Ologies are written in the form &ldquo;Exampleology (THING BEING STUDIED)&rdquo;, for example &ldquo;Urban Rodentology (SEWER RATS)&rdquo;
+and &ldquo;Radiology (X-RAY VISION)&rdquo;.</p>
+<p>We can now use the names of the Ologies to fill in the blanks and extract letters.</p>
+<table>
+<thead>
+<tr>
+<th>Clue</th>
+<th>Answer</th>
+<th>Ology</th>
+<th>Extracted letter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Evil force wielder almost infiltrates grand parties featuring English resting places (10)</td>
+<td>GRAVESITES</td>
+<td>TA[P]HOLOGY</td>
+<td>P</td>
+</tr>
+<tr>
+<td>Toerags flip torrid news centerpieces occupying chairs (5 4)</td>
+<td>SEWER RATS</td>
+<td>URBAN R[O]DENTOLOGY</td>
+<td>O</td>
+</tr>
+<tr>
+<td>Pastime involving yeast, propagated via speakerphone support, lacks carbon (5 6)</td>
+<td>BREAD BAKING</td>
+<td>GA[S]TROEGYPTOLOGY</td>
+<td>S</td>
+</tr>
+<tr>
+<td>Backward dark elf starts to obsequiously supply top three Instagram lexical histories (4 7)</td>
+<td>WORD ORIGINS</td>
+<td>E[T]YMOLOGY</td>
+<td>T</td>
+</tr>
+<tr>
+<td>Dipstick sheriff hides parasites (5)</td>
+<td>TICKS</td>
+<td>A[C]AROLOGY</td>
+<td>C</td>
+</tr>
+<tr>
+<td>Elderly soldier intrudes upon Taiwanese American director Lee (5)</td>
+<td>AGING</td>
+<td>BIOGE[R]ONTOLOGY</td>
+<td>R</td>
+</tr>
+<tr>
+<td>Plier visits haggard devils (4 7)</td>
+<td>EVIL SPIRITS</td>
+<td>D[E]MONOLOGY</td>
+<td>E</td>
+</tr>
+<tr>
+<td>Kiss upsetting Rio navy is superpower (1-3 6)</td>
+<td>X-RAY VISION</td>
+<td>RA[D]IOLOGY</td>
+<td>D</td>
+</tr>
+<tr>
+<td>Finally, reef tsunami waves reach apprehensive, nervous marine creatures (6)</td>
+<td>FISHES</td>
+<td>[I]CHTHYOLOGY</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Tourist dispatches report: dough almost covers road! (9)</td>
+<td>POSTCARDS</td>
+<td>DEL[T]IOLOGY</td>
+<td>T</td>
+</tr>
+<tr>
+<td>Universe&rsquo;s end destroyed Cathay peoples (3 10)</td>
+<td>THE APOCALYPSE</td>
+<td>E[S]CHATOLOGY</td>
+<td>S</td>
+</tr>
+<tr>
+<td>Farm residents&rsquo; holy books follow ray focus (4)</td>
+<td>ANTS</td>
+<td>MYRM[E]COLOGY</td>
+<td>E</td>
+</tr>
+<tr>
+<td>Vehicle bumper sticker initially forms energy sources (5)</td>
+<td>CARBS</td>
+<td>GLY[C]OBIOLOGY</td>
+<td>C</td>
+</tr>
+<tr>
+<td>Track runners pour second original treacle first (6)</td>
+<td>TRAINS</td>
+<td>FE[R]ROEQUINOLOGY</td>
+<td>R</td>
+</tr>
+<tr>
+<td>Ancestry documentation, omitting first Emily, overhangs chubby person who looks backwards (6 5)</td>
+<td>FAMILY TREES</td>
+<td>G[E]NEALOGY</td>
+<td>E</td>
+</tr>
+<tr>
+<td>Physique ringing essential succulent orange variety (5)</td>
+<td>BLOOD</td>
+<td>HEMA[T]OLOGY</td>
+<td>T</td>
+</tr>
+<tr>
+<td>Those people continue without gravity, making large orb (3 4)</td>
+<td>THE MOON</td>
+<td>[S]ELENOLOGY</td>
+<td>S</td>
+</tr>
+</tbody>
+</table>
+<p>The extracted letters read POST CREDIT SECRETS.</p>
+<p>From here, we can search for various queries along the lines of &ldquo;post credit secrets Ologies&rdquo;. These results may include
+transcripts or Twitter posts which indicate that at the end of every episode, Alie tells a secret.</p>
+<p>Inspecting the contents of the secrets from the relevant episodes and thinking about the flavortext, we may notice that
+some words appear in the secret as well as the clue. Unusual words in the cryptics such as &ldquo;speakerphone&rdquo;, &ldquo;Instagram&rdquo;, or &ldquo;overhangs&rdquo;
+may help with this a-ha.</p>
+<p>Notably, exactly 1 word used in the clue also appears in the secret.</p>
+<table>
+<thead>
+<tr>
+<th>Clue</th>
+<th>Episode</th>
+<th>Word in common</th>
+<th>1st letter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Evil force wielder almost infiltrates grand parties featuring English resting places (10)</td>
+<td>TAPHOLOGY</td>
+<td>ALMOST</td>
+<td>A</td>
+</tr>
+<tr>
+<td>Toerags flip torrid news centerpieces occupying chairs (5 4)</td>
+<td>URBAN RODENTOLOGY</td>
+<td>NEWS</td>
+<td>N</td>
+</tr>
+<tr>
+<td>Pastime involving yeast, propagated via speakerphone support, lacks carbon (5 6)</td>
+<td>GASTROEGYPTOLOGY</td>
+<td>SPEAKERPHONE</td>
+<td>S</td>
+</tr>
+<tr>
+<td>Backward dark elf starts to obsequiously supply top three Instagram lexical histories (4 7)</td>
+<td>ETYMOLOGY</td>
+<td>INSTAGRAM</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Dipstick sheriff hides parasites (5)</td>
+<td>ACAROLOGY</td>
+<td>SHERIFF</td>
+<td>S</td>
+</tr>
+<tr>
+<td>Elderly soldier intrudes upon Taiwanese American director Lee (5)</td>
+<td>BIOGERONTOLOGY</td>
+<td>TAIWANESE</td>
+<td>T</td>
+</tr>
+<tr>
+<td>Plier visits haggard devils (4 7)</td>
+<td>DEMONOLOGY</td>
+<td>HAGGARD</td>
+<td>H</td>
+</tr>
+<tr>
+<td>Kiss upsetting Rio navy is superpower (1-3 6)</td>
+<td>RADIOLOGY</td>
+<td>UPSETTING</td>
+<td>U</td>
+</tr>
+<tr>
+<td>Finally, reef tsunami waves reach apprehensive, nervous marine creatures (6)</td>
+<td>ICHTHYOLOGY</td>
+<td>NERVOUS</td>
+<td>N</td>
+</tr>
+<tr>
+<td>Tourist dispatches report: dough almost covers road! (9)</td>
+<td>DELTIOLOGY</td>
+<td>DOUGH</td>
+<td>D</td>
+</tr>
+<tr>
+<td>Universe&rsquo;s end destroyed Cathay peoples (3 10)</td>
+<td>ESCHATOLOGY</td>
+<td>END</td>
+<td>E</td>
+</tr>
+<tr>
+<td>Farm residents&rsquo; holy books follow ray focus (4)</td>
+<td>MYRMECOLOGY</td>
+<td>RAY</td>
+<td>R</td>
+</tr>
+<tr>
+<td>Vehicle bumper sticker initially forms energy sources (5)</td>
+<td>GLYCOBIOLOGY</td>
+<td>STICKER</td>
+<td>S</td>
+</tr>
+<tr>
+<td>Track runners pour second original treacle first (6)</td>
+<td>FERROEQUINOLOGY</td>
+<td>TREACLE</td>
+<td>T</td>
+</tr>
+<tr>
+<td>Ancestry documentation, omitting first Emily, overhangs chubby person who looks backwards (6 5)</td>
+<td>GENEALOGY</td>
+<td>OVERHANGS</td>
+<td>O</td>
+</tr>
+<tr>
+<td>Physique ringing essential succulent orange variety (5)</td>
+<td>HEMATOLOGY</td>
+<td>RINGING</td>
+<td>R</td>
+</tr>
+<tr>
+<td>Those people continue without gravity, making large orb (3 4)</td>
+<td>SELENOLOGY</td>
+<td>MAKING</td>
+<td>M</td>
+</tr>
+</tbody>
+</table>
+<p>Reading the first letters of these words in common yields: ANS IS <strong>THUNDERSTORM</strong>.</p>
+
+    
+    
+    <h2 id="authors-notes">Author&rsquo;s Notes</h2>
+    <p>I&rsquo;ve been listening to the Ologies podcast for several years. It managed to stay a part of my weekly routine
+even while I was struggling with mental illness, getting kicked out of MIT campus because of COVID, and transitioning
+to full-time employment.</p>
+<p>I love Alie&rsquo;s secrets at the end of each episode. I wanted to pay my respects to this podcast somehow
+with a puzzle, and the end-of-episode secrets were weird and varied enough that they just felt like good puzzle
+material. I decided to look up what the name of a study of secrets would be, and came out with &ldquo;cryptology&rdquo;.
+The rest of the puzzle fell into place naturally from there.</p>
+<p>Thank you to my editors and testsolvers for helping me write cryptic clues with more interesting definitions,
+better surface readings, and more interesting words for extraction.</p>
+    
+
+    
+    
+
+    
+    <div class="puzzle-main-corner puzzle-main-corner-1"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-2"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-3"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-4"></div>
+    
+</main>
+
+
+    </div>
+    
+
+    
+
+    
+    <script>
+    document.getElementById('nav-music').style.display = 'none';
+    document.getElementById("progress-simulator").addEventListener("submit", (e) => {
+        if (e.submitter.name === "reset") {
+            toggleReset(true);
+            doGlitch(false);
+            document.getElementById("shortcuts").checked = false;
+            e.preventDefault();
+        } else {
+            localStorage.setItem(e.submitter.name, e.submitter.value);
+        }
+    });
+    addStyles();
+
+    function toggleReset(which) {
+        $('#loop-reset').toggleClass('loop-resetting', which);
+    }
+
+    function addStyles() {
+        const changeFavicon = (url) => {
+            const e = Array.from(document.getElementsByTagName("link"))
+                .filter(e => e.rel === "icon")[0];
+            e.href = url;
+        }
+        const addSheet = (url) => {
+            const e = document.createElement("link");
+            e.rel = "stylesheet";
+            e.href = url;
+            document.getElementsByTagName("head")[0].appendChild(e);
+        }
+
+        const seasons = ["spring", "summer", "autumn", "winter"];
+        let current_main_round = localStorage.getItem("round");
+        const endgame_unlocked = localStorage.getItem("endgame") === "true";
+
+        const matches = new RegExp(`\\?(${seasons.join("|")})`).exec(document.URL);
+        if (matches && matches[1]) {
+            current_main_round = matches[1];
+        }
+
+        if (endgame_unlocked) {
+            addSheet("/static/css/endgame.css");
+            changeFavicon("/static/images/favicon-endgame.ico");
+            const nodes = document.getElementsByClassName("energy-nodes-info");
+            console.log(nodes);
+            if (nodes.length > 0) {
+                nodes[0].style.display = "block";
+            }
+        } else if (current_main_round === "concert") {
+            addSheet("/static/css/concert.css");
+            changeFavicon("/static/images/favicon-concert.ico");
+            // also add the concert music
+            document.getElementById('nav-music').style.display = 'inline-block';
+            const audio = document.getElementById("music-audio");
+            if (audio) {
+                audio.addEventListener('play', () => {
+                    audio.volume = localStorage.getItem('music-audio-volume') ?? 0.5;
+                });
+                audio.addEventListener('volumechange', () => {
+                    localStorage.setItem('music-audio-volume', audio.volume);
+                });
+            }
+        } else if (seasons.includes(current_main_round)) {
+            addSheet("/static/css/season.css");
+            addSheet(`/static/css/${current_main_round}.css`);
+            changeFavicon(`/static/images/favicon-${current_main_round}.ico`);
+        } else {
+            addSheet("/static/css/blue.css");
+            changeFavicon("/static/images/favicon-blue.ico");
+        }
+    }
+
+    registerOnGlitchHook((ex) => {
+        document.getElementById('background-glitch-wrapper').style.display = 'initial';
+    });
+    </script>
+    
+</body>
+</html>

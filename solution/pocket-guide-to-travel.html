@@ -1,0 +1,1768 @@
+
+
+
+
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+<title>Solution: Pocket Guide to Travel</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <meta property="og:title" content="Galactic Puzzle Hunt 2022">
+    <meta property="og:description" content="Registration for this year's Galactic Puzzle Hunt is now open!">
+    <meta property="og:image" content="https://galacticpuzzlehunt.com/static/images/banner.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:slnt,CASL,CRSV,MONO@-3,0.5,1,1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/skeleton.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.formset/1.2.2/jquery.formset.min.js"></script>
+    <script src="/jsi18n/"></script>
+    <script src="/static/js/sorttable.js"></script>
+    <script src="/static/js/tray.js"></script>
+    <script src="/static/js/notify.js"></script>
+    <script src="/static/js/time.js"></script>
+    
+    
+    <link rel="icon" sizes="16x16 32x32 48x48 64x64" href="/static/images/favicon.ico" type="image/vnd.microsoft.icon">
+    
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92192633-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-92192633-1');
+</script>
+
+</head>
+<body>
+    
+    <div id="background-glitch-wrapper" class="background-glitch">
+        <div class="glitch-1"></div>
+        <div class="glitch-2"></div>
+        <div class="glitch-3"></div>
+    </div>
+    
+    
+    <input id="shortcuts" type="checkbox">
+    
+    <nav>
+        <span class="tray">
+            <span id="tray-timer"></span>
+            <div class="top-tabs">
+                <a href="/">
+                    Home
+                </a>
+                
+                
+                <a href="/story">
+                    Story
+                </a>
+                
+                
+                <a class="selected-tab" href="/puzzles">
+                    Puzzles
+                </a>
+                
+                <a href="/teams">
+                    Teams
+                </a>
+                
+                
+                <a href="/errata">
+                    Updates
+                </a>
+                
+                
+                
+                
+                <a id="nav-music" href="#">
+                    <label for="music" title="Music" style="margin-bottom: 0; font-weight: normal; cursor: pointer;">Music</label>
+                </a>
+                <input id="music" type="checkbox">
+                <div class="shortcuts music">
+                    <audio id="music-audio" controls src="/static/puzzle_resources/worlds-end-concert/music-audio.mp3">
+                        There should be a music player here.
+                    </audio>
+                </div>
+                
+                
+            </div>
+            <div class="top-left-actions">
+                
+<a href="/puzzle/pocket-guide-to-travel" class="btn">Back to the puzzle</a>
+
+            </div>
+        </span>
+        <div class="top-right-actions">
+        
+        <label for="shortcuts" title="Simulator">Simulator </label>
+        
+        
+        </div>
+    </nav>
+    
+    <div class="shortcuts">
+        <form id="progress-simulator">
+        <div>Current round:</div>
+        <button class="btn" type="submit" name="round" value="forward">⬆️</button>
+        <button class="btn" type="submit" name="round" value="spring">🌸</button>
+        <button class="btn" type="submit" name="round" value="summer">☀️</button>
+        <button class="btn" type="submit" name="round" value="autumn">🍂</button>
+        <button class="btn" type="submit" name="round" value="winter">☃️</button>
+        <button class="btn" type="submit" name="round" value="concert">🎤</button>
+        <button class="btn" type="submit" name="round" value="none">None</button>
+        <div>Endgame:</div>
+        <button class="btn" type="submit" name="endgame" value="true">Unlock</button>
+        <button class="btn" type="submit" name="endgame" value="false">Reset</button>
+        <div>Reset:</div>
+        <button class="btn" type="submit" name="reset" value="reset">Reset</button>
+        </form>
+    </div>
+    
+    
+    
+    
+    
+    <div id="loop-reset">
+        <form>
+            <svg viewBox="-30 160 720 320">
+                <defs>
+                    <path id="loop-end-path" d="m 370,240 c 38.29044,0 74.26676,18.33512 96.83716,49.26624 l -76.8369,30.73478 V 270 L 300,330 261.03858,309.74192 c 19.60706,-42.51188 62.14674,-69.74008 108.9623,-69.74306 z m 106.15758,64.22738 c 6.65282,12.65518 10.9906,26.39738 12.80876,40.57862 l -38.96532,5.19538 z"/>
+                </defs>
+                <foreignObject width="720" height="480" clip-path="url(#loop-end-clip)" class="loop-shade">
+                    <aside class="loop-shade" xmlns="http://www.w3.org/1999/xhtml" style="width: 100%; height: 100%;"></aside>
+                </foreignObject>
+                <clipPath id="loop-end-clip"><use href="#loop-end-path"/></clipPath>
+                <use href="#loop-end-path"/>
+                <path d="M 490,400 600,330 450,350 490,280 390,320 V 270 L 300,330 50,200 170,380 50,400"/>
+            </svg>
+            <div>THE END</div>
+            <p>You can reset once per minute.</p>
+            <table>
+                <tr id="loop-reset-btn-row-reset">
+                    <td><button class="btn" disabled>Reset</button></td>
+                    <td>Start over from the beginning of the exam.</td>
+                </tr>
+                <tr id="loop-reset-btn-row-restore">
+                    <td><button class="btn" disabled>Jump</button></td>
+                    <td>Start over, but resubmit your previous answers to bring you back to this point.</td>
+                </tr>
+                <tr>
+                    <td><a class="btn" href="javascript:toggleReset(false)">Stay</a></td>
+                    <td>Look at this page a bit longer. Make sure to save your work.</td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    
+    <script>
+
+    
+    
+    let glitchTriggerFuncs = [];
+    let glitchTriggerReceived = false;
+    let glitchTriggerExReceived = false;
+    let glitchPageLoaded = false;
+    function processGlitchFuncs(ex) {
+        glitchTriggerFuncs.forEach((func) => {
+            func(ex);
+        });
+    }
+    function doGlitch(ex) {
+        glitchTriggerReceived = true;
+        if (ex) {
+            glitchTriggerExReceived = true;
+        }
+        if (glitchPageLoaded) {
+            processGlitchFuncs(ex);
+        }
+    }
+    window.addEventListener('load', () => {
+        glitchPageLoaded = true;
+        if (glitchTriggerExReceived) {
+            processGlitchFuncs(true);
+        }
+        else if (glitchTriggerReceived) {
+            processGlitchFuncs(false);
+        }
+    }, false);
+    
+    
+    
+    function registerOnGlitchHook(func) {
+        if (glitchTriggerExReceived) {
+            func(true);
+        }
+        else if (glitchTriggerReceived) {
+            func(false);
+        }
+        glitchTriggerFuncs.push(func);
+    }
+    
+
+    
+    
+    </script>
+    <div class="content">
+        
+
+<style>
+h2 {
+    font-size: 2.5rem;
+    font-weight: normal;
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+
+h4 {
+    font-size: 2rem;
+    font-weight: normal;
+    margin: 2rem 0;
+}
+</style>
+
+<h1>
+    Solution <span style="font-weight: 300">Pocket Guide to Travel</span>
+    <div class="solved-title-marker">Answer <span class="solved-title-answer spoiler">VINE WHIP</span></div>
+</h1>
+
+<main class="puzzle-main">
+    <h2 style="margin-top: 0">
+        Written by
+        
+Dai Yang
+
+    </h2>
+
+    
+    <style>
+  img.i {
+    max-width: 100px;
+    max-height: 100px;
+  }
+  blockquote {
+    margin: 0 0 2.5rem;
+    overflow-x: auto;
+  }
+  blockquote table {
+    width: 0;
+    margin: 0;
+    display: block;
+  }
+</style>
+<p>We start off this puzzle by trying to identify the images. Most of them seem to be in alphabetical order, but
+we discover that there are a few identifications that don&rsquo;t fit.</p>
+<p>We may also notice that some of these images appear to be in other languages. For example, COUAC and PIEPMATZ
+are French and German words, respectively.</p>
+<p>It turns out that we can put all the images in alphabetical order if we use different languages for some of the words (e.g. stinger in French is DARD). Many images could have more than one possible language, but they will be disambiguated by the next step of the puzzle.</p>
+<table>
+<thead>
+<tr>
+<th>Image</th>
+<th>Identification</th>
+<th>Translation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image01.png" alt="5 saxophones in increasing size order, with an arrow pointing to the 2nd one"></td>
+<td>ALTO</td>
+<td>ALTO</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image02.png" alt="Various salamanders, caecilians, frogs, and toads"></td>
+<td>AMPHIBIAN</td>
+<td>AMPHIBIEN</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image03.png" alt="Coral reef with many varieties of fish"></td>
+<td>AQUATIC</td>
+<td>AQUATIQUE</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image04.png" alt="Room full of medieval weaponry, including shields, swords, and pieces of armor"></td>
+<td>ARMORY</td>
+<td>ARMORY</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image05.png" alt="Brown snake with a pattern of alternating black markings resembling a zigzag, on a field of rocks"></td>
+<td>ASP</td>
+<td>ASPIC</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image06.png" alt="Pinkish-white creature with lidless eyes, suspended in water against a blurry background"></td>
+<td>AXOLOTL</td>
+<td>AXOLOTL</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image07.png" alt="Bombylius major sitting on a leaf"></td>
+<td>BEE FLY</td>
+<td>BOMBYLE</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image08.png" alt="Fire"></td>
+<td>BLAZE</td>
+<td>BRASIER</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image09.png" alt="Portrait of a man wearing a laurel and a red cloak over a silver cuirass; the text 'IMP. I.' is in the top-right corner"></td>
+<td>CAESAR</td>
+<td>CAESAR</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image10.png" alt="Candle holder with three arms"></td>
+<td>CANDELABRA</td>
+<td>CANDELABRA</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image11.png" alt="Schematic of an atom with 6 protons and 6 electrons"></td>
+<td>CARBON</td>
+<td>CARBO</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image12.png" alt="Armored man with a red feathered helmet, red cape, several silver medals, and red shield. On the shield are four yellow wings, two straight arrows, and four zigzagging arrows emanating from the center"></td>
+<td>CENTURION</td>
+<td>CENTURIO</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image13.png" alt="Two cartoon duck heads with bow ties, one pink, the other decorated as the American flag; on a green circle against a yellow background"></td>
+<td>COUAC</td>
+<td>COUAC</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image14.png" alt="Two black rectangular line segments intersecting, one horizontal, one vertical; the intersection is at the center of the horizontal segment and roughly a third from the top of the vertical segment"></td>
+<td>CROSS</td>
+<td>CROSS</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image15.png" alt="Luke Pasqualino in period armor"></td>
+<td>D&rsquo;ARTAGNAN</td>
+<td>D&rsquo;ARTAGNAN</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image16.png" alt="Painting in which a man, dressed in lavish clothes on a golden chair and being served from a golden platter, looks above him at a sword seemingly suspended in midair. Behind him, an older man in red gestures to the sword with one hand and holds a scepter in the other"></td>
+<td>DAMOCLES</td>
+<td>DAMOKLES</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image17.png" alt="Sharp point at the end of an insect"></td>
+<td>STINGER</td>
+<td>DARD</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image18.png" alt="Round red doll with a white inset featuring a face and some butterfly-like patterns and some golden patterns and Japanese text in the bottom and on the sides"></td>
+<td>DARUMA</td>
+<td>DARUMA</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image19.png" alt="Animated boy in a running pose, wearing a black mask covering the areas around his eyes and a red skintight suit with black gloves and boots. In the middle of the suit is a yellow lowercase I on a black oval with an orange border"></td>
+<td>DASH</td>
+<td>DASH</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image20.png" alt="Gray tree with leaves falling off and an arrow pointing to it, to the left of an evergreen tree"></td>
+<td>DECIDUOUS</td>
+<td>DECIDUOUS</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image21.png" alt="Mountain of scrap metal"></td>
+<td>LANDFILL</td>
+<td>DEPONIE</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image22.png" alt="3D rendering of T. rex"></td>
+<td>DINOSAUR</td>
+<td>DINOSAUR</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image23.png" alt="A collage of four images, clockwise from top left: a white folded fleece blanket; a white arctic fox; two pairs of fuzzy socks with faces being worn, the left pair being pink with white stripes and a spherical red nose, the right pair being white with a carrot nose; and a stuffed panda with rainbow markings"></td>
+<td>SOFT</td>
+<td>DOUX</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image24.png" alt="Small splash created by water droplet"></td>
+<td>WATER</td>
+<td>EAU</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image25.png" alt="Lightning coming out of the end of a 3-pronged cable"></td>
+<td>ELECTRIC</td>
+<td>ÉLECTRIQUE</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image26.png" alt="Brown eyebrow above left eye with blue iris"></td>
+<td>EYE</td>
+<td>EYE</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image27.png" alt="Woman in a gymnastics bridge pose"></td>
+<td>FLEXIBLE</td>
+<td>FLEXIBLE</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image28.png" alt="Clockwise from top left: Indian peafowl, red junglefowl, golden pheasant, Chukar partridge, Gunnison grouse, wild turkey, great curassow, helmeted Guineafowl"></td>
+<td>GALLINACEOUS</td>
+<td>GALLINACÉ</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image29.png" alt="Black-and-white photograph of a Native American (Apache) man kneeling and holding a rifle"></td>
+<td>GERONIMO</td>
+<td>GERONIMO</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image30.png" alt="Illustrated light cyan sword with a black handle in the top-middle, silver ornamentation near the handle, and a bright cyan aura that arcs around the right of the handle"></td>
+<td>GRAM</td>
+<td>GRAM</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image31.png" alt="A Disney cartoon man with orange hair, wearing a dark blue cape and dark orange Greek tunic and having a sword at his side, smiling and posing"></td>
+<td>HERACLES</td>
+<td>HERACLES</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image32.png" alt="Cartoon illustration of two bears; the larger bear on the right is yellow and is pointing at the purple bear to the left, who is holding a small yellow flower"></td>
+<td>SMALL</td>
+<td>KLEIN</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image33.png" alt="Illustration of a fully armored knight in a brightly lit doorway that features rays emanating from a a yellow goblet and candles"></td>
+<td>LANCELOT</td>
+<td>LANZELOT</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image34.png" alt="Basket full of long green vegetables with lighter-green and white roots"></td>
+<td>LEEK</td>
+<td>LAUCH</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image35.png" alt="6 buff, shirtless men wearing jeans"></td>
+<td>MACHO</td>
+<td>MACHO</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image36.png" alt="Queen Elizabeth II of England"></td>
+<td>MAJESTY</td>
+<td>MAJESTÉ</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image37.png" alt="Map of a country on the southeast coast of its landmass, split into 9 regions, one of which is colored in red"></td>
+<td>MONTE CARLO</td>
+<td>MONTE CARLO</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image38.png" alt="Human nose"></td>
+<td>NOSE</td>
+<td>NASE</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image39.png" alt="Black-and-white still of a bald Max Schreck with prominent teeth, grasping a black mass behind a bed"></td>
+<td>NOSFERATU</td>
+<td>NOSFERATU</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image40.png" alt="Person standing in front of many red-and-white hurdles"></td>
+<td>OBSTACLE</td>
+<td>OBSTACLE</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image41.png" alt="A board game with the title obscured. The creators, Matt Riddle and Ben Pinchback, and the subtitle, Little Songbirds, are visible. The ornamental card back and three cards are shown: a yellow card labeled 6. Goldammer / Yellowhammer, a green card labeled 6. Grünfunk / Greenfinch, and a blue card labeled 1 Buchfink / Chaffinch."></td>
+<td>PIEPMATZ</td>
+<td>PIEPMATZ</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image42.png" alt="Gray furry animal grasping several branches atop a tree. Its eyes are surrounded by mask-like black fur, which is further surrounded by white fur; its tail has black rings."></td>
+<td>RACCOON</td>
+<td>RACCOON</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image43.png" alt="Train traveling at high speed"></td>
+<td>RAPID</td>
+<td>RAPID</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image44.png" alt="Two people laying in bed, the left one has their eyes open and is covering their ears with a stack of pillows, while the right person's eyes are closed and zigzags are drawn around their mouth"></td>
+<td>SNORE</td>
+<td>RONFLER</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image45.png" alt="Sand dunes"></td>
+<td>SAND</td>
+<td>SAND</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image46.png" alt="Ninja in a fighting pose with katana"></td>
+<td>SHINOBI</td>
+<td>SHINOBI</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image47.png" alt="A grayish-brown furry rodent with small paws and a prominent tapered snout sitting on a human finger"></td>
+<td>SHREW</td>
+<td>SHREW</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image48.png" alt="Anatomy diagram of human skeleton"></td>
+<td>SKELETON</td>
+<td>SKELETT</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image49.png" alt="Sun shining brightly in a blue sky with a few white clouds"></td>
+<td>SKY</td>
+<td>SKY</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image50.png" alt="Pebbles"></td>
+<td>STONE</td>
+<td>STEIN</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image51.png" alt="Movie poster featuring a blonde actor in armor and a red cape wielding a hammer, with lightning bolts in the foreground, against a galactic background"></td>
+<td>THOR</td>
+<td>THOR</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image52.png" alt="Bottle with a skull-and-crossbones label, with green fluid coming out"></td>
+<td>TOXIN</td>
+<td>TOXIN</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image53.png" alt="Planet with white and very light orange streaks against a black background"></td>
+<td>VENUS</td>
+<td>VENUS</td>
+</tr>
+<tr>
+<td><img class="i" src="/static/puzzle_resources/pocket-guide-to-travel/image54.png" alt="Woman with light brown skin and a substantial amount of curly hair"></td>
+<td>VOLUMINOUS</td>
+<td>VOLUMINÖS</td>
+</tr>
+</tbody>
+</table>
+<p>As we identify images, we may recognize that we can put some words together to form names of Pokémon. The style and
+coloring of the letters at the bottom of the puzzle may help with this a-ha. For example, HERACLES + CROSS = HERACROSS.</p>
+<p>The next key observation to make is that Pokémon names in foreign languages are also often portmanteaus or puns. In
+our case, we need to look at Pokémon names in French and German in order to form portmanteaus—almost all of these are also in French or German, with a couple exceptions (e.g. Montecarbo, which is a German Pokémon name but puns from Latin).</p>
+<p>The flavortext, &ldquo;Remember to put together a suitcase&rdquo;, clues &ldquo;putting together&rdquo;, portmanteau (which means suitcase in French)
+and foreign languages.</p>
+<p>The Pokémon are as follows (in alphabetical order by English name):</p>
+<blockquote>
+<table>
+<thead>
+<tr>
+<th>English name</th>
+<th>Part 1</th>
+<th>Part 2</th>
+<th>Foreign name</th>
+<th>Language</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BEEDRILL</td>
+<td>DARD</td>
+<td>D&rsquo;ARTAGNAN</td>
+<td>DARDARGNAN</td>
+<td>FRENCH</td>
+</tr>
+<tr>
+<td>BISHARP</td>
+<td>CAESAR</td>
+<td>CENTURIO</td>
+<td>CAESURIO</td>
+<td>GERMAN</td>
+</tr>
+<tr>
+<td>BLAZIKEN</td>
+<td>BRASIER</td>
+<td>GALLINACÉ</td>
+<td>BRASÉGALI</td>
+<td>FRENCH</td>
+</tr>
+<tr>
+<td>CHANDELURE</td>
+<td>SKELETT</td>
+<td>CANDELABRA</td>
+<td>SKELABRA</td>
+<td>GERMAN</td>
+</tr>
+<tr>
+<td>COALOSSAL</td>
+<td>MONTECARLO</td>
+<td>CARBO</td>
+<td>MONTECARBO</td>
+<td>GERMAN</td>
+</tr>
+<tr>
+<td>CUTIEFLY</td>
+<td>BOMBYLE</td>
+<td>DOUX</td>
+<td>BOMBYDOU</td>
+<td>FRENCH</td>
+</tr>
+<tr>
+<td>DARMANITAN</td>
+<td>DARUMA</td>
+<td>MACHO</td>
+<td>DARUMACHO</td>
+<td>FRENCH</td>
+</tr>
+<tr>
+<td>DECIDUEYE</td>
+<td>DECIDUOUS</td>
+<td>EYE</td>
+<td>DECIDUEYE</td>
+<td>ENGLISH</td>
+</tr>
+<tr>
+<td>GARBODOR</td>
+<td>DEPONIE</td>
+<td>TOXIN</td>
+<td>DEPONITOX</td>
+<td>GERMAN</td>
+</tr>
+<tr>
+<td>GEODUDE</td>
+<td>KLEIN</td>
+<td>STEIN</td>
+<td>KLEINSTEIN</td>
+<td>GERMAN</td>
+</tr>
+<tr>
+<td>GOLBAT</td>
+<td>NOSFERATU</td>
+<td>ALTO</td>
+<td>NOSFERALTO</td>
+<td>FRENCH</td>
+</tr>
+<tr>
+<td>GOLDUCK</td>
+<td>AQUATIQUE</td>
+<td>COUAC</td>
+<td>AKWAKWAK</td>
+<td>FRENCH</td>
+</tr>
+<tr>
+<td>GRENINJA</td>
+<td>AMPHIBIEN</td>
+<td>SHINOBI</td>
+<td>AMPHINOBI</td>
+<td>FRENCH</td>
+</tr>
+<tr>
+<td>HERACROSS</td>
+<td>HERACLES</td>
+<td>CROSS</td>
+<td>HERACROSS</td>
+<td>ENGLISH</td>
+</tr>
+<tr>
+<td>HONEDGE</td>
+<td>GRAM</td>
+<td>DAMOKLES</td>
+<td>GRAMOKLES</td>
+<td>GERMAN</td>
+</tr>
+<tr>
+<td>OBSTAGOON</td>
+<td>OBSTACLE</td>
+<td>RACCOON</td>
+<td>OBSTAGOON</td>
+<td>ENGLISH</td>
+</tr>
+<tr>
+<td>PROBOPASS</td>
+<td>VOLUMINÖS</td>
+<td>NASE</td>
+<td>VOLUMINAS</td>
+<td>GERMAN</td>
+</tr>
+<tr>
+<td>RAPIDASH</td>
+<td>RAPID</td>
+<td>DASH</td>
+<td>RAPIDASH</td>
+<td>ENGLISH</td>
+</tr>
+<tr>
+<td>RUFFLET</td>
+<td>GERONIMO</td>
+<td>PIEPMATZ</td>
+<td>GERONIMATZ</td>
+<td>GERMAN</td>
+</tr>
+<tr>
+<td>SANDSHREW</td>
+<td>SAND</td>
+<td>SHREW</td>
+<td>SANDSHREW</td>
+<td>ENGLISH</td>
+</tr>
+<tr>
+<td>SERPERIOR</td>
+<td>MAJESTÉ</td>
+<td>ASPIC</td>
+<td>MAJASPIC</td>
+<td>FRENCH</td>
+</tr>
+<tr>
+<td>SIRFETCH&rsquo;D</td>
+<td>LAUCH</td>
+<td>LANZELOT</td>
+<td>LAUCHZELOT</td>
+<td>GERMAN</td>
+</tr>
+<tr>
+<td>SKARMORY</td>
+<td>SKY</td>
+<td>ARMORY</td>
+<td>SKARMORY</td>
+<td>ENGLISH</td>
+</tr>
+<tr>
+<td>SNORLAX</td>
+<td>RONFLER</td>
+<td>FLEXIBLE</td>
+<td>RONFLEX</td>
+<td>FRENCH</td>
+</tr>
+<tr>
+<td>VENUSAUR</td>
+<td>VENUS</td>
+<td>DINOSAUR</td>
+<td>VENUSAUR</td>
+<td>ENGLISH</td>
+</tr>
+<tr>
+<td>WOOPER</td>
+<td>AXOLOTL</td>
+<td>EAU</td>
+<td>AXOLOTO</td>
+<td>FRENCH</td>
+</tr>
+<tr>
+<td>ZAPDOS</td>
+<td>ÉLECTRIQUE</td>
+<td>THOR</td>
+<td>ÉLECTHOR</td>
+<td>FRENCH</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>Now we can use the colored letters at the bottom of the puzzle. The colors of these letters are the same as the
+colors used to indicate Pokémon types in the game. We can correspond each pair of letters to the Pokémon based on
+the type(s) of the Pokémon (for Pokémon that only have one type, the letters are the same color). Note that a couple of the Pokémon (Darmanitan, Sandshrew, Rapidash) use the type of a regional form.</p>
+<blockquote>
+<table>
+<thead>
+<tr>
+<th>English name</th>
+<th>Foreign name</th>
+<th>Language</th>
+<th>Type 1</th>
+<th>Type 2</th>
+<th>First letter</th>
+<th>Second letter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>COALOSSAL</td>
+<td>MONTECARBO</td>
+<td>GERMAN</td>
+<td>GESTEIN</td>
+<td>FEUER</td>
+<td>I</td>
+<td>U</td>
+</tr>
+<tr>
+<td>GEODUDE</td>
+<td>KLEINSTEIN</td>
+<td>GERMAN</td>
+<td>GESTEIN</td>
+<td>BODEN</td>
+<td>G</td>
+<td>D</td>
+</tr>
+<tr>
+<td>BISHARP</td>
+<td>CAESURIO</td>
+<td>GERMAN</td>
+<td>UNLICHT</td>
+<td>STAHL</td>
+<td>N</td>
+<td>T</td>
+</tr>
+<tr>
+<td>PROBOPASS</td>
+<td>VOLUMINAS</td>
+<td>GERMAN</td>
+<td>GESTEIN</td>
+<td>STAHL</td>
+<td>T</td>
+<td>H</td>
+</tr>
+<tr>
+<td>CHANDELURE</td>
+<td>SKELABRA</td>
+<td>GERMAN</td>
+<td>GEIST</td>
+<td>FEUER</td>
+<td>G</td>
+<td>F</td>
+</tr>
+<tr>
+<td>RUFFLET</td>
+<td>GERONIMATZ</td>
+<td>GERMAN</td>
+<td>NORMAL</td>
+<td>FLUG</td>
+<td>M</td>
+<td>F</td>
+</tr>
+<tr>
+<td>SIRFETCH&rsquo;D</td>
+<td>LAUCHZELOT</td>
+<td>GERMAN</td>
+<td>KAMPF</td>
+<td>KAMPF</td>
+<td>F</td>
+<td>P</td>
+</tr>
+<tr>
+<td>HONEDGE</td>
+<td>GRAMOKLES</td>
+<td>GERMAN</td>
+<td>STAHL</td>
+<td>GEIST</td>
+<td>L</td>
+<td>S</td>
+</tr>
+<tr>
+<td>GARBODOR</td>
+<td>DEPONITOX</td>
+<td>GERMAN</td>
+<td>GIFT</td>
+<td>GIFT</td>
+<td>G</td>
+<td>I</td>
+</tr>
+<tr>
+<td>GOLBAT</td>
+<td>NOSFERALTO</td>
+<td>FRENCH</td>
+<td>POISON</td>
+<td>VOL</td>
+<td>P</td>
+<td>O</td>
+</tr>
+<tr>
+<td>SERPERIOR</td>
+<td>MAJASPIC</td>
+<td>FRENCH</td>
+<td>PLANTE</td>
+<td>PLANTE</td>
+<td>P</td>
+<td>T</td>
+</tr>
+<tr>
+<td>BLAZIKEN</td>
+<td>BRASÉGALI</td>
+<td>FRENCH</td>
+<td>FEU</td>
+<td>COMBAT</td>
+<td>F</td>
+<td>B</td>
+</tr>
+<tr>
+<td>DARMANITAN</td>
+<td>DARUMACHO</td>
+<td>FRENCH</td>
+<td>GLACE</td>
+<td>GLACE</td>
+<td>L</td>
+<td>E</td>
+</tr>
+<tr>
+<td>GRENINJA</td>
+<td>AMPHINOBI</td>
+<td>FRENCH</td>
+<td>EAU</td>
+<td>TÉNÈBRES</td>
+<td>E</td>
+<td>È</td>
+</tr>
+<tr>
+<td>BEEDRILL</td>
+<td>DARDARGNAN</td>
+<td>FRENCH</td>
+<td>INSECTE</td>
+<td>POISON</td>
+<td>I</td>
+<td>P</td>
+</tr>
+<tr>
+<td>SNORLAX</td>
+<td>RONFLEX</td>
+<td>FRENCH</td>
+<td>NORMAL</td>
+<td>NORMAL</td>
+<td>N</td>
+<td>M</td>
+</tr>
+<tr>
+<td>ZAPDOS</td>
+<td>ÉLECTHOR</td>
+<td>FRENCH</td>
+<td>ÉLECTRIK</td>
+<td>VOL</td>
+<td>C</td>
+<td>O</td>
+</tr>
+<tr>
+<td>GOLDUCK</td>
+<td>AKWAKWAK</td>
+<td>FRENCH</td>
+<td>EAU</td>
+<td>EAU</td>
+<td>E</td>
+<td>U</td>
+</tr>
+<tr>
+<td>CUTIEFLY</td>
+<td>BOMBYDOU</td>
+<td>FRENCH</td>
+<td>INSECTE</td>
+<td>FÉE</td>
+<td>T</td>
+<td>É</td>
+</tr>
+<tr>
+<td>WOOPER</td>
+<td>AXOLOTO</td>
+<td>FRENCH</td>
+<td>EAU</td>
+<td>SOL</td>
+<td>U</td>
+<td>L</td>
+</tr>
+<tr>
+<td>DECIDUEYE</td>
+<td>DECIDUEYE</td>
+<td>ENGLISH</td>
+<td>GRASS</td>
+<td>GHOST</td>
+<td>A</td>
+<td>G</td>
+</tr>
+<tr>
+<td>OBSTAGOON</td>
+<td>OBSTAGOON</td>
+<td>ENGLISH</td>
+<td>DARK</td>
+<td>NORMAL</td>
+<td>R</td>
+<td>L</td>
+</tr>
+<tr>
+<td>VENUSAUR</td>
+<td>VENUSAUR</td>
+<td>ENGLISH</td>
+<td>GRASS</td>
+<td>POISON</td>
+<td>R</td>
+<td>I</td>
+</tr>
+<tr>
+<td>SKARMORY</td>
+<td>SKARMORY</td>
+<td>ENGLISH</td>
+<td>STEEL</td>
+<td>FLYING</td>
+<td>S</td>
+<td>I</td>
+</tr>
+<tr>
+<td>RAPIDASH</td>
+<td>RAPIDASH</td>
+<td>ENGLISH</td>
+<td>PSYCHIC</td>
+<td>FAIRY</td>
+<td>P</td>
+<td>F</td>
+</tr>
+<tr>
+<td>HERACROSS</td>
+<td>HERACROSS</td>
+<td>ENGLISH</td>
+<td>BUG</td>
+<td>FIGHTING</td>
+<td>B</td>
+<td>N</td>
+</tr>
+<tr>
+<td>SANDSHREW</td>
+<td>SANDSHREW</td>
+<td>ENGLISH</td>
+<td>ICE</td>
+<td>STEEL</td>
+<td>I</td>
+<td>L</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>Now, we can notice that each colored letter appears exactly once in its corresponding type. For
+example, I appears once in GESTEIN and U appears once in FEUER. The plus signs clue the next step, which is to
+find the positions of these letters within their types and add them together.</p>
+<blockquote>
+<table>
+<thead>
+<tr>
+<th>English name</th>
+<th>Foreign name</th>
+<th>Language</th>
+<th>Type 1</th>
+<th>Type 2</th>
+<th>First letter</th>
+<th>Second letter</th>
+<th>Position of 1st letter</th>
+<th>Position of 2nd letter</th>
+<th>Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>COALOSSAL</td>
+<td>MONTECARBO</td>
+<td>GERMAN</td>
+<td>GESTEIN</td>
+<td>FEUER</td>
+<td>I</td>
+<td>U</td>
+<td>6</td>
+<td>3</td>
+<td>9</td>
+</tr>
+<tr>
+<td>GEODUDE</td>
+<td>KLEINSTEIN</td>
+<td>GERMAN</td>
+<td>GESTEIN</td>
+<td>BODEN</td>
+<td>G</td>
+<td>D</td>
+<td>1</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr>
+<td>BISHARP</td>
+<td>CAESURIO</td>
+<td>GERMAN</td>
+<td>UNLICHT</td>
+<td>STAHL</td>
+<td>N</td>
+<td>T</td>
+<td>2</td>
+<td>2</td>
+<td>4</td>
+</tr>
+<tr>
+<td>PROBOPASS</td>
+<td>VOLUMINAS</td>
+<td>GERMAN</td>
+<td>GESTEIN</td>
+<td>STAHL</td>
+<td>T</td>
+<td>H</td>
+<td>4</td>
+<td>4</td>
+<td>8</td>
+</tr>
+<tr>
+<td>CHANDELURE</td>
+<td>SKELABRA</td>
+<td>GERMAN</td>
+<td>GEIST</td>
+<td>FEUER</td>
+<td>G</td>
+<td>F</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>RUFFLET</td>
+<td>GERONIMATZ</td>
+<td>GERMAN</td>
+<td>NORMAL</td>
+<td>FLUG</td>
+<td>M</td>
+<td>F</td>
+<td>4</td>
+<td>1</td>
+<td>5</td>
+</tr>
+<tr>
+<td>SIRFETCH&rsquo;D</td>
+<td>LAUCHZELOT</td>
+<td>GERMAN</td>
+<td>KAMPF</td>
+<td>KAMPF</td>
+<td>F</td>
+<td>P</td>
+<td>5</td>
+<td>4</td>
+<td>9</td>
+</tr>
+<tr>
+<td>HONEDGE</td>
+<td>GRAMOKLES</td>
+<td>GERMAN</td>
+<td>STAHL</td>
+<td>GEIST</td>
+<td>L</td>
+<td>S</td>
+<td>5</td>
+<td>4</td>
+<td>9</td>
+</tr>
+<tr>
+<td>GARBODOR</td>
+<td>DEPONITOX</td>
+<td>GERMAN</td>
+<td>GIFT</td>
+<td>GIFT</td>
+<td>G</td>
+<td>I</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>GOLBAT</td>
+<td>NOSFERALTO</td>
+<td>FRENCH</td>
+<td>POISON</td>
+<td>VOL</td>
+<td>P</td>
+<td>O</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>SERPERIOR</td>
+<td>MAJASPIC</td>
+<td>FRENCH</td>
+<td>PLANTE</td>
+<td>PLANTE</td>
+<td>P</td>
+<td>T</td>
+<td>1</td>
+<td>5</td>
+<td>6</td>
+</tr>
+<tr>
+<td>BLAZIKEN</td>
+<td>BRASÉGALI</td>
+<td>FRENCH</td>
+<td>FEU</td>
+<td>COMBAT</td>
+<td>F</td>
+<td>B</td>
+<td>1</td>
+<td>4</td>
+<td>5</td>
+</tr>
+<tr>
+<td>DARMANITAN</td>
+<td>DARUMACHO</td>
+<td>FRENCH</td>
+<td>GLACE</td>
+<td>GLACE</td>
+<td>L</td>
+<td>E</td>
+<td>2</td>
+<td>5</td>
+<td>7</td>
+</tr>
+<tr>
+<td>GRENINJA</td>
+<td>AMPHINOBI</td>
+<td>FRENCH</td>
+<td>EAU</td>
+<td>TÉNÈBRES</td>
+<td>E</td>
+<td>È</td>
+<td>1</td>
+<td>4</td>
+<td>5</td>
+</tr>
+<tr>
+<td>BEEDRILL</td>
+<td>DARDARGNAN</td>
+<td>FRENCH</td>
+<td>INSECTE</td>
+<td>POISON</td>
+<td>I</td>
+<td>P</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>SNORLAX</td>
+<td>RONFLEX</td>
+<td>FRENCH</td>
+<td>NORMAL</td>
+<td>NORMAL</td>
+<td>N</td>
+<td>M</td>
+<td>1</td>
+<td>4</td>
+<td>5</td>
+</tr>
+<tr>
+<td>ZAPDOS</td>
+<td>ÉLECTHOR</td>
+<td>FRENCH</td>
+<td>ÉLECTRIK</td>
+<td>VOL</td>
+<td>C</td>
+<td>O</td>
+<td>4</td>
+<td>2</td>
+<td>6</td>
+</tr>
+<tr>
+<td>GOLDUCK</td>
+<td>AKWAKWAK</td>
+<td>FRENCH</td>
+<td>EAU</td>
+<td>EAU</td>
+<td>E</td>
+<td>U</td>
+<td>1</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr>
+<td>CUTIEFLY</td>
+<td>BOMBYDOU</td>
+<td>FRENCH</td>
+<td>INSECTE</td>
+<td>FÉE</td>
+<td>T</td>
+<td>É</td>
+<td>6</td>
+<td>2</td>
+<td>8</td>
+</tr>
+<tr>
+<td>WOOPER</td>
+<td>AXOLOTO</td>
+<td>FRENCH</td>
+<td>EAU</td>
+<td>SOL</td>
+<td>U</td>
+<td>L</td>
+<td>3</td>
+<td>3</td>
+<td>6</td>
+</tr>
+<tr>
+<td>DECIDUEYE</td>
+<td>DECIDUEYE</td>
+<td>ENGLISH</td>
+<td>GRASS</td>
+<td>GHOST</td>
+<td>A</td>
+<td>G</td>
+<td>3</td>
+<td>1</td>
+<td>4</td>
+</tr>
+<tr>
+<td>OBSTAGOON</td>
+<td>OBSTAGOON</td>
+<td>ENGLISH</td>
+<td>DARK</td>
+<td>NORMAL</td>
+<td>R</td>
+<td>L</td>
+<td>3</td>
+<td>6</td>
+<td>9</td>
+</tr>
+<tr>
+<td>VENUSAUR</td>
+<td>VENUSAUR</td>
+<td>ENGLISH</td>
+<td>GRASS</td>
+<td>POISON</td>
+<td>R</td>
+<td>I</td>
+<td>2</td>
+<td>3</td>
+<td>5</td>
+</tr>
+<tr>
+<td>SKARMORY</td>
+<td>SKARMORY</td>
+<td>ENGLISH</td>
+<td>STEEL</td>
+<td>FLYING</td>
+<td>S</td>
+<td>I</td>
+<td>1</td>
+<td>4</td>
+<td>5</td>
+</tr>
+<tr>
+<td>RAPIDASH</td>
+<td>RAPIDASH</td>
+<td>ENGLISH</td>
+<td>PSYCHIC</td>
+<td>FAIRY</td>
+<td>P</td>
+<td>F</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>HERACROSS</td>
+<td>HERACROSS</td>
+<td>ENGLISH</td>
+<td>BUG</td>
+<td>FIGHTING</td>
+<td>B</td>
+<td>N</td>
+<td>1</td>
+<td>7</td>
+<td>8</td>
+</tr>
+<tr>
+<td>SANDSHREW</td>
+<td>SANDSHREW</td>
+<td>ENGLISH</td>
+<td>ICE</td>
+<td>STEEL</td>
+<td>I</td>
+<td>L</td>
+<td>1</td>
+<td>5</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>Finally, we take the sum of the letter positions and use it as an index into the Pokémon name (in the language used,
+which is German, French, or English in that order):</p>
+<blockquote>
+<table>
+<thead>
+<tr>
+<th>English name</th>
+<th>Foreign name</th>
+<th>Language</th>
+<th>Position of 1st letter</th>
+<th>Position of 2nd letter</th>
+<th>Sum</th>
+<th>Extracted letter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>COALOSSAL</td>
+<td>MONTECARBO</td>
+<td>GERMAN</td>
+<td>6</td>
+<td>3</td>
+<td>9</td>
+<td>B</td>
+</tr>
+<tr>
+<td>GEODUDE</td>
+<td>KLEINSTEIN</td>
+<td>GERMAN</td>
+<td>1</td>
+<td>3</td>
+<td>4</td>
+<td>I</td>
+</tr>
+<tr>
+<td>BISHARP</td>
+<td>CAESURIO</td>
+<td>GERMAN</td>
+<td>2</td>
+<td>2</td>
+<td>4</td>
+<td>S</td>
+</tr>
+<tr>
+<td>PROBOPASS</td>
+<td>VOLUMINAS</td>
+<td>GERMAN</td>
+<td>4</td>
+<td>4</td>
+<td>8</td>
+<td>A</td>
+</tr>
+<tr>
+<td>CHANDELURE</td>
+<td>SKELABRA</td>
+<td>GERMAN</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>K</td>
+</tr>
+<tr>
+<td>RUFFLET</td>
+<td>GERONIMATZ</td>
+<td>GERMAN</td>
+<td>4</td>
+<td>1</td>
+<td>5</td>
+<td>N</td>
+</tr>
+<tr>
+<td>SIRFETCH&rsquo;D</td>
+<td>LAUCHZELOT</td>
+<td>GERMAN</td>
+<td>5</td>
+<td>4</td>
+<td>9</td>
+<td>O</td>
+</tr>
+<tr>
+<td>HONEDGE</td>
+<td>GRAMOKLES</td>
+<td>GERMAN</td>
+<td>5</td>
+<td>4</td>
+<td>9</td>
+<td>S</td>
+</tr>
+<tr>
+<td>GARBODOR</td>
+<td>DEPONITOX</td>
+<td>GERMAN</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>P</td>
+</tr>
+<tr>
+<td>GOLBAT</td>
+<td>NOSFERALTO</td>
+<td>FRENCH</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>S</td>
+</tr>
+<tr>
+<td>SERPERIOR</td>
+<td>MAJASPIC</td>
+<td>FRENCH</td>
+<td>1</td>
+<td>5</td>
+<td>6</td>
+<td>P</td>
+</tr>
+<tr>
+<td>BLAZIKEN</td>
+<td>BRASÉGALI</td>
+<td>FRENCH</td>
+<td>1</td>
+<td>4</td>
+<td>5</td>
+<td>É</td>
+</tr>
+<tr>
+<td>DARMANITAN</td>
+<td>DARUMACHO</td>
+<td>FRENCH</td>
+<td>2</td>
+<td>5</td>
+<td>7</td>
+<td>C</td>
+</tr>
+<tr>
+<td>GRENINJA</td>
+<td>AMPHINOBI</td>
+<td>FRENCH</td>
+<td>1</td>
+<td>4</td>
+<td>5</td>
+<td>I</td>
+</tr>
+<tr>
+<td>BEEDRILL</td>
+<td>DARDARGNAN</td>
+<td>FRENCH</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>A</td>
+</tr>
+<tr>
+<td>SNORLAX</td>
+<td>RONFLEX</td>
+<td>FRENCH</td>
+<td>1</td>
+<td>4</td>
+<td>5</td>
+<td>L</td>
+</tr>
+<tr>
+<td>ZAPDOS</td>
+<td>ÉLECTHOR</td>
+<td>FRENCH</td>
+<td>4</td>
+<td>2</td>
+<td>6</td>
+<td>H</td>
+</tr>
+<tr>
+<td>GOLDUCK</td>
+<td>AKWAKWAK</td>
+<td>FRENCH</td>
+<td>1</td>
+<td>3</td>
+<td>4</td>
+<td>A</td>
+</tr>
+<tr>
+<td>CUTIEFLY</td>
+<td>BOMBYDOU</td>
+<td>FRENCH</td>
+<td>6</td>
+<td>2</td>
+<td>8</td>
+<td>U</td>
+</tr>
+<tr>
+<td>WOOPER</td>
+<td>AXOLOTO</td>
+<td>FRENCH</td>
+<td>3</td>
+<td>3</td>
+<td>6</td>
+<td>T</td>
+</tr>
+<tr>
+<td>DECIDUEYE</td>
+<td>DECIDUEYE</td>
+<td>ENGLISH</td>
+<td>3</td>
+<td>1</td>
+<td>4</td>
+<td>I</td>
+</tr>
+<tr>
+<td>OBSTAGOON</td>
+<td>OBSTAGOON</td>
+<td>ENGLISH</td>
+<td>3</td>
+<td>6</td>
+<td>9</td>
+<td>N</td>
+</tr>
+<tr>
+<td>VENUSAUR</td>
+<td>VENUSAUR</td>
+<td>ENGLISH</td>
+<td>2</td>
+<td>3</td>
+<td>5</td>
+<td>S</td>
+</tr>
+<tr>
+<td>SKARMORY</td>
+<td>SKARMORY</td>
+<td>ENGLISH</td>
+<td>1</td>
+<td>4</td>
+<td>5</td>
+<td>M</td>
+</tr>
+<tr>
+<td>RAPIDASH</td>
+<td>RAPIDASH</td>
+<td>ENGLISH</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>A</td>
+</tr>
+<tr>
+<td>HERACROSS</td>
+<td>HERACROSS</td>
+<td>ENGLISH</td>
+<td>1</td>
+<td>7</td>
+<td>8</td>
+<td>S</td>
+</tr>
+<tr>
+<td>SANDSHREW</td>
+<td>SANDSHREW</td>
+<td>ENGLISH</td>
+<td>1</td>
+<td>5</td>
+<td>6</td>
+<td>H</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>The pairs of colored letters are presented in separate rows, with the 1st row corresponding to German names of Pokémon,
+the 2nd row corresponding to French names, and the 3rd row corresponding to English names.</p>
+<p>Reading the rows, we have:</p>
+<table>
+<thead>
+<tr>
+<th>Language</th>
+<th>Text</th>
+<th>Translation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>German</td>
+<td>BISAKNOSP</td>
+<td>IVYSAUR</td>
+</tr>
+<tr>
+<td>French</td>
+<td>SPÉCIAL HAUT</td>
+<td>UP SPECIAL</td>
+</tr>
+<tr>
+<td>English</td>
+<td>IN SMASH</td>
+<td>IN SMASH</td>
+</tr>
+</tbody>
+</table>
+<p>In the Smash Bros. series of fighting games, Ivysaur&rsquo;s &ldquo;up special&rdquo; move is <strong>VINE WHIP</strong>, the final answer.</p>
+
+    
+    
+
+    
+    
+
+    
+    <div class="puzzle-main-corner puzzle-main-corner-1"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-2"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-3"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-4"></div>
+    
+</main>
+
+
+    </div>
+    
+
+    
+
+    
+    <script>
+    document.getElementById('nav-music').style.display = 'none';
+    document.getElementById("progress-simulator").addEventListener("submit", (e) => {
+        if (e.submitter.name === "reset") {
+            toggleReset(true);
+            doGlitch(false);
+            document.getElementById("shortcuts").checked = false;
+            e.preventDefault();
+        } else {
+            localStorage.setItem(e.submitter.name, e.submitter.value);
+        }
+    });
+    addStyles();
+
+    function toggleReset(which) {
+        $('#loop-reset').toggleClass('loop-resetting', which);
+    }
+
+    function addStyles() {
+        const changeFavicon = (url) => {
+            const e = Array.from(document.getElementsByTagName("link"))
+                .filter(e => e.rel === "icon")[0];
+            e.href = url;
+        }
+        const addSheet = (url) => {
+            const e = document.createElement("link");
+            e.rel = "stylesheet";
+            e.href = url;
+            document.getElementsByTagName("head")[0].appendChild(e);
+        }
+
+        const seasons = ["spring", "summer", "autumn", "winter"];
+        let current_main_round = localStorage.getItem("round");
+        const endgame_unlocked = localStorage.getItem("endgame") === "true";
+
+        const matches = new RegExp(`\\?(${seasons.join("|")})`).exec(document.URL);
+        if (matches && matches[1]) {
+            current_main_round = matches[1];
+        }
+
+        if (endgame_unlocked) {
+            addSheet("/static/css/endgame.css");
+            changeFavicon("/static/images/favicon-endgame.ico");
+            const nodes = document.getElementsByClassName("energy-nodes-info");
+            console.log(nodes);
+            if (nodes.length > 0) {
+                nodes[0].style.display = "block";
+            }
+        } else if (current_main_round === "concert") {
+            addSheet("/static/css/concert.css");
+            changeFavicon("/static/images/favicon-concert.ico");
+            // also add the concert music
+            document.getElementById('nav-music').style.display = 'inline-block';
+            const audio = document.getElementById("music-audio");
+            if (audio) {
+                audio.addEventListener('play', () => {
+                    audio.volume = localStorage.getItem('music-audio-volume') ?? 0.5;
+                });
+                audio.addEventListener('volumechange', () => {
+                    localStorage.setItem('music-audio-volume', audio.volume);
+                });
+            }
+        } else if (seasons.includes(current_main_round)) {
+            addSheet("/static/css/season.css");
+            addSheet(`/static/css/${current_main_round}.css`);
+            changeFavicon(`/static/images/favicon-${current_main_round}.ico`);
+        } else {
+            addSheet("/static/css/blue.css");
+            changeFavicon("/static/images/favicon-blue.ico");
+        }
+    }
+
+    registerOnGlitchHook((ex) => {
+        document.getElementById('background-glitch-wrapper').style.display = 'initial';
+    });
+    </script>
+    
+</body>
+</html>

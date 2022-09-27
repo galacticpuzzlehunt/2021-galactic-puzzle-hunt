@@ -1,0 +1,387 @@
+
+
+
+
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+<title>Solution: All Things Big and Small</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <meta property="og:title" content="Galactic Puzzle Hunt 2022">
+    <meta property="og:description" content="Registration for this year's Galactic Puzzle Hunt is now open!">
+    <meta property="og:image" content="https://galacticpuzzlehunt.com/static/images/banner.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:slnt,CASL,CRSV,MONO@-3,0.5,1,1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/skeleton.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.formset/1.2.2/jquery.formset.min.js"></script>
+    <script src="/jsi18n/"></script>
+    <script src="/static/js/sorttable.js"></script>
+    <script src="/static/js/tray.js"></script>
+    <script src="/static/js/notify.js"></script>
+    <script src="/static/js/time.js"></script>
+    
+    
+    <link rel="icon" sizes="16x16 32x32 48x48 64x64" href="/static/images/favicon.ico" type="image/vnd.microsoft.icon">
+    
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92192633-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-92192633-1');
+</script>
+
+</head>
+<body>
+    
+    <div id="background-glitch-wrapper" class="background-glitch">
+        <div class="glitch-1"></div>
+        <div class="glitch-2"></div>
+        <div class="glitch-3"></div>
+    </div>
+    
+    
+    <input id="shortcuts" type="checkbox">
+    
+    <nav>
+        <span class="tray">
+            <span id="tray-timer"></span>
+            <div class="top-tabs">
+                <a href="/">
+                    Home
+                </a>
+                
+                
+                <a href="/story">
+                    Story
+                </a>
+                
+                
+                <a class="selected-tab" href="/puzzles">
+                    Puzzles
+                </a>
+                
+                <a href="/teams">
+                    Teams
+                </a>
+                
+                
+                <a href="/errata">
+                    Updates
+                </a>
+                
+                
+                
+                
+                <a id="nav-music" href="#">
+                    <label for="music" title="Music" style="margin-bottom: 0; font-weight: normal; cursor: pointer;">Music</label>
+                </a>
+                <input id="music" type="checkbox">
+                <div class="shortcuts music">
+                    <audio id="music-audio" controls src="/static/puzzle_resources/worlds-end-concert/music-audio.mp3">
+                        There should be a music player here.
+                    </audio>
+                </div>
+                
+                
+            </div>
+            <div class="top-left-actions">
+                
+<a href="/puzzle/all-things-big-and-small" class="btn">Back to the puzzle</a>
+
+            </div>
+        </span>
+        <div class="top-right-actions">
+        
+        <label for="shortcuts" title="Simulator">Simulator </label>
+        
+        
+        </div>
+    </nav>
+    
+    <div class="shortcuts">
+        <form id="progress-simulator">
+        <div>Current round:</div>
+        <button class="btn" type="submit" name="round" value="forward">⬆️</button>
+        <button class="btn" type="submit" name="round" value="spring">🌸</button>
+        <button class="btn" type="submit" name="round" value="summer">☀️</button>
+        <button class="btn" type="submit" name="round" value="autumn">🍂</button>
+        <button class="btn" type="submit" name="round" value="winter">☃️</button>
+        <button class="btn" type="submit" name="round" value="concert">🎤</button>
+        <button class="btn" type="submit" name="round" value="none">None</button>
+        <div>Endgame:</div>
+        <button class="btn" type="submit" name="endgame" value="true">Unlock</button>
+        <button class="btn" type="submit" name="endgame" value="false">Reset</button>
+        <div>Reset:</div>
+        <button class="btn" type="submit" name="reset" value="reset">Reset</button>
+        </form>
+    </div>
+    
+    
+    
+    
+    
+    <div id="loop-reset">
+        <form>
+            <svg viewBox="-30 160 720 320">
+                <defs>
+                    <path id="loop-end-path" d="m 370,240 c 38.29044,0 74.26676,18.33512 96.83716,49.26624 l -76.8369,30.73478 V 270 L 300,330 261.03858,309.74192 c 19.60706,-42.51188 62.14674,-69.74008 108.9623,-69.74306 z m 106.15758,64.22738 c 6.65282,12.65518 10.9906,26.39738 12.80876,40.57862 l -38.96532,5.19538 z"/>
+                </defs>
+                <foreignObject width="720" height="480" clip-path="url(#loop-end-clip)" class="loop-shade">
+                    <aside class="loop-shade" xmlns="http://www.w3.org/1999/xhtml" style="width: 100%; height: 100%;"></aside>
+                </foreignObject>
+                <clipPath id="loop-end-clip"><use href="#loop-end-path"/></clipPath>
+                <use href="#loop-end-path"/>
+                <path d="M 490,400 600,330 450,350 490,280 390,320 V 270 L 300,330 50,200 170,380 50,400"/>
+            </svg>
+            <div>THE END</div>
+            <p>You can reset once per minute.</p>
+            <table>
+                <tr id="loop-reset-btn-row-reset">
+                    <td><button class="btn" disabled>Reset</button></td>
+                    <td>Start over from the beginning of the exam.</td>
+                </tr>
+                <tr id="loop-reset-btn-row-restore">
+                    <td><button class="btn" disabled>Jump</button></td>
+                    <td>Start over, but resubmit your previous answers to bring you back to this point.</td>
+                </tr>
+                <tr>
+                    <td><a class="btn" href="javascript:toggleReset(false)">Stay</a></td>
+                    <td>Look at this page a bit longer. Make sure to save your work.</td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    
+    <script>
+
+    
+    
+    let glitchTriggerFuncs = [];
+    let glitchTriggerReceived = false;
+    let glitchTriggerExReceived = false;
+    let glitchPageLoaded = false;
+    function processGlitchFuncs(ex) {
+        glitchTriggerFuncs.forEach((func) => {
+            func(ex);
+        });
+    }
+    function doGlitch(ex) {
+        glitchTriggerReceived = true;
+        if (ex) {
+            glitchTriggerExReceived = true;
+        }
+        if (glitchPageLoaded) {
+            processGlitchFuncs(ex);
+        }
+    }
+    window.addEventListener('load', () => {
+        glitchPageLoaded = true;
+        if (glitchTriggerExReceived) {
+            processGlitchFuncs(true);
+        }
+        else if (glitchTriggerReceived) {
+            processGlitchFuncs(false);
+        }
+    }, false);
+    
+    
+    
+    function registerOnGlitchHook(func) {
+        if (glitchTriggerExReceived) {
+            func(true);
+        }
+        else if (glitchTriggerReceived) {
+            func(false);
+        }
+        glitchTriggerFuncs.push(func);
+    }
+    
+
+    
+    
+    </script>
+    <div class="content">
+        
+
+<style>
+h2 {
+    font-size: 2.5rem;
+    font-weight: normal;
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+
+h4 {
+    font-size: 2rem;
+    font-weight: normal;
+    margin: 2rem 0;
+}
+</style>
+
+<h1>
+    Solution <span style="font-weight: 300">All Things Big and Small</span>
+    <div class="solved-title-marker">Answer <span class="solved-title-answer spoiler">EMBELLISHING</span></div>
+</h1>
+
+<main class="puzzle-main">
+    <h2 style="margin-top: 0">
+        Written by
+        
+Brian Chen
+
+    </h2>
+
+    
+    <p>The puzzle consists of a bunch of overlaid clues in tiny font with all text information removed. To figure out what the clues say, solvers can zoom in a lot on the webpage or the PDF, possibly with the help of an editor, or even find the matching font (Fira Sans Thin) and superimpose letters.</p>
+<p>Each clue is a wordplay-only cryptic clue that solves to the name of a traditional point size minus a letter. Each clue is also written in a point size, and the clues are also vertically sorted by point size to help solvers visually distinguish them; we can arrange the clues in a cycle such that each clue&rsquo;s answer is the next clue&rsquo;s point size minus a letter.</p>
+<div><svg id="solsvg" style="width: 100%; height: auto" xmlns="http://www.w3.org/2000/svg" width="272" height="26.667" viewBox="0 0 272 26.67" xmlns:v="https://vecta.io/nano"><defs><style>@font-face{font-family:"Fira Sans";src:url(data:application/font-woff;charset=utf-8;base64,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) format("woff"); font-weight:normal;font-style:normal;}</style></defs><style><![CDATA[.B{dominant-baseline:hanging}]]></style><g font-family="Fira Sans" font-weight="100" class="B"><text x="3.373" y="5.814" font-size="7.333" xml:space="preserve">1.</text><text x="85.961" y="5.814" font-size="7.333" xml:space="preserve">Hearts of alpaca and marlin (1_3)</text><text x="97.16" y="5.614" font-size="6.667" xml:space="preserve">Popular charged particle (_5)</text><text x="70.012" y="6.414" font-size="9.333" xml:space="preserve">One striving for victory again? (_6)</text><text x="62.188" y="6.614" font-size="10.67" xml:space="preserve">Small town from EarthBound (9_)</text><text x="43.809" y="6.214" font-size="8.667" xml:space="preserve">Finally obtain hole in two, say, in one and one (8_)</text><text x="71.712" y="6.014" font-size="8" xml:space="preserve">Beheaded eel with proper stuffing (_9)</text><text x="9.594" y="7.014" font-size="13.33" xml:space="preserve">Desire to be surrounded by disapproval (7_1)</text><text x="45.83" y="6.814" font-size="12" xml:space="preserve">Mother takes every photograph (_8)</text><text x="92.995" y="7.214" font-size="14.67" xml:space="preserve">Single out (6_)</text><text x="83.458" y="7.614" font-size="18.67" xml:space="preserve">Mad cap (1_2)</text><text x="57.012" y="7.414" font-size="16" xml:space="preserve">Endless dial mode (5_1)</text><text x="104.561" y="5.414" font-size="6" xml:space="preserve">First of all, consumed (1_3)</text></g></svg></div>
+
+<p>(Click a row to highlight the text in the enlarged SVG above.)</p>
+<table id="soltable"><tr><th>Point size</th><th>Clue</th><th>Parse</th><th>Point size name</th><th>Point size meaning</th></tr><tr><td> 5.5</td><td>Hearts of alpaca and marlin</td><td>_P[[e]]A_ _RL_                        </td><td>Pearl      </td><td> 5  </td></tr><tr><td> 5  </td><td>Popular charged particle</td><td>[[m]]IN+ION                              </td><td>Minion     </td><td> 7  </td></tr><tr><td> 7  </td><td>One striving for victory again?</td><td>[[b]]REVIER (one who re-VIEs)     </td><td>Brevier    </td><td> 8  </td></tr><tr><td> 8  </td><td>Small town from EarthBound</td><td>MINI+ONETT[[e]]                        </td><td>Minionette </td><td> 6.5</td></tr><tr><td> 6.5</td><td>Finally obtain hole in two, say, in one and one</td><td>_N+ON(PAR)E+I[[l]]</td><td>Nonpareil  </td><td> 6  </td></tr><tr><td> 6  </td><td>Beheaded eel with proper stuffing</td><td>[[l]](-c)ONG(PRIM)ER            </td><td>Long Primer</td><td>10  </td></tr><tr><td>10  </td><td>Desire to be surrounded by disapproval</td><td>BO(URGE)O[[i]]S            </td><td>Bourgeois  </td><td> 9  </td></tr><tr><td> 9  </td><td>Mother takes every photograph</td><td>[[s]]M(ALL+PIC)A                    </td><td>Small Pica </td><td>11  </td></tr><tr><td>11  </td><td>Single out</td><td>ENGLIS*[[h]]                                           </td><td>English    </td><td>14  </td></tr><tr><td>14  </td><td>Mad cap</td><td>P[[i]]CA*                                                 </td><td>Pica       </td><td>12  </td></tr><tr><td>12  </td><td>Endless dial mode</td><td>DIA_ MO[[n]]D_                                  </td><td>Diamond    </td><td> 4.5</td></tr><tr><td> 4.5</td><td>First of all, consumed</td><td>A[[g]]ATE                                  </td><td>Agate      </td><td> 5.5</td></tr></table>
+<script>
+let sel = null;
+let trs = document.querySelectorAll('#soltable tr');
+let txts = document.querySelectorAll('#solsvg text');
+for (let i = 0; i < 12; i++) {
+    trs[i+1].addEventListener('click', function () {
+        if (sel === i) {
+            sel = null;
+            for (let j = 0; j < 12; j++) {
+                txts[j+1].style.opacity = 1;
+            }
+        } else {
+            sel = i;
+            for (let j = 0; j < 12; j++) {
+                txts[j+1].style.opacity = i === j ? 1 : 0.1;
+            }
+        }
+    });
+}
+</script>
+
+<p>Starting from the clue aligned with and the same size as the &ldquo;1.&rdquo; to the left (or just anagramming), we can extract missing letters to obtain the answer, <strong>EMBELLISHING</strong>.</p>
+
+    
+    
+    <h2 id="authors-notes">Author&rsquo;s Notes</h2>
+    <p>This puzzle largely wrote itself after I accidentally stumbled upon the Wikipedia article <a href="https://en.wikipedia.org/wiki/Traditional_point-size_names">Traditional point-size names</a>.</p>
+<p>I have thought about puzzle ideas that involve simple visual manipulation of English letters for a while, e.g. puzzles like <a href="https://dp.puzzlehunt.net/puzzle/bottom-lines.html">Bottom Lines</a>, as they seem like they should be an area of the most accessible puzzle ideas in terms of knowledge, while there&rsquo;s still a lot to explore. I think I&rsquo;d enjoy annotating the strokes, analyzing baselines and spacing, etc. to tease apart the letters in this puzzle; but many of my testsolvers didn&rsquo;t and I ran out of time/ideas for making it better, so I put it last in the round so that more teams would be able to backsolve it if they so wanted &mdash; with, apparently, limited success.</p>
+<p>I maybe use Fira Sans too much, but there aren&rsquo;t that many options for fonts with thin enough weights to be overlaid as in the puzzle and still have discernable strokes. I thought features like Fira&rsquo;s slightly curved lowercase L would make it easier.</p>
+    
+
+    
+    
+
+    
+    <div class="puzzle-main-corner puzzle-main-corner-1"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-2"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-3"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-4"></div>
+    
+</main>
+
+
+    </div>
+    
+
+    
+
+    
+    <script>
+    document.getElementById('nav-music').style.display = 'none';
+    document.getElementById("progress-simulator").addEventListener("submit", (e) => {
+        if (e.submitter.name === "reset") {
+            toggleReset(true);
+            doGlitch(false);
+            document.getElementById("shortcuts").checked = false;
+            e.preventDefault();
+        } else {
+            localStorage.setItem(e.submitter.name, e.submitter.value);
+        }
+    });
+    addStyles();
+
+    function toggleReset(which) {
+        $('#loop-reset').toggleClass('loop-resetting', which);
+    }
+
+    function addStyles() {
+        const changeFavicon = (url) => {
+            const e = Array.from(document.getElementsByTagName("link"))
+                .filter(e => e.rel === "icon")[0];
+            e.href = url;
+        }
+        const addSheet = (url) => {
+            const e = document.createElement("link");
+            e.rel = "stylesheet";
+            e.href = url;
+            document.getElementsByTagName("head")[0].appendChild(e);
+        }
+
+        const seasons = ["spring", "summer", "autumn", "winter"];
+        let current_main_round = localStorage.getItem("round");
+        const endgame_unlocked = localStorage.getItem("endgame") === "true";
+
+        const matches = new RegExp(`\\?(${seasons.join("|")})`).exec(document.URL);
+        if (matches && matches[1]) {
+            current_main_round = matches[1];
+        }
+
+        if (endgame_unlocked) {
+            addSheet("/static/css/endgame.css");
+            changeFavicon("/static/images/favicon-endgame.ico");
+            const nodes = document.getElementsByClassName("energy-nodes-info");
+            console.log(nodes);
+            if (nodes.length > 0) {
+                nodes[0].style.display = "block";
+            }
+        } else if (current_main_round === "concert") {
+            addSheet("/static/css/concert.css");
+            changeFavicon("/static/images/favicon-concert.ico");
+            // also add the concert music
+            document.getElementById('nav-music').style.display = 'inline-block';
+            const audio = document.getElementById("music-audio");
+            if (audio) {
+                audio.addEventListener('play', () => {
+                    audio.volume = localStorage.getItem('music-audio-volume') ?? 0.5;
+                });
+                audio.addEventListener('volumechange', () => {
+                    localStorage.setItem('music-audio-volume', audio.volume);
+                });
+            }
+        } else if (seasons.includes(current_main_round)) {
+            addSheet("/static/css/season.css");
+            addSheet(`/static/css/${current_main_round}.css`);
+            changeFavicon(`/static/images/favicon-${current_main_round}.ico`);
+        } else {
+            addSheet("/static/css/blue.css");
+            changeFavicon("/static/images/favicon-blue.ico");
+        }
+    }
+
+    registerOnGlitchHook((ex) => {
+        document.getElementById('background-glitch-wrapper').style.display = 'initial';
+    });
+    </script>
+    
+</body>
+</html>

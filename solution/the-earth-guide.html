@@ -1,0 +1,1040 @@
+
+
+
+
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+<title>Solution: The Earth Guide</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <meta property="og:title" content="Galactic Puzzle Hunt 2022">
+    <meta property="og:description" content="Registration for this year's Galactic Puzzle Hunt is now open!">
+    <meta property="og:image" content="https://galacticpuzzlehunt.com/static/images/banner.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:slnt,CASL,CRSV,MONO@-3,0.5,1,1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/skeleton.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.formset/1.2.2/jquery.formset.min.js"></script>
+    <script src="/jsi18n/"></script>
+    <script src="/static/js/sorttable.js"></script>
+    <script src="/static/js/tray.js"></script>
+    <script src="/static/js/notify.js"></script>
+    <script src="/static/js/time.js"></script>
+    
+    
+    <link rel="icon" sizes="16x16 32x32 48x48 64x64" href="/static/images/favicon.ico" type="image/vnd.microsoft.icon">
+    
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92192633-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-92192633-1');
+</script>
+
+</head>
+<body>
+    
+    <div id="background-glitch-wrapper" class="background-glitch">
+        <div class="glitch-1"></div>
+        <div class="glitch-2"></div>
+        <div class="glitch-3"></div>
+    </div>
+    
+    
+    <input id="shortcuts" type="checkbox">
+    
+    <nav>
+        <span class="tray">
+            <span id="tray-timer"></span>
+            <div class="top-tabs">
+                <a href="/">
+                    Home
+                </a>
+                
+                
+                <a href="/story">
+                    Story
+                </a>
+                
+                
+                <a class="selected-tab" href="/puzzles">
+                    Puzzles
+                </a>
+                
+                <a href="/teams">
+                    Teams
+                </a>
+                
+                
+                <a href="/errata">
+                    Updates
+                </a>
+                
+                
+                
+                
+                <a id="nav-music" href="#">
+                    <label for="music" title="Music" style="margin-bottom: 0; font-weight: normal; cursor: pointer;">Music</label>
+                </a>
+                <input id="music" type="checkbox">
+                <div class="shortcuts music">
+                    <audio id="music-audio" controls src="/static/puzzle_resources/worlds-end-concert/music-audio.mp3">
+                        There should be a music player here.
+                    </audio>
+                </div>
+                
+                
+            </div>
+            <div class="top-left-actions">
+                
+<a href="/puzzle/the-earth-guide" class="btn">Back to the puzzle</a>
+
+            </div>
+        </span>
+        <div class="top-right-actions">
+        
+        <label for="shortcuts" title="Simulator">Simulator </label>
+        
+        
+        </div>
+    </nav>
+    
+    <div class="shortcuts">
+        <form id="progress-simulator">
+        <div>Current round:</div>
+        <button class="btn" type="submit" name="round" value="forward">⬆️</button>
+        <button class="btn" type="submit" name="round" value="spring">🌸</button>
+        <button class="btn" type="submit" name="round" value="summer">☀️</button>
+        <button class="btn" type="submit" name="round" value="autumn">🍂</button>
+        <button class="btn" type="submit" name="round" value="winter">☃️</button>
+        <button class="btn" type="submit" name="round" value="concert">🎤</button>
+        <button class="btn" type="submit" name="round" value="none">None</button>
+        <div>Endgame:</div>
+        <button class="btn" type="submit" name="endgame" value="true">Unlock</button>
+        <button class="btn" type="submit" name="endgame" value="false">Reset</button>
+        <div>Reset:</div>
+        <button class="btn" type="submit" name="reset" value="reset">Reset</button>
+        </form>
+    </div>
+    
+    
+    
+    
+    
+    <div id="loop-reset">
+        <form>
+            <svg viewBox="-30 160 720 320">
+                <defs>
+                    <path id="loop-end-path" d="m 370,240 c 38.29044,0 74.26676,18.33512 96.83716,49.26624 l -76.8369,30.73478 V 270 L 300,330 261.03858,309.74192 c 19.60706,-42.51188 62.14674,-69.74008 108.9623,-69.74306 z m 106.15758,64.22738 c 6.65282,12.65518 10.9906,26.39738 12.80876,40.57862 l -38.96532,5.19538 z"/>
+                </defs>
+                <foreignObject width="720" height="480" clip-path="url(#loop-end-clip)" class="loop-shade">
+                    <aside class="loop-shade" xmlns="http://www.w3.org/1999/xhtml" style="width: 100%; height: 100%;"></aside>
+                </foreignObject>
+                <clipPath id="loop-end-clip"><use href="#loop-end-path"/></clipPath>
+                <use href="#loop-end-path"/>
+                <path d="M 490,400 600,330 450,350 490,280 390,320 V 270 L 300,330 50,200 170,380 50,400"/>
+            </svg>
+            <div>THE END</div>
+            <p>You can reset once per minute.</p>
+            <table>
+                <tr id="loop-reset-btn-row-reset">
+                    <td><button class="btn" disabled>Reset</button></td>
+                    <td>Start over from the beginning of the exam.</td>
+                </tr>
+                <tr id="loop-reset-btn-row-restore">
+                    <td><button class="btn" disabled>Jump</button></td>
+                    <td>Start over, but resubmit your previous answers to bring you back to this point.</td>
+                </tr>
+                <tr>
+                    <td><a class="btn" href="javascript:toggleReset(false)">Stay</a></td>
+                    <td>Look at this page a bit longer. Make sure to save your work.</td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    
+    <script>
+
+    
+    
+    let glitchTriggerFuncs = [];
+    let glitchTriggerReceived = false;
+    let glitchTriggerExReceived = false;
+    let glitchPageLoaded = false;
+    function processGlitchFuncs(ex) {
+        glitchTriggerFuncs.forEach((func) => {
+            func(ex);
+        });
+    }
+    function doGlitch(ex) {
+        glitchTriggerReceived = true;
+        if (ex) {
+            glitchTriggerExReceived = true;
+        }
+        if (glitchPageLoaded) {
+            processGlitchFuncs(ex);
+        }
+    }
+    window.addEventListener('load', () => {
+        glitchPageLoaded = true;
+        if (glitchTriggerExReceived) {
+            processGlitchFuncs(true);
+        }
+        else if (glitchTriggerReceived) {
+            processGlitchFuncs(false);
+        }
+    }, false);
+    
+    
+    
+    function registerOnGlitchHook(func) {
+        if (glitchTriggerExReceived) {
+            func(true);
+        }
+        else if (glitchTriggerReceived) {
+            func(false);
+        }
+        glitchTriggerFuncs.push(func);
+    }
+    
+
+    
+    
+    </script>
+    <div class="content">
+        
+
+<style>
+h2 {
+    font-size: 2.5rem;
+    font-weight: normal;
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+
+h4 {
+    font-size: 2rem;
+    font-weight: normal;
+    margin: 2rem 0;
+}
+</style>
+
+<h1>
+    Solution <span style="font-weight: 300">The Earth Guide</span>
+    <div class="solved-title-marker">Answer <span class="solved-title-answer spoiler">SOUTH AMERICA</span></div>
+</h1>
+
+<main class="puzzle-main">
+    <h2 style="margin-top: 0">
+        Written by
+        
+Amon Ge and Charles Tam
+
+    </h2>
+
+    
+    <style>
+  @font-face{
+    font-family: 'Andika';
+    src: url(/static/puzzle_resources/the-earth-guide/crash-course/AndikaPhon-R.woff)
+        format('woff');
+  }
+
+  .spoiler:not(:hover) a {
+    color: #000;
+  }
+
+  .puzzle-main a {
+    color: #ce7b0f;
+    transition: 0.2s;
+  }
+
+  .puzzle-main a:hover, .puzzle-main a:focus {
+    color: #e7af65;
+  }
+
+  .no-border td, .no-border th {
+    border: none;
+  }
+
+  .vowels th, .vowels td {
+    text-align: center;
+    padding: 10px 5px;
+  }
+
+  .vowels th {
+    font-size: 1.3rem;
+    font-weight: normal;
+    padding: 2px 3px;
+  }
+
+  .vowels td:first-child {
+    text-align: right;
+    font-size: 1.3rem;
+  }
+
+  .consonants th, .consonants td {
+    text-align: center;
+    padding: 2px 3px;
+    min-width: 20px;
+  }
+
+  .consonants thead th {
+    font-size: 1.5rem;
+    border: none;
+  }
+
+
+  .consonants .place {
+    font-size: 1.3rem;
+    border: none;
+  }
+
+  .consonants .manner {
+    text-align: right;
+    font-size: 1.3rem;
+  }
+
+  .consonants .alveolar {
+    background-color: #fff0dc;
+  }
+
+  .tones td {
+    border: none;
+  }
+
+  .tones td:first-child {
+    text-align: center;
+  }
+
+  .tones .dotted-below td {
+    border-bottom: 2px dashed #E1E1E1;
+  }
+
+  .hint {
+    font-size: 1.3rem;
+    color: #999;
+  }
+
+  .ipa {
+    font-family: 'Andika', serif;
+  }
+
+  .ipa.cancel {
+    font-family: "Roboto Slab", serif;
+  }
+
+  .puflantu {
+    font-weight: bold;
+    font-family: monospace;
+    color: #4273c8;
+  }
+
+  .puflantu .cancel {
+    font-weight: normal;
+    font-family: "Roboto Slab", serif;
+    color: initial;
+  }
+
+  .extract td {
+    border: none;
+    padding: 10px 5px;
+  }
+
+  img.inline {
+    height: 3rem;
+    vertical-align: middle;
+  }
+
+  img.inline.sm {
+    height: 2.6rem;
+  }
+
+  .labels {
+    position: relative;
+    left: 100px;
+  }
+
+  .labels img {
+    height: 150px;
+  }
+
+  .labels .label {
+    position: absolute;
+    font-size: 1.5rem;
+  }
+
+  .labels .label.pokeball {
+    left: 100px;
+    top: 5px;
+  }
+
+  .labels .label.velum {
+    left: -40px;
+    top: 65px;
+  }
+
+  .labels .label.teeth {
+    left: -30px;
+    top: 110px;
+  }
+
+  .labels .label.lips {
+    left: 85px;
+    top: 120px;
+  }
+
+  .star {
+    position: relative;
+    left: 0px;
+    top: -3px;
+    font-size: 1.3rem;
+  }
+
+  .star:after {
+    position: absolute;
+    font-family: "Roboto Slab", serif;
+    content: "*";
+  }
+
+  #toc {
+    width: 200px;
+    height: fit-content;
+    margin-left: 20px;
+    margin-bottom: 2rem;
+
+    /* background-color: #4273c8; */
+    background-color: #a7c1ed;
+    color: #1d4181;
+  }
+
+  .toc {
+    border-radius: 10px;
+    padding: 5px 10px;
+    color: #1d4181;
+  }
+
+  .toc a {
+    color: #154ba9;
+  }
+
+  .toc a:hover, .toc a:focus {
+    color: #428cc8;
+  }
+
+  .toc-heading {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+
+  .toc-heading a {
+    opacity: 0;
+    display: none;
+    float: left;
+    margin-left: -2rem;
+
+    text-decoration: none;
+
+    transition: 0.3s;
+  }
+
+  .toc-heading:hover a {
+    /* opacity: 1; */
+  }
+
+  #toc-float {
+    position: fixed;
+    top: 5%;
+    right: 5%;
+
+    padding: 2rem;
+    background-color: rgba(167, 193, 237, 0.9);
+    text-align: right;
+
+    opacity: 0;
+    visibility: none;
+    transition: opacity 0.3s, visibility 0.3s;
+  }
+
+  #toc-float p {
+    margin: 0;
+  }
+
+  #toc-float a {
+    text-decoration: none;
+    font-size: 1.5rem;
+  }
+
+  #toc-float a.on {
+    color: #1e8b99;
+    font-weight: bold;
+  }
+
+  #naq-toc::after {
+    display: block;
+    content: attr(title);
+    font-weight: bold;
+    height: 1px;
+    color: transparent;
+    /* overflow: hidden; */
+    visibility: hidden;
+  }
+
+  .que {
+    /* font-size: 1.5rem; */
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+
+  .ans {
+    margin-bottom: 2.5rem;
+  }
+
+  .cols {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .cols.left {
+    justify-content: flex-start;
+  }
+
+  .cols.center {
+    align-items: center;
+  }
+
+  #tldr {
+    /* width: 60%; */
+    width: 600px;
+  }
+
+  #tldr-content {
+    font-size: 1.5rem;
+  }
+
+  .dajba {
+    /* width: 80%; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  button.toggle {
+    text-transform: initial;
+    font-size: initial;
+    font-weight: initial;
+    padding: 0 2rem;
+    width: 150px;
+    margin-bottom: 2rem;
+
+    background-color: #1b5280;
+    color: #eef;
+
+    transition: background-color 0.3s;
+  }
+
+  button.toggle:hover, button.toggle.selected:hover {
+    background-color: #428cc8;
+    color: #fff;
+  }
+
+  button.toggle:focus {
+    color: #eef;
+  }
+
+  button.toggle.selected {
+    background-color: #2380ab;
+    color: #eef;
+  }
+
+</style>
+
+<p>We are presented with a ripped booklet featuring six-fingered aliens, strange writing, and an obsession with food and bells... Of course! This must be a long lost <a href="https://2019.galacticpuzzlehunt.com/artifacts.html" target="_blank" rel="noopener noreferrer">Galactic artifact</a> about visiting Earth!</p>
+<div id="toc-float" class="toc"><p><a id="top-toc" href="#top">↑ Back to top ↑</a></p><p><a id="what-toc" href="#what">What even is this?</a></p><p><a id="tips-toc" href="#tips">Tips to reading Bel</a></p><p><a id="cheatsheet-toc" href="#cheatsheet">Bel Cheat Sheet</a></p><p><a id="translation-toc" href="#translation">Translation of all pages</a></p><p><a id="naq-toc" href="#naq" title="Never-before Asked Questions">Never-before Asked Questions</a></p></div>
+<div class="cols"><div id="toc" class="toc"><p><strong>Contents:</strong></p><p><a href="#what">What even is this?</a></p><p><a href="#tips">Tips to reading Bel</a></p><p><a href="#cheatsheet">Bel Cheat Sheet</a></p><p><a href="#translation">Translation of all pages</a></p><p><a href="#naq">Never-before Asked Questions</a></p></div><div id="tldr"><button class="toggle" onclick="toggle(this, '#tldr-content')">Show TL;DR</button><div id="tldr-content" style="display: none;"><p>The guide is written for <span class="puflantu">puflantu</span> speakers (blue writing), but it also features many Earth languages (non-blue writing). You don&rsquo;t need to be fluent in <span class="puflantu">puflantu</span> to learn to read the script (which we call &ldquo;Bel&rdquo;).</p><p>
+        Page 22 reads &ldquo;coffee&rdquo; in six Earth languages, and &ldquo;hello&rdquo; in <span class="puflantu">puflantu</span>, Italian (pg. 23), Vietnamese (pg. 24), Turkish (pg. 25), and Cantonese (pg. 30).
+      </p><p>
+        Pages 23–30 has the language name, &ldquo;What is this?&rdquo;, and &ldquo;This is lasagne/phở/baklava/<span lang="zh-HK">蝦餃</span>&rdquo; in the respective language and <span class="puflantu">puflantu</span>.
+      </p><p>
+        Page 31 reads &ldquo;<span class="puflantu">alhan</span> runasimi<span class="puflantu">tu-li</span> português<span class="puflantu">tu-li</span> guaraní<span class="puflantu">tu-li</span> español<span class="puflantu">tu-li yoxa fel onodir-ka</span>&rdquo;, or in English, &ldquo;Where you might hear Quechua, Portuguese, Guaraní, Spanish, and more&rdquo;. These languages are all spoken in <strong>SOUTH AMERICA</strong>, the answer to this puzzle.
+      </p></div></div></div>
+<div id="what" class="toc-heading"><a href="#top">⮬</a>
+  What even is this?
+</div>
+
+<p>Our main goal is to learn to read this curvy writing, and our first clue might come from the flavortext: <span class="puflantu">'Bovipa!</span> If we are familiar with <span class="puflantu">puflantu</span>, or consult the dictionary in the <a href="/puzzle/the-earth-guide/crash-course" target="_blank" rel="noopener noreferrer">crash course</a>, we&rsquo;ll know that <span class="puflantu">'bovipa</span> means hello, and conspicuously starts with <span class="ipa">/🔔/</span>, the sound of a bell. Interestingly, there&rsquo;s a bell drawing on the ripped left-most page, with curves coming out of it. And if we look closely, the writing in the speech bubble coming from the six-fingered hand at the bottom of page 22 also has a small bell<img class="inline sm" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/place-bell.png" alt=""> on one end! (We&rsquo;re also reminded in the crash course that the aliens that speak <span class="puflantu">puflantu</span> have six fingers.)</p>
+<p>Curiously, all <span class="puflantu">puflantu</span> is written in blue in the crash course and flavortext, and the blue alien&rsquo;s speech bubble has blue writing. There&rsquo;s blue writing throughout the guide, but then what could the non-blue writing be? The top of page 22 might give us a clue: an image of coffee, next to six speech bubbles. The curved writing inside each bubble is fairly simple, and if we compare carefully, we notice some similarities:</p>
+<p>On one end of each of the six curves, we see this circle with a short line coming off it: <img class="inline sm" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/place-vel.png" alt="">, after which the curves diverge. Three have a thick, round curve <span style="white-space: nowrap;"><img class="inline sm" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/vow-back-round.png" alt="">,</span> while the other three have a doubled, straighter curve <span style="white-space: nowrap;"><img class="inline sm" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/vow-central.png" alt="">.</span> After, there are various symbols that again extend into longer curves.</p>
+<p>Flipping through the other pages, we see that the next four pages have a similar format, with an image of a human, as well as speech bubbles with non-blue writing (all quite different) and with blue writing (fairly similar). The final page (page 31) is a complex curve, with mixed blue and non-blue elements. All of this doesn&rsquo;t give us too much to work with, but we might make our first insight from what we&rsquo;ve gathered so far. If this is in fact an &ldquo;Earth Guide&rdquo; for <span class="puflantu">puflantu</span>-speaking aliens, the blue writing should correspond to <span class="puflantu">puflantu</span>. And that means non-blue writing could represent Earth language!</p>
+<p>With this in mind, we might try revisiting the page 22. Consider the six bubbles around the image of coffee — they all start or end with this symbol <img class="inline sm" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/place-vel.png" alt="">. If we look up the word for <a href="https://en.wiktionary.org/wiki/coffee/translations" target="_blank" rel="noopener noreferrer">coffee in different languages</a>, we notice that they are very similar. Many words are two syllables, starting with a c, k, or q, which all make the hard k sound <span class="ipa">/k/</span> or similar. The vowels are varied, as is the middle consonant (sometimes f, v, p, or others). If we guess that these six bubbles might be six different words for &ldquo;coffee&rdquo;, we can deduce that <img class="inline sm" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/place-vel.png" alt=""> represents the <span class="ipa">/k/</span> sound at the beginning of many words. (We might also confirm that this <img class="inline sm" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/place-vel.png" alt=""> symbol is always on the end closer to the tip of the speech bubble, representing the start of the word.)</p>
+<p>Let&rsquo;s call this curvy script Bel. Another way to begin our literary journey is the blue Bel coming from the six-fingered hand we first looked at. If we guess that it&rsquo;s saying <span class="puflantu">'bovipa</span>, and guess that <img class="inline sm" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/place-bell.png" alt=""> is in fact the <span class="ipa">/🔔/</span> sound represented by <span class="puflantu">'</span>, we can make tentative guesses for the rest of the Bel curve. We need three more vowels for <span class="puflantu">o</span>, <span class="puflantu">i</span>, and <span class="puflantu">a</span>, as well as two more consonants for <span class="puflantu">v</span> and <span class="puflantu">p</span>. (If we look at the phonology of <span class="puflantu">puflantu</span>, we find that <span class="puflantu">'bovipa</span> sounds like <span class="ipa">/🔔boβipa/</span>, with a one-to-one correspondence between letters and sounds, so either approach works for now.) There might be too many Bel elements to cleanly break into letters or sounds here, but we can at least guess the double, straighter curve <img class="inline sm" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/vow-central.png" alt=""> at the end represents <span class="puflantu">a</span> or <span class="ipa">/a/</span>. This is consistent with the coffee Bel, where we might see the same letter/sound in &ldquo;c<u>a</u>fé&rdquo; (French or Spanish).</p>
+<p>Now, let&rsquo;s try to understand the non-blue Bel responses at the bottom of page 22. If an alien greets someone with <span class="puflantu">'Bovipa!</span>, how might a human respond? Perhaps with curiosity or with terror, but for an alien guide, an ideal human will greet them in return! And if these four greetings are in different languages, it makes sense for each of them to correspond to the following pages referred within each speech bubble.</p>
+<div id="tips" class="toc-heading"><a href="#top">⮬</a>Tips to reading Bel</div>
+
+<p>Great, we&rsquo;ve got a handle on our goal now. We can figure out each language on pages 23–30 based on the sounds we identify and by clues in the image. If we learn to read enough of Bel, we can read the mysterious phrase on page 31, which will tell us what to do next. There are many ways forward now, so here are some potential discoveries or hints to make progress:</p>
+<ol>
+<li>
+<p>Bel is a phonetic script, since it needs to represent many languages, not all of which are written in Latin. Examples include Arabic قهوة, Mandarin Chinese 咖啡, and Cantonese (page 30).</p>
+</li>
+<li>
+<p>Consonants are based off the bell shape on the left-most torn page, with three degrees of features:</p>
+<p>a) voiced or unvoiced</p>
+<p>b) place of articulation</p>
+<p>c) manner of articulation</p>
+</li>
+<li>
+<p>Vowels are based off the curved strokes, as seen extending off the bell on the left-most torn page, with three degrees of features:</p>
+<p>a) rounded or unrounded</p>
+<p>b) vowel height</p>
+<p>c) vowel backness</p>
+</li>
+<li>
+<p>Tone markers are loopy curves that extend from vowel curves, which can be used to help identify the tonal languages Mandarin Chinese (page 22), Vietnamese (page 24), and Cantonese (page 30).</p>
+</li>
+<li>
+<p>The direction of curvature changes along word boundaries.</p>
+</li>
+<li>
+<p>Each language page (pages 23–30) features a particular language and a particular food item from the language speakers&rsquo; cuisine. To be precise, each page has the name of the language, and a dialogue between two humans in that language, with <span class="puflantu">puflantu</span> translations. The offscreen human says: &ldquo;Hello! What is this?&rdquo; and the pictured human responds, &ldquo;This is&rdquo; followed by the name of the food they are showing.</p>
+</li>
+</ol>
+<p>Once we have enough of these observations, we can start reading page 31. It&rsquo;s a long <span class="puflantu">puflantu</span> sentence, with four non-<span class="puflantu">puflantu</span> words, each followed by the same short <span class="puflantu">puflantu</span> suffix each time. This suffix is <span class="ipa">/təli/</span>, or <span class="puflantu">tu-li</span>. If we look in the dictionary, we see that <span class="puflantu">li</span> means &ldquo;and&rdquo;, and <span class="puflantu">tu</span> marks a language, like <span class="puflantu">puflantu</span> or <span class="puflantu">furansetu</span>. In the Earth Guide, however, languages are named (in the red corners of pages 23–30) using their endonym, <em>with the phonemes (sounds) of that language</em>, rather than reducing to <span class="puflantu">puflantu</span> phonology.</p>
+<p>So these four non-blue words are in fact languages: <span class="ipa">/ɾunasimi/</span> (Quechua), <span class="ipa">/puɾtuɣeʃ/</span> (Portuguese), <span class="ipa">/ɡwarəni/</span> (Guaraní), and <span class="ipa">/espaɲol/</span> (Spanish). And reading just the first <span class="puflantu">puflantu</span> word <span class="ipa">/alxan/</span>, <span class="puflantu">alhan</span>, which means &ldquo;where&rdquo;, is enough information to extract the answer.</p>
+<p>The full sentence reads &ldquo;<span class="puflantu">alhan </span>runasimi<span class="puflantu">tu-li </span>português<span class="puflantu">tu-li </span>guaraní<span class="puflantu">tu-li </span>español<span class="puflantu">tu-li yoxa fel onodir-ka</span>&rdquo;, or in English, &ldquo;Where you might hear Quechua, Portuguese, Guaraní, Spanish, and more&rdquo;. These languages are all spoken in <strong>SOUTH AMERICA</strong>, the answer to this puzzle.</p>
+<div id="cheatsheet" class="toc-heading"><a href="#top">⮬</a>Bel Cheat Sheet</div>
+
+<h4>vowels</h4>
+<div class="cols left center"><div style="margin-right: 100px;"><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/vow-unround.png" alt=""> unround
+    <p></p><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/vow-round.png" alt=""> round
+  </div><table class="ipa vowels"><thead><tr class="ipa cancel no-border"><th></th><th colspan="2">front</th><th colspan="2">central</th><th colspan="2">back</th></tr><tr><th></th><th colspan="2"><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/vow-front.png" alt=""></th><th colspan="2"><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/vow-central.png" alt=""></th><th colspan="2"><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/vow-back.png" alt=""></th></tr></thead><tbody><tr><td class="ipa cancel">close <img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/vow-close.png" alt=""></td><td>i</td><td>y</td><td>ɨ</td><td>ʉ</td><td>ɯ</td><td>u</td></tr><tr><td class="ipa cancel">mid <img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/vow-mid.png" alt=""></td><td>e</td><td>ø</td><td>ə</td><td>ʊ</td><td>ɤ</td><td>o</td></tr><tr><td class="ipa cancel">open <img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/vow-open.png" alt=""></td><td>ɛ</td><td>œ</td><td>a</td><td>ɒ</td><td>ʌ</td><td>ɔ</td></tr></tbody></table></div>
+<div class="cols left"><div style="width: 350px; margin-right: 100px;"><p>Vowel height is based on the &ldquo;track&rdquo; the line sits on (inner=close, outer=open) considering the direction of curvature.</p><p>Initial vowel height is ambiguous, but track changes can be used to deduce the vowels.</p></div><div><p>e.g.</p><span class="ipa">/aiou/</span><p>&ldquo;ay-oh!&rdquo;</p></div><img src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/vow-aiou.png"
+    alt=""
+    style="height: 200px;"></div>
+
+<h4>tones</h4>
+<div class="cols left center"><table class="tones" style="margin-right: 100px;"><tr><td><span class="hint">↑</span></td><td><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/tone-1.png" alt=""></td></tr><tr><td>high</td><td><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/tone-2.png" alt=""></td></tr><tr class="dotted-below"><td><span class="hint">outside curve</span></td><td><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/tone-3.png" alt=""></td></tr><tr><td><span class="hint">inside curve</span></td><td><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/tone-4.png" alt=""></td></tr><tr><td>low</td><td><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/tone-5.png" alt=""></td></tr><tr><td><span class="hint">↓</span></td><td><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/tone-6.png" alt=""></td></tr></table><div><p>e.g.</p><span class="ipa">/a˥˩/</span><p>
+      &ldquo;sound of falling&rdquo;
+    </p><img src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/tone-fall.png"
+      alt=""
+      style="height: 200px;"></div></div>
+
+<h4>consonants</h4>
+<div class="cols left center"><div class="labels" style="width: 350px;"><div class="label pokeball">pokéball</div><div class="label velum">velum</div><div class="label teeth">teeth</div><div class="label lips">lips</div><img src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/cons-labels.png" alt=""></div><div><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/cons-unvoiced.png" alt=""> unvoiced
+    <p></p><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/cons-voiced.png" alt=""> voiced
+  </div></div>
+<table class="ipa consonants"><thead class="ipa cancel"><tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th colspan="8" class="alveolar">alveolar<span class="star"></span></th><th></th><th></th><th></th><th></th><th></th><th></th></tr></thead><tbody><tr class="ipa cancel place no-border"><td></td><td></td><td>bell</td><td colspan="2">bilabial</td><td colspan="2">labiodental<span class="star"></span></td><td colspan="2">dental</td><td colspan="2" class="alveolar"></td><td colspan="2" class="alveolar">palatal</td><td colspan="2" class="alveolar">post-</td><td colspan="2" class="alveolar">retroflex</td><td colspan="2">labiovelar</td><td colspan="2">velar</td><td colspan="2">glottal</td></tr><tr class="ipa cancel place"><td></td><td></td><td><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/place-bell.png" alt=""></td><td colspan="2"><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/place-bilab.png" alt=""></td><td colspan="2"><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/place-labdent.png" alt=""></td><td colspan="2"><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/place-dent.png" alt=""></td><td colspan="2" class="alveolar"><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/place-alv.png" alt=""></td><td colspan="2" class="alveolar"><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/place-alv-pal.png" alt=""></td><td colspan="2" class="alveolar"><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/place-alv-post.png" alt=""></td><td colspan="2" class="alveolar"><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/place-alv-retro.png" alt=""></td><td colspan="2"><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/place-labvel.png" alt=""></td><td colspan="2"><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/place-vel.png" alt=""></td><td colspan="2"><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/place-glot.png" alt=""></td></tr><tr><td class="ipa cancel manner">stop</td><td><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/manner-stop.png" alt=""></td><td>🔔<span class="star"></span></td><td>p</td><td>b</td><td></td><td></td><td></td><td></td><td>t</td><td>d</td><td>c</td><td>ɟ</td><td></td><td></td><td>ʈ</td><td>ɖ</td><td></td><td></td><td>k</td><td>ɡ</td><td>ʔ</td><td></td></tr><tr><td class="ipa cancel manner">nasal</td><td><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/manner-nasal.png" alt=""></td><td></td><td></td><td>m</td><td></td><td>ɱ</td><td></td><td></td><td></td><td>n</td><td></td><td>ɲ</td><td></td><td></td><td></td><td>ɳ</td><td></td><td></td><td></td><td>ŋ</td><td></td><td></td></tr><tr><td class="ipa cancel manner">fricative</td><td><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/manner-fric.png" alt=""></td><td></td><td>ɸ</td><td>β</td><td>f</td><td>v</td><td>θ</td><td>ð</td><td>s</td><td>z</td><td>ɕ</td><td>ʑ<span class="star"></span></td><td>ʃ</td><td>ʒ</td><td>ʂ</td><td>ʐ</td><td>ʍ</td><td></td><td>x</td><td>ɣ</td><td>h</td><td>ɦ</td></tr><tr><td class="ipa cancel manner">approximant</td><td><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/manner-appr.png" alt=""></td><td></td><td></td><td></td><td></td><td>ʋ</td><td></td><td></td><td></td><td>ɹ</td><td></td><td>j</td><td></td><td></td><td></td><td>ɻ</td><td></td><td>w</td><td></td><td>ɰ</td><td></td><td></td></tr><tr><td class="ipa cancel manner">lateral approximant</td><td><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/manner-lat-appr.png" alt=""></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>l</td><td></td><td>ʎ</td><td></td><td></td><td></td><td>ɭ</td><td></td><td></td><td></td><td>ʟ</td><td></td><td></td></tr><tr><td class="ipa cancel manner">tap</td><td><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/manner-tap.png" alt=""></td><td></td><td></td><td></td><td></td><td>ⱱ</td><td></td><td></td><td></td><td>ɾ</td><td></td><td></td><td></td><td></td><td></td><td>ɽ</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td class="ipa cancel manner">trill</td><td><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/manner-trill.png" alt=""></td><td></td><td></td><td>ʙ</td><td></td><td></td><td></td><td></td><td></td><td>r</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>ʀ<span class="star"></span></td><td></td><td></td></tr><tr><td class="ipa cancel manner">lateral fricative</td><td><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/manner-lat-fric.png" alt=""></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>ɬ</td><td>ɮ</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table>
+
+<p>* nitpicky things to be addressed in the Never-before Asked Questions (NAQ).</p>
+<h4>words</h4>
+<div class="cols" style="justify-content: flex-start;"><div style="width: 350px;">
+    words change direction of curve:
+
+    <img src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/words.png"
+      alt=""
+      style="height: 200px; display: block; margin: 2rem auto;"></div><div style="width: 400px; margin: 0 2rem 2rem;"><p>Notes:</p><ul><li>in/out track changes are always considered from the perspective of the new word&rsquo;s vowel</li><li>without consonants, the direction of writing is ambiguous</li></ul></div></div>
+<p style="margin-bottom: 0;">Example for comparison:</p>
+<div class="cols"><figure><div class="labels"><div class="label" style="left: 210px; top: 160px;"><span class="ipa">ɔ</span></div><div class="label" style="left: 155px; top: 100px;"><span class="ipa">i</span></div></div><figcaption>pg. 22 <span class="ipa">/kɔfi/</span></figcaption><img src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/extra/coffee.png"
+        style="width: 350px; margin: 1.5rem auto 3rem;"/></figure><figure><div class="labels"><div class="label" style="left: 165px; top: 155px;"><span class="ipa">u</span></div><div class="label" style="left: 155px; top: 85px;"><span class="ipa">a</span></div><div class="label hint"
+        style="left: 240px; top: 135px; text-align: center; font-size: 1.1rem; line-height: 1.5rem;">
+        word<br>boundary
+      </div></div><figcaption>pg. 25 <span class="ipa">/bu bakl.../</span></figcaption><img src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/extra/bubak.png"
+    style="width: 350px; margin: 1.5rem auto 3rem;"/></figure></div>
+<div id="translation" class="toc-heading"><a href="#top">⮬</a>Translation of all pages</div>
+
+<h4>page 22</h4>
+<h5>top</h5>
+<p>clockwise, starting from top left:</p>
+<p><span class="ipa">/kofje/</span> (or <span class="ipa">/kɔfjɛ/</span>, <span class="ipa">/kufji/</span>)
+<br>
+Russian: кофе</p>
+<p><span class="ipa">/kafe/</span> (or <span class="ipa">/kʊfi/</span>)
+<br>
+French/Spanish: café</p>
+<p><span class="ipa">/kɔpi/</span><br>
+Korean: 커피</p>
+<p><span class="ipa">/ka˥fei˥/</span><br>
+Mandarin Chinese: <span lang="zh">咖啡</span><p></p><span class="ipa">/kɔfi/</span><br>
+English: coffee</p>
+<p><span class="ipa">/kahwa/</span> (or <span class="ipa">/kəhwə/</span>, <span class="ipa">/kɨhwɨ/</span>)
+<br>
+Arabic: قهوة</p>
+<h5>bottom</h5>
+<p><span class="ipa">/🔔boβipa/</span><br>
+Puflantu: <span class="puflantu">'Bovipa</span><p></p><span class="ipa">/tʃao/</span><br>
+Italian: Ciao</p>
+<p><span class="ipa">/sin˧ tɕaːw˨˩/</span><br>
+Vietnamese: Xin chào</p>
+<p><span class="ipa">/məɾhaba/</span><br>
+Turkish: Merhaba</p>
+<p><span class="ipa">/lei˩˧ hou˧˥/</span><br>
+Cantonese: <span lang="zh-HK">你好</span></p>
+<h4>pages 23–30</h4>
+<p>(All language endonyms are preserved in the source language, and followed by the <span class="puflantu">tu</span> language marker)</p>
+<table>
+<thead>
+<tr>
+<th>Language</th>
+<th>Endonym</th>
+<th>Hello</th>
+<th>What is this?</th>
+<th>This is _.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>pg. 23–30:</em></td>
+<td><span class="ipa">/pəflantə/</span></td>
+<td><span class="ipa"> /🔔boβipa/</span></td>
+<td><span class="ipa"> /uat ita zat na/</span></td>
+<td><span class="ipa"> /ita _ zat/</span></td>
+</tr>
+<tr>
+<td>Perflontus</td>
+<td><span class="puflantu">puflantu</span></td>
+<td><span class="puflantu">'Bovipa</span></td>
+<td><span class="puflantu">Wat ita zat na?</span></td>
+<td><span class="puflantu">Ita _ zat.</span></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><em>pg. 23:</em></td>
+<td><span class="ipa"> /italjanotə/</span></td>
+<td><span class="ipa"> /tʃao/</span></td>
+<td><span class="ipa"> /ke kɔzɛ kwesto/</span></td>
+<td><span class="ipa"> /kwesta ɛ lazaɲɲe/</span></td>
+</tr>
+<tr>
+<td>Italian</td>
+<td>italiano<span class="puflantu">tu</span></td>
+<td>Ciao</td>
+<td>Che cos’è questo?</td>
+<td>Questa è <a href="https://en.wikipedia.org/wiki/Lasagna" target="_blank" rel="noopener noreferrer">lasagne</a>.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><em>pg. 24:</em></td>
+<td><span class="ipa"> /tiəŋ˧˦ viə˧˨ʔtə/</span></td>
+<td><span class="ipa"> /sin˧ tɕaːw˨˩/</span></td>
+<td><span class="ipa"> /ʔdəj˧ la˨˩ zi˨˩/</span></td>
+<td><span class="ipa"> /ʔdəj˧ la˨˩ fə˧˩/</span></td>
+</tr>
+<tr>
+<td>Vietnamese</td>
+<td>Tiếng Việt<span class="puflantu">tu</span></td>
+<td>Xin chào</td>
+<td>Đây là gì?</td>
+<td>Đây là <a href="https://en.wikipedia.org/wiki/Pho" target="_blank" rel="noopener noreferrer">phở</a>.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><em>pg. 25:</em></td>
+<td><span class="ipa"> /tyɾctʃetə/</span></td>
+<td><span class="ipa"> /məɾhaba/</span></td>
+<td><span class="ipa"> /bu nediɾ/</span></td>
+<td><span class="ipa"> /bu baklavadɯɾ/</span></td>
+</tr>
+<tr>
+<td>Turkish</td>
+<td>Türkçe<span class="puflantu">tu</span></td>
+<td>Merhaba</td>
+<td>Bu nedir?</td>
+<td>Bu <a href="https://en.wikipedia.org/wiki/Baklava" target="_blank" rel="noopener noreferrer">baklava</a>dır.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><em>pg. 30:</em></td>
+<td><span class="ipa"> /kwɔŋ˧˥ tʊŋ˥ wa˧˥tə/</span></td>
+<td><span class="ipa"> /lei˩˧ hou˧˥/</span></td>
+<td><span class="ipa"> /li˥ kɔ˧ hai˨ mɛ˥/</span></td>
+<td><span class="ipa"> /hai˨ jat˥ pun˨˩ ha˥ kau˧˥/</span></td>
+</tr>
+<tr>
+<td>Cantonese</td>
+<td><span lang="zh-HK">廣東話</span><span class="puflantu">tu</span></td>
+<td><span lang="zh-HK">你好</span></td>
+<td><span lang="zh-HK">呢個係咩？</span></td>
+<td><span lang="zh-HK">係一盤<a href="https://en.wikipedia.org/wiki/Har_gow" target="_blank" rel="noopener noreferrer">蝦餃</a>。</span></td>
+</tr>
+</tbody>
+</table>
+<h4>page 31</h4>
+<table class="extract"><tr class="ipa"><td>/alxan</td><td>ɾunasimitəli</td><td>puɾtuɣeʃtəli</td><td>ɡwarənitəli</td><td>espaɲoltəli</td><td>ɲoʃa</td><td>ɸel</td><td>onodiɹka/</td></tr><tr class="puflantu"><td>alhan</td><td><span class="cancel">runasimi</span>tu-li</td><td><span class="cancel">português</span>tu-li</td><td><span class="cancel">guaraní</span>tu-li</td><td><span class="cancel">español</span>tu-li</td><td>yoxa</td><td>fel</td><td>onodir-ka</td></tr><tr style="font-style:italic;"><td>where</td><td>Quechua-and</td><td>Portuguese-and</td><td>Guaraní-and</td><td>Spanish-and</td><td>so forth</td><td>may</td><td>that-they-are-heard</td></tr><tr><td colspan="8">
+      Where you might hear Quechua, Portuguese, Guaraní, Spanish, and more.
+    </td></tr></table>
+<div id="naq" class="toc-heading"><a href="#top">⮬</a>Never-before Asked Questions (a.k.a. &ldquo;Nobody Asked!&rdquo; Questions)</div>
+<div class="que">What were your inspirations for this puzzle?</div>
+<div class="ans"><p>
+    This puzzle is my loving homage to the wonderful games <i>Outer Wilds</i> and <i>Tunic</i>, both of which blend narrative with puzzle-solving in startlingly unique ways. If you haven&rsquo;t played either of these games, you&rsquo;re in for a treat!
+  </p><p>
+    (Outer Wilds spoilers) <span class="spoiler">Of course, our hunt structure was based on time loops, and many of us were inspired by our love for Outer Wilds. The curve aesthetic of Bel was directly influenced by the non-linear spirals of Nomai script. This puzzle is actually an Outer Wilds prequel where you play as Hal and make the Nomai translator tool!</span></p><p>
+    (Tunic spoilers) <span class="spoiler">The core mechanic of this puzzle, as well as the flipbook styling, is straight from the manual of Tunic, which is written in an English phonetic script named Runic. Learning to read Runic was an experience I wanted to give more people, and I saw a unique opportunity to do something similar (with a galactic twist) here.</span></p></div>
+<div class="que">What were your inspirations for this puzzle?</div>
+<div class="ans">
+This puzzle would not exist without the puzzles that came before it, notably:
+<ul><li>My favourite language puzzles: <a href="https://2021.teammatehunt.com/puzzles/time-of-your-life" target="_blank" rel="noopener noreferrer">Time of Your Life</a>, <a href="https://puzzles.mit.edu/2021/puzzle/an-american-in-paris/" target="_blank" rel="noopener noreferrer">An American in Paris</a>, <a href="http://puzzles.mit.edu/2020/puzzle/old_west_revue/" target="_blank" rel="noopener noreferrer">Old West Revue</a>, and <a href="https://puzzling.stackexchange.com/questions/74079/cool-language-nerds-wont-hang-out-with-me" target="_blank" rel="noopener noreferrer">this Puzzling.SE puzzle</a>; </li><li><span class="puflantu">Puflantu</span> puzzles <a href="https://2020.galacticpuzzlehunt.com/puzzle/word-salad.html" target="_blank" rel="noopener noreferrer">Word Salad</a>, all of the <a href="https://2019.galacticpuzzlehunt.com/" target="_blank" rel="noopener noreferrer">2019 hunt</a>, and the origin, <a href="https://2018.galacticpuzzlehunt.com/puzzle/bakeoff.html" target="_blank" rel="noopener noreferrer">The Wepp Perflontus Bake Off</a>. It was an honour to make my own mark on the behemoth that is <span class="puflantu">puflantu</span>. To quote a testsolver: <div class="note"><em>Seeing <span class="puflantu">'bovipa</span> when you open a puzzle is perhaps the most terrifying feeling.</em></div>That said, it was very important to us that <span class="puflantu">puflantu</span> fluency was not crucial to this puzzle, and I hope the flavourtext (and the note in the crash course) were clear about this. In fact, it would perhaps seem disingenuous, but I wanted to even say that <span class="puflantu">puflantu</span> knowledge was entirely optional for this puzzle. Just a little Galactic flavour. <code>&lt;saltbae.gif&gt;</code></li></ul></div>
+<div class="que">What were your inspirations for this puzzle?</div>
+<div class="ans"><p>I&rsquo;m subscribed to <a href="https://old.reddit.com/r/asemic/" target="_blank" rel="noopener noreferrer">/r/asemic</a> and <a href="https://old.reddit.com/r/neography/" target="_blank" rel="noopener noreferrer">/r/neography</a>. It&rsquo;s always fascinating to see people make beautiful art and calligraphy inspired by a tool we all use: language.</p><p>In particular, I found the universal phonetic script <a href="https://musa.bet/home.htm" target="_blank" rel="noopener noreferrer">Musa</a> to be a very creative effort to write all the world&rsquo;s languages. But I wasn&rsquo;t a fan of making a distinction between sharp and round turns (which is easily confused in sloppy handwriting), nor using rotation/reflection as a feature (sorry <a href="https://en.wikipedia.org/wiki/Canadian_Aboriginal_syllabics" target="_blank" rel="noopener noreferrer">Canadians</a> and dqpb apologists). Which leads me to the next question...</p></div>
+<div class="que">Ooh so curvy! What were some of the design decisions when creating Bel?</div>
+<div class="ans"><ul><li>Be rotational/reflection invariant — imagine a big crowd of aliens gathered around in space around a holographic projection, and they can read it from any angle... like this: 
+      <div style="margin-right: 1.5em;"><img src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/dalle/hololive.png" 
+      alt="A crowd of aliens reading Bel from any angle" 
+      style="height: 400px; margin: 1.5rem auto 3rem; display: block;"/></div></li><li>
+      Don&rsquo;t be dependent on sharp/smooth distinction — meaning it can be handwritten quickly and easily read (doctors hate it!)
+    </li><li>Be <a href="https://en.wikipedia.org/wiki/Featural_writing_system" target="_blank" rel="noopener noreferrer">featural</a> — meaning symbols represent phonetic features.</li><li>Be universal (or at least galactic) — try to cover sounds of all the languages in the galaxy in a non-anglocentric way, and my personal goal was to include zero English in the guide (a bit of English snuck in anyways).</li><li>Be curvy and non-linear (move freely in two dimensions). Why have all our modern scripts stopped being <a href="https://en.wikipedia.org/wiki/Boustrophedon#Reverse_boustrophedon" target="_blank" rel="noopener noreferrer">reverse boustrophedon</a>? Also, I have a <a href="https://www.cs.ubc.ca/~udls/puzzle/2018/#/puzzle/2" target="_blank" rel="noopener noreferrer">weird obsession</a> with (spoilers for the linked puzzle) <span class="spoiler">curvature direction, and how it&rsquo;s <a href="https://qz.com/994486/the-way-you-draw-circles-says-a-lot-about-you/" target="_blank" rel="noopener noreferrer">cultural</a>.</span></li></ul></div>
+<div class="que">Why include tones?</div>
+<div class="ans"><p>
+    My initial design for Bel was for tones to be a &ldquo;first-class citizen&rdquo; in the script. Unfortunately, they&rsquo;re not so much the case in the end product (they don&rsquo;t even feature in the extraction, and were almost cut from the puzzle entirely!) In fact, the tone markers play a double role in both notating vowel pitch (or &ldquo;tone&rdquo;) as well as variations on alveolar consonants. The system of tones <img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/place-alv.png" alt=""><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/place-alv-pal.png" alt=""><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/place-alv-post.png" alt=""><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/place-alv-retro.png" alt=""></td> labeling alveolar, palatal, post-alveolar, and retroflex consonants is based on the extremely niche fact that if you say <span class="ipa">/sɕʃʂ/</span>, the frequency of the sound decreases!
+  </p><p>
+    And as for why? Well, we know Galactic aliens love <a href="https://2019.galacticpuzzlehunt.com/puzzle/the-artists.html" target="_blank" rel="noopener noreferrer">music</a>.
+  </p></div>
+<div class="que">Why are the symbols for manner of articulation labeled Pokéball?</div>
+<div class="ans"><p>The first five rows of the consonant table (which include all <span class="puflantu">puflantu</span> sounds) are based off <sup>(the Null Ball, )</sup> the standard Poké Ball, Great Ball, Ultra Ball, and Master Ball! And the tap is vaguely based off the Fast Ball.</p><table><tr><td colspan="2"><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/manner-stop.png" alt=""></td><!-- <td><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/ball/poke.png" alt=""></td> --></tr><tr><td><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/manner-nasal.png" alt=""></td><td><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/ball/poke.png" alt=""></td></tr><tr><td><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/manner-fric.png" alt=""></td><td><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/ball/great.png" alt=""></td></tr><tr><td><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/manner-appr.png" alt=""></td><td><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/ball/ultra.png" alt=""></td></tr><tr><td><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/manner-lat-appr.png" alt=""></td><td><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/ball/master.png" alt=""></td></tr><tr><td><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/manner-tap.png" alt=""></td><td><img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/ball/fast.png" alt=""></td></tr></table><p>
+    And as for why? Well, we know Galactic aliens love <a href="https://2019.galacticpuzzlehunt.com/puzzle/the-animal-trainers.html" target="_blank" rel="noopener noreferrer">Pokémon</a>.
+  </p></div>
+<div class="que">The art is beautiful!</div>
+<div class="ans">Thank you!</div>
+<div class="que">The art is horrifying!</div>
+<div class="ans"><p>Blame <a href="https://openai.com/dall-e-2/" target="_blank" rel="noopener noreferrer">DALL·E 2</a>, who&rsquo;s responsible for all the art in the Earth Guide. I tried very hard to make the faces less bad with multiple generations and inpainting, but this is the best I was able to get. Some teammates say that it&rsquo;s what Galactic aliens think we look like.</p><p>
+  To share a small story: this puzzle was actually the last answer to get assigned in the entire hunt. Less than a month before the hunt, I was not at all confident that I could write this puzzle (nor would it be fun to solve) and had just left home to travel for the rest of August. I had worked out some elements of Bel in chicken scratch, and had just received an invite to DALL·E, having applied for the closed beta months earlier. I sent off a worried email, prepared to shelve this puzzle. Anderson, one of the editors on this puzzle, encouraged me to give it a go, we assigned the final answer, and here we are. Thank you Anderson for believing in me! 🙏
+</p><p>
+  Here is the very first prompt I asked DALL·E 2 to generate: &ldquo;<a href="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/dalle/baklava.jpg" target="_blank" rel="noopener noreferrer">a turkish shopkeeper behind his counter, offering you a sample of baklava on a plate, line art with watercolor, children&rsquo;s book illustration</a>&rdquo;
+</p><p>And here is <a href="https://labs.openai.com/s/vjLUmJZ6NvFafiSKbmVUIeqq" target="_blank" rel="noopener noreferrer">something cute</a>.</p></div>
+<div class="que">Why did you pick those four languages to feature in pages 23–30?</div>
+<div class="ans"><p>
+    I&rsquo;d identified a number of languages I wanted to include with distinct yummy foods across various language families. (<span class="puflantu">Puflantu</span> always comes back to food, doesn&rsquo;t it?) I knew I wanted a diverse set (both geographically and phonetically), with enough identifiability, but also preferably not seen much in other puzzles. The vowel harmony in Turkish is too beautiful not to include! I finished these four first and published a draft for testing (we weren&rsquo;t even sure the puzzle was solvable). The first testsolvers loved it and the puzzle has only changed a little since that first draft.
+  </p><p>
+    Once again, RIP Persian for getting cut out another one of <a href="https://www.humfuzz.com/puzzles/santas-keyboard/" target="_blank" rel="noopener noreferrer">my puzzles</a>. Other languages considered included Yoruba, Bengali, Icelandic, Nepali, Telugu, Nahuatl, and Berber.
+  </p></div>
+<div class="que">What about the coffee languages?</div>
+<div class="ans">
+  They were originally just random languages, but we changed them to the six official languages of the United Nations (Arabic, Chinese, English, French, Spanish, and Russian). Since &ldquo;café&rdquo; is the same in both French and Spanish, I added a variant with <span class="ipa">/p/</span> (Korean &ldquo;커피&rdquo;), which many other languages have (e.g., Malay &ldquo;kopi&rdquo;).
+</div>
+<div class="que">🔔?</div>
+<div class="ans">🔔<img class="inline" src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/place-bell.png" alt="">🔔!</div>
+<div class="que">Why does the vowel chart look different from the IPA chart and omit some vowels?</div>
+<div class="ans">Vowels are already an abstract discretization of a continuous space, in reality characterised by acoustic <a href="https://en.wikipedia.org/wiki/Formant" target="_blank" rel="noopener noreferrer">formants</a> more than by tongue height or backness. Some of IPA&rsquo;s vowels, like <span class="ipa">/ɪ/</span>, are rooted in a kind of historic Eurocentrism. I picked the nearest vowels that fit the design best, and hope you don&rsquo;t mind re-quantising your vowels a little. (You know what else is arbitrary in Canada? Spelling words with s or z.)
+</div>
+<div class="que">Why are there no uvulars in Bel?</div>
+<div class="ans">Aliens don&rsquo;t have uvulas. Uvulae? Actually, they don&rsquo;t have teeth either, which is why their <span class="puflantu">f</span> and <span class="puflantu">v</span> are bilabial instead of labiodental, but they respect human teeth.</div>
+<div class="que">What about suprasegmentals/punctuation/intonation/aspiration?</div>
+<div class="ans">Feel free to make your own extensions. You could make the vowel lines longer for long vowels. As for intonation, you could potentially reproduce this with a combination of tone markers, vowel reduction, and vowel length. Aspiration? There&rsquo;s no air in space!</div>
+<div class="que">Okay all my nitpicky things have been addressed except for the alveolo-palatals <span class="ipa">/ɕ/</span> and <span class="ipa">/ʑ/</span>.</div>
+<div class="ans">These sounds get way more use than their non-sibilant friends <span class="ipa">/ç/</span> and <span class="ipa">/ʝ/</span> to get tossed aside in the IPA chart just because they didn&rsquo;t know where to put them. Okay that&rsquo;s it, no more nitpicking.</div>
+<div class="que">Why do the page numbers skip from 25 to 30?</div>
+<div class="ans"><span class="puflantu">Puflantu</span>-speaking aliens use <a href="https://github.com/galacticpuzzlehunt/puflantu/blob/master/doc/bits.org#numbers-stub" target="_blank" rel="noopener noreferrer">base-6</a>.</div>
+<div class="que">Why do they use Arabic numerals though? How anthropocentric of you!</div>
+<div class="ans">It&rsquo;s <a href="https://2019.galacticpuzzlehunt.com/artifact/market.html" target="_blank" rel="noopener noreferrer">canon</a>, Arabic numerals are truly universal (or at least galactic).</div>
+<div class="que"><em>(nitpicking recommences:)</em> But 你好 is supposed to be <span class="ipa">/nei/</span> not <span class="ipa">[lei]</span>!!! </div>
+<div class="ans">
+Okay, but find me a Canto speaker that pronounces initial <span class="ipa">/n/</span>, you <a href="https://en.wikipedia.org/wiki/Proper_Cantonese_pronunciation" target="_blank" rel="noopener noreferrer">prescriptivist</a>. Next thing you&rsquo;ll be telling me ㅐ and ㅔ are different sounds! To be fair, I was kind of inconsistent about being shallow or deep in the transcription here.
+</div>
+<div class="que">But ㅐ and ㅔ are different sounds!</div>
+<div class="ans">Okay, true for some non-Seoul dialects. I tried to stick to &ldquo;standard dialects&rdquo; for transcribing each language, so Toscana Italian, Hà Nội Vietnamese, İstanbul Turkish, <span lang="zh-HK">香港</span> Cantonese. Of course, a language is a dialect with an army and a navy. Long live <a href="https://en.wikipedia.org/wiki/Koryo-mar" target="_blank" rel="noopener noreferrer">고려말</a>!
+</div>
+<div class="que">There is no way Türkçe has that extra <span class="ipa">/t/</span> in <span class="ipa">/tyɾctʃe/</span>.</div>
+<div class="ans">I agree with you, but I didn&rsquo;t want to boldly edit <a href="https://en.wiktionary.org/w/index.php?title=T%C3%BCrk%C3%A7e&oldid=68580740" target="_blank" rel="noopener noreferrer">Wiktionary</a> for a language I don&rsquo;t speak. Actually, upon listening to <a href="https://forvo.com/word/t%C3%BCrk%C3%A7e/" target="_blank" rel="noopener noreferrer">these</a>, I don&rsquo;t know what to believe anymore. It might actually just be <span class="ipa">/tyɾktʃe/</span>. Linguistics is all about throwing continuous ambiguities into discrete boxes, okay? How else could we hope to understand this complex world??</div>
+<div class="que">Is Bel the official script of <span class="puflantu">puflantu</span>?</div>
+<div class="ans">No, Bel is the Galactic <span class="puflantu">A'e'i'o'u'w</span> Phonétique (G<span class="puflantu">A</span>P), the galactic equivalent of the International Phonetic Alphabet (IPA).</div>
+<div class="que">What&rsquo;s an <span class="puflantu">a'e'i'o'u'w</span>?</div>
+<div class="ans">A dajba.</div>
+<div class="que">What&rsquo;s a dajba?</div>
+<div class="ans"><p>The opposite of an abjad. Alphabets are scripts with vowels and consonants. <a href="https://en.wikipedia.org/wiki/Abjad" target="_blank" rel="noopener noreferrer">Abjads</a> are scripts with first-class consonants (vowels are optional, often diacritics). Dajbas are scripts with first-class vowels and optional consonants. Here are some real-galaxy examples of Bel:
+
+<div class="dajba"><figure><figcaption>&ldquo;CRACKTIVATED!&rdquo;</figcaption><img src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/extra/cracktivated.png"
+        style="height: 200px; margin: 1.5rem auto 3rem;"/></figure><figure><figcaption>???</figcaption><img src="/static/puzzle_resources/the-earth-guide/soln-uMKEqLOtXq/extra/dajba.png"
+    style="height: 200px; margin: 1.5rem auto 3rem;"/></figure></div><p>Did you know <span class="puflantu">puflantu</span> has a whistled (&ldquo;belled&rdquo;) register like <a href="https://en.wikipedia.org/wiki/Pirah%C3%A3_language#Unusual_features_of_the_language" target="_blank" rel="noopener noreferrer">Pirahã</a>?</p></div>
+<div class="que">Thank goodness, there won&rsquo;t be another <span class="puflantu">puflantu</span> puzzle for 1000 years!</div>
+<div class="ans">Galactic time is relative.</div>
+<script>
+  function toggle(btn, selector) {
+    let el = document.querySelector(selector)
+    if (el.style.display == 'none') { // SHOW
+      el.style.display = 'block'
+      btn.classList.add('selected')
+      btn.innerText = "Hide TL;DR"
+    } else { // HIDE
+      el.style.display = 'none'
+      btn.classList.remove('selected')
+      btn.innerText = "Show TL;DR"
+    }
+  }
+
+
+  const anchors = $('body').find('.toc-heading')
+  const tocFloat = $('#toc-float')
+  const PAD = 75
+
+  // floating toc 
+  $(window).scroll(function(){
+
+      let scrollTop = $(document).scrollTop();
+      document.querySelectorAll('#toc-float a').forEach(a => a.classList.remove('on'))
+
+      // then iterate backwards, on the first match highlight it and break
+      for (let i = anchors.length-1; i >= 0; i--){
+          if (scrollTop > $(anchors[i]).offset().top - PAD) {
+              tocFloat.css('opacity', 1)
+              tocFloat.css('visibility', 'visible')
+
+              document.querySelector(`#toc-float a[href="#${anchors[i].id}"]`).classList.add('on')
+              break;
+          }
+          if (i == 0) {
+              // set tocFloat opacity 0
+              tocFloat.css('opacity', 0)
+              tocFloat.css('visibility', 'hidden')
+          }
+      }
+  });
+
+  document.querySelectorAll('a[href="#top"]').forEach(a => a.addEventListener('click', e => {
+    e.preventDefault()
+    window.scrollTo(0,0)
+  }))
+
+</script>
+
+    
+    
+
+    
+    
+
+    
+    <div class="puzzle-main-corner puzzle-main-corner-1"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-2"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-3"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-4"></div>
+    
+</main>
+
+
+    </div>
+    
+
+    
+
+    
+    <script>
+    document.getElementById('nav-music').style.display = 'none';
+    document.getElementById("progress-simulator").addEventListener("submit", (e) => {
+        if (e.submitter.name === "reset") {
+            toggleReset(true);
+            doGlitch(false);
+            document.getElementById("shortcuts").checked = false;
+            e.preventDefault();
+        } else {
+            localStorage.setItem(e.submitter.name, e.submitter.value);
+        }
+    });
+    addStyles();
+
+    function toggleReset(which) {
+        $('#loop-reset').toggleClass('loop-resetting', which);
+    }
+
+    function addStyles() {
+        const changeFavicon = (url) => {
+            const e = Array.from(document.getElementsByTagName("link"))
+                .filter(e => e.rel === "icon")[0];
+            e.href = url;
+        }
+        const addSheet = (url) => {
+            const e = document.createElement("link");
+            e.rel = "stylesheet";
+            e.href = url;
+            document.getElementsByTagName("head")[0].appendChild(e);
+        }
+
+        const seasons = ["spring", "summer", "autumn", "winter"];
+        let current_main_round = localStorage.getItem("round");
+        const endgame_unlocked = localStorage.getItem("endgame") === "true";
+
+        const matches = new RegExp(`\\?(${seasons.join("|")})`).exec(document.URL);
+        if (matches && matches[1]) {
+            current_main_round = matches[1];
+        }
+
+        if (endgame_unlocked) {
+            addSheet("/static/css/endgame.css");
+            changeFavicon("/static/images/favicon-endgame.ico");
+            const nodes = document.getElementsByClassName("energy-nodes-info");
+            console.log(nodes);
+            if (nodes.length > 0) {
+                nodes[0].style.display = "block";
+            }
+        } else if (current_main_round === "concert") {
+            addSheet("/static/css/concert.css");
+            changeFavicon("/static/images/favicon-concert.ico");
+            // also add the concert music
+            document.getElementById('nav-music').style.display = 'inline-block';
+            const audio = document.getElementById("music-audio");
+            if (audio) {
+                audio.addEventListener('play', () => {
+                    audio.volume = localStorage.getItem('music-audio-volume') ?? 0.5;
+                });
+                audio.addEventListener('volumechange', () => {
+                    localStorage.setItem('music-audio-volume', audio.volume);
+                });
+            }
+        } else if (seasons.includes(current_main_round)) {
+            addSheet("/static/css/season.css");
+            addSheet(`/static/css/${current_main_round}.css`);
+            changeFavicon(`/static/images/favicon-${current_main_round}.ico`);
+        } else {
+            addSheet("/static/css/blue.css");
+            changeFavicon("/static/images/favicon-blue.ico");
+        }
+    }
+
+    registerOnGlitchHook((ex) => {
+        document.getElementById('background-glitch-wrapper').style.display = 'initial';
+    });
+    </script>
+    
+</body>
+</html>

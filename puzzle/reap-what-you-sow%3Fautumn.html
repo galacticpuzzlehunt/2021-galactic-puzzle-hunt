@@ -1,0 +1,377 @@
+
+
+
+
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+<title>Reap What You Sow</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <meta property="og:title" content="Galactic Puzzle Hunt 2022">
+    <meta property="og:description" content="Registration for this year's Galactic Puzzle Hunt is now open!">
+    <meta property="og:image" content="https://galacticpuzzlehunt.com/static/images/banner.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:slnt,CASL,CRSV,MONO@-3,0.5,1,1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/skeleton.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.formset/1.2.2/jquery.formset.min.js"></script>
+    <script src="/jsi18n/"></script>
+    <script src="/static/js/sorttable.js"></script>
+    <script src="/static/js/tray.js"></script>
+    <script src="/static/js/notify.js"></script>
+    <script src="/static/js/time.js"></script>
+    
+    
+    <link rel="icon" sizes="16x16 32x32 48x48 64x64" href="/static/images/favicon.ico" type="image/vnd.microsoft.icon">
+    
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92192633-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-92192633-1');
+</script>
+
+</head>
+<body>
+    
+    <div id="background-glitch-wrapper" class="background-glitch">
+        <div class="glitch-1"></div>
+        <div class="glitch-2"></div>
+        <div class="glitch-3"></div>
+    </div>
+    
+    
+    <input id="shortcuts" type="checkbox">
+    
+    <nav>
+        <span class="tray">
+            <span id="tray-timer"></span>
+            <div class="top-tabs">
+                <a href="/">
+                    Home
+                </a>
+                
+                
+                <a href="/story">
+                    Story
+                </a>
+                
+                
+                <a class="selected-tab" href="/puzzles">
+                    Puzzles
+                </a>
+                
+                <a href="/teams">
+                    Teams
+                </a>
+                
+                
+                <a href="/errata">
+                    Updates
+                </a>
+                
+                
+                
+                
+                <a id="nav-music" href="#">
+                    <label for="music" title="Music" style="margin-bottom: 0; font-weight: normal; cursor: pointer;">Music</label>
+                </a>
+                <input id="music" type="checkbox">
+                <div class="shortcuts music">
+                    <audio id="music-audio" controls src="/static/puzzle_resources/worlds-end-concert/music-audio.mp3">
+                        There should be a music player here.
+                    </audio>
+                </div>
+                
+                
+            </div>
+            <div class="top-left-actions">
+                
+
+
+
+
+<a href="/post-hunt-solve/reap-what-you-sow" class="btn">Check your answer spoiler-free</a>
+
+
+
+<a href="/solution/reap-what-you-sow" class="btn">View solution</a>
+<a href="/stats/reap-what-you-sow" class="btn">Stats</a>
+
+
+            </div>
+        </span>
+        <div class="top-right-actions">
+        
+        <label for="shortcuts" title="Simulator">Simulator </label>
+        
+        
+        </div>
+    </nav>
+    
+    <div class="shortcuts">
+        <form id="progress-simulator">
+        <div>Current round:</div>
+        <button class="btn" type="submit" name="round" value="forward">⬆️</button>
+        <button class="btn" type="submit" name="round" value="spring">🌸</button>
+        <button class="btn" type="submit" name="round" value="summer">☀️</button>
+        <button class="btn" type="submit" name="round" value="autumn">🍂</button>
+        <button class="btn" type="submit" name="round" value="winter">☃️</button>
+        <button class="btn" type="submit" name="round" value="concert">🎤</button>
+        <button class="btn" type="submit" name="round" value="none">None</button>
+        <div>Endgame:</div>
+        <button class="btn" type="submit" name="endgame" value="true">Unlock</button>
+        <button class="btn" type="submit" name="endgame" value="false">Reset</button>
+        <div>Reset:</div>
+        <button class="btn" type="submit" name="reset" value="reset">Reset</button>
+        </form>
+    </div>
+    
+    
+    
+    
+    
+    <div id="loop-reset">
+        <form>
+            <svg viewBox="-30 160 720 320">
+                <defs>
+                    <path id="loop-end-path" d="m 370,240 c 38.29044,0 74.26676,18.33512 96.83716,49.26624 l -76.8369,30.73478 V 270 L 300,330 261.03858,309.74192 c 19.60706,-42.51188 62.14674,-69.74008 108.9623,-69.74306 z m 106.15758,64.22738 c 6.65282,12.65518 10.9906,26.39738 12.80876,40.57862 l -38.96532,5.19538 z"/>
+                </defs>
+                <foreignObject width="720" height="480" clip-path="url(#loop-end-clip)" class="loop-shade">
+                    <aside class="loop-shade" xmlns="http://www.w3.org/1999/xhtml" style="width: 100%; height: 100%;"></aside>
+                </foreignObject>
+                <clipPath id="loop-end-clip"><use href="#loop-end-path"/></clipPath>
+                <use href="#loop-end-path"/>
+                <path d="M 490,400 600,330 450,350 490,280 390,320 V 270 L 300,330 50,200 170,380 50,400"/>
+            </svg>
+            <div>THE END</div>
+            <p>You can reset once per minute.</p>
+            <table>
+                <tr id="loop-reset-btn-row-reset">
+                    <td><button class="btn" disabled>Reset</button></td>
+                    <td>Start over from the beginning of the exam.</td>
+                </tr>
+                <tr id="loop-reset-btn-row-restore">
+                    <td><button class="btn" disabled>Jump</button></td>
+                    <td>Start over, but resubmit your previous answers to bring you back to this point.</td>
+                </tr>
+                <tr>
+                    <td><a class="btn" href="javascript:toggleReset(false)">Stay</a></td>
+                    <td>Look at this page a bit longer. Make sure to save your work.</td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    
+    <script>
+
+    
+    
+    let glitchTriggerFuncs = [];
+    let glitchTriggerReceived = false;
+    let glitchTriggerExReceived = false;
+    let glitchPageLoaded = false;
+    function processGlitchFuncs(ex) {
+        glitchTriggerFuncs.forEach((func) => {
+            func(ex);
+        });
+    }
+    function doGlitch(ex) {
+        glitchTriggerReceived = true;
+        if (ex) {
+            glitchTriggerExReceived = true;
+        }
+        if (glitchPageLoaded) {
+            processGlitchFuncs(ex);
+        }
+    }
+    window.addEventListener('load', () => {
+        glitchPageLoaded = true;
+        if (glitchTriggerExReceived) {
+            processGlitchFuncs(true);
+        }
+        else if (glitchTriggerReceived) {
+            processGlitchFuncs(false);
+        }
+    }, false);
+    
+    
+    
+    function registerOnGlitchHook(func) {
+        if (glitchTriggerExReceived) {
+            func(true);
+        }
+        else if (glitchTriggerReceived) {
+            func(false);
+        }
+        glitchTriggerFuncs.push(func);
+    }
+    
+
+    
+    
+    </script>
+    <div class="content">
+        
+
+<h1>
+    Reap What You Sow
+    
+    
+    
+    <div>
+      
+      <a class="btn" href="reap-what-you-sow%253Fspring">🌸</a>
+      
+      <a class="btn" href="reap-what-you-sow%253Fsummer">☀️</a>
+      
+      <a class="btn" href="reap-what-you-sow%253Fautumn">🍂</a>
+      
+      <a class="btn" href="reap-what-you-sow%253Fwinter">☃️</a>
+      
+    </div>
+    
+    
+</h1>
+
+
+
+<main class="puzzle-main clipboard-container">
+    
+    
+    
+    <p><img src="/static/puzzle_resources/reap-what-you-sow.png" style="width: 100%"><div><b>Turn 1</b></div><div><u>Fix, as socks</u></div><div>Instrument heard throughout <i>Boléro</i></div><div>It stands for change</div><div>Kind of bond</div><div>Top hat accompaniments</div><br><div><b>Turn 2</b></div><div><u>Word preceding &ldquo;north&rdquo; or &ldquo;colors&rdquo;</u></div><div>Character murdered by Jack</div><div>Home of Beto O&rsquo;Rourke</div><div>Like a certain Argonian maid</div><div>What you might experience in the limelight?</div><br><div><b>Turn 3</b></div><div><u>Instrument heard throughout <i class="no-copy">Boléro</i><span data-skip-inline-styles="true" class="copy-only">Boléro</span></u></div><div>.</div><div>Enthusiastic attitude (hyph.)</div><div>Its top prize went to Julia Ducournau in 2021</div><div>Like Romeo and Juliet&rsquo;s deaths</div><div>Lowered the freezing point of, maybe</div><br><div><u>Its top prize went to Julia Ducournau in 2021</u></div><div>..</div><div>2017 song featuring a Rihanna guest verse</div><div>Body part that humans have 8 of</div><div>It’s stimulating (2 words)</div><div>One might report to a priest</div><div>Vowel</div><br><div><b>Turn 4</b></div><div><u>It’s stimulating (2 words)</u></div><div>.</div><div>Consonant</div><div>Demanding</div><div>Vowel</div><div>What a bard might do</div><div>What many modern artists use as a brush</div><br><div><b>Turn 5</b></div><div><u>Lowered the freezing point of, maybe</u></div><div>...</div><div>Appetizer similar to bruschetta</div><div>Like many weddings or funerals</div><div>Oft-maligned video game company</div><div>Shade of green</div><div>Vowel</div><br><div><b>Turn 6</b></div><div><u>What many modern artists use as a brush</u></div><div>..</div><div>Act of tightening</div><div>Consonant</div><div>Nickname for a California MLB team</div><div>Simile word</div><div>Young baseball player</div><br><div><b>Turn 7</b></div><div><u>Act of tightening</u></div><div>....</div><div>ACC member</div><div>Artist who appeared in <i>My Little Pony: The Movie</i></div><div>Consonant</div><div>Consonant</div><div>It might be a bit steeped</div><div>Magnify</div><div>Really express affection</div><div>What extreme violence may result in (2 words)</div><br><div><b>Turn 8</b></div><div><u>What extreme violence may result in (2 words)</u></div><div>...</div><div>Consonant</div><div>Dwyane Wade&rsquo;s position</div><div>First name of a March on Washington organizer</div><div>Heroine in Hindu mythology</div><div>Like many dangerous roads</div><div>T-shirt size</div><br><div><b>Turn 9</b></div><div><u>Really express affection</u></div><div>.....</div><div>First name of a well-known Australian actor</div><div>Fun time, in slang</div><div>Glasses that are half-full?</div><div>It causes a reaction, by definition</div><div>Often-exciting sports situation</div><div>Opposite of adventurous</div><div>Vowel</div><br><div><b>Turn 10</b></div><div><u>Glasses that are half-full?</u></div><div>....</div><div>Gandalf, e.g.</div><div>It was denounced by B. R. Ambedkar</div><div>Lets in or lets on</div><div>Overly</div><div>Provider of cell service?</div><div>Suffix with carbox- or salic-</div><div>Year end?</div><br><div><b>Turn 11</b></div><div><u>First name of a March on Washington organizer</u></div><div>......</div><div>Article</div><div>Consonant</div></p>
+<hr />
+<div>Common survey option</div>
+<div>Compass direction</div>
+<div>First name of a <i>Half-Life</i> protagonist</div>
+<div>Greek letter</div>
+<div>How you might treat someone you have a grudge towards</div>
+<div><i>Pokémon Black and White</i> antagonist</div>
+<div>Pro wrestler Mia</div>
+<div>Recurring James Bond character</div>
+<div>Something you might take or hold, in modern slang</div>
+<div>Surrounded by</div>
+<div>Tesla car</div>
+<div>Unknown</div>
+<div>Very popular programming language</div>
+<div>What a perfect score might give you</div>
+<div>X-ray imaging technique</div>
+<p><button class="btn clipboard-button"></button></p>
+    
+    
+
+    
+    <div class="puzzle-main-corner puzzle-main-corner-1"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-2"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-3"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-4"></div>
+    
+</main>
+
+<script src="/static/js/copyjack.js"></script>
+
+
+    </div>
+    
+
+    
+
+    
+    <script>
+    document.getElementById('nav-music').style.display = 'none';
+    document.getElementById("progress-simulator").addEventListener("submit", (e) => {
+        if (e.submitter.name === "reset") {
+            toggleReset(true);
+            doGlitch(false);
+            document.getElementById("shortcuts").checked = false;
+            e.preventDefault();
+        } else {
+            localStorage.setItem(e.submitter.name, e.submitter.value);
+        }
+    });
+    addStyles();
+
+    function toggleReset(which) {
+        $('#loop-reset').toggleClass('loop-resetting', which);
+    }
+
+    function addStyles() {
+        const changeFavicon = (url) => {
+            const e = Array.from(document.getElementsByTagName("link"))
+                .filter(e => e.rel === "icon")[0];
+            e.href = url;
+        }
+        const addSheet = (url) => {
+            const e = document.createElement("link");
+            e.rel = "stylesheet";
+            e.href = url;
+            document.getElementsByTagName("head")[0].appendChild(e);
+        }
+
+        const seasons = ["spring", "summer", "autumn", "winter"];
+        let current_main_round = localStorage.getItem("round");
+        const endgame_unlocked = localStorage.getItem("endgame") === "true";
+
+        const matches = new RegExp(`\\?(${seasons.join("|")})`).exec(document.URL);
+        if (matches && matches[1]) {
+            current_main_round = matches[1];
+        }
+
+        if (endgame_unlocked) {
+            addSheet("/static/css/endgame.css");
+            changeFavicon("/static/images/favicon-endgame.ico");
+            const nodes = document.getElementsByClassName("energy-nodes-info");
+            console.log(nodes);
+            if (nodes.length > 0) {
+                nodes[0].style.display = "block";
+            }
+        } else if (current_main_round === "concert") {
+            addSheet("/static/css/concert.css");
+            changeFavicon("/static/images/favicon-concert.ico");
+            // also add the concert music
+            document.getElementById('nav-music').style.display = 'inline-block';
+            const audio = document.getElementById("music-audio");
+            if (audio) {
+                audio.addEventListener('play', () => {
+                    audio.volume = localStorage.getItem('music-audio-volume') ?? 0.5;
+                });
+                audio.addEventListener('volumechange', () => {
+                    localStorage.setItem('music-audio-volume', audio.volume);
+                });
+            }
+        } else if (seasons.includes(current_main_round)) {
+            addSheet("/static/css/season.css");
+            addSheet(`/static/css/${current_main_round}.css`);
+            changeFavicon(`/static/images/favicon-${current_main_round}.ico`);
+        } else {
+            addSheet("/static/css/blue.css");
+            changeFavicon("/static/images/favicon-blue.ico");
+        }
+    }
+
+    registerOnGlitchHook((ex) => {
+        document.getElementById('background-glitch-wrapper').style.display = 'initial';
+    });
+    </script>
+    
+</body>
+</html>

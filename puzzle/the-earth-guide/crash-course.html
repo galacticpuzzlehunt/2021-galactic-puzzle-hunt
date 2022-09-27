@@ -1,0 +1,947 @@
+
+
+
+
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+<title>Puflantu Crash Course</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <meta property="og:title" content="Galactic Puzzle Hunt 2022">
+    <meta property="og:description" content="Registration for this year's Galactic Puzzle Hunt is now open!">
+    <meta property="og:image" content="https://galacticpuzzlehunt.com/static/images/banner.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:slnt,CASL,CRSV,MONO@-3,0.5,1,1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/skeleton.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.formset/1.2.2/jquery.formset.min.js"></script>
+    <script src="/jsi18n/"></script>
+    <script src="/static/js/sorttable.js"></script>
+    <script src="/static/js/tray.js"></script>
+    <script src="/static/js/notify.js"></script>
+    <script src="/static/js/time.js"></script>
+    
+    
+    <link rel="icon" sizes="16x16 32x32 48x48 64x64" href="/static/images/favicon.ico" type="image/vnd.microsoft.icon">
+    
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92192633-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-92192633-1');
+</script>
+
+</head>
+<body>
+    
+    <div id="background-glitch-wrapper" class="background-glitch">
+        <div class="glitch-1"></div>
+        <div class="glitch-2"></div>
+        <div class="glitch-3"></div>
+    </div>
+    
+    
+    <input id="shortcuts" type="checkbox">
+    
+    <nav>
+        <span class="tray">
+            <span id="tray-timer"></span>
+            <div class="top-tabs">
+                <a href="/">
+                    Home
+                </a>
+                
+                
+                <a href="/story">
+                    Story
+                </a>
+                
+                
+                <a class="selected-tab" href="/puzzles">
+                    Puzzles
+                </a>
+                
+                <a href="/teams">
+                    Teams
+                </a>
+                
+                
+                <a href="/errata">
+                    Updates
+                </a>
+                
+                
+                
+                
+                <a id="nav-music" href="#">
+                    <label for="music" title="Music" style="margin-bottom: 0; font-weight: normal; cursor: pointer;">Music</label>
+                </a>
+                <input id="music" type="checkbox">
+                <div class="shortcuts music">
+                    <audio id="music-audio" controls src="/static/puzzle_resources/worlds-end-concert/music-audio.mp3">
+                        There should be a music player here.
+                    </audio>
+                </div>
+                
+                
+            </div>
+            <div class="top-left-actions">
+                
+<a href="/puzzle/the-earth-guide" class="btn">Back to the puzzle</a>
+
+            </div>
+        </span>
+        <div class="top-right-actions">
+        
+        <label for="shortcuts" title="Simulator">Simulator </label>
+        
+        
+        </div>
+    </nav>
+    
+    <div class="shortcuts">
+        <form id="progress-simulator">
+        <div>Current round:</div>
+        <button class="btn" type="submit" name="round" value="forward">⬆️</button>
+        <button class="btn" type="submit" name="round" value="spring">🌸</button>
+        <button class="btn" type="submit" name="round" value="summer">☀️</button>
+        <button class="btn" type="submit" name="round" value="autumn">🍂</button>
+        <button class="btn" type="submit" name="round" value="winter">☃️</button>
+        <button class="btn" type="submit" name="round" value="concert">🎤</button>
+        <button class="btn" type="submit" name="round" value="none">None</button>
+        <div>Endgame:</div>
+        <button class="btn" type="submit" name="endgame" value="true">Unlock</button>
+        <button class="btn" type="submit" name="endgame" value="false">Reset</button>
+        <div>Reset:</div>
+        <button class="btn" type="submit" name="reset" value="reset">Reset</button>
+        </form>
+    </div>
+    
+    
+    
+    
+    
+    <div id="loop-reset">
+        <form>
+            <svg viewBox="-30 160 720 320">
+                <defs>
+                    <path id="loop-end-path" d="m 370,240 c 38.29044,0 74.26676,18.33512 96.83716,49.26624 l -76.8369,30.73478 V 270 L 300,330 261.03858,309.74192 c 19.60706,-42.51188 62.14674,-69.74008 108.9623,-69.74306 z m 106.15758,64.22738 c 6.65282,12.65518 10.9906,26.39738 12.80876,40.57862 l -38.96532,5.19538 z"/>
+                </defs>
+                <foreignObject width="720" height="480" clip-path="url(#loop-end-clip)" class="loop-shade">
+                    <aside class="loop-shade" xmlns="http://www.w3.org/1999/xhtml" style="width: 100%; height: 100%;"></aside>
+                </foreignObject>
+                <clipPath id="loop-end-clip"><use href="#loop-end-path"/></clipPath>
+                <use href="#loop-end-path"/>
+                <path d="M 490,400 600,330 450,350 490,280 390,320 V 270 L 300,330 50,200 170,380 50,400"/>
+            </svg>
+            <div>THE END</div>
+            <p>You can reset once per minute.</p>
+            <table>
+                <tr id="loop-reset-btn-row-reset">
+                    <td><button class="btn" disabled>Reset</button></td>
+                    <td>Start over from the beginning of the exam.</td>
+                </tr>
+                <tr id="loop-reset-btn-row-restore">
+                    <td><button class="btn" disabled>Jump</button></td>
+                    <td>Start over, but resubmit your previous answers to bring you back to this point.</td>
+                </tr>
+                <tr>
+                    <td><a class="btn" href="javascript:toggleReset(false)">Stay</a></td>
+                    <td>Look at this page a bit longer. Make sure to save your work.</td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    
+    <script>
+
+    
+    
+    let glitchTriggerFuncs = [];
+    let glitchTriggerReceived = false;
+    let glitchTriggerExReceived = false;
+    let glitchPageLoaded = false;
+    function processGlitchFuncs(ex) {
+        glitchTriggerFuncs.forEach((func) => {
+            func(ex);
+        });
+    }
+    function doGlitch(ex) {
+        glitchTriggerReceived = true;
+        if (ex) {
+            glitchTriggerExReceived = true;
+        }
+        if (glitchPageLoaded) {
+            processGlitchFuncs(ex);
+        }
+    }
+    window.addEventListener('load', () => {
+        glitchPageLoaded = true;
+        if (glitchTriggerExReceived) {
+            processGlitchFuncs(true);
+        }
+        else if (glitchTriggerReceived) {
+            processGlitchFuncs(false);
+        }
+    }, false);
+    
+    
+    
+    function registerOnGlitchHook(func) {
+        if (glitchTriggerExReceived) {
+            func(true);
+        }
+        else if (glitchTriggerReceived) {
+            func(false);
+        }
+        glitchTriggerFuncs.push(func);
+    }
+    
+
+    
+    
+    </script>
+    <div class="content">
+        
+<script type="text/javascript" src="/static/puzzle_resources/the-earth-guide/crash-course/translations.js"></script>
+<script type="text/javascript" src="/static/puzzle_resources/the-earth-guide/crash-course/fuse.min.js"></script>
+<script type="text/javascript" src="/static/puzzle_resources/the-earth-guide/crash-course/dictionary.js"></script>
+<style>
+
+@font-face{
+    font-family: 'Andika';
+    src: url(/static/puzzle_resources/the-earth-guide/crash-course/AndikaPhon-R.woff)
+        format('woff');
+}
+
+.ipa {
+    font-family: 'Andika', serif;
+}
+
+
+main {
+    color: initial;
+    background-color: #f9f8f5;
+    padding: 20px 30px;
+}
+
+main h1,h2,h3,h4 {
+    /* margin-top: 1rem; */
+    color: initial;
+}
+
+main a {
+  color: #ce7b0f;
+}
+
+main a:hover, main a:focus {
+  color: #e7af65;
+}
+
+main table {
+  margin-left: 2rem;
+}
+
+table.phonetics-table th, table.phonetics-table td {
+  border-bottom: 0.5px solid #eee;
+  padding: 5px 10px;
+}
+
+table.phonetics-table td:first-child, table.phonetics-table td:nth-child(2) {
+  text-align: center;
+}
+
+table.pronoun-table tr:first-child td { border-top-width: 3px; }
+table.pronoun-table tr:last-child td { border-bottom-width: 3px; }
+table.pronoun-table tr td:first-child { border-left-width: 3px; }
+table.pronoun-table tr td:last-child { border-right-width: 3px; }
+
+.first {
+    margin-bottom: 2.5rem;
+}
+
+.crash-list {
+    margin-top: 0;
+}
+.inner {
+    margin-bottom: 0;
+}
+.crash-list > li {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+.colorized {
+    color: #c88d27;
+    font-weight: bold;
+ }
+
+.puflantu, .dict-word {
+  font-family: monospace, monospace;
+  color: #4273c8;
+  /* color: #4273c8; */
+}
+
+.puflantu strong, .puflantu .colorized {
+    color: #4273c8;
+    text-shadow: 1px 1px 1px #86aae8;
+}
+
+/* dictionary styles */
+
+#dictionary input {
+    font-size: inherit;
+    font-family: inherit;
+    letter-spacing: inherit;
+
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 10px 6px;
+    margin-bottom: 1rem;
+    background-color: white;
+}
+
+.dictionary-table {
+    display: block;
+    table-layout: fixed;
+    min-width: 100%;
+    max-width: 100%;
+
+    max-height: 400px;
+    overflow: auto;
+}
+
+.dictionary-table th {
+    position: sticky;
+    top: 0;
+    background-color: #f9f8f5;
+}
+
+.center {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+button.toggle {
+  text-transform: initial;
+  font-size: initial;
+  font-weight: initial;
+  padding: 0 2rem;
+  width: calc(1rem * 26);
+  margin: 2rem 0;
+
+  background-color: #1b5280;
+  color: #eef;
+
+  transition: background-color 0.3s;
+}
+
+button.toggle:hover, button.toggle.selected:hover {
+  background-color: #428cc8;
+  color: #fff;
+}
+
+button.toggle:focus {
+  color: #eef;
+}
+
+button.toggle.selected {
+  background-color: #2380ab;
+  color: #eef;
+}
+
+</style>
+
+<h1>Puflantu Crash Course</h1>
+
+<main id="main">
+    <div class="first">
+        <h4>Dictionary</h4>
+        <div id="dictionary">
+            <input class="fuzzy-search" type='text' placeholder="Search" style="width:30%"/>
+            <table class="gph-list-table dictionary-table">
+                <colgroup>
+                    <col style="width: 20vw">
+                    <col style="width: 80vw">
+                </colgroup>
+                <thead>
+                    <th>Word</th>
+                    <th>Translation</th>
+                </thead>
+                <tbody class="list">
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <em>
+                Vocabulary from the solution to <a href="https://2020.galacticpuzzlehunt.com/puzzle/word-salad.html" target="_blank" rel="noopener noreferrer">last
+                year&rsquo;s puzzle</a> are included.
+            </em>
+        </div>
+    </div>
+    <div class="no-break">
+        <h4>Who Speaks This Anyway?</h4>
+        <ul class="crash-list">
+          <li>
+            Six-fingered aliens that we communicated with in
+            <a href="https://2019.galacticpuzzlehunt.com/story.html" target="_blank" rel="noopener noreferrer">2019</a>,
+            after the discovery of an <em>Antarctic Artifact</em>.
+          </li>
+          <li>
+            You will not need any resources from our first contact for this
+            puzzle.
+          </li>
+          <li><em>
+            (For completeness, there are existing guides on the
+            <a href="https://2019.galacticpuzzlehunt.com/puflantu-guide.html" target="_blank" rel="noopener noreferrer">
+                GPH website</a>, the
+            <a href="https://github.com/galacticpuzzlehunt/puflantu/tree/master/doc" target="_blank" rel="noopener noreferrer">Github</a>, and
+            from <a href="https://2020.galacticpuzzlehunt.com/puzzle/word-salad/crash-course.html" target="_blank" rel="noopener noreferrer">last year</a>.
+            In a couple places, older information may slightly disagree with
+            this document; in those cases, the more modern understanding is
+            correct.)</em>
+          </li>
+        </ul>
+    </div>
+
+    <div class="no-break">
+        <h4>Sounds</h4>
+        <ul class="crash-list" style="margin-bottom: 0;">
+            <li>Every syllable is (C)V(C) (exactly one vowel with up to one consonant on each side).
+            <ul class="inner crash-list"><li>Therefore three-consonant clusters never occur.</li></ul>
+            </li>
+            <li>Pronunciation guide:</li>
+        </ul>
+        <table class="phonetics-table">
+          <thead>
+            <tr><th>Letter</th><th>Phoneme</th><th>Notes</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="puflantu">'</td><td class="ipa">/🔔/</td><td>literally a bell</td></tr>
+            <tr><td class="puflantu">a</td><td class="ipa">/a/</td><td>“a” in “c<strong>a</strong>r”</td></tr>
+            <tr><td class="puflantu">b</td><td class="ipa">/b/</td><td></td></tr>
+            <tr><td class="puflantu">c</td><td class="ipa">/ʒ/</td><td>“s” in “lei<strong>s</strong>ure”, “g” in “concier<strong>g</strong>e”, back half of “x” in “lu<strong>x</strong>ury”</td></tr>
+            <tr><td class="puflantu">d</td><td class="ipa">/d/</td><td></td></tr>
+            <tr><td class="puflantu">e</td><td class="ipa">/e/</td><td>“ay” in “m<strong>ay</strong>”</td></tr>
+            <tr><td class="puflantu">f</td><td class="ipa">/ɸ/</td><td>as English <strong>f</strong>, but don’t use your teeth</td></tr>
+            <tr><td class="puflantu">g</td><td class="ipa">/ŋ/</td><td>“ng” in “wi<strong>ng</strong>man”, “n” in “i<strong>n</strong>got”</td></tr>
+            <tr><td class="puflantu">h</td><td class="ipa">/x/</td><td>as English <strong>h</strong>, but put some grit into it, “ch” in “Lo<strong>ch</strong> Ness”, “gh” in “van Go<strong>gh</strong>”</td></tr>
+            <tr><td class="puflantu">i</td><td class="ipa">/i/</td><td>“ee” in “f<strong>ee</strong>t”</td></tr>
+            <tr><td class="puflantu">j</td><td class="ipa">/dʒ/</td><td></td></tr>
+            <tr><td class="puflantu">k</td><td class="ipa">/k/</td><td></td></tr>
+            <tr><td class="puflantu">l</td><td class="ipa">/l/</td><td></td></tr>
+            <tr><td class="puflantu">m</td><td class="ipa">/m/</td><td></td></tr>
+            <tr><td class="puflantu">n</td><td class="ipa">/n/</td><td></td></tr>
+            <tr><td class="puflantu">o</td><td class="ipa">/o/</td><td>“oa” in “g<strong>oa</strong>t”</td></tr>
+            <tr><td class="puflantu">p</td><td class="ipa">/p/</td><td></td></tr>
+            <tr><td class="puflantu">q</td><td class="ipa">/tʃ/</td><td>“ch” in “<strong>ch</strong>air”</td></tr>
+            <tr><td class="puflantu">r</td><td class="ipa">/ɹ̠/</td><td>as English <strong>r</strong> (not tapped or trilled)</td></tr>
+            <tr><td class="puflantu">s</td><td class="ipa">/s/</td><td></td></tr>
+            <tr><td class="puflantu">t</td><td class="ipa">/t/</td><td></td></tr>
+            <tr><td class="puflantu">u</td><td class="ipa">/ə/</td><td>“i” in “penc<strong>i</strong>l”, “e” in “cam<strong>e</strong>ra”</td></tr>
+            <tr><td class="puflantu">v</td><td class="ipa">/β/</td><td>as English <strong>v</strong>, but don’t use your teeth</td></tr>
+            <tr><td class="puflantu">w</td><td class="ipa">/u/</td><td>“oo” as in “b<strong>oo</strong>t”</td></tr>
+            <tr><td class="puflantu">x</td><td class="ipa">/ʃ/</td><td>“sh” as in “<strong>sh</strong>are”</td></tr>
+            <tr><td class="puflantu">y</td><td class="ipa">/ɲ/</td><td>“ni” as in “o<strong>ni</strong>on”; Spanish “<strong>ñ</strong>” or Italian “<strong>gn</strong>”</td></tr>
+            <tr><td class="puflantu">z</td><td class="ipa">/z/</td><td></td></tr>
+          </tbody>
+        </table>
+    </div>
+
+    <div class="note">
+      <em>We think you&rsquo;ll find the information up to here most useful, but feel free to look at the rest of the crash course. You do not need to learn everything below.</em>
+    </div>
+
+    <div class="center">
+      <button class="toggle" onclick="toggle(this, '.remainder')">Show rest of crash course</button>
+    </div>
+
+    <div class="remainder" style="display: none;">
+    <div class="no-break">
+        <h4>Nouns and Adjectives</h4>
+        <ul class="crash-list">
+            <li>Always end in a vowel.</li>
+            <li>Singular things almost never end in <span class="puflantu">-w</span> or <span class="puflantu">-we</span>.</li>
+            <li>Part of speech is left to context, e.g. <span class="puflantu">twipe</span> works just as well meaning &ldquo;sugar&rdquo; or &ldquo;sweet (sugary)&rdquo;.</li>
+        </ul>
+    </div>
+
+    <div class="no-break">
+        <h5>ag-</h5>
+        <ul class="crash-list">
+          <li>
+            Indicates that a thing is larger or otherwise more intense than its
+            base form, e.g. <span class="puflantu"><strong>ag</strong>twipe</span> &ldquo;very sweet&rdquo;.
+          </li>
+          <li>
+            May apply before or after noun class infixes depending on whether &ldquo;a
+            big/very X&rdquo; or something semantically distinct is intended, e.g.
+            <span class="puflantu">agtw<strong>r</strong>ipe</span> &ldquo;very sweet (liquid)&rdquo; vs <span class="puflantu">agt<strong>ur</strong>wipe</span> &ldquo;cloying&rdquo;.
+          </li>
+        </ul>
+    </div>
+
+    <div class="no-break">
+        <h5>sa-</h5>
+        <ul class="crash-list">
+          <li>
+            Indicates that a thing is smaller or otherwise less intense than its
+            base form, e.g. <span class="puflantu"><strong>sa</strong>ityeri</span> &ldquo;tint&rdquo;.
+          </li>
+          <li>
+            May apply before or after noun class infixes depending on whether &ldquo;a
+            small/slightly X&rdquo; or something semantically distinct is intended, e.g.
+            <span class="puflantu">sa<strong>it</strong>tiha</span> &ldquo;small light&rdquo; (LED?) vs <span class="puflantu"><strong>at</strong>satiha</span>
+            "dimmed".
+          </li>
+        </ul>
+    </div>
+
+    <div class="no-break">
+        <h5>-r- / -ur-</h5>
+        <ul class="crash-list">
+            <li>Indicates that a noun is a fluid.</li>
+            <li>Infix <span class="puflantu">-r-</span> before the word&rsquo;s second vowel, e.g. <span class="puflantu">twipe</span> &rarr; <span class="puflantu">tw<strong>r</strong>ipe</span>.
+                <ul class="inner crash-list">
+                    <li>Use <span class="puflantu">-ur-</span> instead if using <span class="puflantu">-r-</span> alone would cause a three-consonant cluster, e.g. <span class="puflantu">enxa</span> &rarr; <span class="puflantu">enx<strong>ur</strong>a</span>, not <span class="puflantu">enx<strong>r</strong>a</span>.</li>
+                </ul>
+            <li>All simple (non-clause) descriptors on a fluid noun also take this transformation.
+              <ul class="inner crash-list">
+                <li><span class="puflantu">tw<strong>r</strong>ipe enx<strong>ur</strong>a</span> &ldquo;sugar water&rdquo; because the water is a fluid.</li>
+                <li><span class="puflantu">enxa uxfaplo</span> &ldquo;water bottle&rdquo; because the bottle is not a fluid.</li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="no-break">
+        <h5>Vt-</h5>
+        <ul class="crash-list">
+            <li>Indicates that a noun is a light source.</li>
+            <li>Prepend a copy of the noun&rsquo;s first vowel + <span class="puflantu">t</span>, e.g. <span class="puflantu">erqoye</span> → <span class="puflantu"><strong>et</strong>erqoye</span> &ldquo;moon&rdquo;.</li>
+            <li>All simple (non-clause) descriptors on a light-emitting noun also take this transformation.
+              <ul class="inner crash-list">
+                <li><span class="puflantu"><strong>ot</strong>ombu <strong>et</strong>erqoye</span> &ldquo;full moon&rdquo; because the moon is a light source.</li>
+                <li><span class="puflantu">erqoye twipe</span> &ldquo;moon sugar&rdquo; because the sugar is not a light source.</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="no-break">
+        <h5>-Cw-</h5>
+        <ul class="crash-list">
+            <li>Indicates that a noun is an action defined by physical activity.
+                <ul class="inner crash-list"><li>&ldquo;jump&rdquo;, &ldquo;stand&rdquo;, &ldquo;fight&rdquo;</li>
+                    <li>not &ldquo;raise&rdquo;, &ldquo;cook&rdquo;, &ldquo;write&rdquo;</li>
+                    <li>depending on context, &ldquo;lift&rdquo;, &ldquo;spin&rdquo;, &ldquo;sing&rdquo;</li>
+                </ul></li>
+                <li>Duplicate the final consonant cluster and put a <span class="puflantu">-w-</span> between them, e.g. <span class="puflantu">tanuva</span> → <span class="puflantu">tanu<strong>vw</strong>va</span>.</li>
+            <li>All simple (non-clause) descriptors on a physical activity noun also take this transformation.
+              <ul class="inner crash-list">
+                <li><span class="puflantu">anu<strong>vw</strong>va tanu<strong>vw</strong>va</span> &ldquo;high jump&rdquo; because the jump is a physical activity.</li>
+                <li><span class="puflantu">tanuva tahlo</span> &ldquo;sauté pan&rdquo; because a pan is not a physical activity.</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="no-break">
+        <h5>-ay-</h5>
+        <ul class="crash-list">
+            <li>Infix <span class="puflantu">-ay-</span> before the final vowel to negate a thing, e.g. <span class="puflantu">twip<strong>ay</strong>e</span> for &ldquo;not sweet&rdquo;.
+                <ul class="inner crash-list"><li>The resulting word always has adjectival sense.</li></ul>
+            </li>
+            <li>This transformation applies after noun class transformations.</li>
+        </ul>
+    </div>
+
+    <div class="no-break">
+        <h5>-w</h5>
+        <ul class="crash-list">
+            <li>Replace the final vowel with <span class="puflantu">-w</span> to indicate the dual number, e.g. <span class="puflantu">twip<strong>w</strong></span> &ldquo;two sugars&rdquo;.</li>
+            <li>All simple (non-clause) descriptors on a plural noun also take this formation, e.g. <span class="puflantu">twip<strong>w</strong> loch<strong>w</strong></span> &ldquo;two sweet foods&rdquo;.</li>
+        </ul>
+    </div>
+
+    <div class="no-break">
+        <h5>-we</h5>
+        <ul class="crash-list">
+            <li>Replace the final vowel with <span class="puflantu">-we</span> to pluralize, e.g. <span class="puflantu">twip<strong>we</strong></span> for &ldquo;sugars&rdquo; or &ldquo;sweet things&rdquo;.</li>
+            <li>This transformation applies after negation, e.g. <span class="puflantu">twip<strong>aywe</strong></span>, not <span class="puflantu">twip<strong>waye</strong></span>.</li>
+            <li>All simple (non-clause) descriptors on a plural noun also take this formation, e.g. <span class="puflantu">twip<strong>we</strong> loch<strong>we</strong></span> &ldquo;sweet foods&rdquo;.</li>
+        </ul>
+    </div>
+
+    <div class="no-break">
+        <h5>-s</h5>
+        <ul class="crash-list">
+            <li>Adverbializes an adjective, e.g. <span class="puflantu">erida</span> &ldquo;fast&rdquo; → <span class="puflantu">erida<strong>s</strong></span> &ldquo;quickly&rdquo;.</li>
+        </ul>
+    </div>
+
+    <div class="no-break">
+        <h5>-l</h5>
+        <ul class="crash-list">
+            <li>Verbifies a noun or adjective, e.g. <span class="puflantu">twipe</span> &ldquo;sugar&rdquo; → <span class="puflantu">twipe<strong>l</strong></span> &ldquo;to sweeten&rdquo;.</li>
+        </ul>
+    </div>
+
+    <div class="no-break">
+        <h5>-'fi / -'</h5>
+        <ul class="crash-list">
+            <li>Makes an adjective comparative or superlative respectively, e.g. <span class="puflantu">twipe<strong>'fi</strong></span> "sweeter" and <span class="puflantu">twipe<strong>'</strong></span> &ldquo;sweetest&rdquo;.</li>
+        </ul>
+    </div>
+
+    <div class="no-break">
+        <h5>-ro</h5>
+        <ul class="crash-list">
+            <li>Proclitic indicating possession, e.g. <span class="puflantu">Baba<strong>-ro</strong> toreli</span> &ldquo;Baba&rsquo;s cookie&rdquo;.</li>
+            <li>When applied to a personal or relative pronoun, the pronoun gets infixed instead, e.g. <span class="puflantu">at</span> &ldquo;it&rdquo; → <span class="puflantu">r<strong>at</strong>o</span> &ldquo;its&rdquo;; <span class="puflantu">ory</span> &ldquo;those described things&rsquo; &rdquo; → <span class="puflantu">roryo</span>.</li>
+        </ul>
+    </div>
+
+    <div class="no-break">
+        <h4>Pronouns</h4>
+        <ul class="crash-list">
+          <li>Pronouns can appear on their own but most often occur infixed into verbs (see Verbs).</li>
+        </ul>
+        <table class="pronoun-table">
+            <tr><td></td><td colspan="2">Singular</td><td colspan="2">Dual</td><td colspan="2">Plural</td></tr>
+            <tr><td></td><td>Subject</td><td>Object</td><td>Subject</td><td>Object</td><td>Subject</td><td>Object</td></tr>
+            <tr><td>1st person</td><td><span class="puflantu">wm</span></td><td><span class="puflantu">um</span></td><td><span class="puflantu">wn</span></td><td><span class="puflantu">un</span></td><td><span class="puflantu">wy</span></td><td><span class="puflantu">uy</span></td></tr>
+            <tr><td>2nd person</td><td><span class="puflantu">iz</span></td><td><span class="puflantu">ez</span></td><td><span class="puflantu">ij</span></td><td><span class="puflantu">ej</span></td><td><span class="puflantu">ix</span></td><td><span class="puflantu">ex</span></td></tr>
+            <tr><td>3rd person</td><td><span class="puflantu">at</span></td><td><span class="puflantu">ot</span></td><td><span class="puflantu">ab</span></td><td><span class="puflantu">ob</span></td><td><span class="puflantu">ad</span></td><td><span class="puflantu">od</span></td></tr>
+            <tr><td>"This"</td><td><span class="puflantu">ita</span></td><td><span class="puflantu">eta</span></td><td><span class="puflantu">itw</span></td><td><span class="puflantu">etw</span></td><td><span class="puflantu">itwe</span></td><td><span class="puflantu">etwe</span></td></tr>
+            <tr><td>"That"<sup>1</sup></td><td><span class="puflantu">iqa</span></td><td><span class="puflantu">eqa</span></td><td><span class="puflantu">iqw</span></td><td><span class="puflantu">eqw</span></td><td><span class="puflantu">iqwe</span></td><td><span class="puflantu">eqwe</span></td></tr>
+            <tr><td>Relative<sup>2</sup></td><td><span class="puflantu">al</span></td><td><span class="puflantu">ol</span></td><td><span class="puflantu">an</span></td><td><span class="puflantu">on</span></td><td><span class="puflantu">ary</span><sup>3</sup></td><td><span class="puflantu">ory</span><sup>3</sup></td></tr>
+        </table>
+        <ol class="crash-list">
+          <li>&ldquo;That&rdquo; also gets used at the determiner &ldquo;the&rdquo;.</li>
+          <li>
+            These appear in subordinate clauses to indicate the role of the
+            thing being described by the clause, where appropriate; e.g.
+            <span class="puflantu">wlwm<strong>ol</strong>oc-ka locho</span> &ldquo;the food <strong>that</strong> I ate&rdquo;.
+          </li>
+          <li>
+            When these appear alone they are written <span class="puflantu">arye</span> and <span class="puflantu">orye</span>.
+          </li>
+        </ol>
+
+    </div>
+
+    <div class="no-break">
+        <h4>Conjunctions</h4>
+        <ul class="crash-list">
+            <li>Attached as enclitics to the preceding item, e.g. <span class="puflantu">Alisa<strong>-li</strong> Bobu</span> &ldquo;Alice and Bob&rdquo;.</li>
+            <li>Take the -s suffix when linking verbs or adverbs, e.g. <span class="puflantu">wlatoc-lis zumatuz</span> &ldquo;it eats and it sleeps&rdquo;.</li>
+        </ul>
+    </div>
+
+    <div class="no-break">
+        <h4>Verbs</h4>
+        <ul class="crash-list">
+            <li>Verbs end in consonants and have a root form that is never used on its own.</li>
+            <li>Verbs take pronoun infixes indicating subject and object before their final vowel, e.g. <span class="puflantu">wloc</span> &ldquo;to eat&rdquo; → <span class="puflantu">wl<strong>wm</strong>oc</span> &ldquo;I eat&rdquo;; <span class="puflantu">wl<strong>izot</strong>oc</span> &ldquo;you eat it&rdquo;
+              <ul class="inner crash-list"><li>The &ldquo;this&rdquo; and &ldquo;that&rdquo; &ldquo;pronouns&rdquo; aren&rsquo;t used like this, they just stand alone, i.e. <span class="puflantu">eta-ro</span> &ldquo;that( thing)&rsquo;s&rdquo;, not <span class="puflantu">retao</span></li></ul>
+            </li>
+            <li>In the active voice, the subject infix always appears; the object infix only appears sometimes, especially when it is useful to disambiguate subject from object.</li>
+            <li>In the passive voice, the object infix appears alone, e.g. <span class="puflantu">wl<strong>ot</strong>oc</span> &ldquo;It is eaten&rdquo;.</li>
+            <li><span class="puflantu">az</span> &ldquo;to be&rdquo; is the only irregular verb and takes its infixes as suffixes after <span class="puflantu">z</span>, e.g. <span class="puflantu">zwm</span> &ldquo;I am&rdquo;.</li>
+            <li>If a small word appears immediately before a verb, it could be a pronoun, a <a href="https://github.com/galacticpuzzlehunt/puflantu/blob/master/doc/main.org#indefinite-pronouns">tense/aspect</a> modifier, or a postposition.</li>
+        </ul>
+    </div>
+
+    <div class="no-break">
+        <h5>ag-</h5>
+        <ul class="crash-list">
+            <li>Indicates that an action is done very much, intensely, or overly so, e.g. <span class="puflantu"><strong>ag</strong>wloc</span> &ldquo;overeat&rdquo;.</li>
+            <li>Applies after pronoun infixing but some <span class="puflantu">ag-</span> verbs are considered standalone words.</li>
+        </ul>
+    </div>
+
+    <div class="no-break">
+        <h5>sa-</h5>
+        <ul class="crash-list">
+            <li>Indicates that an action is done only a little, slightly, or underdone, e.g. <span class="puflantu"><strong>sa</strong>erok</span> &ldquo;scratch&rdquo;.</li>
+            <li>Applies after pronoun infixing but some <span class="puflantu">sa-</span> verbs are considered standalone words.</li>
+        </ul>
+    </div>
+
+    <div class="no-break">
+        <h5>vo-</h5>
+        <ul class="crash-list">
+            <li>Indicates that an action is reversed, e.g. <span class="puflantu">horod</span> &ldquo;to remember&rdquo; → <span class="puflantu"><strong>vo</strong>horod</span> &ldquo;to forget&rdquo;.</li>
+            <li>Applies after pronoun infixing; ordering with other two prefixes depends on context.</li>
+        </ul>
+    </div>
+
+    <div class="no-break">
+        <h5>-ey-</h5>
+        <ul class="crash-list">
+            <li>Indicates that an action is not done, e.g. <span class="puflantu">wlwm<strong>ey</strong>oc</span> &ldquo;I do not eat&rdquo;.</li>
+            <li>Goes after the subject pronoun infix and before the object pronoun infix, e.g. <span class="puflantu">wl<strong>ateyod</strong>oc</span> &ldquo;it does not eat them&rdquo;.</li>
+        </ul>
+    </div>
+
+    <div class="no-break">
+        <h5>-a</h5>
+        <ul class="crash-list"><li>Indicates the action of the verb, as a gerund, infinitive, or present participle, e.g. <span class="puflantu">erok<strong>a</strong></span> &ldquo;cutting&rdquo; or &ldquo;to cut&rdquo;.
+        </li></ul>
+    </div>
+
+    <div class="no-break">
+        <h5>-afe</h5>
+        <ul class="crash-list"><li>Indicates the performer of a verb or something capable of performing the verb, e.g. <span class="puflantu">wloc<strong>afe</strong></span> &ldquo;eater&rdquo;.</li></ul>
+    </div>
+
+    <div class="no-break">
+        <h5>-who</h5>
+        <ul class="crash-list"><li>Indicates the recipient of a verb or something that can be acted upon by the verb, e.g. <span class="puflantu">kar<strong>who</strong></span> &ldquo;addend&rdquo;.</li></ul>
+    </div>
+
+    <div class="no-break">
+        <h5>-wmi</h5>
+        <ul class="crash-list"><li>Indicates a thing that has already been acted upon by the verb, e.g. <span class="puflantu">kar<strong>wmi</strong></span> &ldquo;added&rdquo;.</li>
+            <li>In cases where more details are needed, a dependent clause may be used instead, e.g. <span class="puflantu">axwroqas kolar-ka</span> &ldquo;daily added&rdquo;.</li>
+        </ul>
+    </div>
+
+    <div class="no-break">
+        <h5>-aqo</h5>
+        <ul class="crash-list">
+            <li>Indicates a thing used to perform the verb, e.g. <span class="puflantu">wloc<strong>aqo</strong></span> &ldquo;utensil&rdquo;</li>
+        </ul>
+    </div>
+
+    <div class="no-break">
+        <h5>-ice</h5>
+        <ul class="crash-list">
+            <li>Indicates a place where the verb is performed, e.g. <span class="puflantu">wloc<strong>ice</strong> veonxi</span> &ldquo;eat-hosting building&rdquo; (diner, restaurant).
+            </li>
+        </ul>
+    </div>
+
+    <div class="no-break">
+        <h5>-ede</h5>
+        <ul class="crash-list">
+            <li>Indicates a thing that causes the verb to happen, e.g. <span class="puflantu">horod<strong>ede</strong> kude</span> &ldquo;notebook&rdquo;
+            </li>
+        </ul>
+    </div>
+
+    <div class="no-break">
+        <h5>-oda</h5>
+        <ul class="crash-list">
+            <li>Indicates the result of an action, e.g. <span class="puflantu">real<strong>oda</strong></span> &ldquo;mixture&rdquo;
+            </li>
+        </ul>
+    </div>
+
+    <div class="no-break">
+        <h4>Clauses</h4>
+        <ul class="crash-list">
+      <li>General sentence order is subject-object-verb.<br>
+<pre>
+<span class="puflantu">Qarzu    dax<span class="colorized">aqo</span>            nag<span class="colorized">at</span>ut.</span>
+Charles  teach-<span class="colorized">instrument</span>  <span class="colorized">it</span>-writes.
+Charles writes a guide (&ldquo;an instructive&rdquo;).
+</pre>
+            </li>
+      <li>Things generally go before the things they modify.
+<pre>
+<span class="puflantu">Iqa   daxede  og<span class="colorized">we</span>   nath<span class="colorized">we</span>  q<span class="colorized">at</span>un.</span>
+That  guide   many<span class="colorized">s</span>  word<span class="colorized">s</span>   <span class="colorized">it</span>-has.
+The guide has many words.
+</pre>
+      </li>
+      <li>The object of a <strike>pre</strike><strong>ad</strong>position modifies it, and the adpositional phrase modifies something else.
+<pre>
+<span class="puflantu"><span class="colorized">Ot  henqwe</span>          sivegwe,   pazulu  zadey.</span>
+<span class="colorized">It  within(-plural)</span> showings,  puzzle  they-are-not.
+(The) examples <span class="colorized">in it</span> are not a puzzle.
+</pre>
+</li>
+      <li>Two independent clauses can be linked by attaching an adverbial conjuction to the first clause&rsquo;s verb.
+<pre>
+<span class="puflantu">Yokuxa  zat<span class="colorized">-dis</span>    yokuxa<span class="colorized">'fi</span>  az<span class="colorized">a</span>    fel             zat.</span>
+Long    it-is-<span class="colorized">but</span>  long<span class="colorized">er</span>     be<span class="colorized">ing</span>  [hypothetical]  it-can.
+It is long but it could be longer.
+</pre>
+      </li>
+      <li>Dependent clauses have -ka(s) attached to the verb and are generally positioned the same as the part of speech the clause assumes.
+<pre>
+<span class="puflantu">Qarzu    lavwe       rojdwe    swgatodor<span class="colorized">-ka</span>         ocratal.</span>
+Charles  previouses  versions  <span class="colorized">that</span>-it-agrees-them  it-hopes.
+Charles hopes (that) it agrees with previous versions.
+</pre>
+      </li>
+      <li>If the dependent clause modifies a noun, a relative pronoun might be used to indicate the role of the modified noun in the clause.
+<pre>
+<span class="puflantu">Os            nagat<span class="colorized">ol</span>ut-ka    neru   zat.</span>
+[perfective]  it-writes-<span class="colorized">that</span>  fifth  it-is.
+It is the fifth (one that) he has written.
+</pre>
+<pre>
+<span class="puflantu">Uta  laves       nag<span class="colorized">ol</span>ut-ka       rojde    <a href="https://github.com/galacticpuzzlehunt/puflantu/tree/master/doc">tihan</a>  jatif.</span>
+One  previously  <span class="colorized">that</span>-is-written  version  <a href="https://github.com/galacticpuzzlehunt/puflantu/tree/master/doc">here</a>   it-exists.
+A previously written version is <a href="https://github.com/galacticpuzzlehunt/puflantu/tree/master/doc">here</a>.
+</pre>
+      </li>
+      <li>Clauses with other semantic roles are introduced with a <a href="https://2019.galacticpuzzlehunt.com/artifact/textbook.html">ti- or al- word</a>.
+<pre>
+<span class="puflantu">Izwfwe  g<span class="colorized">ot</span>ena       zalova,   <span class="colorized">tidul</span>        fel</span>
+Old(s)  reading-<span class="colorized">them</span> needing,  <span class="colorized">this-reason</span>  [hyp.]
+
+<span class="puflantu">orcizeyin-kas   exizeyin.</span>
+you-don&rsquo;t-want  you-should-not.
+
+You should not need to read the old ones if you don&rsquo;t want (to).
+</pre>
+<pre>
+<span class="puflantu">Uta  cuafi  rojde    <span class="colorized">albwr</span>      Qarzu    giravroxotel-kas</span>
+One  new    version  <span class="colorized">that-time</span>  Charles  it-is-confused
+
+<span class="puflantu">jifoted.</span>
+it-is-created.
+
+A new version is created whenever Charles is confused.
+</pre>
+      </li>
+      <li>If dependent clauses get long enough to interfere with the flow of the sentence, they may be moved after the verb.
+<pre>
+<span class="puflantu">Podhe  rojde    henqos      dwtdwt  et        mwyizid,</span>
+Next   version  interiorly  again   [future]  we-see-you
+
+<span class="puflantu">eta   21554  henqos      et      qwy<span class="colorized">ol</span>uk-ka</span>
+that  3022   interiorly  [fut.]  we-make-<span class="colorized">that</span>
+
+<span class="puflantu">pazulliqexu   ziy  et      nag<span class="colorized">ol</span>ut-ka.</span>
+puzzleparty  for  [fut.]  <span class="colorized">that</span>-is-written.
+
+We will see you again in the next version, which will be
+written for the puzzlehunt that we will make in 3022.
+</pre>
+      </li>
+        </ul>
+    </div>
+  </div>
+</main>
+
+<script>
+  function toggle(btn, selector) {
+    let el = document.querySelector(selector)
+    if (el.style.display == 'none') { // SHOW
+      el.style.display = 'block'
+      btn.classList.add('selected')
+      btn.innerText = "Hide rest of crash course"
+    } else { // HIDE
+      el.style.display = 'none'
+      btn.classList.remove('selected')
+      btn.innerText = "Show rest of crash course"
+    }
+  }
+</script>
+
+
+    </div>
+    
+
+    
+
+    
+    <script>
+    document.getElementById('nav-music').style.display = 'none';
+    document.getElementById("progress-simulator").addEventListener("submit", (e) => {
+        if (e.submitter.name === "reset") {
+            toggleReset(true);
+            doGlitch(false);
+            document.getElementById("shortcuts").checked = false;
+            e.preventDefault();
+        } else {
+            localStorage.setItem(e.submitter.name, e.submitter.value);
+        }
+    });
+    addStyles();
+
+    function toggleReset(which) {
+        $('#loop-reset').toggleClass('loop-resetting', which);
+    }
+
+    function addStyles() {
+        const changeFavicon = (url) => {
+            const e = Array.from(document.getElementsByTagName("link"))
+                .filter(e => e.rel === "icon")[0];
+            e.href = url;
+        }
+        const addSheet = (url) => {
+            const e = document.createElement("link");
+            e.rel = "stylesheet";
+            e.href = url;
+            document.getElementsByTagName("head")[0].appendChild(e);
+        }
+
+        const seasons = ["spring", "summer", "autumn", "winter"];
+        let current_main_round = localStorage.getItem("round");
+        const endgame_unlocked = localStorage.getItem("endgame") === "true";
+
+        const matches = new RegExp(`\\?(${seasons.join("|")})`).exec(document.URL);
+        if (matches && matches[1]) {
+            current_main_round = matches[1];
+        }
+
+        if (endgame_unlocked) {
+            addSheet("/static/css/endgame.css");
+            changeFavicon("/static/images/favicon-endgame.ico");
+            const nodes = document.getElementsByClassName("energy-nodes-info");
+            console.log(nodes);
+            if (nodes.length > 0) {
+                nodes[0].style.display = "block";
+            }
+        } else if (current_main_round === "concert") {
+            addSheet("/static/css/concert.css");
+            changeFavicon("/static/images/favicon-concert.ico");
+            // also add the concert music
+            document.getElementById('nav-music').style.display = 'inline-block';
+            const audio = document.getElementById("music-audio");
+            if (audio) {
+                audio.addEventListener('play', () => {
+                    audio.volume = localStorage.getItem('music-audio-volume') ?? 0.5;
+                });
+                audio.addEventListener('volumechange', () => {
+                    localStorage.setItem('music-audio-volume', audio.volume);
+                });
+            }
+        } else if (seasons.includes(current_main_round)) {
+            addSheet("/static/css/season.css");
+            addSheet(`/static/css/${current_main_round}.css`);
+            changeFavicon(`/static/images/favicon-${current_main_round}.ico`);
+        } else {
+            addSheet("/static/css/blue.css");
+            changeFavicon("/static/images/favicon-blue.ico");
+        }
+    }
+
+    registerOnGlitchHook((ex) => {
+        document.getElementById('background-glitch-wrapper').style.display = 'initial';
+    });
+    </script>
+    
+</body>
+</html>

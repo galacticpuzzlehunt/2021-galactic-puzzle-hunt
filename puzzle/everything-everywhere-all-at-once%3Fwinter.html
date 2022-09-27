@@ -1,0 +1,414 @@
+
+
+
+
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+<title>Everything Everywhere All at Once</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <meta property="og:title" content="Galactic Puzzle Hunt 2022">
+    <meta property="og:description" content="Registration for this year's Galactic Puzzle Hunt is now open!">
+    <meta property="og:image" content="https://galacticpuzzlehunt.com/static/images/banner.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:slnt,CASL,CRSV,MONO@-3,0.5,1,1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/skeleton.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.formset/1.2.2/jquery.formset.min.js"></script>
+    <script src="/jsi18n/"></script>
+    <script src="/static/js/sorttable.js"></script>
+    <script src="/static/js/tray.js"></script>
+    <script src="/static/js/notify.js"></script>
+    <script src="/static/js/time.js"></script>
+    
+    
+    <link rel="icon" sizes="16x16 32x32 48x48 64x64" href="/static/images/favicon.ico" type="image/vnd.microsoft.icon">
+    
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92192633-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-92192633-1');
+</script>
+
+</head>
+<body>
+    
+    <div id="background-glitch-wrapper" class="background-glitch">
+        <div class="glitch-1"></div>
+        <div class="glitch-2"></div>
+        <div class="glitch-3"></div>
+    </div>
+    
+    
+    <input id="shortcuts" type="checkbox">
+    
+    <nav>
+        <span class="tray">
+            <span id="tray-timer"></span>
+            <div class="top-tabs">
+                <a href="/">
+                    Home
+                </a>
+                
+                
+                <a href="/story">
+                    Story
+                </a>
+                
+                
+                <a class="selected-tab" href="/puzzles">
+                    Puzzles
+                </a>
+                
+                <a href="/teams">
+                    Teams
+                </a>
+                
+                
+                <a href="/errata">
+                    Updates
+                </a>
+                
+                
+                
+                
+                <a id="nav-music" href="#">
+                    <label for="music" title="Music" style="margin-bottom: 0; font-weight: normal; cursor: pointer;">Music</label>
+                </a>
+                <input id="music" type="checkbox">
+                <div class="shortcuts music">
+                    <audio id="music-audio" controls src="/static/puzzle_resources/worlds-end-concert/music-audio.mp3">
+                        There should be a music player here.
+                    </audio>
+                </div>
+                
+                
+            </div>
+            <div class="top-left-actions">
+                
+
+
+
+
+<a href="/post-hunt-solve/everything-everywhere-all-at-once" class="btn">Check your answer spoiler-free</a>
+
+
+
+<a href="/solution/everything-everywhere-all-at-once" class="btn">View solution</a>
+<a href="/stats/everything-everywhere-all-at-once" class="btn">Stats</a>
+
+
+            </div>
+        </span>
+        <div class="top-right-actions">
+        
+        <label for="shortcuts" title="Simulator">Simulator </label>
+        
+        
+        </div>
+    </nav>
+    
+    <div class="shortcuts">
+        <form id="progress-simulator">
+        <div>Current round:</div>
+        <button class="btn" type="submit" name="round" value="forward">⬆️</button>
+        <button class="btn" type="submit" name="round" value="spring">🌸</button>
+        <button class="btn" type="submit" name="round" value="summer">☀️</button>
+        <button class="btn" type="submit" name="round" value="autumn">🍂</button>
+        <button class="btn" type="submit" name="round" value="winter">☃️</button>
+        <button class="btn" type="submit" name="round" value="concert">🎤</button>
+        <button class="btn" type="submit" name="round" value="none">None</button>
+        <div>Endgame:</div>
+        <button class="btn" type="submit" name="endgame" value="true">Unlock</button>
+        <button class="btn" type="submit" name="endgame" value="false">Reset</button>
+        <div>Reset:</div>
+        <button class="btn" type="submit" name="reset" value="reset">Reset</button>
+        </form>
+    </div>
+    
+    
+    
+    
+    
+    <div id="loop-reset">
+        <form>
+            <svg viewBox="-30 160 720 320">
+                <defs>
+                    <path id="loop-end-path" d="m 370,240 c 38.29044,0 74.26676,18.33512 96.83716,49.26624 l -76.8369,30.73478 V 270 L 300,330 261.03858,309.74192 c 19.60706,-42.51188 62.14674,-69.74008 108.9623,-69.74306 z m 106.15758,64.22738 c 6.65282,12.65518 10.9906,26.39738 12.80876,40.57862 l -38.96532,5.19538 z"/>
+                </defs>
+                <foreignObject width="720" height="480" clip-path="url(#loop-end-clip)" class="loop-shade">
+                    <aside class="loop-shade" xmlns="http://www.w3.org/1999/xhtml" style="width: 100%; height: 100%;"></aside>
+                </foreignObject>
+                <clipPath id="loop-end-clip"><use href="#loop-end-path"/></clipPath>
+                <use href="#loop-end-path"/>
+                <path d="M 490,400 600,330 450,350 490,280 390,320 V 270 L 300,330 50,200 170,380 50,400"/>
+            </svg>
+            <div>THE END</div>
+            <p>You can reset once per minute.</p>
+            <table>
+                <tr id="loop-reset-btn-row-reset">
+                    <td><button class="btn" disabled>Reset</button></td>
+                    <td>Start over from the beginning of the exam.</td>
+                </tr>
+                <tr id="loop-reset-btn-row-restore">
+                    <td><button class="btn" disabled>Jump</button></td>
+                    <td>Start over, but resubmit your previous answers to bring you back to this point.</td>
+                </tr>
+                <tr>
+                    <td><a class="btn" href="javascript:toggleReset(false)">Stay</a></td>
+                    <td>Look at this page a bit longer. Make sure to save your work.</td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    
+    <script>
+
+    
+    
+    let glitchTriggerFuncs = [];
+    let glitchTriggerReceived = false;
+    let glitchTriggerExReceived = false;
+    let glitchPageLoaded = false;
+    function processGlitchFuncs(ex) {
+        glitchTriggerFuncs.forEach((func) => {
+            func(ex);
+        });
+    }
+    function doGlitch(ex) {
+        glitchTriggerReceived = true;
+        if (ex) {
+            glitchTriggerExReceived = true;
+        }
+        if (glitchPageLoaded) {
+            processGlitchFuncs(ex);
+        }
+    }
+    window.addEventListener('load', () => {
+        glitchPageLoaded = true;
+        if (glitchTriggerExReceived) {
+            processGlitchFuncs(true);
+        }
+        else if (glitchTriggerReceived) {
+            processGlitchFuncs(false);
+        }
+    }, false);
+    
+    
+    
+    function registerOnGlitchHook(func) {
+        if (glitchTriggerExReceived) {
+            func(true);
+        }
+        else if (glitchTriggerReceived) {
+            func(false);
+        }
+        glitchTriggerFuncs.push(func);
+    }
+    
+
+    
+    
+    </script>
+    <div class="content">
+        
+
+<h1>
+    Everything Everywhere All at Once
+    
+    
+    
+    <div>
+      
+      <a class="btn" href="everything-everywhere-all-at-once%253Fspring">🌸</a>
+      
+      <a class="btn" href="everything-everywhere-all-at-once%253Fsummer">☀️</a>
+      
+      <a class="btn" href="everything-everywhere-all-at-once%253Fautumn">🍂</a>
+      
+      <a class="btn" href="everything-everywhere-all-at-once%253Fwinter">☃️</a>
+      
+    </div>
+    
+    
+</h1>
+
+
+
+<main class="puzzle-main clipboard-container">
+    
+    
+    
+    
+<style>
+	div.centerer {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+	}
+	div.d {
+		display: flex;
+		flex-direction: row;
+	}
+	.u {
+		font-family: 'Times New Roman', Times, serif;
+	}
+	div.e {
+		text-align: right;
+		padding: 10px;
+	}
+	div.f {
+		border: 1px solid black;
+		padding: 10px;
+	}
+</style>
+
+
+<p class="flavor">Evelyn seems to have acquired some new powers...</p>
+<p>During <span class="u">____</span>, Evelyn is brought in by the president for a consultation. Though he is initially at a loss, Evelyn eventually comes up with a plan to make a <span class="u">____</span>. Evelyn goes to <span class="u">____</span>, where he shows off how rich he is with all the gadgets he has.</p>
+<p>Evelyn rides a bus into <span class="u">____</span>, where she is reunited with her mother and sister. During <span class="u">____</span>, she meets her future husband, who she feeds a purple herb to and buries briefly. After many fights with her husband, Evelyn uses a <span class="u">____</span> and ends up in the hospital.</p>
+<p>Evelyn is an aide to the ruler of <span class="u">____</span>. During <span class="u">____</span>, Evelyn finishes gathering a set of precious stones, giving him control of the universe. Evelyn also spars with the ruler&rsquo;s son using a specialized <span class="u">____</span>.</p>
+<p>At the end of <span class="u">____</span>, Evelyn rescues a man. Together, they search for a particular <span class="u">____</span>, which had been hidden away. Their search takes them to <span class="u">____</span>, where Evelyn snipes his rival with a transforming gun.</p>
+<p>Evelyn uses a <span class="u">____</span> he finds in <span class="u">____</span> to defeat a queen. That queen had been sealed away during <span class="u">____</span>, when Evelyn sings his daughter&rsquo;s childhood favorite song to her.</p>
+<p>Several years after <span class="u">____</span>, Evelyn lets an alien take over his body, producing a very long tongue. Evelyn witnesses a boy use a <span class="u">____</span>. Later, Evelyn points a gun at several pregnant women in <span class="u">____</span>.</p>
+<p>Evelyn meets a girl and her companion, and they show Evelyn the girl&rsquo;s <span class="u">____</span>. Earlier, the girl saw something burn in the sky during <span class="u">____</span>. Evelyn drives them to <span class="u">____</span> and transfers his power, including the strength of Hercules and the power of Zeus.</p>
+<p>At one point, Evelyn locks himself outside and walks through <span class="u">____</span> with only a <span class="u">____</span>. During <span class="u">____</span>, Evelyn shoots himself using what he thinks is an anti-gravity gun.</p>
+<p>Evelyn lives in <span class="u">____</span> and suffers from anxiety and agoraphobia. Her mental health suffers especially during <span class="u">____</span>, and she conceals her insect wings by making them look like tattoos. While working on her company&rsquo;s newest product, a <span class="u">____</span>, she hears what sounds like a murder.</p>
+<p>Evelyn frames a man by leaving his <span class="u">____</span> at the scene of the crime. He is ordered to travel to <span class="u">____</span>, where he meets Evelyn once again. During <span class="u">____</span>, Evelyn stabilizes his quantum energy.</p>
+<p>Evelyn goes home to <span class="u">____</span>, where he defeats some bullies by imagining a large fist. Later, during <span class="u">____</span>, a woman confesses the truth and leaves Evelyn. Evelyn searches for her, but only finds his <span class="u">____</span> with a note of praise left by her.</p>
+<p>Near a stage being constructed for an event hosted by Evelyn, a man has been staring at a poster for the past week, searching for a <span class="u">____</span>. At the end of <span class="u">____</span>, Evelyn sees his daughter kiss her ex, reuniting. The kiss takes place in <span class="u">____</span>, where Evelyn can previously be seen playing with a ball and killing a bird with it.</p>
+<p>Evelyn trains for a match by punching a <span class="u">____</span>. The match is held during <span class="u">____</span>. On the day of the match, Evelyn enters <span class="u">____</span>, then chomps his opponent with his multiple rows of very large teeth.</p>
+<p>During <span class="u">____</span>, Evelyn punches out someone&rsquo;s soul and explains to them that it has been 17 years since the global catastrophe. Evelyn then gives a speech about a <span class="u">____</span> and claims it is disorder. Soon thereafter, Evelyn watches in glee as she and the combatants around her enter <span class="u">____</span>, plunging them into darkness.</p>
+<p>Evelyn is on an expedition with her brother. One night, Evelyn uses a <span class="u">____</span> and accidentally awakens someone who had been sealed away during <span class="u">____</span>. Then the expedition returns to <span class="u">____</span>, where Evelyn awakens her psychic powers by almost drowning.</p>
+<div class="centerer no-copy">
+	<div class="e"><div class="u">____ ____</div><div class="u">____ ____ ____</div></div>
+	<div class="f"><div>???</div><div>???</div></div>
+</div>
+
+<div class="copy-only">
+	<table>
+		<tr><td data-copy-only-styles="border: 0px"></td><td data-copy-only-styles="border: 0px">____</td><td data-copy-only-styles="border: 0px">____</td><td data-copy-only-styles="border-top: 1px solid black; border-left: 1px solid black; border-right: 1px solid black; border-bottom: 0px">???</td></tr>
+		<tr><td data-copy-only-styles="border: 0px">____</td><td data-copy-only-styles="border: 0px">____</td><td data-copy-only-styles="border: 0px">____</td><td data-copy-only-styles="border-bottom: 1px solid black; border-left: 1px solid black; border-right: 1px solid black">???</td></tr>
+	</table>
+</div>
+
+<button class="btn clipboard-button"></button>
+
+    
+    
+
+    
+    <div class="puzzle-main-corner puzzle-main-corner-1"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-2"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-3"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-4"></div>
+    
+</main>
+
+<script src="/static/js/copyjack.js"></script>
+
+
+    </div>
+    
+
+    
+
+    
+    <script>
+    document.getElementById('nav-music').style.display = 'none';
+    document.getElementById("progress-simulator").addEventListener("submit", (e) => {
+        if (e.submitter.name === "reset") {
+            toggleReset(true);
+            doGlitch(false);
+            document.getElementById("shortcuts").checked = false;
+            e.preventDefault();
+        } else {
+            localStorage.setItem(e.submitter.name, e.submitter.value);
+        }
+    });
+    addStyles();
+
+    function toggleReset(which) {
+        $('#loop-reset').toggleClass('loop-resetting', which);
+    }
+
+    function addStyles() {
+        const changeFavicon = (url) => {
+            const e = Array.from(document.getElementsByTagName("link"))
+                .filter(e => e.rel === "icon")[0];
+            e.href = url;
+        }
+        const addSheet = (url) => {
+            const e = document.createElement("link");
+            e.rel = "stylesheet";
+            e.href = url;
+            document.getElementsByTagName("head")[0].appendChild(e);
+        }
+
+        const seasons = ["spring", "summer", "autumn", "winter"];
+        let current_main_round = localStorage.getItem("round");
+        const endgame_unlocked = localStorage.getItem("endgame") === "true";
+
+        const matches = new RegExp(`\\?(${seasons.join("|")})`).exec(document.URL);
+        if (matches && matches[1]) {
+            current_main_round = matches[1];
+        }
+
+        if (endgame_unlocked) {
+            addSheet("/static/css/endgame.css");
+            changeFavicon("/static/images/favicon-endgame.ico");
+            const nodes = document.getElementsByClassName("energy-nodes-info");
+            console.log(nodes);
+            if (nodes.length > 0) {
+                nodes[0].style.display = "block";
+            }
+        } else if (current_main_round === "concert") {
+            addSheet("/static/css/concert.css");
+            changeFavicon("/static/images/favicon-concert.ico");
+            // also add the concert music
+            document.getElementById('nav-music').style.display = 'inline-block';
+            const audio = document.getElementById("music-audio");
+            if (audio) {
+                audio.addEventListener('play', () => {
+                    audio.volume = localStorage.getItem('music-audio-volume') ?? 0.5;
+                });
+                audio.addEventListener('volumechange', () => {
+                    localStorage.setItem('music-audio-volume', audio.volume);
+                });
+            }
+        } else if (seasons.includes(current_main_round)) {
+            addSheet("/static/css/season.css");
+            addSheet(`/static/css/${current_main_round}.css`);
+            changeFavicon(`/static/images/favicon-${current_main_round}.ico`);
+        } else {
+            addSheet("/static/css/blue.css");
+            changeFavicon("/static/images/favicon-blue.ico");
+        }
+    }
+
+    registerOnGlitchHook((ex) => {
+        document.getElementById('background-glitch-wrapper').style.display = 'initial';
+    });
+    </script>
+    
+</body>
+</html>

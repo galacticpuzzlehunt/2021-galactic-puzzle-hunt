@@ -1,0 +1,391 @@
+
+
+
+
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+<title>Solution: Everything Everywhere All at Once</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <meta property="og:title" content="Galactic Puzzle Hunt 2022">
+    <meta property="og:description" content="Registration for this year's Galactic Puzzle Hunt is now open!">
+    <meta property="og:image" content="https://galacticpuzzlehunt.com/static/images/banner.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:slnt,CASL,CRSV,MONO@-3,0.5,1,1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/skeleton.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.formset/1.2.2/jquery.formset.min.js"></script>
+    <script src="/jsi18n/"></script>
+    <script src="/static/js/sorttable.js"></script>
+    <script src="/static/js/tray.js"></script>
+    <script src="/static/js/notify.js"></script>
+    <script src="/static/js/time.js"></script>
+    
+    
+    <link rel="icon" sizes="16x16 32x32 48x48 64x64" href="/static/images/favicon.ico" type="image/vnd.microsoft.icon">
+    
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92192633-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-92192633-1');
+</script>
+
+</head>
+<body>
+    
+    <div id="background-glitch-wrapper" class="background-glitch">
+        <div class="glitch-1"></div>
+        <div class="glitch-2"></div>
+        <div class="glitch-3"></div>
+    </div>
+    
+    
+    <input id="shortcuts" type="checkbox">
+    
+    <nav>
+        <span class="tray">
+            <span id="tray-timer"></span>
+            <div class="top-tabs">
+                <a href="/">
+                    Home
+                </a>
+                
+                
+                <a href="/story">
+                    Story
+                </a>
+                
+                
+                <a class="selected-tab" href="/puzzles">
+                    Puzzles
+                </a>
+                
+                <a href="/teams">
+                    Teams
+                </a>
+                
+                
+                <a href="/errata">
+                    Updates
+                </a>
+                
+                
+                
+                
+                <a id="nav-music" href="#">
+                    <label for="music" title="Music" style="margin-bottom: 0; font-weight: normal; cursor: pointer;">Music</label>
+                </a>
+                <input id="music" type="checkbox">
+                <div class="shortcuts music">
+                    <audio id="music-audio" controls src="/static/puzzle_resources/worlds-end-concert/music-audio.mp3">
+                        There should be a music player here.
+                    </audio>
+                </div>
+                
+                
+            </div>
+            <div class="top-left-actions">
+                
+<a href="/puzzle/everything-everywhere-all-at-once" class="btn">Back to the puzzle</a>
+
+            </div>
+        </span>
+        <div class="top-right-actions">
+        
+        <label for="shortcuts" title="Simulator">Simulator </label>
+        
+        
+        </div>
+    </nav>
+    
+    <div class="shortcuts">
+        <form id="progress-simulator">
+        <div>Current round:</div>
+        <button class="btn" type="submit" name="round" value="forward">⬆️</button>
+        <button class="btn" type="submit" name="round" value="spring">🌸</button>
+        <button class="btn" type="submit" name="round" value="summer">☀️</button>
+        <button class="btn" type="submit" name="round" value="autumn">🍂</button>
+        <button class="btn" type="submit" name="round" value="winter">☃️</button>
+        <button class="btn" type="submit" name="round" value="concert">🎤</button>
+        <button class="btn" type="submit" name="round" value="none">None</button>
+        <div>Endgame:</div>
+        <button class="btn" type="submit" name="endgame" value="true">Unlock</button>
+        <button class="btn" type="submit" name="endgame" value="false">Reset</button>
+        <div>Reset:</div>
+        <button class="btn" type="submit" name="reset" value="reset">Reset</button>
+        </form>
+    </div>
+    
+    
+    
+    
+    
+    <div id="loop-reset">
+        <form>
+            <svg viewBox="-30 160 720 320">
+                <defs>
+                    <path id="loop-end-path" d="m 370,240 c 38.29044,0 74.26676,18.33512 96.83716,49.26624 l -76.8369,30.73478 V 270 L 300,330 261.03858,309.74192 c 19.60706,-42.51188 62.14674,-69.74008 108.9623,-69.74306 z m 106.15758,64.22738 c 6.65282,12.65518 10.9906,26.39738 12.80876,40.57862 l -38.96532,5.19538 z"/>
+                </defs>
+                <foreignObject width="720" height="480" clip-path="url(#loop-end-clip)" class="loop-shade">
+                    <aside class="loop-shade" xmlns="http://www.w3.org/1999/xhtml" style="width: 100%; height: 100%;"></aside>
+                </foreignObject>
+                <clipPath id="loop-end-clip"><use href="#loop-end-path"/></clipPath>
+                <use href="#loop-end-path"/>
+                <path d="M 490,400 600,330 450,350 490,280 390,320 V 270 L 300,330 50,200 170,380 50,400"/>
+            </svg>
+            <div>THE END</div>
+            <p>You can reset once per minute.</p>
+            <table>
+                <tr id="loop-reset-btn-row-reset">
+                    <td><button class="btn" disabled>Reset</button></td>
+                    <td>Start over from the beginning of the exam.</td>
+                </tr>
+                <tr id="loop-reset-btn-row-restore">
+                    <td><button class="btn" disabled>Jump</button></td>
+                    <td>Start over, but resubmit your previous answers to bring you back to this point.</td>
+                </tr>
+                <tr>
+                    <td><a class="btn" href="javascript:toggleReset(false)">Stay</a></td>
+                    <td>Look at this page a bit longer. Make sure to save your work.</td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    
+    <script>
+
+    
+    
+    let glitchTriggerFuncs = [];
+    let glitchTriggerReceived = false;
+    let glitchTriggerExReceived = false;
+    let glitchPageLoaded = false;
+    function processGlitchFuncs(ex) {
+        glitchTriggerFuncs.forEach((func) => {
+            func(ex);
+        });
+    }
+    function doGlitch(ex) {
+        glitchTriggerReceived = true;
+        if (ex) {
+            glitchTriggerExReceived = true;
+        }
+        if (glitchPageLoaded) {
+            processGlitchFuncs(ex);
+        }
+    }
+    window.addEventListener('load', () => {
+        glitchPageLoaded = true;
+        if (glitchTriggerExReceived) {
+            processGlitchFuncs(true);
+        }
+        else if (glitchTriggerReceived) {
+            processGlitchFuncs(false);
+        }
+    }, false);
+    
+    
+    
+    function registerOnGlitchHook(func) {
+        if (glitchTriggerExReceived) {
+            func(true);
+        }
+        else if (glitchTriggerReceived) {
+            func(false);
+        }
+        glitchTriggerFuncs.push(func);
+    }
+    
+
+    
+    
+    </script>
+    <div class="content">
+        
+
+<style>
+h2 {
+    font-size: 2.5rem;
+    font-weight: normal;
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+
+h4 {
+    font-size: 2rem;
+    font-weight: normal;
+    margin: 2rem 0;
+}
+</style>
+
+<h1>
+    Solution <span style="font-weight: 300">Everything Everywhere All at Once</span>
+    <div class="solved-title-marker">Answer <span class="solved-title-answer spoiler">BUILDING CONSTRUCTION</span></div>
+</h1>
+
+<main class="puzzle-main">
+    <h2 style="margin-top: 0">
+        Written by
+        
+Bex Lin and Anderson Wang
+
+    </h2>
+
+    
+    <style>
+.box {
+  background: pink;
+}
+</style>
+
+<p>The puzzle features three word banks, each with 15 items: Everything (in Spring), a set of objects; Everywhere (in Summer), a set of locations (each with numbers attached); and All at Once (in Fall), a set of time periods / events (again, each with numbers attached). Then, finally, there is a set of descriptions (in Winter), each one missing three blanks.</p>
+<p>Each description can be matched with an object from Everything, a location from Everywhere, and a time from All at Once. The three blanks all correspond to details from a movie and &ldquo;Evelyn&rdquo; corresponds to a character from the movie, but one sentence actually refers to something (typically a superpower) associated with a superhero (or villain) character played by the same actor. Here are the matchings in Winter order:</p>
+<table><tr><th>Actor</th><th colspan="2">Superhero</th><th>Movie</th><th>Object</th><th>Location</th><th>Time</th></tr><tr><td rowspan="2">Affleck</td><td rowspan="2">Batman</td><td rowspan="2"></td><td>Argo</td><td>sci-fi film</td><td>Iran (4/6)</td><td>1979 (8/9)</td></tr><tr><td colspan="4">During ____, Evelyn is brought in by the president for a consultation. Though he is initially at a loss, Evelyn eventually comes up with a plan to make a ____. Evelyn goes to ____, where he <span class="box">shows off how rich he is with all the gadgets he has</span>.</td></tr><tr><td rowspan="2">Bassett</td><td rowspan="2"></td><td rowspan="2">Ramonda</td><td>What&rsquo;s Love Got to Do With It</td><td>bottle of pills</td><td>St. Louis (4/12)</td><td>the 1950s (6/7)</td></tr><tr><td colspan="4">Evelyn rides a bus into ____, where she is reunited with her mother and sister. During ____, she meets her future husband, who she <span class="box">feeds a purple herb to and buries briefly</span>. After many fights with her husband, Evelyn uses a ____ and ends up in the hospital.</td></tr><tr><td rowspan="2">Brolin</td><td rowspan="2"></td><td rowspan="2">Thanos</td><td>Dune</td><td>shield</td><td>a desert planet (7/8)</td><td>10191 (4/6)</td></tr><tr><td colspan="4">Evelyn is an aide to the ruler of ____. During ____, Evelyn <span class="box">finishes gathering a set of precious stones, giving him control of the universe</span>. Evelyn also spars with the ruler&rsquo;s son using a specialized ____.</td></tr><tr><td rowspan="2">Elba</td><td rowspan="2">Bloodsport</td><td rowspan="2"></td><td>Sonic the Hedgehog 2</td><td>emerald</td><td>Siberia (2/10)</td><td>a 243-day marooning (3/8)</td></tr><tr><td colspan="4">At the end of ____, Evelyn rescues a man. Together, they search for a particular ____, which had been hidden away. Their search takes them to ____, where Evelyn <span class="box">snipes his rival with a transforming gun</span>.</td></tr><tr><td rowspan="2">Harbour</td><td rowspan="2"></td><td rowspan="2">Red Guardian</td><td>Hellboy</td><td>legendary sword</td><td>St. Paul&rsquo;s Cathedral (12/14)</td><td>517 (5/11)</td></tr><tr><td colspan="4">Evelyn uses a ____ he finds in ____ to defeat a queen. That queen had been sealed away during ____, when Evelyn <span class="box">sings his daughter&rsquo;s childhood favorite song to her</span>.</td></tr><tr><td rowspan="2">Hardy</td><td rowspan="2"></td><td rowspan="2">Venom</td><td>Mad Max: Fury Road</td><td>chrome paint canister</td><td>a fuel truck (2/4)</td><td>the collapse of civilization (2/5)</td></tr><tr><td colspan="4">Several years after ____, Evelyn <span class="box">lets an alien take over his body, producing a very long tongue</span>. Evelyn witnesses a boy use a ____. Later, Evelyn points a gun at several pregnant women in ____.</td></tr><tr><td rowspan="2">Hounsou</td><td rowspan="2">Shazam</td><td rowspan="2"></td><td>A Quiet Place Part II</td><td>hearing aid</td><td>a radio station (2/6)</td><td>a baseball game (1/6)</td></tr><tr><td colspan="4">Evelyn meets a girl and her companion, and they show Evelyn the girl&rsquo;s ____. Earlier, the girl saw something burn in the sky during ____. Evelyn drives them to ____ and <span class="box">transfers his power, including the strength of Hercules and the power of Zeus</span>.</td></tr><tr><td rowspan="2">Keaton</td><td rowspan="2"></td><td rowspan="2">Vulture</td><td>Birdman</td><td>pair of briefs</td><td>Times Square (2/6)</td><td>opening night (3/7)</td></tr><tr><td colspan="4">At one point, Evelyn locks himself outside and walks through ____ with only a ____. During ____, Evelyn <span class="box">shoots himself using what he thinks is an anti-gravity gun</span>.</td></tr><tr><td rowspan="2">Kravitz</td><td rowspan="2"></td><td rowspan="2">Angel Salvadore</td><td>Kimi</td><td>smart speaker</td><td>Seattle (3/10)</td><td>the COVID pandemic (12/14)</td></tr><tr><td colspan="4">Evelyn lives in ____ and suffers from anxiety and agoraphobia. Her mental health suffers especially during ____, and she <span class="box">conceals her insect wings by making them look like tattoos</span>. While working on her company&rsquo;s newest product, a ____, she hears what sounds like a murder.</td></tr><tr><td rowspan="2">Pfeiffer</td><td rowspan="2"></td><td rowspan="2">Janet van Dyne</td><td>Sinbad</td><td>dagger</td><td>Tartarus (4/10)</td><td>the 10 day journey (3/12)</td></tr><tr><td colspan="4">Evelyn frames a man by leaving his ____ at the scene of the crime. He is ordered to travel to ____, where he meets Evelyn once again. During ____, Evelyn <span class="box">stabilizes his quantum energy</span>.</td></tr><tr><td rowspan="2">Reynolds</td><td rowspan="2">Green Lantern</td><td rowspan="2"></td><td>The Proposal</td><td>manuscript</td><td>Sitka (9/12)</td><td>a wedding (8/8)</td></tr><tr><td colspan="4">Evelyn goes home to ____, where he <span class="box">defeats some bullies by imagining a large fist</span>. Later, during ____, a woman confesses the truth and leaves Evelyn. Evelyn searches for her, but only finds his ____ with a note of praise left by her.</td></tr><tr><td rowspan="2">Rooker</td><td rowspan="2">Brian Durlin</td><td rowspan="2"></td><td>Mallrats</td><td>sailboat</td><td>a mall (1/11)</td><td>a dating game show (11/11)</td></tr><tr><td colspan="4">Near a stage being constructed for an event hosted by Evelyn, a man has been staring at a poster for the past week, searching for a ____. At the end of ____, Evelyn sees his daughter kiss her ex, reuniting. The kiss takes place in ____, where Evelyn can previously be seen <span class="box">playing with a ball and killing a bird with it</span>.</td></tr><tr><td rowspan="2">Stallone</td><td rowspan="2">King Shark</td><td rowspan="2"></td><td>Rocky</td><td>side of beef</td><td>a boxing ring (5/9)</td><td>New Year&rsquo;s Day (1/11)</td></tr><tr><td colspan="4">Evelyn trains for a match by punching a ____. The match is held during ____. On the day of the match, Evelyn enters ____, then <span class="box">chomps his opponent with his multiple rows of very large teeth</span>.</td></tr><tr><td rowspan="2">Swinton</td><td rowspan="2"></td><td rowspan="2">Ancient One</td><td>Snowpiercer</td><td>shoe</td><td>a train tunnel (2/7)</td><td>2031 (4/10)</td></tr><tr><td colspan="4">During ____, Evelyn <span class="box">punches out someone&rsquo;s soul</span> and explains to them that it has been 17 years since the global catastrophe. Evelyn then gives a speech about a ____ and claims it is disorder. Soon thereafter, Evelyn watches in glee as she and the combatants around her enter ____, plunging them into darkness.</td></tr><tr><td rowspan="2">Weisz</td><td rowspan="2">Angela Dodson</td><td rowspan="2"></td><td>The Mummy</td><td>book</td><td>Cairo (2/12)</td><td>1290 BC (14/15)</td></tr><tr><td colspan="4">Evelyn is on an expedition with her brother. One night, Evelyn uses a ____ and accidentally awakens someone who had been sealed away during ____. Then the expedition returns to ____, where Evelyn <span class="box">awakens her psychic powers by almost drowning</span>.</td></tr></table>
+
+<p>Note that, in this ordering, the actors are also in order by last name, which can help with confirmation.</p>
+<p>The superheroes are separated into two columns: for the superheroes in the left column, the sentence from the description that references the superhero also contains the blank from Everywhere; for the superheroes in the right column, the sentence that references them contains the blank from All at Once. For example, Batman is referenced in a sentence with &ldquo;Iran (4/6)&rdquo; from Everywhere, placing him in the left column.</p>
+<p>We can also notice that the second of the two numbers corresponds to the length of the name of the superhero, e.g. &ldquo;Batman&rdquo; has length 6, which matches the 6 in &ldquo;Iran (4/6)&rdquo;. This should help confirm whether we&rsquo;re looking for &ldquo;Bruce Wayne&rdquo; or &ldquo;Batman&rdquo;.</p>
+<p>At this point, we have two pairs of numbers per description, with one of them matching up to a superhero. In order to use the other pair, we need one last aha: each actor has played both Marvel and DC characters (this is clued by the fact that the right and left columns of superheroes are DC and Marvel characters, respectively). In particular, each actor has played a unique character from the other comic universe, whose length matches the second number in the other pair, e.g. Ben Affleck portrayed Daredevil in the 2003 film, and “Daredevil” has length 9, matching the 9 in &ldquo;1979 (8/9)&rdquo;.</p>
+<p>We now use the first numbers of the pair to index (e.g. the 4th letter of “Batman” and the 8th letter of “Daredevil”):</p>
+<table><tr><th>Actor</th><th>DC</th><th></th><th>Marvel</th><th></th><th>Movie</th><th>Object</th><th>Location</th><th>Time</th></tr><tr><td>Affleck</td><td>Batman</td><td>M</td><td>Daredevil</td><td>I</td><td>Argo</td><td>sci-fi film</td><td>Iran (4/6)</td><td>1979 (8/9)</td></tr><tr><td>Bassett</td><td>Amanda Waller</td><td>N</td><td>Ramonda</td><td>D</td><td>What&rsquo;s Love Got to Do With It</td><td>bottle of pills</td><td>St. Louis (4/12)</td><td>the 1950s (6/7)</td></tr><tr><td>Brolin</td><td>Jonah Hex</td><td>E</td><td>Thanos</td><td>N</td><td>Dune</td><td>shield</td><td>a desert planet (7/8)</td><td>10191 (4/6)</td></tr><tr><td>Elba</td><td>Bloodsport</td><td>L</td><td>Heimdall</td><td>I</td><td>Sonic the Hedgehog 2</td><td>emerald</td><td>Siberia (2/10)</td><td>a 243-day marooning (3/8)</td></tr><tr><td>Harbour</td><td>Dexter Tolliver</td><td>V</td><td>Red Guardian</td><td>U</td><td>Hellboy</td><td>legendary sword</td><td>St. Paul&rsquo;s Cathedral (12/14)</td><td>517 (5/11)</td></tr><tr><td>Hardy</td><td>Bane</td><td>A</td><td>Venom</td><td>E</td><td>Mad Max: Fury Road</td><td>chrome paint canister</td><td>a fuel truck (2/4)</td><td>the collapse of civilization (2/5)</td></tr><tr><td>Hounsou</td><td>Shazam</td><td>H</td><td>Korath</td><td>K</td><td>A Quiet Place Part II</td><td>hearing aid</td><td>a radio station (2/6)</td><td>a baseball game (1/6)</td></tr><tr><td>Keaton</td><td>Batman</td><td>A</td><td>Vulture</td><td>L</td><td>Birdman</td><td>pair of briefs</td><td>Times Square (2/6)</td><td>opening night (3/7)</td></tr><tr><td>Kravitz</td><td>Selina Kyle</td><td>L</td><td>Angel Salvadore</td><td>O</td><td>Kimi</td><td>smart speaker</td><td>Seattle (3/10)</td><td>the COVID pandemic (12/14)</td></tr><tr><td>Pfeiffer</td><td>Selina Kyle</td><td>I</td><td>Janet van Dyne</td><td>N</td><td>Sinbad</td><td>dagger</td><td>Tartarus (4/10)</td><td>the 10 day journey (3/12)</td></tr><tr><td>Reynolds</td><td>Green Lantern</td><td>T</td><td>Deadpool</td><td>L</td><td>The Proposal</td><td>manuscript</td><td>Sitka (9/12)</td><td>a wedding (8/8)</td></tr><tr><td>Rooker</td><td>Brian Durlin</td><td>B</td><td>Yondu Udonta</td><td>A</td><td>Mallrats</td><td>sailboat</td><td>a mall (1/11)</td><td>a dating game show (11/11)</td></tr><tr><td>Stallone</td><td>King Shark</td><td>S</td><td>Stakar Ogord</td><td>S</td><td>Rocky</td><td>side of beef</td><td>a boxing ring (5/9)</td><td>New Year&rsquo;s Day (1/11)</td></tr><tr><td>Swinton</td><td>Gabriel</td><td>A</td><td>Ancient One</td><td>I</td><td>Snowpiercer</td><td>shoe</td><td>a train tunnel (2/7)</td><td>2031 (4/10)</td></tr><tr><td>Weisz</td><td>Angela Dodson</td><td>N</td><td>Melina Vostokoff</td><td>F</td><td>The Mummy</td><td>book</td><td>Cairo (2/12)</td><td>1290 BC (14/15)</td></tr></table>
+
+<p>For the last step, we note that Everywhere and All at Once were both in alphabetical order, and the descriptions were ordered alphabetically by actor last name. However, Everything had no discernible ordering, so we should reorder our table by the order of the objects in Everything:</p>
+<table><tr><th>DC letters</th><th>Marvel letters</th><th>Object</th></tr><tr><td>N</td><td>F</td><td>book</td></tr><tr><td>A</td><td>I</td><td>shoe</td></tr><tr><td>S</td><td>S</td><td>side of beef</td></tr><tr><td>H</td><td>K</td><td>hearing aid</td></tr><tr><td>V</td><td>U</td><td>legendary sword</td></tr><tr><td>I</td><td>N</td><td>dagger</td></tr><tr><td>L</td><td>I</td><td>emerald</td></tr><tr><td>L</td><td>O</td><td>smart speaker</td></tr><tr><td>E</td><td>N</td><td>shield</td></tr><tr><td>B</td><td>A</td><td>sailboat</td></tr><tr><td>A</td><td>L</td><td>pair of briefs</td></tr><tr><td>T</td><td>L</td><td>manuscript</td></tr><tr><td>M</td><td>I</td><td>sci-fi film</td></tr><tr><td>A</td><td>E</td><td>chrome paint canister</td></tr><tr><td>N</td><td>D</td><td>bottle of pills</td></tr></table>
+
+<p>We get the cluephrases &ldquo;NASHVILLE BATMAN&rdquo; and &ldquo;FISK UNION ALLIED&rdquo;. These phrases correspond to the blanks at the bottom of the Winter page, referring to &ldquo;NASHVILLE BATMAN <u>BUILDING</u>&rdquo; (&ldquo;Batman Building&rdquo; being a nickname for the <a href="https://en.wikipedia.org/wiki/AT%26T_Building_(Nashville)">AT&amp;T Building</a> in Nashville due to its appearance) and &ldquo;FISK UNION ALLIED <u>CONSTRUCTION</u>&rdquo; (&ldquo;Union Allied Construction&rdquo; being <a href="https://marvelcinematicuniverse.fandom.com/wiki/Union_Allied_Construction">a company</a> established by Wilson Fisk in the Marvel universe).</p>
+<p>This gives our final answer, <strong>BUILDING CONSTRUCTION</strong>.</p>
+
+    
+    
+    <h2 id="authors-notes">Author&rsquo;s Notes</h2>
+    <p>Anderson: This puzzle spent a lot of time in brainstorming&mdash;we had a lot of ideas floating around, including trying to do things with multiverse-themed properties like <i>Spider-man: Into the Spider-Verse</i> or the <i>Flashpoint</i> storyline, but we couldn&rsquo;t find enough well-known examples. Eventually, we wrote this puzzle as a mashup of 3 ideas we had (movie identification with object/place/event, characters getting &ldquo;superpowers&rdquo; from other characters played by the same actor, and actors in both Marvel and DC films). As a result, the puzzle might not be that cohesive, but it certainly is true to its <i>Everything Everywhere All at Once</i> inspiration.</p>
+<p>Some other fun facts:</p>
+<ol>
+<li>
+<p>We watched <i>Sonic the Hedgehog 2</i> together while writing this puzzle, partly for &ldquo;research&rdquo;&mdash;it was pretty good. Bex also ended up watching a handful of other movies for research (and wrote all the plot descriptions), so I am very impressed with his dedication.</p>
+</li>
+<li>
+<p>One testsolving group found that Wikipedia said <i>Snowpiercer</i> took place 18 years after the catastrophe instead of 17, even though the movie explicitly states that it is 17 years. We edited Wikipedia to correct this, and I discovered that it used to say 17 until someone mysteriously changed it to 18 last year and it stuck.</p>
+</li>
+<li>
+<p>Somehow, this is the fourth puzzle I&rsquo;ve helped write about a movie I haven&rsquo;t seen (though unlike the previous puzzles, I very much do plan on eventually watching Everything Everywhere). Also, Bex has seen the movie like 6 times so it averages out, right?</p>
+</li>
+</ol>
+    
+
+    
+    
+
+    
+    <div class="puzzle-main-corner puzzle-main-corner-1"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-2"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-3"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-4"></div>
+    
+</main>
+
+
+    </div>
+    
+
+    
+
+    
+    <script>
+    document.getElementById('nav-music').style.display = 'none';
+    document.getElementById("progress-simulator").addEventListener("submit", (e) => {
+        if (e.submitter.name === "reset") {
+            toggleReset(true);
+            doGlitch(false);
+            document.getElementById("shortcuts").checked = false;
+            e.preventDefault();
+        } else {
+            localStorage.setItem(e.submitter.name, e.submitter.value);
+        }
+    });
+    addStyles();
+
+    function toggleReset(which) {
+        $('#loop-reset').toggleClass('loop-resetting', which);
+    }
+
+    function addStyles() {
+        const changeFavicon = (url) => {
+            const e = Array.from(document.getElementsByTagName("link"))
+                .filter(e => e.rel === "icon")[0];
+            e.href = url;
+        }
+        const addSheet = (url) => {
+            const e = document.createElement("link");
+            e.rel = "stylesheet";
+            e.href = url;
+            document.getElementsByTagName("head")[0].appendChild(e);
+        }
+
+        const seasons = ["spring", "summer", "autumn", "winter"];
+        let current_main_round = localStorage.getItem("round");
+        const endgame_unlocked = localStorage.getItem("endgame") === "true";
+
+        const matches = new RegExp(`\\?(${seasons.join("|")})`).exec(document.URL);
+        if (matches && matches[1]) {
+            current_main_round = matches[1];
+        }
+
+        if (endgame_unlocked) {
+            addSheet("/static/css/endgame.css");
+            changeFavicon("/static/images/favicon-endgame.ico");
+            const nodes = document.getElementsByClassName("energy-nodes-info");
+            console.log(nodes);
+            if (nodes.length > 0) {
+                nodes[0].style.display = "block";
+            }
+        } else if (current_main_round === "concert") {
+            addSheet("/static/css/concert.css");
+            changeFavicon("/static/images/favicon-concert.ico");
+            // also add the concert music
+            document.getElementById('nav-music').style.display = 'inline-block';
+            const audio = document.getElementById("music-audio");
+            if (audio) {
+                audio.addEventListener('play', () => {
+                    audio.volume = localStorage.getItem('music-audio-volume') ?? 0.5;
+                });
+                audio.addEventListener('volumechange', () => {
+                    localStorage.setItem('music-audio-volume', audio.volume);
+                });
+            }
+        } else if (seasons.includes(current_main_round)) {
+            addSheet("/static/css/season.css");
+            addSheet(`/static/css/${current_main_round}.css`);
+            changeFavicon(`/static/images/favicon-${current_main_round}.ico`);
+        } else {
+            addSheet("/static/css/blue.css");
+            changeFavicon("/static/images/favicon-blue.ico");
+        }
+    }
+
+    registerOnGlitchHook((ex) => {
+        document.getElementById('background-glitch-wrapper').style.display = 'initial';
+    });
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,1338 @@
+
+
+
+
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+<title>Changes</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <meta property="og:title" content="Galactic Puzzle Hunt 2022">
+    <meta property="og:description" content="Registration for this year's Galactic Puzzle Hunt is now open!">
+    <meta property="og:image" content="https://galacticpuzzlehunt.com/static/images/banner.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:slnt,CASL,CRSV,MONO@-3,0.5,1,1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/skeleton.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.formset/1.2.2/jquery.formset.min.js"></script>
+    <script src="/jsi18n/"></script>
+    <script src="/static/js/sorttable.js"></script>
+    <script src="/static/js/tray.js"></script>
+    <script src="/static/js/notify.js"></script>
+    <script src="/static/js/time.js"></script>
+    
+    
+    <link rel="icon" sizes="16x16 32x32 48x48 64x64" href="/static/images/favicon.ico" type="image/vnd.microsoft.icon">
+    
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92192633-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-92192633-1');
+</script>
+
+</head>
+<body>
+    
+    <div id="background-glitch-wrapper" class="background-glitch">
+        <div class="glitch-1"></div>
+        <div class="glitch-2"></div>
+        <div class="glitch-3"></div>
+    </div>
+    
+    
+    <input id="shortcuts" type="checkbox">
+    
+    <nav>
+        <span class="tray">
+            <span id="tray-timer"></span>
+            <div class="top-tabs">
+                <a href="/">
+                    Home
+                </a>
+                
+                
+                <a href="/story">
+                    Story
+                </a>
+                
+                
+                <a class="selected-tab" href="/puzzles">
+                    Puzzles
+                </a>
+                
+                <a href="/teams">
+                    Teams
+                </a>
+                
+                
+                <a href="/errata">
+                    Updates
+                </a>
+                
+                
+                
+                
+                <a id="nav-music" href="#">
+                    <label for="music" title="Music" style="margin-bottom: 0; font-weight: normal; cursor: pointer;">Music</label>
+                </a>
+                <input id="music" type="checkbox">
+                <div class="shortcuts music">
+                    <audio id="music-audio" controls src="/static/puzzle_resources/worlds-end-concert/music-audio.mp3">
+                        There should be a music player here.
+                    </audio>
+                </div>
+                
+                
+            </div>
+            <div class="top-left-actions">
+                
+
+
+
+
+<a href="/post-hunt-solve/changes" class="btn">Check your answer spoiler-free</a>
+
+
+
+<a href="/solution/changes" class="btn">View solution</a>
+<a href="/stats/changes" class="btn">Stats</a>
+
+
+            </div>
+        </span>
+        <div class="top-right-actions">
+        
+        <label for="shortcuts" title="Simulator">Simulator </label>
+        
+        
+        </div>
+    </nav>
+    
+    <div class="shortcuts">
+        <form id="progress-simulator">
+        <div>Current round:</div>
+        <button class="btn" type="submit" name="round" value="forward">⬆️</button>
+        <button class="btn" type="submit" name="round" value="spring">🌸</button>
+        <button class="btn" type="submit" name="round" value="summer">☀️</button>
+        <button class="btn" type="submit" name="round" value="autumn">🍂</button>
+        <button class="btn" type="submit" name="round" value="winter">☃️</button>
+        <button class="btn" type="submit" name="round" value="concert">🎤</button>
+        <button class="btn" type="submit" name="round" value="none">None</button>
+        <div>Endgame:</div>
+        <button class="btn" type="submit" name="endgame" value="true">Unlock</button>
+        <button class="btn" type="submit" name="endgame" value="false">Reset</button>
+        <div>Reset:</div>
+        <button class="btn" type="submit" name="reset" value="reset">Reset</button>
+        </form>
+    </div>
+    
+    
+    
+    
+    
+    <div id="loop-reset">
+        <form>
+            <svg viewBox="-30 160 720 320">
+                <defs>
+                    <path id="loop-end-path" d="m 370,240 c 38.29044,0 74.26676,18.33512 96.83716,49.26624 l -76.8369,30.73478 V 270 L 300,330 261.03858,309.74192 c 19.60706,-42.51188 62.14674,-69.74008 108.9623,-69.74306 z m 106.15758,64.22738 c 6.65282,12.65518 10.9906,26.39738 12.80876,40.57862 l -38.96532,5.19538 z"/>
+                </defs>
+                <foreignObject width="720" height="480" clip-path="url(#loop-end-clip)" class="loop-shade">
+                    <aside class="loop-shade" xmlns="http://www.w3.org/1999/xhtml" style="width: 100%; height: 100%;"></aside>
+                </foreignObject>
+                <clipPath id="loop-end-clip"><use href="#loop-end-path"/></clipPath>
+                <use href="#loop-end-path"/>
+                <path d="M 490,400 600,330 450,350 490,280 390,320 V 270 L 300,330 50,200 170,380 50,400"/>
+            </svg>
+            <div>THE END</div>
+            <p>You can reset once per minute.</p>
+            <table>
+                <tr id="loop-reset-btn-row-reset">
+                    <td><button class="btn" disabled>Reset</button></td>
+                    <td>Start over from the beginning of the exam.</td>
+                </tr>
+                <tr id="loop-reset-btn-row-restore">
+                    <td><button class="btn" disabled>Jump</button></td>
+                    <td>Start over, but resubmit your previous answers to bring you back to this point.</td>
+                </tr>
+                <tr>
+                    <td><a class="btn" href="javascript:toggleReset(false)">Stay</a></td>
+                    <td>Look at this page a bit longer. Make sure to save your work.</td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    
+    <script>
+
+    
+    
+    let glitchTriggerFuncs = [];
+    let glitchTriggerReceived = false;
+    let glitchTriggerExReceived = false;
+    let glitchPageLoaded = false;
+    function processGlitchFuncs(ex) {
+        glitchTriggerFuncs.forEach((func) => {
+            func(ex);
+        });
+    }
+    function doGlitch(ex) {
+        glitchTriggerReceived = true;
+        if (ex) {
+            glitchTriggerExReceived = true;
+        }
+        if (glitchPageLoaded) {
+            processGlitchFuncs(ex);
+        }
+    }
+    window.addEventListener('load', () => {
+        glitchPageLoaded = true;
+        if (glitchTriggerExReceived) {
+            processGlitchFuncs(true);
+        }
+        else if (glitchTriggerReceived) {
+            processGlitchFuncs(false);
+        }
+    }, false);
+    
+    
+    
+    function registerOnGlitchHook(func) {
+        if (glitchTriggerExReceived) {
+            func(true);
+        }
+        else if (glitchTriggerReceived) {
+            func(false);
+        }
+        glitchTriggerFuncs.push(func);
+    }
+    
+
+    
+    
+    </script>
+    <div class="content">
+        
+
+<h1>
+    Changes
+    
+    
+</h1>
+
+
+
+<main class="puzzle-main clipboard-container">
+    
+    
+    
+    
+<input type="hidden" name="csrfmiddlewaretoken" value="wvwPc5jChuQyVKcAqjeqd7FgQqi0lPfMwdv9EodX8A3DtAFNGWNAYim7RNPEZe8Z">
+<style>
+td { text-align: center; }
+/* FIXME */
+#eoc input { font-size: 80%; width: 10ch; border-bottom: 1px solid black !important; height: inherit; }
+#eoc input[type=checkbox]:not(:checked):not([disabled]) { box-shadow:
+	0 0 3px #bcf,
+	0 0 6px #bcf,
+	0 0 9px #bcf;
+}
+#eoc table { width: 100%; margin-bottom: 0;}
+#eoc table:first-child {
+	position: sticky;
+	top: 0;
+	background-color: #f9f8f5;
+}
+@media screen and (max-width: 960px) {
+	#eoc table:first-child {
+		top: 48px;
+	}
+}
+
+#eoc table:first-child tr:last-child td {
+	border-bottom: 1px solid #aaa;
+}
+#eoc del.nw { background-color: #fcc; }
+#eoc del.dw { background-color: #ffa; }
+#eoc .ww { background-color: #edf; }
+#eoc strong { background-color: #9fc; }
+
+#eoc tfoot td { color: #555; font-size: 80%; text-align: right; padding: 0; }
+
+#message {
+	text-align: center;
+	white-space: pre-wrap;
+}
+
+#warn {
+	position: fixed;
+	bottom: 1em;
+	left: 1em;
+	right: 1em;
+	text-align: center;
+	min-height: 1em;
+	padding: 10px;
+	background-color: #49669d; /* TODO sync w js */
+	color: #f9f8f5;
+	border-radius: 5px;
+
+	opacity: 0;
+	transition: 0.2s;
+}
+.controls {
+	text-align: center;
+}
+.controls label {
+	display: inline-block;
+}
+#store {
+	display: none;
+}
+</style>
+<div class="controls"><button id="save-restore">Save/restore</button>
+<label for="hard">Hard mode</label>
+<input type="checkbox" id="hard"></input>
+</div>
+<div id="store">
+	To save your state or transfer it to somebody else, copy the contents of the textbox below. To load your state, paste into the textbox below and hit Load.
+	<textarea id="save-state"></textarea>
+	<button id="load">Load</button>
+</div>
+<div id="eoc">
+<table>
+	<tr>
+		<td><input type="text" size="10"></td>
+		<td><input type="text" size="10"></td>
+		<td><input type="text" size="10"></td>
+		<td><input type="text" size="10"></td>
+		<td><input type="text" size="10"></td>
+		<td><input type="text" size="10"></td>
+		<td><input type="text" size="10"></td>
+		<td><input type="text" size="10"></td>
+	</tr>
+	<tr>
+		<td>???</td>
+		<td>???</td>
+		<td>???</td>
+		<td>???</td>
+		<td>???</td>
+		<td>???</td>
+		<td>???</td>
+		<td>???</td>
+	</tr>
+</table>
+
+<!-- 27 -->
+
+<table>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tr><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tfoot><tr><td colspan="8">???</td></tr></tfoot>
+</table>
+<table>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tr><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tfoot><tr><td colspan="8">???</td></tr></tfoot>
+</table>
+<table>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tr><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tfoot><tr><td colspan="8">???</td></tr></tfoot>
+</table>
+<table>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tr><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tfoot><tr><td colspan="8">???</td></tr></tfoot>
+</table>
+<table>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tr><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tfoot><tr><td colspan="8">???</td></tr></tfoot>
+</table>
+<table>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tr><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tfoot><tr><td colspan="8">???</td></tr></tfoot>
+</table>
+<table>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tr><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tfoot><tr><td colspan="8">???</td></tr></tfoot>
+</table>
+<table>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tr><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tfoot><tr><td colspan="8">???</td></tr></tfoot>
+</table>
+<table>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tr><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tfoot><tr><td colspan="8">???</td></tr></tfoot>
+</table>
+<table>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tr><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tfoot><tr><td colspan="8">???</td></tr></tfoot>
+</table>
+<table>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tr><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tfoot><tr><td colspan="8">???</td></tr></tfoot>
+</table>
+<table>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tr><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tfoot><tr><td colspan="8">???</td></tr></tfoot>
+</table>
+<table>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tr><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tfoot><tr><td colspan="8">???</td></tr></tfoot>
+</table>
+<table>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tr><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tfoot><tr><td colspan="8">???</td></tr></tfoot>
+</table>
+<table>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tr><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tfoot><tr><td colspan="8">???</td></tr></tfoot>
+</table>
+<table>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tr><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tfoot><tr><td colspan="8">???</td></tr></tfoot>
+</table>
+<table>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tr><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tfoot><tr><td colspan="8">???</td></tr></tfoot>
+</table>
+<table>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tr><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tfoot><tr><td colspan="8">???</td></tr></tfoot>
+</table>
+<table>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tr><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tfoot><tr><td colspan="8">???</td></tr></tfoot>
+</table>
+<table>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tr><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tfoot><tr><td colspan="8">???</td></tr></tfoot>
+</table>
+<table>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tr><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tfoot><tr><td colspan="8">???</td></tr></tfoot>
+</table>
+<table>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tr><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tfoot><tr><td colspan="8">???</td></tr></tfoot>
+</table>
+<table>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tr><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tfoot><tr><td colspan="8">???</td></tr></tfoot>
+</table>
+<table>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tr><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tfoot><tr><td colspan="8">???</td></tr></tfoot>
+</table>
+<table>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tr><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tfoot><tr><td colspan="8">???</td></tr></tfoot>
+</table>
+<table>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tr><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tfoot><tr><td colspan="8">???</td></tr></tfoot>
+</table>
+<table>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tr><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tfoot><tr><td colspan="8">???</td></tr></tfoot>
+</table>
+<table>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tr><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+	<tr><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td><td>???</td></tr>
+	<tfoot><tr><td colspan="8">???</td></tr></tfoot>
+</table>
+</div>
+<div id="message">
+</div>
+
+            <div id="warn">Loading...</div>
+
+<script>
+
+let sowpods = {}, easy = {};
+fetch("/static/puzzle_resources/changes/sowpods.txt").then(function (response) {
+	response.text().then(function (text) {
+		text.split('\n').forEach(item => sowpods[item.toUpperCase()] = 1);
+	});
+})["catch"](function (e) {
+	console.warn(e);
+	alert("The puzzle failed to load some of its data. Please contact us and describe the error so we can fix it.");
+});
+fetch("/static/puzzle_resources/changes/easy.txt").then(function (response) {
+	response.text().then(function (text) {
+		text.split('\n').forEach(item => easy[item.toUpperCase()] = 1);
+	});
+})["catch"](function (e) {
+	console.warn(e);
+	alert("The puzzle failed to load some of its data. Please contact us and describe the error so we can fix it.");
+});
+
+let warning_words = {};
+for (let x in sowpods) if (!easy[x]) warning_words[x] = 1;
+
+function after_effects(wordset, seen, ws) {
+	let fmts = [];
+	let nws = [];
+	let curSeen = {};
+	ws.forEach(w => {
+		if (w === null) {
+			fmts.push({ text: "" });
+		} else if (!wordset[w]) {
+			if (w in warning_words) {
+				fmts.push({ text: w, cls: ["del", "ww"] });
+			} else {
+				fmts.push({ text: w, cls: ["del", "nw"] });
+			}
+		} else if (w in seen || w in curSeen) {
+			fmts.push({ text: w, cls: ["del", "dw"] });
+		} else {
+			curSeen[w] = 1;
+			fmts.push({ text: w });
+			nws.push(w);
+		}
+	});
+	return [fmts, nws];
+}
+
+let censor_targets = {EARTH:1,FIRE:1,HEAVEN:1,LAKE:1,MOUNTAIN:1,THUNDER:1,WATER:1,WIND:1};
+
+function transform(hard, inputs, choices) {
+	// looks wrong but yeah, easy words make hard mode
+	let wordset = hard ? easy : sowpods;
+	let seen = [];
+	let [ret0, cur_words] = after_effects(wordset, seen, inputs);
+	let ret = [[ret0]];
+	for (let i = 0; i < stages.length; i++) {
+		stage = stages[i];
+		let stage_requirement = stage.length - 1 || cur_words.length;
+		if (i < choices.length) {
+			let cur_choices = choices[i].slice(0, cur_words.length);
+			if (cur_choices.length === cur_words.length /* && check cur_choices all bool */) {
+				if (sum(cur_choices) === stage_requirement) {
+					let cur_indexes = [];
+					cur_choices.forEach((w, k) => { if (w) cur_indexes.push(k); });
+					let chosen_words = cur_indexes.map(i => cur_words[i]);
+					console.log(i, chosen_words);
+					let [input_highlights, output_strings, output_highlights, num, denom] = stage(wordset, ...chosen_words);
+					if (typeof input_highlights === "number") {
+						input_highlights = [input_highlights];
+					}
+					if (typeof output_strings === "string") {
+						output_strings = [output_strings];
+					}
+					if (typeof output_highlights === "number") {
+						output_highlights = [output_highlights];
+					}
+
+					let before = cur_words.map(w => ({ text: w }));
+					if (input_highlights && input_highlights.length) {
+						cur_indexes.forEach((j, k) => {
+							if (j < input_highlights.length) {
+								before[k].highlight = input_highlights[j];
+							}
+						});
+					}
+
+					let is_shrinker = output_strings.length < chosen_words.length;
+					cur_indexes.forEach((k, j) => {
+						if (input_highlights && input_highlights.length && j < input_highlights.length) {
+							before[k].highlight = input_highlights[j];
+						}
+						if (j < output_strings.length) {
+							if (cur_words[k] != output_strings[j] || is_shrinker) {
+								seen[cur_words[k]] = true;
+							}
+							cur_words[k] = output_strings[j];
+						} else {
+							seen[cur_words[k]] = true;
+							cur_words[k] = null;
+						}
+					});
+					let aa = after_effects(wordset, seen, cur_words);
+					let after = aa[0];
+					cur_words = aa[1];
+
+					if (output_highlights && output_highlights.length) {
+						cur_indexes.forEach((j, k) => {
+							if (j < output_highlights.length) {
+								after[k].highlight = output_highlights[j];
+							}
+						});
+					}
+					ret.push([true, before, after, Number(num), Number(denom)]);
+				} else {
+					ret.push([sum(cur_choices) > stage_requirement, cur_words.map(w => ({ text: w }))]);
+					return [false, ret];
+				}
+			} else {
+				return [false, ret];
+			}
+		} else {
+			return [false, ret];
+		}
+	}
+	return [true, ret];
+}
+
+
+function render(fmt, censor, bold, highlight) {
+	let hi = highlight ? fmt.highlight : null;
+	if (hi !== null && hi < 0) {
+		hi += fmt.text.length;
+	}
+	let ret = [];
+	if (bold) ret.push("<strong>");
+	if (fmt.cls) {
+		ret.push(`<${fmt.cls[0]} class='${fmt.cls[1]}'>`);
+	}
+	if (hi !== null && hi < 0) {
+		ret.push("<strong>[&ndash;]</strong>");
+	}
+	Array.from(fmt.text).forEach((c, i) => {
+		if (i === hi) ret.push("<strong>[");
+		if (censor) {
+			ret.push("?");
+		} else {
+			ret.push(c);
+		}
+		if (i === hi) ret.push("]</strong>");
+	});
+	if (fmt.cls && !fmt.text) {
+		ret.push("&nbsp;&nbsp;&nbsp;")
+	}
+	if (hi !== null && hi >= fmt.text.length) {
+		ret.push("<strong>[&ndash;]</strong>");
+	}
+	if (fmt.cls) {
+		ret.push(`</${fmt.cls[0]}>`);
+	}
+	if (bold) ret.push("</strong>");
+	return ret.join("");
+}
+
+function submit(body) {
+	try {
+		let hard = body.hard;
+		let inputs = body.inputs.map(s => Array.from(s).map(c => c.toUpperCase()).filter(c => /[A-Z]/.test(c)).join(''));
+		let choices = body.choices;
+		let censor = inputs.some(w => censor_targets[w]);
+
+		let seen = {};
+		let bold = true;
+		for (let w of inputs) {
+			if (seen[w] || !censor_targets[w]) {
+				bold = false;
+				break;
+			}
+		}
+
+		let [success, tfed] = transform(hard, inputs, choices);
+		let out = tfed.map(batch => {
+			let out_batch = [];
+			batch.forEach(row => {
+				if (Array.isArray(row)) {
+					out_batch.push(row.map(f => render(f, censor, bold, success)));
+				} else {
+					out_batch.push(row);
+				}
+			});
+			return out_batch;
+		});
+		let j = {"result": out};
+		if (success && !censor) {
+			j["message"] = "Well done! Now find the eight secret words to apply Changes to. It may be helpful to consult a Book.\n\n(P.S. Remember that this is an American hunt.)";
+		}
+		return j;
+	} catch (e) {
+		return { "error": "Something went wrong: " + e + ". Try again, or let us know at galacticpuzzlesetters@gmail.com, with your puzzle inputs if relevant, and we'll try to look into it. (Note: This is the post-hunt version of the puzzle.)" };
+	}
+}
+
+const ascii_uppercase = Array.from("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+let sum = xs => xs.reduce((x, y) => x + y, 0);
+
+let all = xs => xs.reduce((x, y) => x && y, true);
+let just_min = xs => xs.reduce((a, b) => a < b ? a : b);
+let just_max = xs => xs.reduce((a, b) => a > b ? a : b);
+let lex_min = xs => xs.reduce((a, b) => {
+	for (let i = 0; i < Math.min(a.length, b.length); i++) {
+		if (a[i] < b[i]) return a;
+		if (b[i] < a[i]) return b;
+	}
+	if (a.length < b.length) return a;
+	return b;
+});
+
+let zeroes = cands => cands.reduce((a, b) => a + !b[0], 0);
+
+const stages = [
+	(wordset, w) => {
+		let nw = w[0] + w.slice(2);
+		return [2, nw, 1, nw in wordset, 1];
+	},
+	(wordset, w1, w2, w3) => {
+		let cands = [];
+		ascii_uppercase.forEach((c) => {
+			if (!(c == w1.at(-2) && c == w2.at(-2) && c == w3.at(-2))) {
+				let ns = [
+					w1.slice(0, -2) + c + w1.at(-1),
+					w2.slice(0, -2) + c + w2.at(-1),
+					w3.slice(0, -2) + c + w3.at(-1),
+				];
+				cands.push([
+					sum(ns.map(nw => !wordset[nw])),
+					c,
+					...ns,
+				]);
+			}
+		});
+		let [_, __, ...nws] = lex_min(cands);
+		return [null, nws, [-2, -2, -2], zeroes(cands), cands.length];
+	},
+	(wordset, w) => [-4, w.slice(0, -3), -1, w.slice(0, -3) in wordset, 1],
+	(wordset, w) => {
+		let nw = w.slice(2);
+		return [-2, nw, -2, nw in wordset, 1];
+	},
+	(wordset, w) => {
+		let nw = w[0] + w.at(-1) + w.slice(1, -1);
+		return [null, nw, null, nw in wordset, 1];
+	},
+	(wordset, w) => {
+		let cands = [];
+		ascii_uppercase.forEach(c => {
+			let nw = w.slice(0, -1) + c + w.at(-1);
+			cands.push([!wordset[nw], nw]);
+		});
+		let [_, nw] = lex_min(cands);
+		return [null, nw, -2, zeroes(cands), cands.length];
+	},
+	(wordset, w1, w2) => {
+		let cands = [];
+		ascii_uppercase.forEach((c1) => {
+			ascii_uppercase.forEach((c2) => {
+				let ns = [
+					w1.slice(0, -1) + c1 + c2,
+					w2.slice(0, -1) + c1 + c2,
+				];
+				cands.push([
+					sum(ns.map(nw => !wordset[nw])),
+					c1,
+					c2,
+					...ns,
+				]);
+			});
+		});
+		let [_, __, ___, ...nws] = lex_min(cands);
+		return [null, nws, null, zeroes(cands), cands.length];
+	},
+	(wordset, ...ws) => {
+		let maxlen = just_max(ws.map(w => w.length));
+		let out = ws.map(w => w.length === maxlen ? w : "");
+		return [null, out, null, ws.every(x => x), 1];
+	},
+	(wordset, w1, w2) => {
+		let c1 = w1 + w2;
+		let c2 = w2 + w1;
+		let cands = [[!wordset[c1], c1], [!wordset[c2], c2]];
+		let [_, c] = lex_min(cands);
+		return [null, c, null, zeroes(cands), cands.length];
+	},
+	(wordset, w) => {
+		let nw = w.slice(1);
+		return [1, nw, 0, nw in wordset, 1];
+	},
+	// -> WORMS
+	(wordset, w1, w2) => {
+		let intersection = [];
+		for (let w in wordset) {
+			if (w.startsWith(w1) && (w2 + w.slice(w1.length)) in wordset) {
+				intersection.push(w.slice(w1.length));
+			}
+		}
+		let good = sum(intersection.map(w => w in wordset));
+		let cand = "";
+		intersection.forEach(w => { if (w.length > cand.length || (w.length >= cand.length && (w in wordset) >= (cand in wordset))) cand = w; });
+		return [null, cand, 1, good, intersection.length];
+
+	},
+	(wordset, w) => {
+		let cands = [];
+		ascii_uppercase.forEach((c) => {
+			if (c != w.at(1)) {
+				let nw = w[0] + c + w.slice(2);
+				nw = nw.at(-1) + nw.slice(0, -1);
+				cands.push([!wordset[nw], c, nw]);
+			}
+		});
+		let [_, __, nw] = lex_min(cands);
+		return [2, nw, 3, zeroes(cands), cands.length];
+	},
+	(wordset, w) => {
+		let cands = [];
+		ascii_uppercase.forEach((c) => {
+			let nw = w[0] + c + w.slice(1);
+			cands.push([!wordset[nw], c, nw]);
+		});
+		let [_, __, nw] = lex_min(cands);
+		return [null, nw, null, zeroes(cands), cands.length];
+	},
+	(wordset, w1, w2) => {
+		let cands = [];
+		ascii_uppercase.forEach(c1 => {
+			ascii_uppercase.forEach(c2 => {
+				let ns = [
+					c1 + c2 + w1.slice(2),
+					c1 + c2 + w2.slice(2),
+				];
+				cands.push([
+					sum(ns.map(nw => !wordset[nw])),
+					c1,
+					c2,
+					...ns,
+				]);
+			});
+		});
+		let [_, __, ___, ...nws] = lex_min(cands);
+		return [null, nws, null, zeroes(cands), cands.length];
+	},
+	// COVEN
+	(wordset, w) => {
+		return [-2, w.slice(1), -2, !!wordset[w.slice(1)], 1];
+	},
+	(wordset, w) => {
+		let cands = [];
+		ascii_uppercase.forEach((c) => {
+			let nw = w[0] + c + w.slice(3);
+			cands.push([!wordset[nw], c, nw]);
+		});
+		let [_, __, nw] = lex_min(cands);
+		return [null, nw, null, zeroes(cands), cands.length];
+	},
+	// -> COVENANT
+	(wordset, w1, w2) => {
+		let cands = [];
+		for (let i = 1; i < w1.length; i++) {
+			let nw = w1.slice(0, i) + w2 + w1.slice(i);
+			cands.push([!wordset[nw], nw]);
+		}
+		for (let i = 1; i < w2.length; i++) {
+			let nw = w2.slice(0, i) + w1 + w2.slice(i);
+			cands.push([!wordset[nw], nw]);
+		}
+		let [_, nw] = lex_min(cands);
+		return [null, nw, null, zeroes(cands), cands.length];
+	},
+	// -> NEARLY
+	(wordset, w) => {
+		let cands = [];
+		ascii_uppercase.forEach(c => {
+			let nw = w.at(-1) + w.slice(1, -1) + w[0] + c;
+			cands.push([!wordset[nw], nw]);
+		});
+		let [_, nw] = lex_min(cands);
+		return [null, nw, -1, zeroes(cands), cands.length];
+	},
+	// UNDERWRITER
+	(wordset, w1) => {
+		cands = [];
+		for (let i = 1; i < w1.length - 1; i++) {
+			ascii_uppercase.forEach(c1 => {
+				ascii_uppercase.forEach(c2 => {
+					let nw = w1.slice(0, i) + c1 + c2 + w1.slice(i+1);
+					cands.push([!wordset[nw], c1, c2, nw]);
+				});
+			});
+		}
+		if (cands.length === 0) {
+			return [null, "", null, 0, 0];
+		}
+		let [_, __, ___, nw] = lex_min(cands);
+		return [null, nw, -2, zeroes(cands), cands.length];
+	},
+	// PINCH PEARLY
+	(wordset, w1, w2) => {
+		cands = []
+		ascii_uppercase.forEach((c1) => {
+			if (c1 != w1[0]) {
+				ns = [c1 + w1.slice(1), c1 + w2.slice(2)];
+				cands.push([
+					sum(ns.map(nw => !wordset[nw])),
+					c1,
+					lex_min(ns),
+					null, 0,
+					...ns,
+				])
+			}
+			if (c1 != w2[0]) {
+				ns = [c1 + w1.slice(2), c1 + w2.slice(1)];
+				cands.push([
+					sum(ns.map(nw => !wordset[nw])),
+					c1,
+					lex_min(ns),
+					0, null,
+					...ns,
+				]);
+			}
+		});
+		let [_, __, ___, p1, p2, ...nws] = lex_min(cands);
+		return [[p1, p2], nws, null, zeroes(cands), cands.length];
+	},
+	(wordset, w) => {
+		let nw = "";
+		for (let i = 0; i < w.length; i += 2) {
+			nw += w[i];
+		}
+		return [null, nw, null, nw in wordset, 1];
+	},
+// ALCOVE??
+// dodge ALCO >:(
+	(wordset, w1, w2) => {
+		let cands = [];
+		for (let i = 0; i < w1.length - 1; i++) {
+			for (let j = 0; j < w2.length - 1; j++) {
+				// FIXME consistency
+				let nw = w1.slice(i) + w2.slice(0, j+2);
+				cands.push([!wordset[nw], -nw.length, nw, w1, [-1, null], w1.length-i-1]);
+				nw = w2.slice(j) + w1.slice(0, i+2);
+				cands.push([!wordset[nw], -nw.length, nw, w2, [null, -1], w2.length-j-1]);
+			}
+		}
+		// print(cands)
+		let [_, __, nw, ___, p, q] = lex_min(cands);
+		return [p, nw, q, zeroes(cands), cands.length];
+	},
+	// # WRITER
+	(wordset, w) => {
+		let nw = w.slice(Math.floor(w.length / 2));
+		return [0, nw, null, nw in wordset, 1];
+	},
+	// # longest portmanteau PINCER
+	(wordset, w1, w2) => {
+		let cands = [];
+		for (let i = 1; i < Math.min(w1.length, w2.length); i++) {
+			let ni1 = i + Math.max(0, w1.length - w2.length);
+			let nw = w1.slice(0, ni1) + w2.slice(i);
+			cands.push([!wordset[nw], nw, w1, [null, ni1], ni1]);
+			let ni2 = i + Math.max(0, w2.length - w1.length);
+			nw = w2.slice(0, ni2) + w1.slice(i);
+			cands.push([!wordset[nw], nw, w2, [ni2, null], ni2]);
+		}
+		let [_, nw, __, hi, oi] = lex_min(cands);
+		return [null, nw, null, zeroes(cands), cands.length];
+	},
+	// PACER
+	(wordset, w1, w2) => {
+		cands = [];
+		Array.from(w1).forEach(c => {
+			let nw = w2.slice(0, 1) + c + w2.slice(3);
+			cands.push([!wordset[nw], nw, w2, [null, 1]]);
+		});
+		Array.from(w2).forEach(c => {
+			let nw = w1.slice(0, 1) + c + w1.slice(3);
+			cands.push([!wordset[nw], nw, w1, [1, null]]);
+		});
+		let [_, nw, __, p] = lex_min(cands);
+		// print([x for x in cands if x[0]])
+		return [p, nw, null, zeroes(cands), cands.length];
+	},
+	(wordset, w1) => {
+		let nw = Array.from(w1).reverse().join("");
+		return [null, nw, null, !!wordset[nw], 1];
+	},
+	(wordset, w1, w2) => {
+		let cands = [];
+		ascii_uppercase.forEach(c1 => {
+			ascii_uppercase.forEach(c2 => {
+				let ns = [
+					c1 + w1.slice(1, -1) + c2,
+					c1 + w2.slice(1, -1) + c2,
+				];
+				cands.push([
+					sum(ns.map(nw => !wordset[nw])),
+					c1,
+					c2,
+					...ns,
+				]);
+			});
+		});
+		let [_, __, ___, ...nws] = lex_min(cands);
+		return [null, nws, (0, 0), zeroes(cands), cands.length];
+	},
+	(wordset, w1, w2) => {
+		return [null, [], [], 1, 1];
+	},
+];
+
+// https://docs.djangoproject.com/en/dev/ref/csrf/#ajax
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+async function recalc() {
+	let eoc = document.getElementById('eoc');
+	let rows = [];
+	Array.from(eoc.getElementsByTagName('table')).forEach(function(table, i) {
+		let inputs = [];
+		Array.from(table.getElementsByTagName('input')).forEach(function(it) {
+			if (i === 0) {
+				inputs.push(it.value);
+			} else {
+				inputs.push(it.checked);
+			}
+		});
+		rows.push(inputs);
+	});
+
+	/*
+	let result = await fetch("https://changes.galacticpuzzlehunt.com/", {
+		method: 'POST',
+		body: JSON.stringify({
+			inputs: rows[0],
+			choices: rows.slice(1),
+			hard: document.getElementById('hard').checked,
+		}),
+		headers: { "X-CSRFToken": getCookie('csrftoken') },
+	});
+	let j = await result.json();
+	*/
+	let j = submit({
+		inputs: rows[0],
+		choices: rows.slice(1),
+		hard: document.getElementById('hard').checked,
+	});
+
+	if (j.error) {
+		warn.textContent = j.error;
+		warn.style.backgroundColor = '#b21';
+		warn.style.opacity = 1;
+		return;
+	}
+	let res = j.result;
+	warn.style.backgroundColor = '#49669d';
+	warn.style.opacity = 0;
+
+	if (j.message) {
+		document.getElementById('message').textContent = j.message;
+	}
+
+	Array.from(eoc.getElementsByTagName('table')).forEach(function(table, i) {
+		let trs = table.getElementsByTagName('tr');
+		if (i >= res.length) {
+			table.style.visibility = 'hidden';
+			// wtf i didn't know visibility doesn't also hide children
+			trs[2].style.visibility = 'hidden';
+			trs[3].style.visibility = 'hidden';
+		} else {
+			table.style.visibility = 'visible';
+			let trs = table.getElementsByTagName('tr');
+			if (i == 0) {
+				Array.from(trs[1].getElementsByTagName('td')).forEach(function(e,j) {
+					e.innerHTML = res[0][0][j];
+				});
+			} else {
+				Array.from(trs[0].getElementsByTagName('td')).forEach(function(e,j) {
+					if (j < res[i][1].length) {
+						e.style.display = 'table-cell';
+						e.innerHTML = res[i][1][j];
+					} else {
+						e.style.display = 'none';
+					}
+				});
+				Array.from(trs[1].getElementsByTagName('td')).forEach(function(e,j) {
+					if (j < res[i][1].length) {
+						e.style.display = 'table-cell';
+					} else {
+						e.style.display = 'none';
+					}
+
+				});
+				Array.from(trs[1].getElementsByTagName('input')).forEach(function(e) {
+					e.disabled = res[i][0] && !e.checked;
+				});
+				if (res[i].length > 2) {
+					trs[2].style.visibility = 'visible';
+					trs[3].style.visibility = 'visible';
+					Array.from(trs[2].getElementsByTagName('td')).forEach(function(e,j) {
+						if (j < res[i][2].length) {
+							e.style.display = 'table-cell';
+							e.innerHTML = res[i][2][j];
+						} else {
+							e.style.display = 'none';
+						}
+					});
+					trs[3].getElementsByTagName('td')[0].textContent = res[i][3] + '/' + res[i][4];
+				} else {
+					trs[2].style.visibility = 'hidden';
+					trs[3].style.visibility = 'hidden';
+					Array.from(trs[2].getElementsByTagName('td')).forEach(function(e,j) {
+						e.style.display = 'none';
+					});
+				}
+			}
+		}
+	});
+}
+
+let timeout = null;
+function queueRecalc() {
+	warn.textContent = "Loading..."
+	warn.style.backgroundColor = '#49669d';
+	warn.style.opacity = 1;
+
+	if (timeout !== null) {
+		clearTimeout(timeout);
+		timeout = null;
+	}
+	timeout = setTimeout(recalc, 100);
+}
+
+document.getElementById('hard').addEventListener('change', queueRecalc);
+
+document.querySelectorAll('#eoc input').forEach(function(e) {
+	e.addEventListener('change', queueRecalc);
+	e.addEventListener('keyup', queueRecalc);
+});
+
+recalc();
+queueRecalc();
+
+document.getElementById('save-restore').addEventListener('click', function(e) {
+	let store = document.getElementById('store');
+	if (store.style.display !== 'block') {
+		store.style.display = 'block';
+
+		let parts = [document.getElementById('hard').checked ? 1 : 0];
+		let bytes = [];
+		Array.from(eoc.getElementsByTagName('table')).forEach(function(table, i) {
+			let inputs = Array.from(table.getElementsByTagName('input'));
+			if (i === 0) {
+				inputs.forEach(function(it) {
+					parts.push(it.value.toUpperCase().replace(/[^A-Z]/g, ""));
+				});
+			} else {
+				let b = 0;
+				inputs.forEach(function(it) {
+					b = 2 * b + (it.checked ? 1 : 0);
+				});
+				bytes.push(String.fromCharCode(b));
+			}
+		});
+		parts.push(btoa(bytes.join("")));
+		document.getElementById("save-state").value = parts.join(",");
+	} else {
+		store.style.display = 'none';
+	}
+});
+
+document.getElementById('load').addEventListener('click', function(e) {
+	try {
+		let data = document.getElementById("save-state").value;
+		let parts = data.split(",");
+		if (parts.length != 10) {
+			throw "Wrong number of parts";
+		}
+		document.getElementById('hard').checked = parts[0] === "1";
+
+		let bytes = atob(parts[9]);
+		Array.from(eoc.getElementsByTagName('table')).forEach(function(table, i) {
+			let inputs = Array.from(table.getElementsByTagName('input'));
+			if (i === 0) {
+				inputs.forEach(function(it, j) {
+					it.value = parts[j + 1];
+				});
+			} else {
+				let b = bytes.charCodeAt(i - 1);
+				inputs.forEach(function(it, j) {
+					it.checked = !!(b & (1 << (7 - j)));
+				});
+			}
+		});
+
+		recalc();
+	} catch (e) {
+		alert('Invalid save data: ' + e + ' Double-check?');
+	}
+});
+</script>
+
+    
+    
+
+    
+    <div class="puzzle-main-corner puzzle-main-corner-1"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-2"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-3"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-4"></div>
+    
+</main>
+
+<script src="/static/js/copyjack.js"></script>
+
+
+    </div>
+    
+
+    
+
+    
+    <script>
+    document.getElementById('nav-music').style.display = 'none';
+    document.getElementById("progress-simulator").addEventListener("submit", (e) => {
+        if (e.submitter.name === "reset") {
+            toggleReset(true);
+            doGlitch(false);
+            document.getElementById("shortcuts").checked = false;
+            e.preventDefault();
+        } else {
+            localStorage.setItem(e.submitter.name, e.submitter.value);
+        }
+    });
+    addStyles();
+
+    function toggleReset(which) {
+        $('#loop-reset').toggleClass('loop-resetting', which);
+    }
+
+    function addStyles() {
+        const changeFavicon = (url) => {
+            const e = Array.from(document.getElementsByTagName("link"))
+                .filter(e => e.rel === "icon")[0];
+            e.href = url;
+        }
+        const addSheet = (url) => {
+            const e = document.createElement("link");
+            e.rel = "stylesheet";
+            e.href = url;
+            document.getElementsByTagName("head")[0].appendChild(e);
+        }
+
+        const seasons = ["spring", "summer", "autumn", "winter"];
+        let current_main_round = localStorage.getItem("round");
+        const endgame_unlocked = localStorage.getItem("endgame") === "true";
+
+        const matches = new RegExp(`\\?(${seasons.join("|")})`).exec(document.URL);
+        if (matches && matches[1]) {
+            current_main_round = matches[1];
+        }
+
+        if (endgame_unlocked) {
+            addSheet("/static/css/endgame.css");
+            changeFavicon("/static/images/favicon-endgame.ico");
+            const nodes = document.getElementsByClassName("energy-nodes-info");
+            console.log(nodes);
+            if (nodes.length > 0) {
+                nodes[0].style.display = "block";
+            }
+        } else if (current_main_round === "concert") {
+            addSheet("/static/css/concert.css");
+            changeFavicon("/static/images/favicon-concert.ico");
+            // also add the concert music
+            document.getElementById('nav-music').style.display = 'inline-block';
+            const audio = document.getElementById("music-audio");
+            if (audio) {
+                audio.addEventListener('play', () => {
+                    audio.volume = localStorage.getItem('music-audio-volume') ?? 0.5;
+                });
+                audio.addEventListener('volumechange', () => {
+                    localStorage.setItem('music-audio-volume', audio.volume);
+                });
+            }
+        } else if (seasons.includes(current_main_round)) {
+            addSheet("/static/css/season.css");
+            addSheet(`/static/css/${current_main_round}.css`);
+            changeFavicon(`/static/images/favicon-${current_main_round}.ico`);
+        } else {
+            addSheet("/static/css/blue.css");
+            changeFavicon("/static/images/favicon-blue.ico");
+        }
+    }
+
+    registerOnGlitchHook((ex) => {
+        document.getElementById('background-glitch-wrapper').style.display = 'initial';
+    });
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,1141 @@
+
+
+
+
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+<title>Galactic History Exam</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <meta property="og:title" content="Galactic Puzzle Hunt 2022">
+    <meta property="og:description" content="Registration for this year's Galactic Puzzle Hunt is now open!">
+    <meta property="og:image" content="https://galacticpuzzlehunt.com/static/images/banner.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:slnt,CASL,CRSV,MONO@-3,0.5,1,1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/skeleton.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.formset/1.2.2/jquery.formset.min.js"></script>
+    <script src="/jsi18n/"></script>
+    <script src="/static/js/sorttable.js"></script>
+    <script src="/static/js/tray.js"></script>
+    <script src="/static/js/notify.js"></script>
+    <script src="/static/js/time.js"></script>
+    
+    
+    <link rel="icon" sizes="16x16 32x32 48x48 64x64" href="/static/images/favicon.ico" type="image/vnd.microsoft.icon">
+    
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92192633-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-92192633-1');
+</script>
+
+</head>
+<body>
+    
+    <div id="background-glitch-wrapper" class="background-glitch">
+        <div class="glitch-1"></div>
+        <div class="glitch-2"></div>
+        <div class="glitch-3"></div>
+    </div>
+    
+    
+    <input id="shortcuts" type="checkbox">
+    
+    <nav>
+        <span class="tray">
+            <span id="tray-timer"></span>
+            <div class="top-tabs">
+                <a href="/">
+                    Home
+                </a>
+                
+                
+                <a href="/story">
+                    Story
+                </a>
+                
+                
+                <a class="selected-tab" href="/puzzles">
+                    Puzzles
+                </a>
+                
+                <a href="/teams">
+                    Teams
+                </a>
+                
+                
+                <a href="/errata">
+                    Updates
+                </a>
+                
+                
+                
+                
+                <a id="nav-music" href="#">
+                    <label for="music" title="Music" style="margin-bottom: 0; font-weight: normal; cursor: pointer;">Music</label>
+                </a>
+                <input id="music" type="checkbox">
+                <div class="shortcuts music">
+                    <audio id="music-audio" controls src="/static/puzzle_resources/worlds-end-concert/music-audio.mp3">
+                        There should be a music player here.
+                    </audio>
+                </div>
+                
+                
+            </div>
+            <div class="top-left-actions">
+                
+
+
+
+
+<a href="/post-hunt-solve/galactic-history-exam" class="btn">Check your answer spoiler-free</a>
+
+
+
+<a href="/solution/galactic-history-exam" class="btn">View solution</a>
+<a href="/stats/galactic-history-exam" class="btn">Stats</a>
+
+
+            </div>
+        </span>
+        <div class="top-right-actions">
+        
+        <label for="shortcuts" title="Simulator">Simulator </label>
+        
+        
+        </div>
+    </nav>
+    
+    <div class="shortcuts">
+        <form id="progress-simulator">
+        <div>Current round:</div>
+        <button class="btn" type="submit" name="round" value="forward">⬆️</button>
+        <button class="btn" type="submit" name="round" value="spring">🌸</button>
+        <button class="btn" type="submit" name="round" value="summer">☀️</button>
+        <button class="btn" type="submit" name="round" value="autumn">🍂</button>
+        <button class="btn" type="submit" name="round" value="winter">☃️</button>
+        <button class="btn" type="submit" name="round" value="concert">🎤</button>
+        <button class="btn" type="submit" name="round" value="none">None</button>
+        <div>Endgame:</div>
+        <button class="btn" type="submit" name="endgame" value="true">Unlock</button>
+        <button class="btn" type="submit" name="endgame" value="false">Reset</button>
+        <div>Reset:</div>
+        <button class="btn" type="submit" name="reset" value="reset">Reset</button>
+        </form>
+    </div>
+    
+    
+    
+    
+    
+    <div id="loop-reset">
+        <form>
+            <svg viewBox="-30 160 720 320">
+                <defs>
+                    <path id="loop-end-path" d="m 370,240 c 38.29044,0 74.26676,18.33512 96.83716,49.26624 l -76.8369,30.73478 V 270 L 300,330 261.03858,309.74192 c 19.60706,-42.51188 62.14674,-69.74008 108.9623,-69.74306 z m 106.15758,64.22738 c 6.65282,12.65518 10.9906,26.39738 12.80876,40.57862 l -38.96532,5.19538 z"/>
+                </defs>
+                <foreignObject width="720" height="480" clip-path="url(#loop-end-clip)" class="loop-shade">
+                    <aside class="loop-shade" xmlns="http://www.w3.org/1999/xhtml" style="width: 100%; height: 100%;"></aside>
+                </foreignObject>
+                <clipPath id="loop-end-clip"><use href="#loop-end-path"/></clipPath>
+                <use href="#loop-end-path"/>
+                <path d="M 490,400 600,330 450,350 490,280 390,320 V 270 L 300,330 50,200 170,380 50,400"/>
+            </svg>
+            <div>THE END</div>
+            <p>You can reset once per minute.</p>
+            <table>
+                <tr id="loop-reset-btn-row-reset">
+                    <td><button class="btn" disabled>Reset</button></td>
+                    <td>Start over from the beginning of the exam.</td>
+                </tr>
+                <tr id="loop-reset-btn-row-restore">
+                    <td><button class="btn" disabled>Jump</button></td>
+                    <td>Start over, but resubmit your previous answers to bring you back to this point.</td>
+                </tr>
+                <tr>
+                    <td><a class="btn" href="javascript:toggleReset(false)">Stay</a></td>
+                    <td>Look at this page a bit longer. Make sure to save your work.</td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    
+    <script>
+
+    
+    
+    let glitchTriggerFuncs = [];
+    let glitchTriggerReceived = false;
+    let glitchTriggerExReceived = false;
+    let glitchPageLoaded = false;
+    function processGlitchFuncs(ex) {
+        glitchTriggerFuncs.forEach((func) => {
+            func(ex);
+        });
+    }
+    function doGlitch(ex) {
+        glitchTriggerReceived = true;
+        if (ex) {
+            glitchTriggerExReceived = true;
+        }
+        if (glitchPageLoaded) {
+            processGlitchFuncs(ex);
+        }
+    }
+    window.addEventListener('load', () => {
+        glitchPageLoaded = true;
+        if (glitchTriggerExReceived) {
+            processGlitchFuncs(true);
+        }
+        else if (glitchTriggerReceived) {
+            processGlitchFuncs(false);
+        }
+    }, false);
+    
+    
+    
+    function registerOnGlitchHook(func) {
+        if (glitchTriggerExReceived) {
+            func(true);
+        }
+        else if (glitchTriggerReceived) {
+            func(false);
+        }
+        glitchTriggerFuncs.push(func);
+    }
+    
+
+    
+    
+    </script>
+    <div class="content">
+        
+
+<h1>
+    Galactic History Exam
+    
+    
+    
+    <div>
+      
+      <a class="btn" href="galactic-history-exam%253Fspring">🌸</a>
+      
+      <a class="btn" href="galactic-history-exam%253Fsummer">☀️</a>
+      
+      <a class="btn" href="galactic-history-exam%253Fautumn">🍂</a>
+      
+      <a class="btn" href="galactic-history-exam%253Fwinter">☃️</a>
+      
+    </div>
+    
+    
+</h1>
+
+
+
+<main class="puzzle-main clipboard-container">
+    
+    
+    
+    
+<style>
+	div.centerer {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	input[type="checkbox"][aria-disabled="true"] {
+		opacity: 0.7;
+	}
+	span.s {
+		margin: 3px;
+	}
+	label.no-wrap {
+		margin: 5px;
+		white-space: nowrap;
+		display: inline-block;
+	}
+	label.no-wrap span {
+		margin-left: 0.3em;
+	}
+	img.i {
+		max-width: 100%;
+		mix-blend-mode: multiply;
+	}
+</style>
+
+<p class="note">Note: You will not need to consult solutions for this puzzle.</p>
+
+
+
+<h3>Celebratory Music</h3>
+<p>
+dusty mic and neon glow are all I need why you opened my arms and you opened my eyes and now that that night and all the next swam without looking back made for the western in my way down in flames with dice to roll up in smoke running in your way so I&rsquo;ll go but I know I&rsquo;ll think of you every step of experiments to run there is research to be done king so the boring collect I mean all disrespect and use the right pronoun show the world you&rsquo;re there frozen in time but time is short and outstretched firm ranks in place designed as a possible way into unexpected fantasies going hard just pumping that gas no one on the corner has swagger like long enough you&rsquo;ll end up where you were and the universe is shaped exactly like the pen that will write a poem of me and you the ink flows down into a rationality I chimed in haven&rsquo;t you people ever heard of closing the goddamn door the halfway point doing great so far we what&rsquo;s all this we stuff I&rsquo;m doing all that&rsquo;s driving me mad is going away yeah oh she&rsquo;s got a ticket to not listen they did not know how perhaps they&rsquo;ll listen now starry starry night flaming flowers are going beep beep beep and there are so many roadmen on this</p>
+
+<h3>The Obligatory Interactive Subpuzzle</h3>
+<button onclick="wait()">Wait</button>
+<div id="area1"></div>
+
+<hr>
+
+<span id="area2"><button onclick="buttonClick()">Click me</button><span id="counter1" class="s">0</span></span>
+<div id="area3"></div>
+<hr id="hr1" style="display: none">
+<div id="area4"></div>
+<hr id="hr2" style="display: none">
+<div id="area5"></div>
+<hr id="hr3" style="display: none">
+<div id="area6"></div>
+<hr id="hr4" style="display: none">
+<div id="area7"></div>
+
+<audio controls autoplay loop hidden id="rock-lobster">
+	<source src="/static/puzzle_resources/galactic-history-exam/rockLobster.mp3" type="audio/mpeg"/>
+</audio>
+
+
+
+<h3>The Exam</h3>
+
+<div style="text-align: center" class="no-copy">
+  <svg
+     width="451.61804"
+     height="200.57825"
+     viewBox="0 0 119.4906 53.069663"
+     version="1.1"
+     id="svg5"
+     inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
+     sodipodi:docname="payoff.svg"
+     inkscape:export-filename="C:\Users\12345\payoff.png"
+     inkscape:export-xdpi="288"
+     inkscape:export-ydpi="288"
+     xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+     xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:svg="http://www.w3.org/2000/svg">
+    <sodipodi:namedview
+       id="namedview7"
+       pagecolor="#ffffff"
+       bordercolor="#666666"
+       borderopacity="1.0"
+       inkscape:pageshadow="2"
+       inkscape:pageopacity="0.0"
+       inkscape:pagecheckerboard="0"
+       inkscape:document-units="mm"
+       showgrid="false"
+       units="px"
+       fit-margin-left="30"
+       fit-margin-top="30"
+       fit-margin-right="30"
+       fit-margin-bottom="30"
+       inkscape:zoom="1.4142136"
+       inkscape:cx="206.82873"
+       inkscape:cy="113.13708"
+       inkscape:window-width="1920"
+       inkscape:window-height="1009"
+       inkscape:window-x="-8"
+       inkscape:window-y="-8"
+       inkscape:window-maximized="1"
+       inkscape:current-layer="layer1">
+      <inkscape:grid
+         type="xygrid"
+         id="grid848"
+         originx="-87.180187"
+         originy="-62.044792" />
+    </sodipodi:namedview>
+    <defs
+       id="defs2">
+      <marker
+         style="overflow:visible"
+         id="Arrow1Lend"
+         refX="0"
+         refY="0"
+         orient="auto"
+         inkscape:stockid="Arrow1Lend"
+         inkscape:isstock="true">
+        <path
+           transform="matrix(-0.8,0,0,-0.8,-10,0)"
+           style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+           d="M 0,0 5,-5 -12.5,0 5,5 Z"
+           id="path1385" />
+      </marker>
+      <marker
+         style="overflow:visible"
+         id="Arrow1Lend-3"
+         refX="0"
+         refY="0"
+         orient="auto"
+         inkscape:stockid="Arrow1Lend"
+         inkscape:isstock="true">
+        <path
+           transform="matrix(-0.8,0,0,-0.8,-10,0)"
+           style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+           d="M 0,0 5,-5 -12.5,0 5,5 Z"
+           id="path1385-6" />
+      </marker>
+    </defs>
+    <g
+       inkscape:label="Layer 1"
+       inkscape:groupmode="layer"
+       id="layer1"
+       transform="translate(-87.180203,-62.044787)">
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+         d="m 142.875,99.218749 h 19.84375"
+         id="path1292" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+         d="m 142.87501,92.604163 19.84374,3e-6"
+         id="path1294"
+         sodipodi:nodetypes="cc" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+         d="m 142.87501,85.98958 19.84374,2e-6"
+         id="path1296"
+         sodipodi:nodetypes="cc" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+         d="m 142.87501,79.374996 19.84374,3e-6"
+         id="path1298"
+         sodipodi:nodetypes="cc" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+         d="m 142.87501,72.760413 19.84374,3e-6"
+         id="path1300"
+         sodipodi:nodetypes="cc" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.264583"
+         id="rect1672"
+         width="26.458332"
+         height="5.2916665"
+         x="165.36458"
+         y="70.114586" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.264583"
+         id="rect1672-1"
+         width="26.458332"
+         height="5.2916665"
+         x="165.36458"
+         y="76.729172" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.264583"
+         id="rect1672-1-9"
+         width="26.458332"
+         height="5.2916665"
+         x="165.36458"
+         y="83.343758" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.264583"
+         id="rect1672-1-98"
+         width="26.458332"
+         height="5.2916665"
+         x="165.36458"
+         y="89.958336" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.264583"
+         id="rect1672-1-99"
+         width="26.458332"
+         height="5.2916665"
+         x="165.36458"
+         y="96.572922" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 191.82291,72.760416 6.61459,3.307292 -6.61459,3.307291"
+         id="path1867"
+         sodipodi:nodetypes="ccc" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 191.82291,79.375 6.61459,3.307292 -6.61459,3.307291"
+         id="path1867-0"
+         sodipodi:nodetypes="ccc" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 191.82291,85.989582 6.61459,3.307292 -6.61459,3.307291"
+         id="path1867-6"
+         sodipodi:nodetypes="ccc" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 191.82291,92.604166 6.61459,3.307292 -6.61459,3.307291"
+         id="path1867-0-4"
+         sodipodi:nodetypes="ccc" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend-3)"
+         d="M 95.250011,105.83333 H 145.52084"
+         id="path1292-3"
+         sodipodi:nodetypes="cc" />
+      <circle
+         style="fill:none;stroke:#000000;stroke-width:0.264583"
+         id="path850-3-4-7-0"
+         cx="97.895828"
+         cy="99.21875"
+         r="2.6458333" />
+      <circle
+         style="fill:none;stroke:#000000;stroke-width:0.264583"
+         id="path850-5-1-6-43"
+         cx="105.83333"
+         cy="99.21875"
+         r="2.6458333" />
+      <circle
+         style="fill:none;stroke:#000000;stroke-width:0.264583"
+         id="path850-3-8-1-8"
+         cx="113.77083"
+         cy="99.21875"
+         r="2.6458333" />
+      <circle
+         style="fill:none;stroke:#000000;stroke-width:0.264583"
+         id="path850-5-6-2-15"
+         cx="121.70833"
+         cy="99.21875"
+         r="2.6458333" />
+      <circle
+         style="fill:none;stroke:#000000;stroke-width:0.264583"
+         id="path850-3-4-7-8-2"
+         cx="97.895828"
+         cy="85.989586"
+         r="2.6458333" />
+      <circle
+         style="fill:none;stroke:#000000;stroke-width:0.264583"
+         id="path850-5-1-6-4-8"
+         cx="105.83333"
+         cy="85.989586"
+         r="2.6458333" />
+      <circle
+         style="fill:none;stroke:#000000;stroke-width:0.264583"
+         id="path850-5-6-2-4-8"
+         cx="121.70833"
+         cy="85.989586"
+         r="2.6458333" />
+      <circle
+         style="fill:none;stroke:#000000;stroke-width:0.264583"
+         id="path850-3-4-7-1-0"
+         cx="97.895828"
+         cy="92.604164"
+         r="2.6458333" />
+      <circle
+         style="fill:none;stroke:#000000;stroke-width:0.264583"
+         id="path850-5-1-6-5-4"
+         cx="105.83333"
+         cy="92.604164"
+         r="2.6458333" />
+      <circle
+         style="fill:none;stroke:#000000;stroke-width:0.264583"
+         id="path850-3-8-1-4-5"
+         cx="113.77083"
+         cy="92.604164"
+         r="2.6458333" />
+      <circle
+         style="fill:none;stroke:#000000;stroke-width:0.264583"
+         id="path850-5-6-2-1-8"
+         cx="121.70833"
+         cy="92.604164"
+         r="2.6458333" />
+      <circle
+         style="fill:none;stroke:#000000;stroke-width:0.264583"
+         id="path850-3-4-7-17-5"
+         cx="97.895828"
+         cy="79.375"
+         r="2.6458333" />
+      <circle
+         style="fill:none;stroke:#000000;stroke-width:0.264583"
+         id="path850-5-1-6-6-6"
+         cx="105.83333"
+         cy="79.375"
+         r="2.6458333" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.264583"
+         id="rect4027"
+         width="13.229166"
+         height="5.2916665"
+         x="127.00001"
+         y="96.572914"
+         ry="2.6458333" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.264583"
+         id="rect4027-2"
+         width="13.229166"
+         height="5.2916665"
+         x="127.00001"
+         y="70.114578"
+         ry="2.6458333" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 97.895844,104.51041 v 2.64583"
+         id="path4535" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 105.83334,104.51041 v 2.64583"
+         id="path4535-9" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 121.70834,104.51041 v 2.64583"
+         id="path4535-6" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 129.64584,104.51041 v 2.64583"
+         id="path4535-3" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 137.58334,104.51041 v 2.64583"
+         id="path4535-96" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 113.77084,104.51041 v 2.64583"
+         id="path4535-67" />
+    </g>
+  </svg>
+</div>  
+<div class="copy-only"><p>[See original puzzle for image.]</p></div>
+
+<button class="btn clipboard-button"></button>
+
+
+<script>
+	const playRockLobster = () => {
+		const rockLobster = document.getElementById("rock-lobster");
+		if (rockLobster.paused) {
+			rockLobster.play();
+		}
+	}
+	document.addEventListener("mousemove", playRockLobster);
+	document.addEventListener("click", playRockLobster);
+
+	const numbers = [
+    [5],
+    [5],
+    [5],
+    [2],
+    [],
+    [5],
+    [],
+    [2,5],
+    [2,5],
+    [2],
+    [2],
+    [2],
+    [2],
+    [2,5],
+    [3,4],
+    [2,3,4,5],
+    [2],
+    [],
+    [2],
+    [],
+    [3,4],
+    [5],
+    [2],
+    [2],
+    [],
+    [],
+    [],
+    [],
+    [3,4],
+    [2],
+  ]
+
+  const numbers2 = [
+    1,
+    20,
+    100,
+    250,
+    100000,
+    3000000,
+    9000000,
+    15000000,
+    22500000,
+    31000000,
+    40000000,
+    50000000,
+    100000000,
+  ]
+
+const numbers3 = [
+    2000000,
+    4000000,
+    6000000,
+    8000000,
+    10000000,
+    12000000,
+    14000000,
+    16000000,
+    18000000,
+    20000000,
+    22000000,
+    24000000,
+  ]
+
+  const numbers4 = [
+    1,
+    250,
+    4000000,
+    16000000,
+    36000000,
+    64000000,
+    100000000,
+    144000000,
+    200000000,
+  ]
+
+  const numbers5 = [
+    4000000,
+    8000000,
+    12000000,
+    16000000,
+    20000000,
+    24000000,
+    24000000,
+    24000000,
+  ]
+
+  const numbers6 = [
+    2000000,
+    4000000,
+    6000000,
+    8000000,
+    10000000,
+    12000000,
+    12000000,
+    12000000,
+  ]
+
+  const numbers7 = [
+    [3,5],
+    [1,2,3,4,5],
+    [1,2,3,4,5],
+    [3,4,5],
+    [1,5],
+    [3],
+    [3,4,5],
+    [2,4],
+    [3],
+    [2,4,5],
+    [3,4,5],
+    [3],
+    [2,3,4,5],
+  ]
+
+  const numbers8 = [
+    [4],
+    [4],
+    [4],
+    [1,4,5],
+    [2,3,4,5],
+    [2,4,5],
+    [4],
+    [2,3,4],
+    [5],
+  ]
+
+  const numbers9 = [
+    [3,4],
+    [4,5],
+    [1,3,5],
+    [1,3,4],
+    [1,3,5],
+    [2,5],
+    [3,4],
+    [3,4,5],
+    [1,3,4,5],
+  ]
+
+  const numbers10 = [
+    [3,5],
+    [1,2,3,4,5],
+    [3],
+    [3,4,5],
+    [2,3,4,5],
+    [1,2,3,4,5],
+    [2,3,4,5],
+    [2,3,5],
+    [5],
+  ]
+
+  const area1 = document.getElementById("area1");
+
+  const area2 = document.getElementById("area2");
+  const area3 = document.getElementById("area3");
+  const area4 = document.getElementById("area4");
+  const area5 = document.getElementById("area5");
+  const area6 = document.getElementById("area6");
+  const area7 = document.getElementById("area7");
+
+  const hr1 = document.getElementById("hr1");
+  const hr2 = document.getElementById("hr2");
+  const hr3 = document.getElementById("hr3");
+  const hr4 = document.getElementById("hr4");
+
+  const counter1 = document.getElementById("counter1");
+
+  const makeOneWayCheckbox = (callback) => {
+    const res = document.createElement('input');
+    res.setAttribute('type', 'checkbox');
+    res.onchange = () => {
+      callback();
+      res.setAttribute('aria-disabled', 'true');
+      res.onclick = (e) => {
+        e.preventDefault();
+      }
+      res.classList.add('disabled');
+    }
+    return res;
+  }
+
+  const makeOneWayCheckboxWithNumbers = (nums, callback, color) => {
+    const res = document.createElement('label');
+    res.classList.add('no-wrap');
+    res.style.backgroundColor = color;
+    res.appendChild(makeOneWayCheckbox(callback));
+    const numberSpan = document.createElement('span');
+    numberSpan.innerText = `[${nums}]`;
+    res.appendChild(numberSpan);
+    return res;
+  }
+
+  const makeButtonWithCounter = (text) => {
+    let count = 0;
+    const button = document.createElement('button');
+    button.innerText = text;
+    const span = document.createElement('span');
+    button.onclick = () => {
+      count++;
+      span.innerText = count;
+    }
+    return button, span;
+  }
+
+  let numCheckboxesInArea1 = 0;
+  const wait = () => {
+    if (numCheckboxesInArea1 >= 30) {
+      return;
+    }
+    let color = undefined;
+    for (let i = 0; i < 5; i++) {
+      if (numCheckboxesInArea1 === 29) {
+        color = "cyan";
+      } else if (numCheckboxesInArea1 > 24) {
+        color = "yellow"
+      }
+      area1.appendChild(makeOneWayCheckboxWithNumbers(
+          numbers[numCheckboxesInArea1], () => {}, color));
+          numCheckboxesInArea1++;
+    }
+  }
+
+  let num1 = 0;
+  let num2 = 0;
+  let num3 = 0;
+  let num4 = 0;
+
+  let numBoxesArea3 = 0;
+  let numBoxesArea4 = 0;
+  let numBoxesArea5 = 0;
+  let numBoxesArea6 = 0;
+
+  let area4Yellow = false;
+  let area5Yellow = false;
+  let area6Yellow = false;
+
+  const buttonClick = () => updateArea3(++num1);
+
+  const updateArea3 = (counterNum) => {
+    counter1.innerText = counterNum;
+    for (let i = numBoxesArea3; i < 13; i++) {
+      if (numbers2[i] <= counterNum) {
+        if (i === 12) {
+          area3.appendChild(makeOneWayCheckboxWithNumbers(numbers7[i], () => {
+            const area4Span = document.createElement("span");
+            const area4Button = document.createElement("button");
+            area4Button.innerText = "Click me";
+            area4Button.onclick = () => updateArea4(++num2);
+            const counter2 = document.createElement("span");
+            counter2.innerText = 0;
+            counter2.id = "counter2"
+            counter2.classList.add("s");
+            area4Span.appendChild(area4Button);
+            area4Span.appendChild(counter2);
+
+            const area5Span = document.createElement("span");
+            const area5Button = document.createElement("button");
+            area5Button.innerText = "Click me";
+            area5Button.onclick = () => updateArea5(++num3);
+            const counter3 = document.createElement("span");
+            counter3.innerText = 0;
+            counter3.id = "counter3"
+            counter3.classList.add("s");
+            area4Span.appendChild(area5Button);
+            area4Span.appendChild(counter3);
+
+            const area6Span = document.createElement("span");
+            const area6Button = document.createElement("button");
+            area6Button.innerText = "Click me";
+            area6Button.onclick = () => updateArea6(++num4);
+            const counter4 = document.createElement("span");
+            counter4.innerText = 0;
+            counter4.id = "counter4"
+            counter4.classList.add("s");
+            area4Span.appendChild(area6Button);
+            area4Span.appendChild(counter4);
+
+            area2.appendChild(area4Span);
+            area2.appendChild(area5Span);
+            area2.appendChild(area6Span);
+
+            // area4.appendChild(makeOneWayCheckboxWithNumbers(numbers8[0], () => {
+            //   num2 += numbers5[0];
+            //   num3 += numbers6[0];
+            //   num4 += numbers6[0];
+            //   updateArea4(num2);
+            //   updateArea5(num3);
+            //   updateArea6(num4);
+            // }));
+            // area5.appendChild(makeOneWayCheckboxWithNumbers(numbers9[0], () => {
+            //   num3 += numbers5[0];
+            //   num2 += numbers6[0];
+            //   num4 += numbers6[0];
+            //   updateArea4(num2);
+            //   updateArea5(num3);
+            //   updateArea6(num4);
+            // }));
+            // area6.appendChild(makeOneWayCheckboxWithNumbers(numbers10[0], () => {
+            //   num4 += numbers5[0];
+            //   num2 += numbers6[0];
+            //   num3 += numbers6[0];
+            //   updateArea4(num2);
+            //   updateArea5(num3);
+            //   updateArea6(num4);
+            // }));
+            updateHrVisibilities();
+          }, "yellow"));
+          numBoxesArea3++;
+        } else {
+          area3.appendChild(makeOneWayCheckboxWithNumbers(numbers7[i], () => {
+            num1 += numbers3[i];
+            updateArea3(num1);
+          }));
+          numBoxesArea3++;
+        }
+      }
+    }
+  }
+
+  const maybePopulateArea7 = () => {
+    if (area4Yellow && area5Yellow && area6Yellow) {
+      area7.appendChild(makeOneWayCheckboxWithNumbers([3], () => {}, "cyan"))
+    }
+    updateHrVisibilities();
+  }
+
+  const updateArea4 = (counterNum) => {
+    document.getElementById("counter2").innerText = counterNum;
+    for (let i = numBoxesArea4; i < 9; i++) {
+      if (numbers4[i] <= counterNum) {
+        if (i === 8) {
+          area4.appendChild(makeOneWayCheckboxWithNumbers(numbers8[i], () => { 
+            area4Yellow = true;
+            maybePopulateArea7();
+          }, "yellow"));
+          numBoxesArea4++;
+        } else {
+          area4.appendChild(makeOneWayCheckboxWithNumbers(numbers8[i], () => {
+            num2 += numbers5[i];
+            num3 += numbers6[i];
+            num4 += numbers6[i];
+            updateArea4(num2);
+            updateArea5(num3);
+            updateArea6(num4);
+          }));
+          numBoxesArea4++;
+        }
+      }
+    }
+    updateHrVisibilities();
+  }
+
+  const updateArea5 = (counterNum) => {
+    document.getElementById("counter3").innerText = counterNum;
+    for (let i = numBoxesArea5; i < 9; i++) {
+      if (numbers4[i] <= counterNum) {
+        if (i === 8) {
+          area5.appendChild(makeOneWayCheckboxWithNumbers(numbers9[i], () => { 
+            area5Yellow = true;
+            maybePopulateArea7();
+          }, "yellow"));
+          numBoxesArea5++;
+        } else {
+          area5.appendChild(makeOneWayCheckboxWithNumbers(numbers9[i], () => {
+            num3 += numbers5[i];
+            num2 += numbers6[i];
+            num4 += numbers6[i];
+            updateArea4(num2);
+            updateArea5(num3);
+            updateArea6(num4);
+          }));
+          numBoxesArea5++;
+        }
+      }
+    }
+    updateHrVisibilities();
+  }
+
+const updateArea6 = (counterNum) => {
+  document.getElementById("counter4").innerText = counterNum;
+  for (let i = numBoxesArea6; i < 9; i++) {
+    if (numbers4[i] <= counterNum) {
+      if (i === 8) {
+        area6.appendChild(makeOneWayCheckboxWithNumbers(numbers10[i], () => { 
+          area6Yellow = true; 
+          maybePopulateArea7(); 
+        }, "yellow"));
+        numBoxesArea6++;
+      } else {
+        area6.appendChild(makeOneWayCheckboxWithNumbers(numbers10[i], () => {
+          num4 += numbers5[i];
+          num2 += numbers6[i];
+          num3 += numbers6[i];
+          updateArea4(num2);
+          updateArea5(num3);
+          updateArea6(num4);
+        }));
+        numBoxesArea6++;
+      }
+    }
+  }
+  updateHrVisibilities();
+}
+
+  const updateHrVisibilities = () => {
+    if (area3.childNodes.length > 0 && area4.childNodes.length > 0) {
+      hr1.style.display = "block";
+    }
+    if (area4.childNodes.length > 0 && area5.childNodes.length > 0) {
+      hr2.style.display = "block";
+    }
+    if (area5.childNodes.length > 0 && area6.childNodes.length > 0) {
+      hr3.style.display = "block";
+    }
+    if (area6.childNodes.length > 0 && area7.childNodes.length > 0) {
+      hr4.style.display = "block";
+    }
+  }
+</script>
+
+
+    
+    
+
+    
+    <div class="puzzle-main-corner puzzle-main-corner-1"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-2"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-3"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-4"></div>
+    
+</main>
+
+<script src="/static/js/copyjack.js"></script>
+
+
+    </div>
+    
+
+    
+
+    
+    <script>
+    document.getElementById('nav-music').style.display = 'none';
+    document.getElementById("progress-simulator").addEventListener("submit", (e) => {
+        if (e.submitter.name === "reset") {
+            toggleReset(true);
+            doGlitch(false);
+            document.getElementById("shortcuts").checked = false;
+            e.preventDefault();
+        } else {
+            localStorage.setItem(e.submitter.name, e.submitter.value);
+        }
+    });
+    addStyles();
+
+    function toggleReset(which) {
+        $('#loop-reset').toggleClass('loop-resetting', which);
+    }
+
+    function addStyles() {
+        const changeFavicon = (url) => {
+            const e = Array.from(document.getElementsByTagName("link"))
+                .filter(e => e.rel === "icon")[0];
+            e.href = url;
+        }
+        const addSheet = (url) => {
+            const e = document.createElement("link");
+            e.rel = "stylesheet";
+            e.href = url;
+            document.getElementsByTagName("head")[0].appendChild(e);
+        }
+
+        const seasons = ["spring", "summer", "autumn", "winter"];
+        let current_main_round = localStorage.getItem("round");
+        const endgame_unlocked = localStorage.getItem("endgame") === "true";
+
+        const matches = new RegExp(`\\?(${seasons.join("|")})`).exec(document.URL);
+        if (matches && matches[1]) {
+            current_main_round = matches[1];
+        }
+
+        if (endgame_unlocked) {
+            addSheet("/static/css/endgame.css");
+            changeFavicon("/static/images/favicon-endgame.ico");
+            const nodes = document.getElementsByClassName("energy-nodes-info");
+            console.log(nodes);
+            if (nodes.length > 0) {
+                nodes[0].style.display = "block";
+            }
+        } else if (current_main_round === "concert") {
+            addSheet("/static/css/concert.css");
+            changeFavicon("/static/images/favicon-concert.ico");
+            // also add the concert music
+            document.getElementById('nav-music').style.display = 'inline-block';
+            const audio = document.getElementById("music-audio");
+            if (audio) {
+                audio.addEventListener('play', () => {
+                    audio.volume = localStorage.getItem('music-audio-volume') ?? 0.5;
+                });
+                audio.addEventListener('volumechange', () => {
+                    localStorage.setItem('music-audio-volume', audio.volume);
+                });
+            }
+        } else if (seasons.includes(current_main_round)) {
+            addSheet("/static/css/season.css");
+            addSheet(`/static/css/${current_main_round}.css`);
+            changeFavicon(`/static/images/favicon-${current_main_round}.ico`);
+        } else {
+            addSheet("/static/css/blue.css");
+            changeFavicon("/static/images/favicon-blue.ico");
+        }
+    }
+
+    registerOnGlitchHook((ex) => {
+        document.getElementById('background-glitch-wrapper').style.display = 'initial';
+    });
+    </script>
+    
+</body>
+</html>

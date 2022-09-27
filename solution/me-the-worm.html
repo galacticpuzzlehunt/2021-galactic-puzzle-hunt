@@ -1,0 +1,559 @@
+
+
+
+
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+<title>Solution: Me, the Worm</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <meta property="og:title" content="Galactic Puzzle Hunt 2022">
+    <meta property="og:description" content="Registration for this year's Galactic Puzzle Hunt is now open!">
+    <meta property="og:image" content="https://galacticpuzzlehunt.com/static/images/banner.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:slnt,CASL,CRSV,MONO@-3,0.5,1,1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/skeleton.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.formset/1.2.2/jquery.formset.min.js"></script>
+    <script src="/jsi18n/"></script>
+    <script src="/static/js/sorttable.js"></script>
+    <script src="/static/js/tray.js"></script>
+    <script src="/static/js/notify.js"></script>
+    <script src="/static/js/time.js"></script>
+    
+    
+    <link rel="icon" sizes="16x16 32x32 48x48 64x64" href="/static/images/favicon.ico" type="image/vnd.microsoft.icon">
+    
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92192633-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-92192633-1');
+</script>
+
+</head>
+<body>
+    
+    <div id="background-glitch-wrapper" class="background-glitch">
+        <div class="glitch-1"></div>
+        <div class="glitch-2"></div>
+        <div class="glitch-3"></div>
+    </div>
+    
+    
+    <input id="shortcuts" type="checkbox">
+    
+    <nav>
+        <span class="tray">
+            <span id="tray-timer"></span>
+            <div class="top-tabs">
+                <a href="/">
+                    Home
+                </a>
+                
+                
+                <a href="/story">
+                    Story
+                </a>
+                
+                
+                <a class="selected-tab" href="/puzzles">
+                    Puzzles
+                </a>
+                
+                <a href="/teams">
+                    Teams
+                </a>
+                
+                
+                <a href="/errata">
+                    Updates
+                </a>
+                
+                
+                
+                
+                <a id="nav-music" href="#">
+                    <label for="music" title="Music" style="margin-bottom: 0; font-weight: normal; cursor: pointer;">Music</label>
+                </a>
+                <input id="music" type="checkbox">
+                <div class="shortcuts music">
+                    <audio id="music-audio" controls src="/static/puzzle_resources/worlds-end-concert/music-audio.mp3">
+                        There should be a music player here.
+                    </audio>
+                </div>
+                
+                
+            </div>
+            <div class="top-left-actions">
+                
+<a href="/puzzle/me-the-worm" class="btn">Back to the puzzle</a>
+
+            </div>
+        </span>
+        <div class="top-right-actions">
+        
+        <label for="shortcuts" title="Simulator">Simulator </label>
+        
+        
+        </div>
+    </nav>
+    
+    <div class="shortcuts">
+        <form id="progress-simulator">
+        <div>Current round:</div>
+        <button class="btn" type="submit" name="round" value="forward">⬆️</button>
+        <button class="btn" type="submit" name="round" value="spring">🌸</button>
+        <button class="btn" type="submit" name="round" value="summer">☀️</button>
+        <button class="btn" type="submit" name="round" value="autumn">🍂</button>
+        <button class="btn" type="submit" name="round" value="winter">☃️</button>
+        <button class="btn" type="submit" name="round" value="concert">🎤</button>
+        <button class="btn" type="submit" name="round" value="none">None</button>
+        <div>Endgame:</div>
+        <button class="btn" type="submit" name="endgame" value="true">Unlock</button>
+        <button class="btn" type="submit" name="endgame" value="false">Reset</button>
+        <div>Reset:</div>
+        <button class="btn" type="submit" name="reset" value="reset">Reset</button>
+        </form>
+    </div>
+    
+    
+    
+    
+    
+    <div id="loop-reset">
+        <form>
+            <svg viewBox="-30 160 720 320">
+                <defs>
+                    <path id="loop-end-path" d="m 370,240 c 38.29044,0 74.26676,18.33512 96.83716,49.26624 l -76.8369,30.73478 V 270 L 300,330 261.03858,309.74192 c 19.60706,-42.51188 62.14674,-69.74008 108.9623,-69.74306 z m 106.15758,64.22738 c 6.65282,12.65518 10.9906,26.39738 12.80876,40.57862 l -38.96532,5.19538 z"/>
+                </defs>
+                <foreignObject width="720" height="480" clip-path="url(#loop-end-clip)" class="loop-shade">
+                    <aside class="loop-shade" xmlns="http://www.w3.org/1999/xhtml" style="width: 100%; height: 100%;"></aside>
+                </foreignObject>
+                <clipPath id="loop-end-clip"><use href="#loop-end-path"/></clipPath>
+                <use href="#loop-end-path"/>
+                <path d="M 490,400 600,330 450,350 490,280 390,320 V 270 L 300,330 50,200 170,380 50,400"/>
+            </svg>
+            <div>THE END</div>
+            <p>You can reset once per minute.</p>
+            <table>
+                <tr id="loop-reset-btn-row-reset">
+                    <td><button class="btn" disabled>Reset</button></td>
+                    <td>Start over from the beginning of the exam.</td>
+                </tr>
+                <tr id="loop-reset-btn-row-restore">
+                    <td><button class="btn" disabled>Jump</button></td>
+                    <td>Start over, but resubmit your previous answers to bring you back to this point.</td>
+                </tr>
+                <tr>
+                    <td><a class="btn" href="javascript:toggleReset(false)">Stay</a></td>
+                    <td>Look at this page a bit longer. Make sure to save your work.</td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    
+    <script>
+
+    
+    
+    let glitchTriggerFuncs = [];
+    let glitchTriggerReceived = false;
+    let glitchTriggerExReceived = false;
+    let glitchPageLoaded = false;
+    function processGlitchFuncs(ex) {
+        glitchTriggerFuncs.forEach((func) => {
+            func(ex);
+        });
+    }
+    function doGlitch(ex) {
+        glitchTriggerReceived = true;
+        if (ex) {
+            glitchTriggerExReceived = true;
+        }
+        if (glitchPageLoaded) {
+            processGlitchFuncs(ex);
+        }
+    }
+    window.addEventListener('load', () => {
+        glitchPageLoaded = true;
+        if (glitchTriggerExReceived) {
+            processGlitchFuncs(true);
+        }
+        else if (glitchTriggerReceived) {
+            processGlitchFuncs(false);
+        }
+    }, false);
+    
+    
+    
+    function registerOnGlitchHook(func) {
+        if (glitchTriggerExReceived) {
+            func(true);
+        }
+        else if (glitchTriggerReceived) {
+            func(false);
+        }
+        glitchTriggerFuncs.push(func);
+    }
+    
+
+    
+    
+    </script>
+    <div class="content">
+        
+
+<style>
+h2 {
+    font-size: 2.5rem;
+    font-weight: normal;
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+
+h4 {
+    font-size: 2rem;
+    font-weight: normal;
+    margin: 2rem 0;
+}
+</style>
+
+<h1>
+    Solution <span style="font-weight: 300">Me, the Worm</span>
+    <div class="solved-title-marker">Answer <span class="solved-title-answer spoiler">EAT THIS BOOK</span></div>
+</h1>
+
+<main class="puzzle-main">
+    <h2 style="margin-top: 0">
+        Written by
+        
+Jenna Himawan, Chris Jones, and Jakob Weisblat
+
+    </h2>
+
+    
+    <p>This puzzle is an absurd choose-your-own-adventure novel about being an earthworm. <a href="/solution/me-the-worm/book">You can read the full text here.</a>
+Reading through the book<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>, we can see that there are several possible endings, and also
+on some pages there are objects with an asterisk (*) on them.
+There are a couple other important things stated explicitly in the book.</p>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Text</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>50</td>
+<td>“[The book <em>Me, the Worm</em> is] a choose-your-own-adventure book. It’s really good. The book’s got <i>layers</i>.” “Oh, and there are many endings!” [...] “Each ending marks the ending of a layer. By the way, some of the layers have no pages inside.”</td>
+</tr>
+<tr>
+<td>117</td>
+<td>“You have climbed an entire mountain to get here. You have met countless people. Your path may seem to twist and turn in interesting ways. You have made so many choices, it makes one’s head spin. But all that is irrelevant.” [...] “What is most important is to understand where you end.”</td>
+</tr>
+<tr>
+<td>84</td>
+<td>You glimpse fifteen different paths that your life could take. Along the way, eleven crucial moments stand out to you.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>“The symbol on the coin? It means that the coin is important in this section of the book! The length of this section is 6, by the way (don’t include the ending page).”</td>
+</tr>
+<tr>
+<td>140</td>
+<td>You are above the deep blue ocean, which occupies about a third of the book.</td>
+</tr>
+</tbody>
+</table>
+<p>Taking these things into consideration, there are fifteen different endings to the book.
+If we study what happens in them, we are meant to observe that each one corresponds to a different
+layer of the Earth (five layers each for the internal Earth, the ocean, and the atmosphere).
+For example, in the ending on page 137, the Holy Worm lifts us to “somewhere between a height of 80km and 600km”. This matches the thermosphere.
+Some of the endings are punny. For example, on page 46 we are spread onto the <em>crust</em> of bread.</p>
+<p>Furthermore, in page number order, the endings/layers are sorted from Earth-internal to Earth-external
+(the inner core comes first on page 7, the outer core is on page 21, and so on until the exosphere is on page 145, the last page of the book).
+Since “each ending marks the ending of a layer”, we can think of pages from 1–7 as being the inner core, pages 8–21 as being the outer core, and so on.<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup></p>
+<p>This is summarized in the following table.
+(The * words will be explained below.)</p>
+<table>
+<thead>
+<tr>
+<th>Page Range</th>
+<th>Layer</th>
+<th>* Word</th>
+<th>* Page Number</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1–7</td>
+<td>inner core</td>
+<td>NICK[E]L</td>
+<td>5</td>
+</tr>
+<tr>
+<td>8–21</td>
+<td>outer core</td>
+<td>M[A]GNETIC FIELD</td>
+<td>9</td>
+</tr>
+<tr>
+<td>22</td>
+<td>mesospheric / lower mantle</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>23–33</td>
+<td>upper mantle / asthenosphere</td>
+<td>PERIDOTI[T]E</td>
+<td>31</td>
+</tr>
+<tr>
+<td>34–46</td>
+<td>crust</td>
+<td>AFRICAN PLA[T]E</td>
+<td>44</td>
+</tr>
+<tr>
+<td>47–60</td>
+<td>hadal zone</td>
+<td>MARIANA TRENC[H]</td>
+<td>59</td>
+</tr>
+<tr>
+<td>61</td>
+<td>abyssal zone</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>62–72</td>
+<td>midnight zone</td>
+<td>G[I]ANT SQUID</td>
+<td>63</td>
+</tr>
+<tr>
+<td>73</td>
+<td>twilight zone</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>74–83</td>
+<td>sunlight zone</td>
+<td>JELLYFI[S]H</td>
+<td>81</td>
+</tr>
+<tr>
+<td>84–95</td>
+<td>troposphere</td>
+<td>HUMMING[B]IRD</td>
+<td>91</td>
+</tr>
+<tr>
+<td>96</td>
+<td>stratosphere</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>97–111</td>
+<td>mesosphere</td>
+<td>AUR[O]RA BOREALIS</td>
+<td>100</td>
+</tr>
+<tr>
+<td>112–137</td>
+<td>thermosphere</td>
+<td>INTERNATI[O]NAL SPACE STATION</td>
+<td>121</td>
+</tr>
+<tr>
+<td>138–145</td>
+<td>exosphere</td>
+<td>SPUTNI[K]</td>
+<td>144</td>
+</tr>
+</tbody>
+</table>
+<p>Each layer that isn’t empty contains exactly one asterisk. The object clued on that page has the same length as the number of pages in the section/layer (ignoring the ending page of the layer, as instructed on page 6).
+The object is also something that occurs/lives in that layer of the Earth, which can help us disambiguate
+some of the descriptions.</p>
+<p>Based on the fact that the length of the object’s name matches the number of pages, we use the asterisk position as an index
+to get a single letter from each object. For example, writing INTERNATIONALSPACESTATION in the 25 pages in the mesosphere section between 112–136 (ignoring the ending page), the asterisk
+takes the letter on page 121.
+The answer is <strong>EAT THIS BOOK</strong> (which also fills in the contextual blanks on page 50).</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>To get through the bird quiz, we need to use the order on page 89. Since “the early bird gets the worm” (page 95), we should always talk to the bird that arrives second.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>Another hint to this structure is that when you go up/down, the page number generally increases/decreases.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+    
+    
+    <h2 id="authors-notes">Author&rsquo;s Notes</h2>
+    <p>This puzzle went through a lot of phases before it arrived in its final state.</p>
+<p>It was the first puzzle assigned an answer in the concert round. Back then, it was a text adventure with some persistent state. After four minutes, you would have to restart the text adventure, but some things (switches being flipped, doors being open, etc) might remain the same. We ideated a lot of puzzle mechanics for this idea, but we never really got to a point of a puzzle we were happy with.</p>
+<p>So we went on to a second idea. We were assigned the answer EAT THIS BOOK, and we decided that naturally the best thing to do would be to write a puzzle that was a book whose reader was a bookworm. In this concept, the puzzle was a choose-your-own-adventure book like the final puzzle, but there were several subpuzzles that culminated in actions that the player character (also the author of the book) could take to change the book, like cutting out pages, burning pages (Fire Ant accidentally setting the book on fire), cutting holes in pages (Bookworm chewing holes), etc. We had a good chunk of this book brainstormed and had started to write it before we lost motivation and were distracted by finishing up the rest of the puzzles in the hunt. A week before hunt, this puzzle still hadn’t been written and we were lacking the motivation to implement and write something this complicated... but we needed a puzzle.</p>
+<p>So Chris brainstormed changes and came up with version three, the extraction you see today. Jenna joined in at this point to help postprod the puzzle and write story text.</p>
+<p>The puzzle was testsolved for the first time on the night of Tuesday, August 23 (3 days before hunt). The testsolve was originally scheduled for 10pm ET, then got pushed back because the puzzle was not done. Eventually it started at 1am ET. This first testsolving group got stuck because we weren’t cluing the extraction hard enough. This was pretty stressful, since we only had 2 more days to make the puzzle work.</p>
+<p>On Wednesday, a new extraction scheme was proposed (using only the layers of the Earth instead of using items from each layer). However, we weren’t convinced that we had time to implement the change, nor that it was actually an improvement, so we settled for cluing the existing extraction harder.</p>
+<p>The puzzle probably could have been more elegant with more testing and more iterations. But many people enjoyed the puzzle (we hope you will too!), and that’s the part that matters.</p>
+<p><b>Jenna:</b> Writing this puzzle was a roller-coaster. It was so last minute that I sometimes got anxious or frustrated. At the same time, I loved the puzzle and was really happy to see testsolvers playing it. tl;dr - extremely fun AND extremely stressful</p>
+<p><b>Jakob:</b> I got pretty demotivated on puzzle things and busy with real life around the time when we were trying to write the second version of the puzzle. I appreciated Chris taking that in stride and ideating a replacement idea on his own, and I appreciated Chris and Jenna doing the brunt of the writing while I wasn’t feeling up to it. I’m really happy with the puzzle we ended up with.</p>
+<p><b>Chris:</b> It was surprising that thinking of the extraction actually took significantly longer than writing the book. The book was furiously written in two-ish days (not recommended!). Praise the Holy Worm!</p>
+    
+
+    
+    
+    <h2 id="appendix">
+Appendix: some bits and pieces from old drafts
+</h2>
+    <h4>Page 60 [victory]</h4>
+<p>Of course! You were the bookworm all along! You weren’t just writing this book for people to read, it was a delicious meal you were cooking for yourself. You’ll be a starving artist no more! You don’t have a book any more, but after all, the real accomplishment is the friends you helped along the way.</p>
+<p>You’re so glad you decided to EAT THIS BOOK. You think that it was the answer to all of your problems.</p>
+<p>If you would like to GLOW WITH EXCITEMENT AND PRIDE, turn to page 60.<br />
+If you would like to START WRITING A NEW BOOK, KNOWING THAT YOU WILL LOSE ALL YOUR PROGRESS ON THIS PUZZLE WHEN THE ANSWER IS STARING YOU IN THE FACE, turn to page 0.</p>
+<h4>Page 73 [Butterfly 2]</h4>
+<p>Butterfly opens her refrigerator and looks inside, but sees, dismayed, that the only thing inside is 181 sticks of butter. “Unsalted or salted”, she asks?</p>
+<p>“Do you have anything we could cook in the butter?”, you ask. You’re not the biggest fan of butter on its own as a food.</p>
+<p>“Okay, okay... I get it,” says Butterfly. “Not everyone is the biggest fan of butter on its own as a food. I even get bored of it sometimes. Have you heard of potato chips?”</p>
+<p>“Uhh I think I saw one on the ground by my house once... it was like twice my size”</p>
+<p>“Well, I learned of a way to make them smaller. But I need another ingredient.”</p>
+<p>You’re entranced by the idea of a potato chip you can eat. “Tell me more!”</p>
+<p>“Well, I need you to bring me the Potato Bug.”</p>
+<p>If you would like to PROTEST AND JUST EAT BUTTER, turn to page 12.<br />
+If you would like to ACCEPT THE QUEST, turn to the next page.</p>
+<h4>Page 10 [reset book]</h4>
+<p>Doubts flood your mind about the value of your book, “Me, the Worm”.</p>
+<p><em>Is this book art? Where do ideas go when they die? Is there an answer to the mystery of this book?</em></p>
+<p>Endless questions fill your head.</p>
+<p>If you would like to THROW OUT ALL YOUR WORK AND WRITE A NEW BOOK, turn to page 0.<br />
+If you would like to GET A GRIP ON REALITY, turn to page 2</p>
+<h4>Page 1 [start]</h4>
+<p>What a day! You look with proud eyes(?) at the book in front of you: “Me, the Worm”, your first completed book! As a worm of the literati, naturally you opted to write a choose-your-own-adventure novel. Robust, first-class characters? Check. Thrilling plot points? Check. Worm jokes? Check check check. This book is your masterwork.</p>
+<p>You grab your book, lather on your slime, and lace up your shoe. It’s time to crawl out of your humble dirt pile and hit the big time!</p>
+<p>If you would like to CONTINUE THIS EPIC JOURNEY, turn to the next page.</p>
+    
+
+    
+    <div class="puzzle-main-corner puzzle-main-corner-1"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-2"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-3"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-4"></div>
+    
+</main>
+
+
+    </div>
+    
+
+    
+
+    
+    <script>
+    document.getElementById('nav-music').style.display = 'none';
+    document.getElementById("progress-simulator").addEventListener("submit", (e) => {
+        if (e.submitter.name === "reset") {
+            toggleReset(true);
+            doGlitch(false);
+            document.getElementById("shortcuts").checked = false;
+            e.preventDefault();
+        } else {
+            localStorage.setItem(e.submitter.name, e.submitter.value);
+        }
+    });
+    addStyles();
+
+    function toggleReset(which) {
+        $('#loop-reset').toggleClass('loop-resetting', which);
+    }
+
+    function addStyles() {
+        const changeFavicon = (url) => {
+            const e = Array.from(document.getElementsByTagName("link"))
+                .filter(e => e.rel === "icon")[0];
+            e.href = url;
+        }
+        const addSheet = (url) => {
+            const e = document.createElement("link");
+            e.rel = "stylesheet";
+            e.href = url;
+            document.getElementsByTagName("head")[0].appendChild(e);
+        }
+
+        const seasons = ["spring", "summer", "autumn", "winter"];
+        let current_main_round = localStorage.getItem("round");
+        const endgame_unlocked = localStorage.getItem("endgame") === "true";
+
+        const matches = new RegExp(`\\?(${seasons.join("|")})`).exec(document.URL);
+        if (matches && matches[1]) {
+            current_main_round = matches[1];
+        }
+
+        if (endgame_unlocked) {
+            addSheet("/static/css/endgame.css");
+            changeFavicon("/static/images/favicon-endgame.ico");
+            const nodes = document.getElementsByClassName("energy-nodes-info");
+            console.log(nodes);
+            if (nodes.length > 0) {
+                nodes[0].style.display = "block";
+            }
+        } else if (current_main_round === "concert") {
+            addSheet("/static/css/concert.css");
+            changeFavicon("/static/images/favicon-concert.ico");
+            // also add the concert music
+            document.getElementById('nav-music').style.display = 'inline-block';
+            const audio = document.getElementById("music-audio");
+            if (audio) {
+                audio.addEventListener('play', () => {
+                    audio.volume = localStorage.getItem('music-audio-volume') ?? 0.5;
+                });
+                audio.addEventListener('volumechange', () => {
+                    localStorage.setItem('music-audio-volume', audio.volume);
+                });
+            }
+        } else if (seasons.includes(current_main_round)) {
+            addSheet("/static/css/season.css");
+            addSheet(`/static/css/${current_main_round}.css`);
+            changeFavicon(`/static/images/favicon-${current_main_round}.ico`);
+        } else {
+            addSheet("/static/css/blue.css");
+            changeFavicon("/static/images/favicon-blue.ico");
+        }
+    }
+
+    registerOnGlitchHook((ex) => {
+        document.getElementById('background-glitch-wrapper').style.display = 'initial';
+    });
+    </script>
+    
+</body>
+</html>

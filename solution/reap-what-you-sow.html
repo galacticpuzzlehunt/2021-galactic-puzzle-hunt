@@ -1,0 +1,417 @@
+
+
+
+
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+<title>Solution: Reap What You Sow</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <meta property="og:title" content="Galactic Puzzle Hunt 2022">
+    <meta property="og:description" content="Registration for this year's Galactic Puzzle Hunt is now open!">
+    <meta property="og:image" content="https://galacticpuzzlehunt.com/static/images/banner.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:slnt,CASL,CRSV,MONO@-3,0.5,1,1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/skeleton.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.formset/1.2.2/jquery.formset.min.js"></script>
+    <script src="/jsi18n/"></script>
+    <script src="/static/js/sorttable.js"></script>
+    <script src="/static/js/tray.js"></script>
+    <script src="/static/js/notify.js"></script>
+    <script src="/static/js/time.js"></script>
+    
+    
+    <link rel="icon" sizes="16x16 32x32 48x48 64x64" href="/static/images/favicon.ico" type="image/vnd.microsoft.icon">
+    
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92192633-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-92192633-1');
+</script>
+
+</head>
+<body>
+    
+    <div id="background-glitch-wrapper" class="background-glitch">
+        <div class="glitch-1"></div>
+        <div class="glitch-2"></div>
+        <div class="glitch-3"></div>
+    </div>
+    
+    
+    <input id="shortcuts" type="checkbox">
+    
+    <nav>
+        <span class="tray">
+            <span id="tray-timer"></span>
+            <div class="top-tabs">
+                <a href="/">
+                    Home
+                </a>
+                
+                
+                <a href="/story">
+                    Story
+                </a>
+                
+                
+                <a class="selected-tab" href="/puzzles">
+                    Puzzles
+                </a>
+                
+                <a href="/teams">
+                    Teams
+                </a>
+                
+                
+                <a href="/errata">
+                    Updates
+                </a>
+                
+                
+                
+                
+                <a id="nav-music" href="#">
+                    <label for="music" title="Music" style="margin-bottom: 0; font-weight: normal; cursor: pointer;">Music</label>
+                </a>
+                <input id="music" type="checkbox">
+                <div class="shortcuts music">
+                    <audio id="music-audio" controls src="/static/puzzle_resources/worlds-end-concert/music-audio.mp3">
+                        There should be a music player here.
+                    </audio>
+                </div>
+                
+                
+            </div>
+            <div class="top-left-actions">
+                
+<a href="/puzzle/reap-what-you-sow" class="btn">Back to the puzzle</a>
+
+            </div>
+        </span>
+        <div class="top-right-actions">
+        
+        <label for="shortcuts" title="Simulator">Simulator </label>
+        
+        
+        </div>
+    </nav>
+    
+    <div class="shortcuts">
+        <form id="progress-simulator">
+        <div>Current round:</div>
+        <button class="btn" type="submit" name="round" value="forward">⬆️</button>
+        <button class="btn" type="submit" name="round" value="spring">🌸</button>
+        <button class="btn" type="submit" name="round" value="summer">☀️</button>
+        <button class="btn" type="submit" name="round" value="autumn">🍂</button>
+        <button class="btn" type="submit" name="round" value="winter">☃️</button>
+        <button class="btn" type="submit" name="round" value="concert">🎤</button>
+        <button class="btn" type="submit" name="round" value="none">None</button>
+        <div>Endgame:</div>
+        <button class="btn" type="submit" name="endgame" value="true">Unlock</button>
+        <button class="btn" type="submit" name="endgame" value="false">Reset</button>
+        <div>Reset:</div>
+        <button class="btn" type="submit" name="reset" value="reset">Reset</button>
+        </form>
+    </div>
+    
+    
+    
+    
+    
+    <div id="loop-reset">
+        <form>
+            <svg viewBox="-30 160 720 320">
+                <defs>
+                    <path id="loop-end-path" d="m 370,240 c 38.29044,0 74.26676,18.33512 96.83716,49.26624 l -76.8369,30.73478 V 270 L 300,330 261.03858,309.74192 c 19.60706,-42.51188 62.14674,-69.74008 108.9623,-69.74306 z m 106.15758,64.22738 c 6.65282,12.65518 10.9906,26.39738 12.80876,40.57862 l -38.96532,5.19538 z"/>
+                </defs>
+                <foreignObject width="720" height="480" clip-path="url(#loop-end-clip)" class="loop-shade">
+                    <aside class="loop-shade" xmlns="http://www.w3.org/1999/xhtml" style="width: 100%; height: 100%;"></aside>
+                </foreignObject>
+                <clipPath id="loop-end-clip"><use href="#loop-end-path"/></clipPath>
+                <use href="#loop-end-path"/>
+                <path d="M 490,400 600,330 450,350 490,280 390,320 V 270 L 300,330 50,200 170,380 50,400"/>
+            </svg>
+            <div>THE END</div>
+            <p>You can reset once per minute.</p>
+            <table>
+                <tr id="loop-reset-btn-row-reset">
+                    <td><button class="btn" disabled>Reset</button></td>
+                    <td>Start over from the beginning of the exam.</td>
+                </tr>
+                <tr id="loop-reset-btn-row-restore">
+                    <td><button class="btn" disabled>Jump</button></td>
+                    <td>Start over, but resubmit your previous answers to bring you back to this point.</td>
+                </tr>
+                <tr>
+                    <td><a class="btn" href="javascript:toggleReset(false)">Stay</a></td>
+                    <td>Look at this page a bit longer. Make sure to save your work.</td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    
+    <script>
+
+    
+    
+    let glitchTriggerFuncs = [];
+    let glitchTriggerReceived = false;
+    let glitchTriggerExReceived = false;
+    let glitchPageLoaded = false;
+    function processGlitchFuncs(ex) {
+        glitchTriggerFuncs.forEach((func) => {
+            func(ex);
+        });
+    }
+    function doGlitch(ex) {
+        glitchTriggerReceived = true;
+        if (ex) {
+            glitchTriggerExReceived = true;
+        }
+        if (glitchPageLoaded) {
+            processGlitchFuncs(ex);
+        }
+    }
+    window.addEventListener('load', () => {
+        glitchPageLoaded = true;
+        if (glitchTriggerExReceived) {
+            processGlitchFuncs(true);
+        }
+        else if (glitchTriggerReceived) {
+            processGlitchFuncs(false);
+        }
+    }, false);
+    
+    
+    
+    function registerOnGlitchHook(func) {
+        if (glitchTriggerExReceived) {
+            func(true);
+        }
+        else if (glitchTriggerReceived) {
+            func(false);
+        }
+        glitchTriggerFuncs.push(func);
+    }
+    
+
+    
+    
+    </script>
+    <div class="content">
+        
+
+<style>
+h2 {
+    font-size: 2.5rem;
+    font-weight: normal;
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+
+h4 {
+    font-size: 2rem;
+    font-weight: normal;
+    margin: 2rem 0;
+}
+</style>
+
+<h1>
+    Solution <span style="font-weight: 300">Reap What You Sow</span>
+    <div class="solved-title-marker">Answer <span class="solved-title-answer spoiler">LOAM</span></div>
+</h1>
+
+<main class="puzzle-main">
+    <h2 style="margin-top: 0">
+        Written by
+        
+Anderson Wang<br>Idea by Alan Huang
+
+    </h2>
+
+    
+    <style>
+.board, .extract {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.board tr:nth-child(3n+1) td,
+.board tr:nth-child(3n+2) td,
+.extract td:not(:first-child):not(:last-child) {
+  text-align: center;
+  padding: 8px;
+  border: 2px solid currentColor;
+}
+
+.extract td:first-child {
+  border: none;
+  text-align: right;
+}
+
+.extract td:last-child {
+  border: none;
+  text-align: left;
+}
+
+.answer td {
+  padding: 4px 8px;
+  vertical-align: top;
+  border: none;
+}
+
+.answer td[rowspan], .answer td[rowspan] ~ td {
+  border-top: 2px solid currentColor;
+}
+
+.sown {
+  background-color: goldenrod;
+}
+
+.seed {
+  background-color: palegoldenrod;
+}
+</style>
+
+<p>This is a puzzle about <a href="https://en.wikipedia.org/wiki/Mancala">mancala</a>. While there are many variants of this game, they all center around sowing, the act of picking up all the pieces in a hole and dropping one in each subsequent hole going around the board. This game is played between two players, one using the bottom holes and right bank, the other using the top holes and left bank. Sowing proceeds counterclockwise and skips the opponent&rsquo;s bank. There is no capturing, but if a player finishes a sow on their bank, they move again.</p>
+<p>We should begin by solving some of the easier clues. Some answers on nearby turns use similar letters, and we can start assembling these into chains. This lets us solidify our understanding of the game and disambiguate any rules questions. Each seed in a hole is a letter; as indicated by the diagram, each hole starts with four. On a turn, the underlined clue gives the sown word and the other clues give the words formed in other holes by distributing its letters. Which letter goes in which hole must be deduced. A series of dots indicates that the player&rsquo;s bank now has that many seeds in it.</p>
+<table class="board"><tr><td rowspan="2"></td><td>STYL</td><td>GAIN</td><td>LAGE</td><td>AXST</td><td>TRUE</td><td>MOLE</td><td rowspan="2"></td></tr><tr><td class="sown">DARN</td><td class="seed">SNAE</td><td class="seed">ELTA</td><td class="seed" class="seed">CSEN</td><td class="seed">COII</td><td>COND</td></tr><tr><td colspan="8"><u>DARN</u> &rarr; SNARE, DELTA, CANES, IONIC</td></tr><tr><td rowspan="2"></td><td class="seed">STYL</td><td class="seed">GAIN</td><td class="seed">LAGE</td><td class="seed">AXST</td><td class="sown">TRUE</td><td>MOLE</td><td rowspan="2"></td></tr><tr><td></td><td>SNAER</td><td>ELTAD</td><td>CSENA</td><td>COIIN</td><td>COND</td></tr><tr><td colspan="8"><u>TRUE</u> &rarr; TEXAS, GLARE, GIANT, LUSTY</td></tr><tr><td rowspan="2"></td><td>STYLU</td><td>GAINT</td><td>LAGER</td><td>AXSTE</td><td></td><td>MOLE</td><td rowspan="2" class="seed"></td></tr><tr><td></td><td class="sown">SNAER</td><td class="seed">ELTAD</td><td class="seed">CSENA</td><td class="seed">COIIN</td><td class="seed">COND</td></tr><tr><td colspan="8"><u>SNARE</u> &rarr; SALTED, CANNES, IRONIC, CAN-DO, [score]</td></tr><tr><td rowspan="2"></td><td>STYLU</td><td>GAINT</td><td>LAGER</td><td class="seed">AXSTE</td><td class="seed"></td><td class="seed">MOLE</td><td rowspan="2" class="seed">E</td></tr><tr><td></td><td></td><td>ELTADS</td><td class="sown">CSENAN</td><td class="seed">COIINR</td><td class="seed">CONDA</td></tr><tr><td colspan="8"><u>CANNES</u> &rarr; INCISOR, DEACON, [score], LEMON, A, SEX ACT</td></tr><tr><td rowspan="2" class="seed"></td><td class="seed">STYLU</td><td class="seed">GAINT</td><td class="seed">LAGER</td><td class="sown">AXSTEC</td><td>A</td><td>MOLEN</td><td rowspan="2">EN</td></tr><tr><td class="seed"></td><td class="seed"></td><td>ELTADS</td><td></td><td>COIINRS</td><td>CONDAE</td></tr><tr><td colspan="8"><u>SEX ACT</u> &rarr; REGALE, TAXING, STYLUS, [score], A, C</td></tr><tr><td rowspan="2">T</td><td>STYLUS</td><td>GAINTX</td><td>LAGERE</td><td></td><td class="seed">A</td><td class="seed">MOLEN</td><td rowspan="2" class="seed">EN</td></tr><tr><td>A</td><td>C</td><td class="sown">ELTADS</td><td class="seed"></td><td class="seed">COIINRS</td><td class="seed">CONDAE</td></tr><tr><td colspan="8"><u>SALTED</u> &rarr; A, CROSTINI, CELADON, [score], SOLEMN, EA</td></tr><tr><td rowspan="2" class="seed">T</td><td class="sown">STYLUS</td><td>GAINTX</td><td>LAGERE</td><td></td><td>AE</td><td>MOLENS</td><td rowspan="2">END</td></tr><tr><td class="seed">A</td><td class="seed">C</td><td class="seed"></td><td class="seed">A</td><td class="seed">COIINRST</td><td>CONDAEL</td></tr><tr><td colspan="8"><u>STYLUS</u> &rarr; [score], AS, CY, L, AS, STRICTION</td></tr><tr><td rowspan="2">TU</td><td class="seed"></td><td class="seed">GAINTX</td><td class="seed">LAGERE</td><td class="seed"></td><td class="seed">AE</td><td class="seed">MOLENS</td><td rowspan="2" class="seed">END</td></tr><tr><td class="seed">AS</td><td>CY</td><td>L</td><td>AS</td><td class="sown">COIINRSTT</td><td class="seed">CONDAEL</td></tr><tr><td colspan="8"><u>STRICTION</u> &rarr; CANOODLE, [score], CLEMSON, TEA, T, ENLARGE, X RATING, S, SIA</td></tr><tr><td rowspan="2" class="seed">TU</td><td class="seed">S</td><td class="sown">GAINTXR</td><td>LAGEREN</td><td>T</td><td>AET</td><td>MOLENSC</td><td rowspan="2">ENDI</td></tr><tr><td class="seed">ASI</td><td class="seed">CY</td><td class="seed">L</td><td class="seed">AS</td><td class="seed"></td><td>CONDAELO</td></tr><tr><td colspan="8"><u>X RATING</u> &rarr; SG, [score], SITA, ICY, XL, ASA, N</td></tr><tr><td rowspan="2">TUR</td><td class="seed">SG</td><td class="seed"></td><td class="seed">LAGEREN</td><td class="seed">T</td><td class="seed">AET</td><td class="seed">MOLENSC</td><td rowspan="2" class="seed">ENDI</td></tr><tr><td class="seed">ASIT</td><td>CYI</td><td>LX</td><td>ASA</td><td>N</td><td class="sown">CONDAELO</td></tr><tr><td colspan="8"><u>CANOODLE</u> &rarr; [score], MONOCLES, CATE, OT, ALLERGEN, E, GAS, STAID</td></tr><tr><td rowspan="2" class="seed">TUR</td><td class="seed">SGA</td><td class="seed">E</td><td class="seed">LAGERENL</td><td class="seed">TO</td><td class="seed">AETC</td><td class="sown">MOLENSCO</td><td rowspan="2">ENDIN</td></tr><tr><td class="seed">ASITD</td><td class="seed">CYI</td><td>LX</td><td>ASA</td><td>N</td><td></td></tr><tr><td colspan="8"><u>MONOCLES</u> &rarr; CASTE, TOO, ORGANELLE, CE, SAGE, [score], ADMITS, YLIC</td></tr><tr><td rowspan="2">TURN</td><td>SGAE</td><td>EC</td><td>LAGERENLO</td><td>TOO</td><td>AETCS</td><td></td><td rowspan="2" class="seed">ENDIN</td></tr><tr><td>ASITDM</td><td>CYIL</td><td>LX</td><td class="sown">ASA</td><td class="seed">N</td><td class="seed"></td></tr><tr><td colspan="8"><u>ASA</u> &rarr; AN, S, [score]</td></tr><tr><td rowspan="2">TURN</td><td>SGAE</td><td>EC</td><td>LAGERENLO</td><td>TOO</td><td>AETCS</td><td></td><td rowspan="2">ENDINA</td></tr><tr><td>ASITDM</td><td>CYIL</td><td>LX</td><td></td><td>NA</td><td>S</td></tr></table>
+
+<p>Once we finish playing out the given turns, we can read the letters that went into each bank in order: ENDINA TURN.</p>
+<p>It is currently the first player&rsquo;s turn (because they just finished the ASA move in their bank), and in most versions of mancala, the game ends when there are no seeds left on one side of the board. So, this cluephrase implies we need to clear the seeds from the first player&rsquo;s side in one turn, by repeatedly making moves that end in the bank. There is a unique order of moves that clears all the seeds&mdash;in particular, whenever there are multiple possible moves that end in the bank, we have to pick the one closest to the bank (since otherwise, that hole will get an extra seed, and then any move starting from that hole can no longer end in the bank).</p>
+<p>Additionally, we can see that the bottom set of answers correspond to the words picked up on each move, which lets us disambiguate which seed goes in which hole. For example, on the fourth move, we pick up the word AMIDST from the leftmost hole, and then the letter I must go in the CYIL hole to make ICILY, the letter A must go in the LX hole to eventually make ALYX, etc. The full sequence of moves is as follows:</p>
+<table class="extract"><tr><td>S</td><td>ASITDM</td><td>CYIL</td><td>LX</td><td></td><td>NA</td><td class="sown">S</td><td></td></tr><tr><td>NA</td><td>ASITDM</td><td>CYIL</td><td>LX</td><td></td><td class="sown">NA</td><td class="seed"></td><td>S</td></tr><tr><td>N</td><td>ASITDM</td><td>CYIL</td><td>LX</td><td></td><td></td><td class="sown">N</td><td>A</td></tr><tr><td>AMIDST</td><td class="sown">ASITDM</td><td class="seed">CYIL</td><td class="seed">LX</td><td class="seed"></td><td class="seed"></td><td class="seed"></td><td>N</td></tr><tr><td>S</td><td></td><td>CYILI</td><td>LXA</td><td>M</td><td>T</td><td class="sown">S</td><td>D</td></tr><tr><td>ICILY</td><td></td><td class="sown">CYILI</td><td class="seed">LXA</td><td class="seed">M</td><td class="seed">T</td><td class="seed"></td><td>S</td></tr><tr><td>L</td><td></td><td></td><td>LXAY</td><td>MI</td><td>TC</td><td class="sown">L</td><td>I</td></tr><tr><td>CT</td><td></td><td></td><td>LXAY</td><td>MI</td><td class="sown">TC</td><td class="seed"></td><td>L</td></tr><tr><td>C</td><td></td><td></td><td>LXAY</td><td>MI</td><td></td><td class="sown">C</td><td>T</td></tr><tr><td>ALYX</td><td></td><td></td><td class="sown">LXAY</td><td class="seed">MI</td><td class="seed"></td><td class="seed"></td><td>C</td></tr><tr><td>A</td><td></td><td></td><td></td><td>MIY</td><td>X</td><td class="sown">A</td><td>L</td></tr><tr><td>YIM</td><td></td><td></td><td></td><td class="sown">MIY</td><td class="seed">X</td><td class="seed"></td><td>A</td></tr><tr><td>M</td><td></td><td></td><td></td><td></td><td>XI</td><td class="sown">M</td><td>Y</td></tr><tr><td>XI</td><td></td><td></td><td></td><td></td><td class="sown">XI</td><td class="seed"></td><td>M</td></tr><tr><td>X</td><td></td><td></td><td></td><td></td><td></td><td class="sown">X</td><td>I</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>X</td></tr></table>
+
+<p>Again reading the banked letters in order gives SAND SILT CLAY MIX, which defines <strong>LOAM</strong>.</p>
+
+    
+    
+    <h2 id="authors-notes">Author&rsquo;s Notes</h2>
+    <p>Anderson: The rules used in this game are basically the same as in <a href="https://en.wikipedia.org/wiki/Kalah">Kalah</a>, which is the version I remember playing in middle school. The final extraction was inspired by the interesting fact that for any number n, there is exactly one position with n seeds that can be cleared in one turn.</p>
+<p>To construct the mancala game, I wrote a program to search for sequences of moves that would result in a seed pattern that could be cleared in one turn, among other constraints. Then, I used a big spreadsheet to keep track of individual seeds and the words they were part of, and judiciously used Nutrimatic to search for good chains of transadditions. Luckily, anagramming made it flexible enough to get pretty reasonable words by hand (YLIC is the worst offender but was basically required for the final extraction), though I did write a quick script to find the long chain from GLARE to ORGANELLE.</p>
+<p>Alan: There are a lot of classic board games out there that are popular in their own right but haven&rsquo;t gotten their chance to shine as a puzzle!</p>
+    
+
+    
+    
+    <h2 id="appendix">
+Appendix: Clue answers
+</h2>
+    <table class="answer"><tr><td rowspan="5">Turn 1<br>Player 1</td><td>DARN</td><td>Fix, as socks</td></tr><tr><td>SNARE</td><td>Instrument heard throughout <i>Boléro</i></td></tr><tr><td>DELTA</td><td>It stands for change</td></tr><tr><td>IONIC</td><td>Kind of bond</td></tr><tr><td>CANES</td><td>Top hat accompaniments</td></tr><tr><td rowspan="5">Turn 2<br>Player 2</td><td>TRUE</td><td>Word preceding &ldquo;north&rdquo; or &ldquo;colors&rdquo;</td></tr><tr><td>GIANT</td><td>Character murdered by Jack</td></tr><tr><td>TEXAS</td><td>Home of Beto O&rsquo;Rourke</td></tr><tr><td>LUSTY</td><td>Like a certain Argonian maid</td></tr><tr><td>GLARE</td><td>What you might experience in the limelight?</td></tr><tr><td rowspan="6">Turn 3<br>Player 1</td><td>SNARE</td><td>Instrument heard throughout <i>Boléro</i></td></tr><tr><td>[score]</td><td>.</td></tr><tr><td>CAN-DO</td><td>Enthusiastic attitude (hyph.)</td></tr><tr><td>CANNES</td><td>Its top prize went to Julia Ducournau in 2021</td></tr><tr><td>IRONIC</td><td>Like Romeo and Juliet&rsquo;s deaths</td></tr><tr><td>SALTED</td><td>Lowered the freezing point of, maybe</td></tr><tr><td rowspan="7">[extra move]<br>Player 1</td><td>CANNES</td><td>Its top prize went to Julia Ducournau in 2021</td></tr><tr><td>[score]</td><td>..</td></tr><tr><td>LEMON</td><td>2017 song featuring a Rihanna guest verse</td></tr><tr><td>INCISOR</td><td>Body part that humans have 8 of</td></tr><tr><td>SEX ACT</td><td>It’s stimulating (2 words)</td></tr><tr><td>DEACON</td><td>One might report to a priest</td></tr><tr><td>A</td><td>Vowel</td></tr><tr><td rowspan="7">Turn 4<br>Player 2</td><td>SEX ACT</td><td>It’s stimulating (2 words)</td></tr><tr><td>[score]</td><td>.</td></tr><tr><td>C</td><td>Consonant</td></tr><tr><td>TAXING</td><td>Demanding</td></tr><tr><td>A</td><td>Vowel</td></tr><tr><td>REGALE</td><td>What a bard might do</td></tr><tr><td>STYLUS</td><td>What many modern artists use as a brush</td></tr><tr><td rowspan="7">Turn 5<br>Player 1</td><td>SALTED</td><td>Lowered the freezing point of, maybe</td></tr><tr><td>[score]</td><td>...</td></tr><tr><td>CROSTINI</td><td>Appetizer similar to bruschetta</td></tr><tr><td>SOLEMN</td><td>Like many weddings or funerals</td></tr><tr><td>EA</td><td>Oft-maligned video game company</td></tr><tr><td>CELADON</td><td>Shade of green</td></tr><tr><td>A</td><td>Vowel</td></tr><tr><td rowspan="7">Turn 6<br>Player 2</td><td>STYLUS</td><td>What many modern artists use as a brush</td></tr><tr><td>[score]</td><td>..</td></tr><tr><td>STRICTION</td><td>Act of tightening</td></tr><tr><td>L</td><td>Consonant</td></tr><tr><td>AS</td><td>Nickname for a California MLB team</td></tr><tr><td>AS</td><td>Simile word</td></tr><tr><td>CY</td><td>Young baseball player</td></tr><tr><td rowspan="10">Turn 7<br>Player 1</td><td>STRICTION</td><td>Act of tightening</td></tr><tr><td>[score]</td><td>....</td></tr><tr><td>CLEMSON</td><td>ACC member</td></tr><tr><td>SIA</td><td>Artist who appeared in <i>My Little Pony: The Movie</i></td></tr><tr><td>S</td><td>Consonant</td></tr><tr><td>T</td><td>Consonant</td></tr><tr><td>TEA</td><td>It might be a bit steeped</td></tr><tr><td>ENLARGE</td><td>Magnify</td></tr><tr><td>CANOODLE</td><td>Really express affection</td></tr><tr><td>X RATING</td><td>What extreme violence may result in (2 words)</td></tr><tr><td rowspan="8">Turn 8<br>Player 2</td><td>X RATING</td><td>What extreme violence may result in (2 words)</td></tr><tr><td>[score]</td><td>...</td></tr><tr><td>N</td><td>Consonant</td></tr><tr><td>SG</td><td>Dwyane Wade&rsquo;s position</td></tr><tr><td>ASA</td><td>First name of a March on Washington organizer</td></tr><tr><td>SITA</td><td>Heroine in Hindu mythology</td></tr><tr><td>ICY</td><td>Like many dangerous roads</td></tr><tr><td>XL</td><td>T-shirt size</td></tr><tr><td rowspan="9">Turn 9<br>Player 1</td><td>CANOODLE</td><td>Really express affection</td></tr><tr><td>[score]</td><td>.....</td></tr><tr><td>CATE</td><td>First name of a well-known Australian actor</td></tr><tr><td>GAS</td><td>Fun time, in slang</td></tr><tr><td>MONOCLES</td><td>Glasses that are half-full?</td></tr><tr><td>ALLERGEN</td><td>It causes a reaction, by definition</td></tr><tr><td>OT</td><td>Often-exciting sports situation</td></tr><tr><td>STAID</td><td>Opposite of adventurous</td></tr><tr><td>E</td><td>Vowel</td></tr><tr><td rowspan="9">Turn 10<br>Player 2</td><td>MONOCLES</td><td>Glasses that are half-full?</td></tr><tr><td>[score]</td><td>....</td></tr><tr><td>SAGE</td><td>Gandalf, e.g.</td></tr><tr><td>CASTE</td><td>It was denounced by B. R. Ambedkar</td></tr><tr><td>ADMITS</td><td>Lets in or lets on</td></tr><tr><td>TOO</td><td>Overly</td></tr><tr><td>ORGANELLE</td><td>Provider of cell service?</td></tr><tr><td>YLIC</td><td>Suffix with carbox- or salic-</td></tr><tr><td>CE</td><td>Year end?</td></tr><tr><td rowspan="4">Turn 11<br>Player 1</td><td>ASA</td><td>First name of a March on Washington organizer</td></tr><tr><td>[score]</td><td>......</td></tr><tr><td>AN</td><td>Article</td></tr><tr><td>S</td><td>Consonant</td></tr><tr><td rowspan="15">[extra move]<br>Player 1</td><td>NA</td><td>Common survey option</td></tr><tr><td>S</td><td>Compass direction</td></tr><tr><td>ALYX</td><td>First name of a <i>Half-Life</i> protagonist</td></tr><tr><td>XI</td><td>Greek letter</td></tr><tr><td>ICILY</td><td>How you might treat someone you have a grudge towards</td></tr><tr><td>N</td><td><i>Pokémon Black and White</i> antagonist</td></tr><tr><td>YIM</td><td>Pro wrestler Mia</td></tr><tr><td>M</td><td>Recurring James Bond character</td></tr><tr><td>L</td><td>Something you might take or hold, in modern slang</td></tr><tr><td>AMIDST</td><td>Surrounded by</td></tr><tr><td>S</td><td>Tesla car</td></tr><tr><td>X</td><td>Unknown</td></tr><tr><td>C</td><td>Very popular programming language</td></tr><tr><td>A</td><td>What a perfect score might give you</td></tr><tr><td>CT</td><td>X-ray imaging technique</td></tr></table>
+    
+
+    
+    <div class="puzzle-main-corner puzzle-main-corner-1"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-2"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-3"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-4"></div>
+    
+</main>
+
+
+    </div>
+    
+
+    
+
+    
+    <script>
+    document.getElementById('nav-music').style.display = 'none';
+    document.getElementById("progress-simulator").addEventListener("submit", (e) => {
+        if (e.submitter.name === "reset") {
+            toggleReset(true);
+            doGlitch(false);
+            document.getElementById("shortcuts").checked = false;
+            e.preventDefault();
+        } else {
+            localStorage.setItem(e.submitter.name, e.submitter.value);
+        }
+    });
+    addStyles();
+
+    function toggleReset(which) {
+        $('#loop-reset').toggleClass('loop-resetting', which);
+    }
+
+    function addStyles() {
+        const changeFavicon = (url) => {
+            const e = Array.from(document.getElementsByTagName("link"))
+                .filter(e => e.rel === "icon")[0];
+            e.href = url;
+        }
+        const addSheet = (url) => {
+            const e = document.createElement("link");
+            e.rel = "stylesheet";
+            e.href = url;
+            document.getElementsByTagName("head")[0].appendChild(e);
+        }
+
+        const seasons = ["spring", "summer", "autumn", "winter"];
+        let current_main_round = localStorage.getItem("round");
+        const endgame_unlocked = localStorage.getItem("endgame") === "true";
+
+        const matches = new RegExp(`\\?(${seasons.join("|")})`).exec(document.URL);
+        if (matches && matches[1]) {
+            current_main_round = matches[1];
+        }
+
+        if (endgame_unlocked) {
+            addSheet("/static/css/endgame.css");
+            changeFavicon("/static/images/favicon-endgame.ico");
+            const nodes = document.getElementsByClassName("energy-nodes-info");
+            console.log(nodes);
+            if (nodes.length > 0) {
+                nodes[0].style.display = "block";
+            }
+        } else if (current_main_round === "concert") {
+            addSheet("/static/css/concert.css");
+            changeFavicon("/static/images/favicon-concert.ico");
+            // also add the concert music
+            document.getElementById('nav-music').style.display = 'inline-block';
+            const audio = document.getElementById("music-audio");
+            if (audio) {
+                audio.addEventListener('play', () => {
+                    audio.volume = localStorage.getItem('music-audio-volume') ?? 0.5;
+                });
+                audio.addEventListener('volumechange', () => {
+                    localStorage.setItem('music-audio-volume', audio.volume);
+                });
+            }
+        } else if (seasons.includes(current_main_round)) {
+            addSheet("/static/css/season.css");
+            addSheet(`/static/css/${current_main_round}.css`);
+            changeFavicon(`/static/images/favicon-${current_main_round}.ico`);
+        } else {
+            addSheet("/static/css/blue.css");
+            changeFavicon("/static/images/favicon-blue.ico");
+        }
+    }
+
+    registerOnGlitchHook((ex) => {
+        document.getElementById('background-glitch-wrapper').style.display = 'initial';
+    });
+    </script>
+    
+</body>
+</html>

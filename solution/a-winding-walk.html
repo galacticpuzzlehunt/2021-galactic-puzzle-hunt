@@ -1,0 +1,675 @@
+
+
+
+
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+<title>Solution: A Winding Walk</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <meta property="og:title" content="Galactic Puzzle Hunt 2022">
+    <meta property="og:description" content="Registration for this year's Galactic Puzzle Hunt is now open!">
+    <meta property="og:image" content="https://galacticpuzzlehunt.com/static/images/banner.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:slnt,CASL,CRSV,MONO@-3,0.5,1,1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/skeleton.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.formset/1.2.2/jquery.formset.min.js"></script>
+    <script src="/jsi18n/"></script>
+    <script src="/static/js/sorttable.js"></script>
+    <script src="/static/js/tray.js"></script>
+    <script src="/static/js/notify.js"></script>
+    <script src="/static/js/time.js"></script>
+    
+    
+    <link rel="icon" sizes="16x16 32x32 48x48 64x64" href="/static/images/favicon.ico" type="image/vnd.microsoft.icon">
+    
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92192633-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-92192633-1');
+</script>
+
+</head>
+<body>
+    
+    <div id="background-glitch-wrapper" class="background-glitch">
+        <div class="glitch-1"></div>
+        <div class="glitch-2"></div>
+        <div class="glitch-3"></div>
+    </div>
+    
+    
+    <input id="shortcuts" type="checkbox">
+    
+    <nav>
+        <span class="tray">
+            <span id="tray-timer"></span>
+            <div class="top-tabs">
+                <a href="/">
+                    Home
+                </a>
+                
+                
+                <a href="/story">
+                    Story
+                </a>
+                
+                
+                <a class="selected-tab" href="/puzzles">
+                    Puzzles
+                </a>
+                
+                <a href="/teams">
+                    Teams
+                </a>
+                
+                
+                <a href="/errata">
+                    Updates
+                </a>
+                
+                
+                
+                
+                <a id="nav-music" href="#">
+                    <label for="music" title="Music" style="margin-bottom: 0; font-weight: normal; cursor: pointer;">Music</label>
+                </a>
+                <input id="music" type="checkbox">
+                <div class="shortcuts music">
+                    <audio id="music-audio" controls src="/static/puzzle_resources/worlds-end-concert/music-audio.mp3">
+                        There should be a music player here.
+                    </audio>
+                </div>
+                
+                
+            </div>
+            <div class="top-left-actions">
+                
+<a href="/puzzle/a-winding-walk" class="btn">Back to the puzzle</a>
+
+            </div>
+        </span>
+        <div class="top-right-actions">
+        
+        <label for="shortcuts" title="Simulator">Simulator </label>
+        
+        
+        </div>
+    </nav>
+    
+    <div class="shortcuts">
+        <form id="progress-simulator">
+        <div>Current round:</div>
+        <button class="btn" type="submit" name="round" value="forward">⬆️</button>
+        <button class="btn" type="submit" name="round" value="spring">🌸</button>
+        <button class="btn" type="submit" name="round" value="summer">☀️</button>
+        <button class="btn" type="submit" name="round" value="autumn">🍂</button>
+        <button class="btn" type="submit" name="round" value="winter">☃️</button>
+        <button class="btn" type="submit" name="round" value="concert">🎤</button>
+        <button class="btn" type="submit" name="round" value="none">None</button>
+        <div>Endgame:</div>
+        <button class="btn" type="submit" name="endgame" value="true">Unlock</button>
+        <button class="btn" type="submit" name="endgame" value="false">Reset</button>
+        <div>Reset:</div>
+        <button class="btn" type="submit" name="reset" value="reset">Reset</button>
+        </form>
+    </div>
+    
+    
+    
+    
+    
+    <div id="loop-reset">
+        <form>
+            <svg viewBox="-30 160 720 320">
+                <defs>
+                    <path id="loop-end-path" d="m 370,240 c 38.29044,0 74.26676,18.33512 96.83716,49.26624 l -76.8369,30.73478 V 270 L 300,330 261.03858,309.74192 c 19.60706,-42.51188 62.14674,-69.74008 108.9623,-69.74306 z m 106.15758,64.22738 c 6.65282,12.65518 10.9906,26.39738 12.80876,40.57862 l -38.96532,5.19538 z"/>
+                </defs>
+                <foreignObject width="720" height="480" clip-path="url(#loop-end-clip)" class="loop-shade">
+                    <aside class="loop-shade" xmlns="http://www.w3.org/1999/xhtml" style="width: 100%; height: 100%;"></aside>
+                </foreignObject>
+                <clipPath id="loop-end-clip"><use href="#loop-end-path"/></clipPath>
+                <use href="#loop-end-path"/>
+                <path d="M 490,400 600,330 450,350 490,280 390,320 V 270 L 300,330 50,200 170,380 50,400"/>
+            </svg>
+            <div>THE END</div>
+            <p>You can reset once per minute.</p>
+            <table>
+                <tr id="loop-reset-btn-row-reset">
+                    <td><button class="btn" disabled>Reset</button></td>
+                    <td>Start over from the beginning of the exam.</td>
+                </tr>
+                <tr id="loop-reset-btn-row-restore">
+                    <td><button class="btn" disabled>Jump</button></td>
+                    <td>Start over, but resubmit your previous answers to bring you back to this point.</td>
+                </tr>
+                <tr>
+                    <td><a class="btn" href="javascript:toggleReset(false)">Stay</a></td>
+                    <td>Look at this page a bit longer. Make sure to save your work.</td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    
+    <script>
+
+    
+    
+    let glitchTriggerFuncs = [];
+    let glitchTriggerReceived = false;
+    let glitchTriggerExReceived = false;
+    let glitchPageLoaded = false;
+    function processGlitchFuncs(ex) {
+        glitchTriggerFuncs.forEach((func) => {
+            func(ex);
+        });
+    }
+    function doGlitch(ex) {
+        glitchTriggerReceived = true;
+        if (ex) {
+            glitchTriggerExReceived = true;
+        }
+        if (glitchPageLoaded) {
+            processGlitchFuncs(ex);
+        }
+    }
+    window.addEventListener('load', () => {
+        glitchPageLoaded = true;
+        if (glitchTriggerExReceived) {
+            processGlitchFuncs(true);
+        }
+        else if (glitchTriggerReceived) {
+            processGlitchFuncs(false);
+        }
+    }, false);
+    
+    
+    
+    function registerOnGlitchHook(func) {
+        if (glitchTriggerExReceived) {
+            func(true);
+        }
+        else if (glitchTriggerReceived) {
+            func(false);
+        }
+        glitchTriggerFuncs.push(func);
+    }
+    
+
+    
+    
+    </script>
+    <div class="content">
+        
+
+<style>
+h2 {
+    font-size: 2.5rem;
+    font-weight: normal;
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+
+h4 {
+    font-size: 2rem;
+    font-weight: normal;
+    margin: 2rem 0;
+}
+</style>
+
+<h1>
+    Solution <span style="font-weight: 300">A Winding Walk</span>
+    <div class="solved-title-marker">Answer <span class="solved-title-answer spoiler">ASSORTED COLORS</span></div>
+</h1>
+
+<main class="puzzle-main">
+    <h2 style="margin-top: 0">
+        Written by
+        
+Andy Hauge
+
+    </h2>
+
+    
+    <style>
+.box {
+  background: pink;
+}
+</style>
+
+<p>This puzzle appears in both the Summer and Autumn seasons. The flavor text changes in both, but all the main puzzle text is the same between both versions. The Autumn version also adds a diagram at the top of the puzzle. The puzzle can be solved in the Summer version, but the guidance provided by the diagram in the Autumn version makes it easier to solve.</p>
+<p>A good starting point is to follow the link in the flavor text, which takes us to the website for a deck of cards called the Decktet. There are several noteworthy things that distinguish the Decktet from a regular deck of cards.</p>
+<ul>
+<li>There are only thirty-six cards in the deck, compared with a standard deck’s fifty-two cards</li>
+<li>All of the cards in the Decktet are identified as different characters, locations, and events.</li>
+<li>The Decktet has six different suits (Moons, Suns, Waves, Leaves, Wyrms, Knots), and most cards in the Decktet have two different suits rather than one!</li>
+</ul>
+<p>With this information in mind, we can start tackling the bulk of the puzzle: the jumbled daily entries. Some of the entries can be ordered by following the logic of the story, such as the entry where the pilgrim receives a strange medallion and the entry where the pilgrim shows a strange medallion off. However, it’s fairly difficult to order them based just on this information.</p>
+<p>Reading through the entries, we start to notice that each one of them corresponds to one of the cards in the Decktet:</p>
+<table>
+<thead>
+<tr>
+<th>Entry</th>
+<th>Decktet Card</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>“Along the path the next day, I saw another pilgrim…”</td>
+<td>The Penitent</td>
+</tr>
+<tr>
+<td>“Changing course on the next day, I booked passage with a rowdy mariner…”</td>
+<td>The Sailor</td>
+</tr>
+<tr>
+<td>“Following the day of that transit, I encountered a shrewd trader…”</td>
+<td>The Merchant</td>
+</tr>
+<tr>
+<td>“How long was it that I wandered through parched lands…”</td>
+<td>The Desert</td>
+</tr>
+<tr>
+<td>“...Fortunately, I found the one I was seeking fairly quickly: a foreign dignitary…”</td>
+<td>The Diplomat</td>
+</tr>
+<tr>
+<td>“I spent another day in that place, and a woman approached me, carrying a fine pen…”</td>
+<td>The Author</td>
+</tr>
+<tr>
+<td>“Journeying in pursuit of that riddle, my trail on the next day bent through dense woodland…”</td>
+<td>The Forest</td>
+</tr>
+<tr>
+<td>“...I answered at last, speaking to the one who had posed me her riddle before…”</td>
+<td>The Author</td>
+</tr>
+<tr>
+<td>“My path began with an endless climb to a summit…”</td>
+<td>The Mountain</td>
+</tr>
+<tr>
+<td>“One day later, I found an artist with a bright brush…”</td>
+<td>The Painter</td>
+</tr>
+<tr>
+<td>“Rested from a night’s sleep, I emerged into civilization again, which took the form of a bustling bazaar…”</td>
+<td>The Market</td>
+</tr>
+<tr>
+<td>“Stone lay beneath me when the following day dawned, an empty throne before me…”</td>
+<td>The Castle</td>
+</tr>
+<tr>
+<td>“When night fell after another day of travel, I dreamed of nothing but empty void…”</td>
+<td>The Darkness</td>
+</tr>
+<tr>
+<td>“...I loosed a curse to the sky upon discovering this treachery…”</td>
+<td>The Betrayal</td>
+</tr>
+</tbody>
+</table>
+<p>Because each of these cards has two suits, it’s possible to link them in a path, moving back and forth between the six suits. Alongside the suit connections, it’s possible to narrow down possibilities by using hints in each entry, and the lines in the diagram correspond to entries. (There are a couple of entries which were unfortunately overlooked in construction, where cards that share suits can be swapped without conflicting with story logic, but this doesn’t affect the final extraction.)</p>
+<table>
+<thead>
+<tr>
+<th>Day #</th>
+<th>Card</th>
+<th>Starting Suit</th>
+<th>Ending Suit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>The Mountain</td>
+<td>Moons</td>
+<td>Suns</td>
+</tr>
+<tr>
+<td>2</td>
+<td>The Penitent</td>
+<td>Suns</td>
+<td>Wyrms</td>
+</tr>
+<tr>
+<td>3</td>
+<td>The Darkness</td>
+<td>Wyrms</td>
+<td>Waves</td>
+</tr>
+<tr>
+<td>4</td>
+<td>The Sailor</td>
+<td>Waves</td>
+<td>Leaves</td>
+</tr>
+<tr>
+<td>5</td>
+<td>The Merchant</td>
+<td>Leaves</td>
+<td>Knots</td>
+</tr>
+<tr>
+<td>6</td>
+<td>The Betrayal</td>
+<td>Knots</td>
+<td>Wyrms</td>
+</tr>
+<tr>
+<td>7</td>
+<td>The Desert</td>
+<td>Wyrms</td>
+<td>Suns</td>
+</tr>
+<tr>
+<td>8</td>
+<td>The Painter</td>
+<td>Suns</td>
+<td>Knots</td>
+</tr>
+<tr>
+<td>9</td>
+<td>The Author</td>
+<td>Knots</td>
+<td>Moons</td>
+</tr>
+<tr>
+<td>10</td>
+<td>The Forest</td>
+<td>Moons</td>
+<td>Leaves</td>
+</tr>
+<tr>
+<td>11</td>
+<td>The Market</td>
+<td>Leaves</td>
+<td>Knots</td>
+</tr>
+<tr>
+<td>12</td>
+<td>The Castle</td>
+<td>Knots</td>
+<td>Suns</td>
+</tr>
+<tr>
+<td>13</td>
+<td>The Diplomat</td>
+<td>Suns</td>
+<td>Moons</td>
+</tr>
+<tr>
+<td>14</td>
+<td>The Author</td>
+<td>Moons</td>
+<td>Knots</td>
+</tr>
+</tbody>
+</table>
+<p>The last piece of the puzzle comes from the six “eidolons” referenced across the entries. Each of the eidolons corresponds to one of the six single-suited “crown” cards in the Decktet, based on the description given to it.</p>
+<table>
+<thead>
+<tr>
+<th>Eidolon</th>
+<th>Domain</th>
+<th>Crown</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Acclura</td>
+<td>Trackers, rangers, pursuit</td>
+<td>The Huntress (Moons)</td>
+</tr>
+<tr>
+<td>Isodoro</td>
+<td>Music, skald, entertainer</td>
+<td>The Bard (Suns)</td>
+</tr>
+<tr>
+<td>Aquossi</td>
+<td>Ocean</td>
+<td>The Sea (Waves)</td>
+</tr>
+<tr>
+<td>Scourge</td>
+<td>Entropy, final moments of existence</td>
+<td>The End (Leaves)</td>
+</tr>
+<tr>
+<td>Justice</td>
+<td>Catastrophe, tribulation, disaster</td>
+<td>The Calamity (Wyrms)</td>
+</tr>
+<tr>
+<td>Doblets</td>
+<td>Prosperity, success</td>
+<td>The Windfall (Knots)</td>
+</tr>
+</tbody>
+</table>
+<p>There’s something interesting here: each eidolon’s name is 7 characters, and each entry references a card with two suits, so you can connect each card to two eidolons. This gives us one fourteen-letter phrase for each of the fourteen days! Using the day as the index, we get the following…</p>
+<table>
+<thead>
+<tr>
+<th>Day #</th>
+<th>Card</th>
+<th>Combined Eidolons</th>
+<th>Indexed Letter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>The Mountain</td>
+<td><tt><span class="box">A</span>CCLURAISODORO</tt></td>
+<td>A</td>
+</tr>
+<tr>
+<td>2</td>
+<td>The Penitent</td>
+<td><tt>I<span class="box">S</span>ODOROJUSTICE</tt></td>
+<td>S</td>
+</tr>
+<tr>
+<td>3</td>
+<td>The Darkness</td>
+<td><tt>JU<span class="box">S</span>TICEAQUOSSI</tt></td>
+<td>S</td>
+</tr>
+<tr>
+<td>4</td>
+<td>The Sailor</td>
+<td><tt>AQU<span class="box">O</span>SSISCOURGE</tt></td>
+<td>O</td>
+</tr>
+<tr>
+<td>5</td>
+<td>The Merchant</td>
+<td><tt>SCOU<span class="box">R</span>GEDOBLETS</tt></td>
+<td>R</td>
+</tr>
+<tr>
+<td>6</td>
+<td>The Betrayal</td>
+<td><tt>DOBLE<span class="box">T</span>SJUSTICE</tt></td>
+<td>T</td>
+</tr>
+<tr>
+<td>7</td>
+<td>The Desert</td>
+<td><tt>JUSTIC<span class="box">E</span>ISODORO</tt></td>
+<td>E</td>
+</tr>
+<tr>
+<td>8</td>
+<td>The Painter</td>
+<td><tt>ISODORO<span class="box">D</span>OBLETS</tt></td>
+<td>D</td>
+</tr>
+<tr>
+<td>9</td>
+<td>The Author</td>
+<td><tt>DOBLETSA<span class="box">C</span>CLURA</tt></td>
+<td>C</td>
+</tr>
+<tr>
+<td>10</td>
+<td>The Forest</td>
+<td><tt>ACCLURASC<span class="box">O</span>URGE</tt></td>
+<td>O</td>
+</tr>
+<tr>
+<td>11</td>
+<td>The Market</td>
+<td><tt>SCOURGEDOB<span class="box">L</span>ETS</tt></td>
+<td>L</td>
+</tr>
+<tr>
+<td>12</td>
+<td>The Castle</td>
+<td><tt>DOBLETSISOD<span class="box">O</span>RO</tt></td>
+<td>O</td>
+</tr>
+<tr>
+<td>13</td>
+<td>The Diplomat</td>
+<td><tt>ISODOROACCLU<span class="box">R</span>A</tt></td>
+<td>R</td>
+</tr>
+<tr>
+<td>14</td>
+<td>The Author</td>
+<td><tt>ACCLURADOBLET<span class="box">S</span></tt></td>
+<td>S</td>
+</tr>
+</tbody>
+</table>
+<p>This gives us the answer <strong>ASSORTED COLORS</strong>!</p>
+
+    
+    
+    <h2 id="authors-notes">Author&rsquo;s Notes</h2>
+    <p>Since discovering the Decktet, I was fascinated by the unique structures that could be built on it, and the way that the deck had a very puzzle-y structure built into it. From there, it was a matter of finding a way to fold it into a puzzle. I suspect there’s a lot more you can do with it, but I didn’t want to stretch solvers too much given that the Decktet is a pretty niche deck of cards.</p>
+    
+
+    
+    
+
+    
+    <div class="puzzle-main-corner puzzle-main-corner-1"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-2"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-3"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-4"></div>
+    
+</main>
+
+
+    </div>
+    
+
+    
+
+    
+    <script>
+    document.getElementById('nav-music').style.display = 'none';
+    document.getElementById("progress-simulator").addEventListener("submit", (e) => {
+        if (e.submitter.name === "reset") {
+            toggleReset(true);
+            doGlitch(false);
+            document.getElementById("shortcuts").checked = false;
+            e.preventDefault();
+        } else {
+            localStorage.setItem(e.submitter.name, e.submitter.value);
+        }
+    });
+    addStyles();
+
+    function toggleReset(which) {
+        $('#loop-reset').toggleClass('loop-resetting', which);
+    }
+
+    function addStyles() {
+        const changeFavicon = (url) => {
+            const e = Array.from(document.getElementsByTagName("link"))
+                .filter(e => e.rel === "icon")[0];
+            e.href = url;
+        }
+        const addSheet = (url) => {
+            const e = document.createElement("link");
+            e.rel = "stylesheet";
+            e.href = url;
+            document.getElementsByTagName("head")[0].appendChild(e);
+        }
+
+        const seasons = ["spring", "summer", "autumn", "winter"];
+        let current_main_round = localStorage.getItem("round");
+        const endgame_unlocked = localStorage.getItem("endgame") === "true";
+
+        const matches = new RegExp(`\\?(${seasons.join("|")})`).exec(document.URL);
+        if (matches && matches[1]) {
+            current_main_round = matches[1];
+        }
+
+        if (endgame_unlocked) {
+            addSheet("/static/css/endgame.css");
+            changeFavicon("/static/images/favicon-endgame.ico");
+            const nodes = document.getElementsByClassName("energy-nodes-info");
+            console.log(nodes);
+            if (nodes.length > 0) {
+                nodes[0].style.display = "block";
+            }
+        } else if (current_main_round === "concert") {
+            addSheet("/static/css/concert.css");
+            changeFavicon("/static/images/favicon-concert.ico");
+            // also add the concert music
+            document.getElementById('nav-music').style.display = 'inline-block';
+            const audio = document.getElementById("music-audio");
+            if (audio) {
+                audio.addEventListener('play', () => {
+                    audio.volume = localStorage.getItem('music-audio-volume') ?? 0.5;
+                });
+                audio.addEventListener('volumechange', () => {
+                    localStorage.setItem('music-audio-volume', audio.volume);
+                });
+            }
+        } else if (seasons.includes(current_main_round)) {
+            addSheet("/static/css/season.css");
+            addSheet(`/static/css/${current_main_round}.css`);
+            changeFavicon(`/static/images/favicon-${current_main_round}.ico`);
+        } else {
+            addSheet("/static/css/blue.css");
+            changeFavicon("/static/images/favicon-blue.ico");
+        }
+    }
+
+    registerOnGlitchHook((ex) => {
+        document.getElementById('background-glitch-wrapper').style.display = 'initial';
+    });
+    </script>
+    
+</body>
+</html>

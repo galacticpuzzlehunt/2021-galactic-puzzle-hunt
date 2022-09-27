@@ -1,0 +1,1503 @@
+
+
+
+
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+<title>The Dining Philosophers</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <meta property="og:title" content="Galactic Puzzle Hunt 2022">
+    <meta property="og:description" content="Registration for this year's Galactic Puzzle Hunt is now open!">
+    <meta property="og:image" content="https://galacticpuzzlehunt.com/static/images/banner.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:slnt,CASL,CRSV,MONO@-3,0.5,1,1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/skeleton.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.formset/1.2.2/jquery.formset.min.js"></script>
+    <script src="/jsi18n/"></script>
+    <script src="/static/js/sorttable.js"></script>
+    <script src="/static/js/tray.js"></script>
+    <script src="/static/js/notify.js"></script>
+    <script src="/static/js/time.js"></script>
+    
+    
+    <link rel="icon" sizes="16x16 32x32 48x48 64x64" href="/static/images/favicon.ico" type="image/vnd.microsoft.icon">
+    
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92192633-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-92192633-1');
+</script>
+
+</head>
+<body>
+    
+    <div id="background-glitch-wrapper" class="background-glitch">
+        <div class="glitch-1"></div>
+        <div class="glitch-2"></div>
+        <div class="glitch-3"></div>
+    </div>
+    
+    
+    <input id="shortcuts" type="checkbox">
+    
+    <nav>
+        <span class="tray">
+            <span id="tray-timer"></span>
+            <div class="top-tabs">
+                <a href="/">
+                    Home
+                </a>
+                
+                
+                <a href="/story">
+                    Story
+                </a>
+                
+                
+                <a class="selected-tab" href="/puzzles">
+                    Puzzles
+                </a>
+                
+                <a href="/teams">
+                    Teams
+                </a>
+                
+                
+                <a href="/errata">
+                    Updates
+                </a>
+                
+                
+                
+                
+                <a id="nav-music" href="#">
+                    <label for="music" title="Music" style="margin-bottom: 0; font-weight: normal; cursor: pointer;">Music</label>
+                </a>
+                <input id="music" type="checkbox">
+                <div class="shortcuts music">
+                    <audio id="music-audio" controls src="/static/puzzle_resources/worlds-end-concert/music-audio.mp3">
+                        There should be a music player here.
+                    </audio>
+                </div>
+                
+                
+            </div>
+            <div class="top-left-actions">
+                
+
+
+
+
+<a href="/post-hunt-solve/the-dining-philosophers" class="btn">Check your answer spoiler-free</a>
+
+
+
+<a href="/solution/the-dining-philosophers" class="btn">View solution</a>
+<a href="/stats/the-dining-philosophers" class="btn">Stats</a>
+
+
+            </div>
+        </span>
+        <div class="top-right-actions">
+        
+        <label for="shortcuts" title="Simulator">Simulator </label>
+        
+        
+        </div>
+    </nav>
+    
+    <div class="shortcuts">
+        <form id="progress-simulator">
+        <div>Current round:</div>
+        <button class="btn" type="submit" name="round" value="forward">⬆️</button>
+        <button class="btn" type="submit" name="round" value="spring">🌸</button>
+        <button class="btn" type="submit" name="round" value="summer">☀️</button>
+        <button class="btn" type="submit" name="round" value="autumn">🍂</button>
+        <button class="btn" type="submit" name="round" value="winter">☃️</button>
+        <button class="btn" type="submit" name="round" value="concert">🎤</button>
+        <button class="btn" type="submit" name="round" value="none">None</button>
+        <div>Endgame:</div>
+        <button class="btn" type="submit" name="endgame" value="true">Unlock</button>
+        <button class="btn" type="submit" name="endgame" value="false">Reset</button>
+        <div>Reset:</div>
+        <button class="btn" type="submit" name="reset" value="reset">Reset</button>
+        </form>
+    </div>
+    
+    
+    
+    
+    
+    <div id="loop-reset">
+        <form>
+            <svg viewBox="-30 160 720 320">
+                <defs>
+                    <path id="loop-end-path" d="m 370,240 c 38.29044,0 74.26676,18.33512 96.83716,49.26624 l -76.8369,30.73478 V 270 L 300,330 261.03858,309.74192 c 19.60706,-42.51188 62.14674,-69.74008 108.9623,-69.74306 z m 106.15758,64.22738 c 6.65282,12.65518 10.9906,26.39738 12.80876,40.57862 l -38.96532,5.19538 z"/>
+                </defs>
+                <foreignObject width="720" height="480" clip-path="url(#loop-end-clip)" class="loop-shade">
+                    <aside class="loop-shade" xmlns="http://www.w3.org/1999/xhtml" style="width: 100%; height: 100%;"></aside>
+                </foreignObject>
+                <clipPath id="loop-end-clip"><use href="#loop-end-path"/></clipPath>
+                <use href="#loop-end-path"/>
+                <path d="M 490,400 600,330 450,350 490,280 390,320 V 270 L 300,330 50,200 170,380 50,400"/>
+            </svg>
+            <div>THE END</div>
+            <p>You can reset once per minute.</p>
+            <table>
+                <tr id="loop-reset-btn-row-reset">
+                    <td><button class="btn" disabled>Reset</button></td>
+                    <td>Start over from the beginning of the exam.</td>
+                </tr>
+                <tr id="loop-reset-btn-row-restore">
+                    <td><button class="btn" disabled>Jump</button></td>
+                    <td>Start over, but resubmit your previous answers to bring you back to this point.</td>
+                </tr>
+                <tr>
+                    <td><a class="btn" href="javascript:toggleReset(false)">Stay</a></td>
+                    <td>Look at this page a bit longer. Make sure to save your work.</td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    
+    <script>
+
+    
+    
+    let glitchTriggerFuncs = [];
+    let glitchTriggerReceived = false;
+    let glitchTriggerExReceived = false;
+    let glitchPageLoaded = false;
+    function processGlitchFuncs(ex) {
+        glitchTriggerFuncs.forEach((func) => {
+            func(ex);
+        });
+    }
+    function doGlitch(ex) {
+        glitchTriggerReceived = true;
+        if (ex) {
+            glitchTriggerExReceived = true;
+        }
+        if (glitchPageLoaded) {
+            processGlitchFuncs(ex);
+        }
+    }
+    window.addEventListener('load', () => {
+        glitchPageLoaded = true;
+        if (glitchTriggerExReceived) {
+            processGlitchFuncs(true);
+        }
+        else if (glitchTriggerReceived) {
+            processGlitchFuncs(false);
+        }
+    }, false);
+    
+    
+    
+    function registerOnGlitchHook(func) {
+        if (glitchTriggerExReceived) {
+            func(true);
+        }
+        else if (glitchTriggerReceived) {
+            func(false);
+        }
+        glitchTriggerFuncs.push(func);
+    }
+    
+
+    
+    
+    </script>
+    <div class="content">
+        
+
+<h1>
+    The Dining Philosophers
+    
+    
+    
+    <div>
+      
+      <a class="btn" href="the-dining-philosophers%253Fspring">🌸</a>
+      
+      <a class="btn" href="the-dining-philosophers%253Fsummer">☀️</a>
+      
+      <a class="btn" href="the-dining-philosophers%253Fautumn">🍂</a>
+      
+      <a class="btn" href="the-dining-philosophers%253Fwinter">☃️</a>
+      
+    </div>
+    
+    
+</h1>
+
+
+
+<main class="puzzle-main clipboard-container">
+    
+    
+    
+    
+<style>
+.puz-table-wrapper {
+	width: 100%;
+	text-align: center;
+	margin-bottom: 3em;
+}
+.puz-table-wrapper > table {
+	width: 80%;
+	border-collapse: collapse;
+	margin-left: auto;
+	margin-right: auto;
+}
+.puz-table-wrapper table,
+.puz-table-wrapper th,
+.puz-table-wrapper td {
+	border: 1px solid #999;
+}
+.puz-table-wrapper td {
+	vertical-align: top;
+	width: 40%;
+	padding: 1em;
+}
+</style>
+
+
+<p>
+The celebrated philosophers Aristotle, Bacon, Confucius, Descartes, Epicurus, Foucault, Godel, and Hypatia have all gathered tonight to partake in a nine-course dinner of the ages. But eating with philosophers is never easy, so it will be up to you to help them resolve any dining conundra that may arise.
+</p>
+
+<p>
+Gather the following supplies:
+<ul>
+<li>A round table (large enough to comfortably seat eight; see “Notes on seating” below).</li>
+<li>Eight members of your team (to portray the 8 philosophers above), hungry enough to eat a potentially very large amount of food (see “Notes on philosophers” below).</li>
+<li>A 3-by-3-by-3 Rubik’s cube (see “Notes on Rubik’s cubes” below).</li>
+<li>All the food and equipment mentioned in the below sections.</li>
+</ul>
+</p>
+
+<p>
+Notes on seating:
+<ul>
+<li>Throughout the dinner, the 8 philosophers will remain seated at the same locations along the table. Aristotle is seated at the head (top) of the table, and the remaining philosophers are seated in order clockwise from Aristotle, with 45 degree gaps between each pair of adjacent philosophers. See the seating diagram below for elaboration.</li>
+</ul>
+</p>
+
+<div style="width: 100%; text-align: center;">
+	
+<svg width="600" height="450" viewBox="-300 -225 600 450">
+	<circle cx="0" cy="0" r="175" fill="none" stroke="black" stroke-width="5" />
+	<text x="0" y="-200" text-anchor="middle" dominant-baseline="central">Aristotle</text>
+	<text x="140" y="-140" text-anchor="start" dominant-baseline="central">Bacon</text>
+	<text x="190" y="0" text-anchor="start" dominant-baseline="central">Confucius</text>
+	<text x="140" y="140" text-anchor="start" dominant-baseline="central">Descartes</text>
+	<text x="0" y="200" text-anchor="middle" dominant-baseline="central">Epicurus</text>
+	<text x="-140" y="140" text-anchor="end" dominant-baseline="central">Foucault</text>
+	<text x="-190" y="0" text-anchor="end" dominant-baseline="central">Godel</text>
+	<text x="-140" y="-140" text-anchor="end" dominant-baseline="central">Hypatia</text>
+</svg>
+</div>
+
+<p>
+Notes on philosophers:
+<ul>
+<li>Philosophers are very precise and patient. If they are told to perform an action, they will wait until it is possible to perform that action exactly as specified, even if this involves waiting for a very long time.</li>
+<li>Philosophers are very polite when it comes to passing objects. If a philosopher tries to pass an object (e.g. a salt shaker) to another philosopher, they will wait until the receiving philosopher is waiting to be passed an item. This politeness does not extend to other actions at the dinner table (e.g., eating food off others’ plates).</li>
+</ul>
+</p>
+
+<p>
+Notes on Rubik’s cubes:
+<ul>
+<li>All philosophers always hold the Rubik’s cube so that the white face is facing towards them and the red face is on top.</li>
+<li>All philosophers are experienced cubists and understand the following notation describing operations to be performed on a Rubik’s cube: an upper case letter (one of U, D, L, R, F, B) indicates that the corresponding face (top, bottom, left, right, front, or back) be rotated 90 degrees clockwise. A lower case letter indicates that the corresponding face should be rotated 90 degrees counterclockwise.</li>
+<li>You may find the website <a href="https://iamthecu.be/">https://iamthecu.be/</a> useful (but it is not necessary for solving this puzzle). Note that you can type in directions as they appear in this puzzle to perform the corresponding operations (in addition to using your mouse to perform operations).</li>
+</ul>
+</p>
+
+<h3>Course 1: Wiener schnitzel</h3>
+
+<p><b>Setup:</b> Prepare eight servings of wiener schnitzel. Place one serving on a plate in front of each of the philosophers. Place a salt shaker and a solved Rubik’s cube in the center of the table.</p>
+
+<div class="puz-table-wrapper">
+<table>
+<tr>
+<td>
+<p><b>Aristotle:</b></p>
+<ol>
+<li>Exclaim “I don’t think that fact is true.”</li>
+<li>Eat the delicious wiener schnitzel in front of you.</li>
+</ol>
+</td>
+<td>
+<p><b>Bacon:</b></p>
+<ol>
+<li>Exclaim &ldquo;This wiener schnitzel is insufficiently seasoned!&rdquo;</li>
+<li>Take the salt shaker from the center of the table.</li>
+<li>Season your food.</li>
+<li>While your food is being seasoned, grab the Rubik&rsquo;s cube from the center of the table and perform the sequence of operations <b>dllUffddLuL</b>. Return the Rubik&rsquo;s cube to the center of the table.</li>
+<li>Pass the salt shaker to Foucault.</li>
+<li>Taste your food. Exclaim “Oh no, I have failed in adequately seasoning my wiener schnitzel!”. Do not eat any more of your wiener schnitzel.</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td>
+<p><b>Confucius:</b></p>
+<ol>
+<li>Exclaim “Fun fact: wiener schnitzel is named after famous philosopher Norbert Wiener.”</li>
+<li>Eat the delicious wiener schnitzel in front of you.</li>
+</ol>
+</td>
+<td>
+<p><b>Descartes:</b></p>
+<ol>
+<li>Exclaim “I hear that is because the chef insists on sorting all the courses on their menu alphabetically.”</li>
+<li>Eat the delicious wiener schnitzel in front of you.</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td>
+<p><b>Epicurus:</b></p>
+<ol>
+<li>Eat the delicious wiener schnitzel in front of you.</li>
+<li>Exclaim “This wiener schnitzel was acceptable, but a little boring. I hope future courses appeal more to my Epicurean palate.”</li>
+</ol>
+</td>
+<td>
+<p><b>Foucault:</b></p>
+<ol>
+<li>Exclaim &ldquo;I wish this wiener schnitzel had more salt, could someone please pass me the salt?&rdquo;</li>
+<li>Wait for someone to pass you the salt.</li>
+<li>Season your food.</li>
+<li>Grab the Rubik&rsquo;s cube from the center of the table and perform the sequence of operations <b>RDbUlubDRBrd</b>. Return the Rubik&rsquo;s cube to the center of the table.</li>
+<li>Return the salt shaker to the center of the table.</li>
+<li>Taste your food. Exclaim “There is now too much salt on my wiener schnitzel!”. Do not eat any more of your wiener schnitzel.</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td>
+<p><b>Godel:</b></p>
+<ol>
+<li>Eat the delicious wiener schnitzel in front of you.</li>
+<li>Exclaim “Isn’t it strange how the next course is butter cookies? Shouldn’t dessert be at the end of the meal?”</li>
+</ol>
+</td>
+<td>
+<p><b>Hypatia:</b></p>
+<ol>
+<li>Eat the delicious wiener schnitzel in front of you.</li>
+<li>Exclaim “But ‘butter cookies’ comes before ‘wiener schnitzel’ alphabetically!”</li>
+</ol>
+</td>
+</tr>
+</table>
+</div>
+
+<h3>Course 2: Butter cookies</h3>
+
+<p><b>Setup:</b> Prepare several thousand butter cookies. Place them in a tin in the center of the table. Place a salt shaker and a solved Rubik’s cube in the center of the table.</p>
+
+<div class="puz-table-wrapper">
+<table>
+<tr>
+<td>
+<p><b>Aristotle:</b></p>
+<ol>
+<li>Exclaim &ldquo;I want exactly 100 cookies!&rdquo;</li>
+<li>Wait for someone to pass you the salt shaker.</li>
+<li>Count the number of cookies on your plate. If there are not exactly 100 cookies on your plate, flip the table over and exclaim &ldquo;Dinner is ruined!&rdquo;</li>
+<li>Pass the salt shaker to Bacon.</li>
+</ol>
+</td>
+<td>
+<p><b>Bacon:</b></p>
+<ol>
+<li>Exclaim &ldquo;I want exactly 100 cookies!&rdquo;</li>
+<li>Wait for someone to pass you the salt shaker.</li>
+<li>Count the number of cookies on your plate. If there are not exactly 100 cookies on your plate, flip the table over and exclaim &ldquo;Dinner is ruined!&rdquo;</li>
+<li>Pass the salt shaker to Godel.</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td>
+<p><b>Confucius:</b></p>
+<ol>
+<li>It is very important that Aristotle and Bacon have the same number of cookies! Take the salt shaker from the center of the table. Add cookies onto Bacon&rsquo;s plate until Bacon has the same number of cookies as Aristotle. Then return the salt shaker to the center of the table.</li>
+<li>Repeat instruction 1.</li>
+<li>Repeat instruction 1.</li>
+<li>Repeat instruction 1.</li>
+<li>Repeat instruction 1.</li>
+</ol>
+</td>
+<td>
+<p><b>Descartes:</b></p>
+<ol>
+<li>Oh no, Aristotle doesn’t have enough cookies! Take the salt shaker from the center of the table. Add 1000 cookies to Aristotle&rsquo;s plate. Return the salt shaker to the center of the table.</li>
+<li>Repeat instruction 1.</li>
+<li>Repeat instruction 1.</li>
+<li>Repeat instruction 1.</li>
+<li>Repeat instruction 1.</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td>
+<p><b>Epicurus:</b></p>
+<ol>
+<li>Oh no, Aristotle has too many cookies! Take the salt shaker from the center of the table. Wait for Aristotle to have more cookies than Bacon. Eat cookies from Aristotle&rsquo;s plate until Aristotle has at most <b>3</b> more cookies than Bacon. (If Aristotle starts with fewer than <b>3</b> more cookies than Bacon, do nothing). Return the salt shaker to the center of the table.</li>
+<li>Repeat instruction 1, but with the bolded number replaced by <b>14</b>.</li>
+<li>Repeat instruction 1, but with the bolded number replaced by <b>20</b>.</li>
+<li>Repeat instruction 1, but with the bolded number replaced by <b>11</b>.</li>
+<li>Repeat instruction 1, but with the bolded number replaced by <b>17</b>.</li>
+<li>Repeat instruction 1, but with the bolded number replaced by <b>4</b>.</li>
+<li>Repeat instruction 1, but with the bolded number replaced by <b>25</b>.</li>
+<li>Repeat instruction 1, but with the bolded number replaced by <b>10</b>.</li>
+<li>Repeat instruction 1, but with the bolded number replaced by <b>17</b>.</li>
+<li>Repeat instruction 1, but with the bolded number replaced by <b>28</b>.</li>
+<li>Take the salt shaker from the center of the table.</li>
+<li>Pass the salt to Foucault.
+</ol>
+</td>
+<td>
+<p><b>Foucault:</b></p>
+<ol>
+<li>Oh no, Aristotle has too many cookies! Take the salt shaker from the center of the table. Wait for Aristotle to have more cookies than Bacon. Eat cookies from Aristotle&rsquo;s plate until Aristotle has at most <b>18</b> more cookies than Bacon. (If Aristotle starts with fewer than <b>18</b> more cookies than Bacon, do nothing). Return the salt shaker to the center of the table.</li>
+<li>Repeat instruction 1, but with the bolded number replaced by <b>27</b>.</li>
+<li>Repeat instruction 1, but with the bolded number replaced by <b>21</b>.</li>
+<li>Repeat instruction 1, but with the bolded number replaced by <b>30</b>.</li>
+<li>Repeat instruction 1, but with the bolded number replaced by <b>12</b>.</li>
+<li>Repeat instruction 1, but with the bolded number replaced by <b>19</b>.</li>
+<li>Repeat instruction 1, but with the bolded number replaced by <b>8</b>.</li>
+<li>Repeat instruction 1, but with the bolded number replaced by <b>27</b>.</li>
+<li>Repeat instruction 1, but with the bolded number replaced by <b>30</b>.</li>
+<li>Repeat instruction 1, but with the bolded number replaced by <b>10</b>.</li>
+<li>Wait for someone to pass you the salt shaker.</li>
+<li>Pass the salt to Aristotle.</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td>
+<p><b>Godel:</b></p>
+<ol>
+<li>Wait for someone to pass you the salt shaker.</li>
+<li>If Aristotle and Bacon ever simultaneously both had exactly 50 cookies on the plates in front of them, swap the plates of Aristotle and Confucius.</li>
+<li>If Aristotle and Bacon ever simultaneously both had exactly 49 cookies on the plates in front of them, swap the plates of Aristotle and Descartes.</li>
+<li>If Aristotle and Bacon ever simultaneously both had exactly 48 cookies on the plates in front of them, swap the plates of Aristotle and Epicurus.</li>
+<li>If Aristotle and Bacon ever simultaneously both had exactly 47 cookies on the plates in front of them, swap the plates of Aristotle and Foucault.</li>
+<li>If Aristotle and Bacon ever simultaneously both had exactly 46 cookies on the plates in front of them, swap the plates of Aristotle and Godel.</li>
+<li>If Aristotle and Bacon ever simultaneously both had exactly 45 cookies on the plates in front of them, swap the plates of Aristotle and Hypatia.</li>
+<li>If Aristotle and Bacon ever simultaneously both had exactly 44 cookies on the plates in front of them, swap the plates of Bacon and Confucius.</li>
+<li>If Aristotle and Bacon ever simultaneously both had exactly 43 cookies on the plates in front of them, swap the plates of Bacon and Descartes.</li>
+<li>If Aristotle and Bacon ever simultaneously both had exactly 42 cookies on the plates in front of them, swap the plates of Bacon and Epicurus.</li>
+<li>If Aristotle and Bacon ever simultaneously both had exactly 41 cookies on the plates in front of them, swap the plates of Bacon and Foucault.</li>
+<li>If Aristotle and Bacon ever simultaneously both had exactly 40 cookies on the plates in front of them, swap the plates of Bacon and Godel.</li>
+<li>If Aristotle and Bacon ever simultaneously both had exactly 39 cookies on the plates in front of them, swap the plates of Bacon and Hypatia.</li>
+<li>Pass the salt shaker to Hypatia.</li>
+</ol>
+</td>
+<td>
+<p><b>Hypatia:</b></p>
+<ol>
+<li>Wait for someone to pass you the salt shaker.</li>
+<li>Take the Rubik&rsquo;s cube from the center of the table.</li>
+<li>If Aristotle and Bacon ever simultaneously both had exactly 75 cookies on the plates in front of them, perform the sequence of operations <b>UdfLbrufLuB</b>.</li>
+<li>If Aristotle and Bacon ever simultaneously both had exactly 74 cookies on the plates in front of them, perform the sequence of operations <b>uBrBRUUlBB</b>.</li>
+<li>If Aristotle and Bacon ever simultaneously both had exactly 73 cookies on the plates in front of them, perform the sequence of operations <b>UUrBulUFDRD</b>.</li>
+<li>If Aristotle and Bacon ever simultaneously both had exactly 72 cookies on the plates in front of them, perform the sequence of operations <b>llddBlURfD</b>.</li>
+<li>If Aristotle and Bacon ever simultaneously both had exactly 71 cookies on the plates in front of them, perform the sequence of operations <b>blDfrubUrBB</b>.</li>
+<li>If Aristotle and Bacon ever simultaneously both had exactly 70 cookies on the plates in front of them, perform the sequence of operations <b>FFRlDlldff</b>.</li>
+<li>If Aristotle and Bacon ever simultaneously both had exactly 69 cookies on the plates in front of them, perform the sequence of operations <b>FBULurbuRFL</b>.</li>
+<li>If Aristotle and Bacon ever simultaneously both had exactly 68 cookies on the plates in front of them, perform the sequence of operations <b>uBrFBUldfr</b>.</li>
+<li>If Aristotle and Bacon ever simultaneously both had exactly 67 cookies on the plates in front of them, perform the sequence of operations <b>FdluBRURLDR</b>.</li>
+<li>If Aristotle and Bacon ever simultaneously both had exactly 66 cookies on the plates in front of them, perform the sequence of operations <b>LULdBDfRDb</b>.</li>
+<li>Return the Rubik&rsquo;s cube to the center of the table.</li>
+<li>Return the salt shaker to the center of the table.</li>
+</ol>
+</td>
+</tr>
+</table>
+</div>
+
+<h3>Course 3: Ratatouille</h3>
+
+<p><b>Setup:</b> Prepare eight servings of ratatouille. Place one serving on a plate in front of each of the philosophers. Place a salt shaker and a solved Rubik’s cube in the center of the table.</p>
+
+<div class="puz-table-wrapper">
+<table>
+<tr>
+<td>
+<p><b>Aristotle:</b></p>
+<ol>
+<li>Take the salt shaker from the center of the table.</li>
+<li>Grab the Rubik&rsquo;s cube from the center of the table and perform the sequence of operations <b>lffruu</b>. Return the Rubik&rsquo;s cube to the center of the table.</li>
+<li>Pass the salt to Foucault.</li>
+<li>Wait for someone to pass you the salt.</li>
+<li>Put the salt shaker back in the center of the table.</li>
+<li>Wait for someone to pass you the salt.</li>
+<li>If there is any ratatouille on the plate in front of you, eat it.</li>
+<li>Pick up the dining table and rotate it 1 position counter-clockwise (so that you are now facing the plate that was just in front of Bacon).</li>
+<li>Pass the salt to Hypatia.</li>
+</ol>
+</td>
+<td>
+<p><b>Bacon:</b></p>
+<ol>
+<li>Take the salt shaker from the center of the table.</li>
+<li>Pass the salt to Descartes.</li>
+<li>Wait for someone to pass you the salt.</li>
+<li>Pass the salt to Aristotle.</li>
+<li>Wait for someone to pass you the salt.</li>
+<li>If there is any ratatouille on the plate in front of you, eat it.</li>
+<li>Pick up the dining table and rotate it 1 position clockwise (so that you are now facing the plate that was just in front of Aristotle).</li>
+<li>Pass the salt to Godel.</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td>
+<p><b>Confucius:</b></p>
+<ol>
+<li>Take the salt shaker from the center of the table.</li>
+<li>Grab the Rubik&rsquo;s cube from the center of the table and perform the sequence of operations <b>ubbDfB</b>. Return the Rubik&rsquo;s cube to the center of the table.</li>
+<li>If there is any ratatouille on the plate in front of you, eat it.</li>
+<li>Pass the salt to Hypatia.</li>
+</ol>
+</td>
+<td>
+<p><b>Descartes:</b></p>
+<ol>
+<li>Wait for someone to pass you the salt.</li>
+<li>If there is any ratatouille on the plate in front of you, eat it.</li>
+<li>Put the salt shaker back in the center of the table.</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td>
+<p><b>Epicurus:</b></p>
+<ol>
+<li>Take the salt shaker from the center of the table.</li>
+<li>Pass the salt to Godel.</li>
+<li>Wait for someone to pass you the salt.</li>
+<li>If there is any ratatouille on the plate in front of you, eat it.</li>
+<li>Pick up the dining table and rotate it 1 position clockwise (so that you are now facing the plate that was just in front of Descartes).</li>
+<li>Put the salt shaker back in the center of the table.</li>
+</ol>
+</td>
+<td>
+<p><b>Foucault:</b></p>
+<ol>
+<li>Wait for someone to pass you the salt.</li>
+<li>Pass the salt to Bacon.</li>
+<li>Wait for someone to pass you the salt.</li>
+<li>If there is any ratatouille on the plate in front of you, eat it.</li>
+<li>Pick up the dining table and rotate it 1 position clockwise (so that you are now facing the plate that was just in front of Epicurus).</li>
+<li>Put the salt shaker back in the center of the table.</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td>
+<p><b>Godel:</b></p>
+<ol>
+<li>Wait for someone to pass you the salt.</li>
+<li>Grab the Rubik&rsquo;s cube from the center of the table and perform the sequence of operations <b>rbDUrr</b>. Return the Rubik&rsquo;s cube to the center of the table.</li>
+<li>Pass the salt to Foucault.</li>
+<li>Wait for someone to pass you the salt.</li>
+<li>Put the salt shaker back in the center of the table.</li>
+</ol>
+</td>
+<td>
+<p><b>Hypatia:</b></p>
+<ol>
+<li>Take the salt shaker from the center of the table.</li>
+<li>Grab the Rubik&rsquo;s cube from the center of the table and perform the sequence of operations <b>frfdu</b>. Return the Rubik&rsquo;s cube to the center of the table.</li>
+<li>Pass the salt to Aristotle.</li>
+<li>Wait for someone to pass you the salt.</li>
+<li>Pass the salt to Epicurus.</li>
+<li>Wait for someone to pass you the salt.</li>
+<li>Pass the salt to Bacon.</li>
+</ol>
+</td>
+</tr>
+</table>
+</div>
+
+<h3>Course 4: Goulash</h3>
+
+<p><b>Setup:</b> Prepare three pots containing 3 liters, 5 liters, and 7 liters of goulash respectively. Place these pots in the center of the table, along with a solved Rubik’s cube. Place an empty bowl in front of each philosopher.</p>
+
+<div class="puz-table-wrapper">
+<table>
+<tr>
+<td>
+<p><b>Aristotle:</b></p>
+<ol>
+<li>Wait for someone to pass you a pot of goulash.</li>
+<li>If the pot is empty, flip over the table and exclaim &ldquo;Dinner is ruined!&rdquo; Otherwise, serve yourself 1L of goulash out of this pot.</li>
+<li>Pass the pot to Confucius.</li>
+<li>Wait for someone to pass you a pot of goulash.</li>
+<li>If the pot is empty, flip over the table and exclaim &ldquo;Dinner is ruined!&rdquo; Otherwise, serve yourself 1L of goulash out of this pot.</li>
+<li>Pass the pot to Bacon.</li>
+<li>If your bowl contains goulash that has been in the same pot as some goulash in Epicurus&rsquo; bowl, eat all of your goulash.</li>
+</ol>
+</td>
+<td>
+<p><b>Bacon:</b></p>
+<ol>
+<li>Wait for someone to pass you a pot of goulash.</li>
+<li>If the pot is empty, flip over the table and exclaim &ldquo;Dinner is ruined!&rdquo; Otherwise, serve yourself 1L of goulash out of this pot.</li>
+<li>Pass the pot to Confucius.</li>
+<li>If your bowl contains goulash that has been in the same pot as some goulash in Foucault&rsquo;s bowl, eat all of your goulash.</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td>
+<p><b>Confucius:</b></p>
+<ol>
+<li>Wait for someone to pass you a pot of goulash.</li>
+<li>If the pot is empty, flip over the table and exclaim &ldquo;Dinner is ruined!&rdquo; Otherwise, serve yourself 1L of goulash out of this pot.</li>
+<li>Pass the pot to Descartes.</li>
+<li>Wait for someone to pass you a pot of goulash.</li>
+<li>If the pot is empty, flip over the table and exclaim &ldquo;Dinner is ruined!&rdquo; Otherwise, serve yourself 1L of goulash out of this pot.</li>
+<li>Return the pot to the center of the table.</li>
+<li>Wait for someone to pass you a pot of goulash.</li>
+<li>If the pot is empty, flip over the table and exclaim &ldquo;Dinner is ruined!&rdquo; Otherwise, serve yourself 1L of goulash out of this pot.</li>
+<li>Pass the pot to Descartes.</li>
+<li>If your bowl contains goulash that has been in the same pot as some goulash in Godel&rsquo;s bowl, eat all of your goulash.</li>
+</ol>
+</td>
+<td>
+<p><b>Descartes:</b></p>
+<ol>
+<li>Wait for someone to pass you a pot of goulash.</li>
+<li>If the pot is empty, flip over the table and exclaim &ldquo;Dinner is ruined!&rdquo; Otherwise, serve yourself 1L of goulash out of this pot.</li>
+<li>Grab the Rubik&rsquo;s cube from the center of the table and perform the sequence of operations <b>lFLUluFu</b>. Return the Rubik&rsquo;s cube to the center of the table.</li>
+<li>Pass the pot to Epicurus.</li>
+<li>Wait for someone to pass you a pot of goulash.</li>
+<li>If the pot is empty, flip over the table and exclaim &ldquo;Dinner is ruined!&rdquo; Otherwise, serve yourself 1L of goulash out of this pot.</li>
+<li>Return the pot to the center of the table.</li>
+<li>If your bowl contains goulash that has been in the same pot as some goulash in Hypatia&rsquo;s bowl, eat all of your goulash.</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td>
+<p><b>Epicurus:</b></p>
+<ol>
+<li>Wait for someone to pass you a pot of goulash.</li>
+<li>If the pot is empty, flip over the table and exclaim &ldquo;Dinner is ruined!&rdquo; Otherwise, serve yourself 1L of goulash out of this pot.</li>
+<li>Grab the Rubik&rsquo;s cube from the center of the table and perform the sequence of operations <b>FbUBlFul</b>. Return the Rubik&rsquo;s cube to the center of the table.</li>
+<li>Pass the pot to Godel.</li>
+<li>If your bowl contains goulash that has been in the same pot as some goulash in Hypatia&rsquo;s bowl, eat all of your goulash.</li>
+</ol>
+</td>
+<td>
+<p><b>Foucault:</b></p>
+<ol>
+<li>Take a pot of goulash from the center of the table.</li>
+<li>If the pot is empty, flip over the table and exclaim &ldquo;Dinner is ruined!&rdquo; Otherwise, serve yourself 1L of goulash out of this pot.</li>
+<li>Pass the pot to Godel.</li>
+<li>If your bowl contains goulash that has been in the same pot as some goulash in Epicurus&rsquo; bowl, eat all of your goulash.</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td>
+<p><b>Godel:</b></p>
+<ol>
+<li>Take a pot of goulash from the center of the table.</li>
+<li>If the pot is empty, flip over the table and exclaim &ldquo;Dinner is ruined!&rdquo; Otherwise, serve yourself 1L of goulash out of this pot.</li>
+<li>Pass the pot to Aristotle.</li>
+<li>Wait for someone to pass you a pot of goulash.</li>
+<li>If the pot is empty, flip over the table and exclaim &ldquo;Dinner is ruined!&rdquo; Otherwise, serve yourself 1L of goulash out of this pot.</li>
+<li>Pass the pot to Hypatia.</li>
+<li>Wait for someone to pass you a pot of goulash.</li>
+<li>If the pot is empty, flip over the table and exclaim &ldquo;Dinner is ruined!&rdquo; Otherwise, serve yourself 1L of goulash out of this pot.</li>
+<li>Return the pot to the center of the table.</li>
+<li>If your bowl contains goulash that has been in the same pot as some goulash in Confucius&rsquo; bowl, eat all of your goulash.</li>
+</ol>
+</td>
+<td>
+<p><b>Hypatia:</b></p>
+<ol>
+<li>Take a pot of goulash from the center of the table.</li>
+<li>If the pot is empty, flip over the table and exclaim &ldquo;Dinner is ruined!&rdquo; Otherwise, serve yourself 1L of goulash out of this pot.</li>
+<li>Grab the Rubik&rsquo;s cube from the center of the table and perform the sequence of operations <b>fflluubl</b>. Return the Rubik&rsquo;s cube to the center of the table.</li>
+<li>Pass the pot to Confucius.</li>
+<li>Wait for someone to pass you a pot of goulash.</li>
+<li>If the pot is empty, flip over the table and exclaim &ldquo;Dinner is ruined!&rdquo; Otherwise, serve yourself 1L of goulash out of this pot.</li>
+<li>Pass the pot to Aristotle.</li>
+<li>If your bowl contains goulash that has been in the same pot as some goulash in Descartes&rsquo; bowl, eat all of your goulash.</li>
+</ol>
+</td>
+</tr>
+</table>
+</div>
+
+<h3>Course 5: Soda bread</h3>
+
+<p><b>Setup:</b> Prepare 36 slices of soda bread. Place 3, 6, 2, 1, 5, 4, 7, and 8 slices of soda bread on plates in front of Aristotle, Bacon, Confucius, Descartes, Epicurus, Foucault, Godel, and Hypatia respectively. Place a salt shaker and a solved Rubik’s cube in the center of the table.</p>
+
+<div class="puz-table-wrapper">
+<table>
+<tr>
+<td>
+<p><b>Aristotle:</b></p>
+<ol>
+<li>Wait for someone to pass you the salt.</li>
+<li>Swap your plate with Bacon&rsquo;s plate.</li>
+<li>Grab the Rubik&rsquo;s cube from the center of the table and perform the sequence of operations <b>uFLRbD</b>. Return the Rubik&rsquo;s cube to the center of the table.</li>
+<li>Put the salt shaker back in the center of the table.</li>
+<li>Grab the salt shaker from the center of the table.</li>
+<li>Swap your plate with Bacon&rsquo;s plate.</li>
+<li>Pass the salt to Epicurus.</li>
+</ol>
+</td>
+<td>
+<p><b>Bacon:</b></p>
+<ol>
+<li>Grab the salt shaker from the center of the table.</li>
+<li>Swap your plate with Confucius&rsquo; plate.</li>
+<li>Grab the Rubik&rsquo;s cube from the center of the table and perform the sequence of operations <b>LddRff</b>. Return the Rubik&rsquo;s cube to the center of the table.</li>
+<li>Put the salt shaker back in the center of the table.</li>
+<li>Grab the salt shaker from the center of the table.</li>
+<li>Swap your plate with Confucius&rsquo; plate.</li>
+<li>Put the salt shaker back in the center of the table.</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td>
+<p><b>Confucius:</b></p>
+<ol>
+<li>Grab the salt shaker from the center of the table.</li>
+<li>Swap your plate with Descartes&rsquo; plate.</li>
+<li>Grab the Rubik&rsquo;s cube from the center of the table and perform the sequence of operations <b>lrbbdL</b>. Return the Rubik&rsquo;s cube to the center of the table.</li>
+<li>Pass the salt to Aristotle.</li>
+</ol>
+</td>
+<td>
+<p><b>Descartes:</b></p>
+<ol>
+<li>Grab the salt shaker from the center of the table.</li>
+<li>Swap your plate with Epicurus&rsquo; plate.</li>
+<li>Grab the Rubik&rsquo;s cube from the center of the table and perform the sequence of operations <b>uFdULf</b>. Return the Rubik&rsquo;s cube to the center of the table.</li>
+<li>Put the salt shaker back in the center of the table.</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td>
+<p><b>Epicurus:</b></p>
+<ol>
+<li>Wait for someone to pass you the salt.</li>
+<li>Swap your plate with Foucault&rsquo;s plate.</li>
+<li>Put the salt shaker back in the center of the table.</li>
+<li>Grab the salt shaker from the center of the table.</li>
+<li>Swap your plate with Foucault&rsquo;s plate.</li>
+<li>Put the salt shaker back in the center of the table.</li>
+</ol>
+</td>
+<td>
+<p><b>Foucault:</b></p>
+<ol>
+<li>Grab the salt shaker from the center of the table.</li>
+<li>If any philosopher has more pieces of soda bread than a philosopher whose name comes alphabetically after them, flip the table over and exclaim &ldquo;Dinner is ruined!&rdquo;</li>
+<li>Pass the salt to Godel.</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td>
+<p><b>Godel:</b></p>
+<ol>
+<li>Wait for someone to pass you the salt.</li>
+<li>Swapping plates is bad! Throw out all the soda bread on any plate that was swapped at any point in the past.</li>
+<li>You&rsquo;re really more of a mathematician than a philosopher, so let&rsquo;s do some math. At any point in time, define the Godel number of this table to be 1 &times; (the number of pieces of soda bread on Aristotle&rsquo;s plate) + 4 &times; (the number of pieces of soda bread on Bacon&rsquo;s plate) + 9 &times; (the number of pieces of soda bread on Confucius&rsquo; plate) + &hellip; + 64 &times; (the number of pieces of soda bread on Hypatia&rsquo;s plate).</li>
+<li>If the Godel number of the table was ever 1242, swap the plate in front of you with the plate in front of Aristotle.</li>
+<li>If the Godel number of the table was ever 1243, swap the plate in front of you with the plate in front of Bacon.</li>
+<li>If the Godel number of the table was ever 1244, swap the plate in front of you with the plate in front of Confucius.</li>
+<li>If the Godel number of the table was ever 1245, swap the plate in front of you with the plate in front of Descartes.</li>
+<li>If the Godel number of the table was ever 1246, swap the plate in front of you with the plate in front of Epicurus.</li>
+<li>If the Godel number of the table was ever 1247, swap the plate in front of you with the plate in front of Foucault.</li>
+<li>Pass the salt to Hypatia.</li>
+</ol>
+</td>
+<td>
+<p><b>Hypatia:</b></p>
+<ol>
+<li>Wait for someone to pass you the salt.</li>
+<li>This Godel number concept seems pretty nifty. Let&rsquo;s do some plate swapping.</li>
+<li>If the Godel number of the table was ever 1248, swap the plate in front of you with the plate in front of Bacon.</li>
+<li>If the Godel number of the table was ever 1249, swap the plate in front of you with the plate in front of Confucius.</li>
+<li>If the Godel number of the table was ever 1250, swap the plate in front of you with the plate in front of Descartes.</li>
+<li>If the Godel number of the table was ever 1251, swap the plate in front of you with the plate in front of Epicurus.</li>
+<li>If the Godel number of the table was ever 1252, swap the plate in front of you with the plate in front of Foucault.</li>
+<li>Put the salt shaker back in the center of the table.</li>
+</ol>
+</td>
+</tr>
+</table>
+</div>
+
+<h3>Course 6: Spaghetti</h3>
+
+<p><b>Setup:</b> Prepare eight servings of spaghetti. Place one serving on a plate in front of each of the philosophers. Place eight chopsticks labeled 1 through 8 in the center of the table (these traditionally used to be placed between philosophers, but this led to various problems). Place a solved Rubik’s cube in the center of the table.</p>
+
+<div class="puz-table-wrapper">
+<table>
+<tr>
+<td>
+<p><b>Aristotle:</b></p>
+<ol>
+<li>Eating spaghetti is a dangerous activity for philosophers, so make sure you follow this emergency procedure: if at any time, every philosopher is waiting to pick up a chopstick currently held by a different philosopher, immediately jump to instruction 16.</li>
+<li>Exclaim &ldquo;I will eat my next bite of spaghetti with chopsticks 6 and 8.&rdquo;</li>
+<li>Pick up chopstick 6.</li>
+<li>Pick up chopstick 8.</li>
+<li>Take a bite of spaghetti.</li>
+<li>Put down chopstick 6.</li>
+<li>Put down chopstick 8.</li>
+<li>Grab the Rubik&rsquo;s cube from the center of the table and perform the sequence of operations <b>LR</b>. Return the Rubik&rsquo;s cube to the center of the table.</li>
+<li>Exclaim &ldquo;I will eat my next bite of spaghetti with chopsticks 4 and 7.&rdquo;</li>
+<li>Pick up chopstick 4.</li>
+<li>Pick up chopstick 7.</li>
+<li>Take a bite of spaghetti.</li>
+<li>Put down chopstick 4.</li>
+<li>Put down chopstick 7.</li>
+<li>This dining experience is proceeding too smoothly! Flip over the table and exclaim &ldquo;Dinner is ruined!&rdquo;</li>
+<li>If you are holding a single chopstick, use it to consume the remainder of your spaghetti. Otherwise, look upon your spaghetti with sadness.</li>
+</ol>
+</td>
+<td>
+<p><b>Bacon:</b></p>
+<ol>
+<li>Eating spaghetti is a dangerous activity for philosophers, so make sure you follow this emergency procedure: if at any time, every philosopher is waiting to pick up a chopstick currently held by a different philosopher, immediately jump to instruction 16.</li>
+<li>Exclaim &ldquo;I will eat my next bite of spaghetti with chopsticks 3 and 5.&rdquo;</li>
+<li>Pick up chopstick 3.</li>
+<li>Pick up chopstick 5.</li>
+<li>Take a bite of spaghetti.</li>
+<li>Put down chopstick 3.</li>
+<li>Put down chopstick 5.</li>
+<li>Grab the Rubik&rsquo;s cube from the center of the table and perform the sequence of operations <b>lR</b>. Return the Rubik&rsquo;s cube to the center of the table.</li>
+<li>Exclaim &ldquo;I will eat my next bite of spaghetti with chopsticks 3 and 7.&rdquo;</li>
+<li>Pick up chopstick 3.</li>
+<li>Pick up chopstick 7.</li>
+<li>Take a bite of spaghetti.</li>
+<li>Put down chopstick 3.</li>
+<li>Put down chopstick 7.</li>
+<li>This dining experience is proceeding too smoothly! Flip over the table and exclaim &ldquo;Dinner is ruined!&rdquo;</li>
+<li>If you are holding a single chopstick, use it to consume the remainder of your spaghetti. Otherwise, look upon your spaghetti with sadness.</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td>
+<p><b>Confucius:</b></p>
+<ol>
+<li>Eating spaghetti is a dangerous activity for philosophers, so make sure you follow this emergency procedure: if at any time, every philosopher is waiting to pick up a chopstick currently held by a different philosopher, immediately jump to instruction 16.</li>
+<li>Exclaim &ldquo;I will eat my next bite of spaghetti with chopsticks 6 and 2.&rdquo;</li>
+<li>Pick up chopstick 6.</li>
+<li>Pick up chopstick 2.</li>
+<li>Take a bite of spaghetti.</li>
+<li>Put down chopstick 6.</li>
+<li>Put down chopstick 2.</li>
+<li>Grab the Rubik&rsquo;s cube from the center of the table and perform the sequence of operations <b>LRR</b>. Return the Rubik&rsquo;s cube to the center of the table.</li>
+<li>Exclaim &ldquo;I will eat my next bite of spaghetti with chopsticks 7 and 1.&rdquo;</li>
+<li>Pick up chopstick 7.</li>
+<li>Pick up chopstick 1.</li>
+<li>Take a bite of spaghetti.</li>
+<li>Put down chopstick 7.</li>
+<li>Put down chopstick 1.</li>
+<li>This dining experience is proceeding too smoothly! Flip over the table and exclaim &ldquo;Dinner is ruined!&rdquo;</li>
+<li>If you are holding a single chopstick, use it to consume the remainder of your spaghetti. Otherwise, look upon your spaghetti with sadness.</li>
+</ol>
+</td>
+<td>
+<p><b>Descartes:</b></p>
+<ol>
+<li>Eating spaghetti is a dangerous activity for philosophers, so make sure you follow this emergency procedure: if at any time, every philosopher is waiting to pick up a chopstick currently held by a different philosopher, immediately jump to instruction 16.</li>
+<li>Exclaim &ldquo;I will eat my next bite of spaghetti with chopsticks 3 and 1.&rdquo;</li>
+<li>Pick up chopstick 3.</li>
+<li>Pick up chopstick 1.</li>
+<li>Take a bite of spaghetti.</li>
+<li>Put down chopstick 3.</li>
+<li>Put down chopstick 1.</li>
+<li>Grab the Rubik&rsquo;s cube from the center of the table and perform the sequence of operations <b>RR</b>. Return the Rubik&rsquo;s cube to the center of the table.</li>
+<li>Exclaim &ldquo;I will eat my next bite of spaghetti with chopsticks 8 and 7.&rdquo;</li>
+<li>Pick up chopstick 8.</li>
+<li>Pick up chopstick 7.</li>
+<li>Take a bite of spaghetti.</li>
+<li>Put down chopstick 8.</li>
+<li>Put down chopstick 7.</li>
+<li>This dining experience is proceeding too smoothly! Flip over the table and exclaim &ldquo;Dinner is ruined!&rdquo;</li>
+<li>If you are holding a single chopstick, use it to consume the remainder of your spaghetti. Otherwise, look upon your spaghetti with sadness.</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td>
+<p><b>Epicurus:</b></p>
+<ol>
+<li>Eating spaghetti is a dangerous activity for philosophers, so make sure you follow this emergency procedure: if at any time, every philosopher is waiting to pick up a chopstick currently held by a different philosopher, immediately jump to instruction 16.</li>
+<li>Exclaim &ldquo;I will eat my next bite of spaghetti with chopsticks 4 and 5.&rdquo;</li>
+<li>Pick up chopstick 4.</li>
+<li>Pick up chopstick 5.</li>
+<li>Take a bite of spaghetti.</li>
+<li>Put down chopstick 4.</li>
+<li>Put down chopstick 5.</li>
+<li>Grab the Rubik&rsquo;s cube from the center of the table and perform the sequence of operations <b>lr</b>. Return the Rubik&rsquo;s cube to the center of the table.</li>
+<li>Exclaim &ldquo;I will eat my next bite of spaghetti with chopsticks 2 and 5.&rdquo;</li>
+<li>Pick up chopstick 2.</li>
+<li>Pick up chopstick 5.</li>
+<li>Take a bite of spaghetti.</li>
+<li>Put down chopstick 2.</li>
+<li>Put down chopstick 5.</li>
+<li>This dining experience is proceeding too smoothly! Flip over the table and exclaim &ldquo;Dinner is ruined!&rdquo;</li>
+<li>If you are holding a single chopstick, use it to consume the remainder of your spaghetti. Otherwise, look upon your spaghetti with sadness.</li>
+</ol>
+</td>
+<td>
+<p><b>Foucault:</b></p>
+<ol>
+<li>Eating spaghetti is a dangerous activity for philosophers, so make sure you follow this emergency procedure: if at any time, every philosopher is waiting to pick up a chopstick currently held by a different philosopher, immediately jump to instruction 16.</li>
+<li>Exclaim &ldquo;I will eat my next bite of spaghetti with chopsticks 4 and 6.&rdquo;</li>
+<li>Pick up chopstick 4.</li>
+<li>Pick up chopstick 6.</li>
+<li>Take a bite of spaghetti.</li>
+<li>Put down chopstick 4.</li>
+<li>Put down chopstick 6.</li>
+<li>Grab the Rubik&rsquo;s cube from the center of the table and perform the sequence of operations <b>LLR</b>. Return the Rubik&rsquo;s cube to the center of the table.</li>
+<li>Exclaim &ldquo;I will eat my next bite of spaghetti with chopsticks 1 and 6.&rdquo;</li>
+<li>Pick up chopstick 1.</li>
+<li>Pick up chopstick 6.</li>
+<li>Take a bite of spaghetti.</li>
+<li>Put down chopstick 1.</li>
+<li>Put down chopstick 6.</li>
+<li>This dining experience is proceeding too smoothly! Flip over the table and exclaim &ldquo;Dinner is ruined!&rdquo;</li>
+<li>If you are holding a single chopstick, use it to consume the remainder of your spaghetti. Otherwise, look upon your spaghetti with sadness.</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td>
+<p><b>Godel:</b></p>
+<ol>
+<li>Eating spaghetti is a dangerous activity for philosophers, so make sure you follow this emergency procedure: if at any time, every philosopher is waiting to pick up a chopstick currently held by a different philosopher, immediately jump to instruction 16.</li>
+<li>Exclaim &ldquo;I will eat my next bite of spaghetti with chopsticks 4 and 2.&rdquo;</li>
+<li>Pick up chopstick 4.</li>
+<li>Pick up chopstick 2.</li>
+<li>Take a bite of spaghetti.</li>
+<li>Put down chopstick 4.</li>
+<li>Put down chopstick 2.</li>
+<li>Grab the Rubik&rsquo;s cube from the center of the table and perform the sequence of operations <b>Lr</b>. Return the Rubik&rsquo;s cube to the center of the table.</li>
+<li>Exclaim &ldquo;I will eat my next bite of spaghetti with chopsticks 4 and 3.&rdquo;</li>
+<li>Pick up chopstick 4.</li>
+<li>Pick up chopstick 3.</li>
+<li>Take a bite of spaghetti.</li>
+<li>Put down chopstick 4.</li>
+<li>Put down chopstick 3.</li>
+<li>This dining experience is proceeding too smoothly! Flip over the table and exclaim &ldquo;Dinner is ruined!&rdquo;</li>
+<li>If you are holding a single chopstick, use it to consume the remainder of your spaghetti. Otherwise, look upon your spaghetti with sadness.</li>
+</ol>
+</td>
+<td>
+<p><b>Hypatia:</b></p>
+<ol>
+<li>Eating spaghetti is a dangerous activity for philosophers, so make sure you follow this emergency procedure: if at any time, every philosopher is waiting to pick up a chopstick currently held by a different philosopher, immediately jump to instruction 16.</li>
+<li>Exclaim &ldquo;I will eat my next bite of spaghetti with chopsticks 2 and 5.&rdquo;</li>
+<li>Pick up chopstick 2.</li>
+<li>Pick up chopstick 5.</li>
+<li>Take a bite of spaghetti.</li>
+<li>Put down chopstick 2.</li>
+<li>Put down chopstick 5.</li>
+<li>Grab the Rubik&rsquo;s cube from the center of the table and perform the sequence of operations <b>lRR</b>. Return the Rubik&rsquo;s cube to the center of the table.</li>
+<li>Exclaim &ldquo;I will eat my next bite of spaghetti with chopsticks 3 and 5.&rdquo;</li>
+<li>Pick up chopstick 3.</li>
+<li>Pick up chopstick 5.</li>
+<li>Take a bite of spaghetti.</li>
+<li>Put down chopstick 3.</li>
+<li>Put down chopstick 5.</li>
+<li>This dining experience is proceeding too smoothly! Flip over the table and exclaim &ldquo;Dinner is ruined!&rdquo;</li>
+<li>If you are holding a single chopstick, use it to consume the remainder of your spaghetti. Otherwise, look upon your spaghetti with sadness.</li>
+<li>Grab the Rubik&rsquo;s cube from the center of the table and perform the sequence of operations <b>ddbbrrffUlFllDFlRFlbDlru</b>. Return the Rubik&rsquo;s cube to the center of the table.</li>
+</ol>
+</td>
+</tr>
+</table>
+</div>
+
+<h3>Course 7: Hagelslag</h3>
+
+<p><b>Setup:</b> Prepare eight servings of hagelslag, but refrain from adding any sprinkles yet (so uh, just eight servings of buttered bread). Place one unsprinkled hagelslag on a plate in front of each of the philosophers. Place a solved Rubik’s cube and a bowl containing infinitely many chocolate sprinkles in the center of the table.</p>
+
+<div class="puz-table-wrapper">
+<table>
+<tr>
+<td>
+<p><b>Aristotle:</b></p>
+<ol>
+<li>Grab 794,909,916 sprinkles from the bowl in the middle of the table and place them on top of your hagelslag.</li>
+<li>Exclaim &ldquo;This is too many sprinkles.&rdquo;</li>
+<li>If you have fewer than 2 sprinkles on your hagelslag, go to step 6.</li>
+<li>Take 2 sprinkles from your hagelslag and place one on each of your neighbors&rsquo; hagelslags.</li>
+<li>Take the Rubik&rsquo;s cube from the center of the table. Perform the sequence of operations <b>DR</b> on it. Return the Rubik&rsquo;s cube to the center of the table.</li>
+<li>If anyone at the table has at least 2 sprinkles on their hagelslag, go back to step 3.</li>
+<li>If your hagelslag has any sprinkles on it, eat it. Otherwise, stare at the sprinkle-less hagelslag in disgust.</li>
+</ol>
+</td>
+<td>
+<p><b>Bacon:</b></p>
+<ol>
+<li>Grab 725,555,853 sprinkles from the bowl in the middle of the table and place them on top of your hagelslag.</li>
+<li>Exclaim &ldquo;This is too many sprinkles.&rdquo;</li>
+<li>If you have fewer than 2 sprinkles on your hagelslag, go to step 5.</li>
+<li>Take 2 sprinkles from your hagelslag and place one on each of your neighbors&rsquo; hagelslags.</li>
+<li>If anyone at the table has at least 2 sprinkles on their hagelslag, go back to step 3.</li>
+<li>If your hagelslag has any sprinkles on it, eat it. Otherwise, stare at the sprinkle-less hagelslag in disgust.</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td>
+<p><b>Confucius:</b></p>
+<ol>
+<li>Grab 916,722,337 sprinkles from the bowl in the middle of the table and place them on top of your hagelslag.</li>
+<li>Exclaim &ldquo;This is too many sprinkles.&rdquo;</li>
+<li>If you have fewer than 2 sprinkles on your hagelslag, go to step 5.</li>
+<li>Take 2 sprinkles from your hagelslag and place one on each of your neighbors&rsquo; hagelslags.</li>
+<li>If anyone at the table has at least 2 sprinkles on their hagelslag, go back to step 3.</li>
+<li>If your hagelslag has any sprinkles on it, eat it. Otherwise, stare at the sprinkle-less hagelslag in disgust.</li>
+</ol>
+</td>
+<td>
+<p><b>Descartes:</b></p>
+<ol>
+<li>Grab 907,378,342 sprinkles from the bowl in the middle of the table and place them on top of your hagelslag.</li>
+<li>Exclaim &ldquo;This is too many sprinkles.&rdquo;</li>
+<li>If you have fewer than 2 sprinkles on your hagelslag, go to step 5.</li>
+<li>Take 2 sprinkles from your hagelslag and place one on each of your neighbors&rsquo; hagelslags.</li>
+<li>If anyone at the table has at least 2 sprinkles on their hagelslag, go back to step 3.</li>
+<li>If your hagelslag has any sprinkles on it, eat it. Otherwise, stare at the sprinkle-less hagelslag in disgust.</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td>
+<p><b>Epicurus:</b></p>
+<ol>
+<li>Exclaim &ldquo;Sprinkles delight my Epicurean palate.&rdquo;</li>
+<li>Your neighbors keep on passing you sprinkles! Whenever a neighbor places a sprinkle on your hagelslag, eat it (the sprinkle, not the hagelslag). Do this until no one has 2 or more sprinkles on top of their hagelslag.</li>
+<li>If your hagelslag has any sprinkles on it, eat it. Otherwise, stare at the sprinkle-less hagelslag in disgust.</li>
+<li>Take the Rubik&rsquo;s cube from the center of the table. Perform the sequence of operations <b>llfrrBlbDfDbufLUBrDfuFB</b> on it. Return the Rubik&rsquo;s cube to the center of the table.</li>
+</ol>
+</td>
+<td>
+<p><b>Foucault:</b></p>
+<ol>
+<li>Grab 141,647,319 sprinkles from the bowl in the middle of the table and place them on top of your hagelslag.</li>
+<li>Exclaim &ldquo;This is too many sprinkles.&rdquo;</li>
+<li>If you have fewer than 2 sprinkles on your hagelslag, go to step 5.</li>
+<li>Take 2 sprinkles from your hagelslag and place one on each of your neighbors&rsquo; hagelslags.</li>
+<li>If anyone at the table has at least 2 sprinkles on their hagelslag, go back to step 3.</li>
+<li>If your hagelslag has any sprinkles on it, eat it. Otherwise, stare at the sprinkle-less hagelslag in disgust.</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td>
+<p><b>Godel:</b></p>
+<ol>
+<li>Grab 364,908,690 sprinkles from the bowl in the middle of the table and place them on top of your hagelslag.</li>
+<li>Exclaim &ldquo;This is too many sprinkles.&rdquo;</li>
+<li>If you have fewer than 2 sprinkles on your hagelslag, go to step 5.</li>
+<li>Take 2 sprinkles from your hagelslag and place one on each of your neighbors&rsquo; hagelslags.</li>
+<li>If anyone at the table has at least 2 sprinkles on their hagelslag, go back to step 3.</li>
+<li>If your hagelslag has any sprinkles on it, eat it. Otherwise, stare at the sprinkle-less hagelslag in disgust.</li>
+</ol>
+</td>
+<td>
+<p><b>Hypatia:</b></p>
+<ol>
+<li>Grab 948,092,745 sprinkles from the bowl in the middle of the table and place them on top of your hagelslag.</li>
+<li>Exclaim &ldquo;This is too many sprinkles.&rdquo;</li>
+<li>If you have fewer than 2 sprinkles on your hagelslag, go to step 5.</li>
+<li>Take 2 sprinkles from your hagelslag and place one on each of your neighbors&rsquo; hagelslags.</li>
+<li>If anyone at the table has at least 2 sprinkles on their hagelslag, go back to step 3.</li>
+<li>If your hagelslag has any sprinkles on it, eat it. Otherwise, stare at the sprinkle-less hagelslag in disgust.</li>
+</ol>
+</td>
+</tr>
+</table>
+</div>
+
+<h3>Course 8: Jollof Rice</h3>
+
+<p><b>Setup:</b> Prepare a large quantity (i.e., several billion grains) of jollof rice. Place this in a serving bowl in the middle of the table. Place plates in front of Aristotle, Bacon, Confucius, Descartes, Epicurus, Foucault, Godel, and Hypatia. Place a salt shaker and a solved Rubik’s cube in the center of the table.</p>
+
+<div class="puz-table-wrapper">
+<table>
+<tr>
+<td>
+<p><b>Aristotle:</b></p>
+<ol>
+<li>Take the salt shaker from the center of the table.</li>
+<li>If Foucault has any rice on his plate, flip the table over and exclaim &ldquo;Dinner is ruined!&rdquo;.</li>
+<li>If you have no rice on your plate, flip the table over and exclaim &ldquo;Dinner is ruined!&rdquo;</li>
+<li>Move one grain of rice from your plate to Confucius&rsquo; plate.</li>
+<li>Put the salt shaker back in the center of the table.</li>
+<li>If anyone other than Bacon has any rice on their plate, return to step 1.</li>
+<li>Grab the Rubik&rsquo;s cube from the center of the table and perform the sequence of operations <b>LuuRFBDLfRbrDlFLdLdLR</b>. Return the Rubik&rsquo;s cube to the center of the table.</li>
+</ol>
+</td>
+<td>
+<p><b>Bacon:</b></p>
+<ol>
+<li>Take the salt shaker from the center of the table.</li>
+<li>If Aristotle does not have exactly 1 grain of rice on his plate, flip the table over and exclaim &ldquo;Dinner is ruined!&rdquo;</li>
+<li>If Epicurus has no rice on their plate, flip the table over and exclaim &ldquo;Dinner is ruined!&rdquo;</li>
+<li>Eat one grain of rice from Aristotle&rsquo;s plate. Then, move one grain of rice from Epicurus&rsquo; plate to your plate.</li>
+<li>Put the salt shaker back in the center of the table.</li>
+<li>If anyone other than you has any rice on their plate, return to step 1.</li>
+<li>If the number of grains of rice on your plate is odd, flip the table over and exclaim &ldquo;Dinner is ruined!&rdquo;</li>
+<li>Divide the rice on your plate into two equal portions. Count the number of grains in one of these two portions.</li>
+<li>Let <i>r</i> be the remainder left when this count is divided by 8. Let <i>s</i> be the remainder left when this count is divided by 7.</li>
+<li>If <i>r</i> is 1, give one portion of your rice to Aristotle.</li>
+<li>If <i>r</i> is 2, give one portion of your rice to Confucius.</li>
+<li>If <i>r</i> is 3, give one portion of your rice to Descartes.</li>
+<li>If <i>r</i> is 4, give one portion of your rice to Epicurus.</li>
+<li>If <i>r</i> is 5, give one portion of your rice to Foucault.</li>
+<li>If <i>r</i> is 6, give one portion of your rice to Godel.</li>
+<li>If <i>r</i> is 7, give one portion of your rice to Hypatia.</li>
+<li>If <i>s</i> is 1, give one portion of your rice to Confucius.</li>
+<li>If <i>s</i> is 2, give one portion of your rice to Descartes.</li>
+<li>If <i>s</i> is 3, give one portion of your rice to Epicurus.</li>
+<li>If <i>s</i> is 4, give one portion of your rice to Foucault.</li>
+<li>If <i>s</i> is 5, give one portion of your rice to Godel.</li>
+<li>If <i>s</i> is 6, give one portion of your rice to Hypatia.</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td>
+<p><b>Confucius:</b></p>
+<ol>
+<li>Take the salt shaker from the center of the table.</li>
+<li>If you have no rice on your plate, flip the table over and exclaim “Dinner is ruined!”.</li>
+<li>Eat one grain of rice from your plate.</li>
+<li>Serve (from the center of the table) one grain of rice to Aristotle and one grain of rice to Epicurus.</li>
+<li>Grab the Rubik&rsquo;s cube from the center of the table and perform the single operation <b>R</b>. Return the Rubik&rsquo;s cube to the center of the table.</li>
+<li>Put the salt shaker back in the center of the table.</li>
+<li>If anyone other than Bacon has any rice on their plate, return to step 1.</li>
+</ol>
+</td>
+<td>
+<p><b>Descartes:</b></p>
+<ol>
+<li>Take the salt shaker from the center of the table.</li>
+<li>If you have no rice on your plate, flip the table over and exclaim “Dinner is ruined!”. </li>
+<li>Move one grain of rice from your plate to Epicurus&rsquo; plate.</li>
+<li>Put the salt shaker back in the center of the table.</li>
+<li>If anyone other than Bacon has any rice on their plate, return to step 1.</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td>
+<p><b>Epicurus:</b></p>
+<ol>
+<li>Take the salt shaker from the center of the table.</li>
+<li>If Aristotle has any rice on his plate, flip the table over and exclaim &ldquo;Dinner is ruined!&rdquo;</li>
+<li>If you have no rice on your plate, flip the table over and exclaim “Dinner is ruined!”</li>
+<li>Eat one grain of rice from your plate.</li>
+<li>Grab the Rubik&rsquo;s cube from the center of the table and perform the single operation <b>D</b>. Return the Rubik&rsquo;s cube to the center of the table.</li>
+<li>Put the salt shaker back in the center of the table.</li>
+<li>If anyone other than Bacon has any rice on their plate, return to step 1.</li>
+</ol>
+</td>
+<td>
+<p><b>Foucault:</b></p>
+<ol>
+<li>Take the salt shaker from the center of the table.</li>
+<li>If Descartes or Epicurus have any rice on their plate, flip the table over and exclaim &ldquo;Dinner is ruined!&rdquo;</li>
+<li>If you have no rice on your plate, flip the table over and exclaim &ldquo;Dinner is ruined!&rdquo;</li>
+<li>Move one grain of rice from your plate to Aristotle&rsquo;s plate.</li>
+<li>Put the salt shaker back in the center of the table.</li>
+<li>If anyone other than Bacon has any rice on their plate, return to step 1.</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td>
+<p><b>Godel:</b></p>
+<ol>
+<li>Take the salt shaker from the center of the table.</li>
+<li>If Aristotle has fewer than 2 grains of rice on his plate or Epicurus has no grains of rice on his plate, flip the table over and exclaim &ldquo;Dinner is ruined!&rdquo;</li>
+<li>Eat one grain of rice from Epicurus&rsquo; plate.</li>
+<li>Take 2 grains of rice from Aristotle&rsquo;s plate.  Place one of these grains on Descartes&rsquo; plate, and the other on Foucault&rsquo;s.</li>
+<li>Put the salt shaker back in the center of the table.</li>
+<li>If anyone other than Bacon has any rice on their plate, return to step 1.</li>
+</ol>
+</td>
+<td>
+<p><b>Hypatia:</b></p>
+<ol>
+<li>Serve (from the center of the table) Aristotle 137,855,534 grains of jollof rice.</li>
+<li>No one is serving you any rice even though you served Aristotle so much rice! That&rsquo;s so impolite. In revenge, if at any point in time, the total number of grains of rice on Confucius&rsquo; plate, Descartes&rsquo; plate, and Epicurus&rsquo; plate is larger than one, immediately flip the table over and exclaim &ldquo;Dinner is ruined!&rdquo;</li>
+</ol>
+</td>
+</tr>
+</table>
+</div>
+
+<h3>Course 9: Ceviche</h3>
+
+<p><b>Setup:</b> Prepare 36 servings of ceviche. Place 7, 4, 5, 1, 6, 2, 8, and 3 servings of ceviche on plates in front of Aristotle, Bacon, Confucius, Descartes, Epicurus, Foucault, Godel, and Hypatia respectively. Place a salt shaker and a solved Rubik’s cube in the center of the table.</p>
+
+<div class="puz-table-wrapper">
+<table>
+<tr>
+<td>
+<p><b>Aristotle:</b></p>
+<ol>
+<li>Take the salt shaker from the center of the table.</li>
+<li>Swap the plate in front of you with the plate in front of Bacon.</li>
+<li>If there is a philosopher whose name comes alphabetically after yours and who has fewer servings of ceviche than you, flip the table over and exclaim &ldquo;Dinner is ruined!&rdquo;</li>
+<li>Add one grain of salt to Hypatia&rsquo;s ceviche.</li>
+<li>Put the salt shaker back in the center of the table.</li>
+<li>Wait for someone to pass you the salt.</li>
+<li>Eat the ceviche in front of you if the number of servings on the plate in front of you is not 6 or 8.</li>
+<li>Put the salt shaker back in the center of the table.</li>
+</ol>
+</td>
+<td>
+<p><b>Bacon:</b></p>
+<ol>
+<li>Take the salt shaker from the center of the table.</li>
+<li>Swap the plate in front of you with the plate in front of Confucius.</li>
+<li>If there is a philosopher whose name comes alphabetically after yours and who has fewer servings of ceviche than you, flip the table over and exclaim &ldquo;Dinner is ruined!&rdquo;</li>
+<li>Add one grain of salt to Hypatia&rsquo;s ceviche.</li>
+<li>Put the salt shaker back in the center of the table.</li>
+<li>Wait for someone to pass you the salt.</li>
+<li>Eat the ceviche in front of you if the number of servings on the plate in front of you is not 6 or 8.</li>
+<li>Pass the salt shaker to Aristotle.</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td>
+<p><b>Confucius:</b></p>
+<ol>
+<li>Take the salt shaker from the center of the table.</li>
+<li>Swap the plate in front of you with the plate in front of Descartes.</li>
+<li>If there is a philosopher whose name comes alphabetically after yours and who has fewer servings of ceviche than you, flip the table over and exclaim &ldquo;Dinner is ruined!&rdquo;</li>
+<li>Add one grain of salt to Hypatia&rsquo;s ceviche.</li>
+<li>Put the salt shaker back in the center of the table.</li>
+<li>Wait for someone to pass you the salt.</li>
+<li>Eat the ceviche in front of you if the number of servings on the plate in front of you is not 6 or 8.</li>
+<li>Pass the salt shaker to Bacon.</li>
+</ol>
+</td>
+<td>
+<p><b>Descartes:</b></p>
+<ol>
+<li>Take the salt shaker from the center of the table.</li>
+<li>Swap the plate in front of you with the plate in front of Epicurus.</li>
+<li>If there is a philosopher whose name comes alphabetically after yours and who has fewer servings of ceviche than you, flip the table over and exclaim &ldquo;Dinner is ruined!&rdquo;</li>
+<li>Add one grain of salt to Hypatia&rsquo;s ceviche.</li>
+<li>Put the salt shaker back in the center of the table.</li>
+<li>Wait for someone to pass you the salt.</li>
+<li>Eat the ceviche in front of you if the number of servings on the plate in front of you is not 6 or 8.</li>
+<li>Pass the salt shaker to Confucius.</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td>
+<p><b>Epicurus:</b></p>
+<ol>
+<li>Take the salt shaker from the center of the table.</li>
+<li>Swap the plate in front of you with the plate in front of Foucault.</li>
+<li>If there is a philosopher whose name comes alphabetically after yours and who has fewer servings of ceviche than you, flip the table over and exclaim &ldquo;Dinner is ruined!&rdquo;</li>
+<li>Add one grain of salt to Hypatia&rsquo;s ceviche.</li>
+<li>Put the salt shaker back in the center of the table.</li>
+<li>Wait for someone to pass you the salt.</li>
+<li>Eat the ceviche in front of you if the number of servings on the plate in front of you is not 6 or 8.</li>
+<li>Pass the salt shaker to Descartes.</li>
+</ol>
+</td>
+<td>
+<p><b>Foucault:</b></p>
+<ol>
+<li>Take the salt shaker from the center of the table.</li>
+<li>Swap the plate in front of you with the plate in front of Godel.</li>
+<li>If there is a philosopher whose name comes alphabetically after yours and who has fewer servings of ceviche than you, flip the table over and exclaim &ldquo;Dinner is ruined!&rdquo;</li>
+<li>Add one grain of salt to Hypatia&rsquo;s ceviche.</li>
+<li>Put the salt shaker back in the center of the table.</li>
+<li>Wait for someone to pass you the salt.</li>
+<li>Eat the ceviche in front of you if the number of servings on your plate is not 6 or 8.</li>
+<li>Pass the salt shaker to Epicurus.</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td>
+<p><b>Godel:</b></p>
+<ol>
+<li>Take the salt shaker from the center of the table.</li>
+<li>Swap the plate in front of you with the plate in front of Hypatia.</li>
+<li>If there is a philosopher whose name comes alphabetically after yours and who has fewer servings of ceviche than you, flip the table over and exclaim &ldquo;Dinner is ruined!&rdquo;</li>
+<li>Add one grain of salt to Hypatia&rsquo;s ceviche.</li>
+<li>Put the salt shaker back in the center of the table.</li>
+<li>Wait for someone to pass you the salt.</li>
+<li>Eat the ceviche in front of you if the number of servings on your plate is not 6 or 8.</li>
+<li>Pass the salt shaker to Foucault.</li>
+</ol>
+</td>
+<td>
+<p><b>Hypatia:</b></p>
+<ol>
+<li>Wait until 7 grains of salt have been added to your ceviche.</li>
+<li>Take the Rubik&rsquo;s cube from the center of the table.</li>
+<li>If Aristotle salted your ceviche before Bacon did, perform the sequence of operations <b>DRRLBBU</b>. Otherwise, perform the sequence of operations <b>ddbrrbu</b>.</li>
+<li>If Confucius salted your ceviche before Descartes did, perform the sequence of operations <b>RfDRbdB</b>. Otherwise, perform the sequence of operations <b>DDfBUrud</b>.</li>
+<li>If Epicurus salted your ceviche before Foucault did, perform the sequence of operations <b>dbDllRu</b>. Otherwise, perform the sequence of operations <b>BfDfDrdL</b>.</li>
+<li>Return the Rubik&rsquo;s cube to the center of the table.</li>
+<li>Take the salt shaker from the center of the table.</li>
+<li>Eat the ceviche in front of you if the number of servings on your plate is not 6 or 8.</li>
+<li>Pass the salt shaker to Godel.</li>
+</ol>
+</td>
+</tr>
+</table>
+</div>
+
+
+
+    
+    
+
+    
+    <div class="puzzle-main-corner puzzle-main-corner-1"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-2"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-3"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-4"></div>
+    
+</main>
+
+<script src="/static/js/copyjack.js"></script>
+
+
+    </div>
+    
+
+    
+
+    
+    <script>
+    document.getElementById('nav-music').style.display = 'none';
+    document.getElementById("progress-simulator").addEventListener("submit", (e) => {
+        if (e.submitter.name === "reset") {
+            toggleReset(true);
+            doGlitch(false);
+            document.getElementById("shortcuts").checked = false;
+            e.preventDefault();
+        } else {
+            localStorage.setItem(e.submitter.name, e.submitter.value);
+        }
+    });
+    addStyles();
+
+    function toggleReset(which) {
+        $('#loop-reset').toggleClass('loop-resetting', which);
+    }
+
+    function addStyles() {
+        const changeFavicon = (url) => {
+            const e = Array.from(document.getElementsByTagName("link"))
+                .filter(e => e.rel === "icon")[0];
+            e.href = url;
+        }
+        const addSheet = (url) => {
+            const e = document.createElement("link");
+            e.rel = "stylesheet";
+            e.href = url;
+            document.getElementsByTagName("head")[0].appendChild(e);
+        }
+
+        const seasons = ["spring", "summer", "autumn", "winter"];
+        let current_main_round = localStorage.getItem("round");
+        const endgame_unlocked = localStorage.getItem("endgame") === "true";
+
+        const matches = new RegExp(`\\?(${seasons.join("|")})`).exec(document.URL);
+        if (matches && matches[1]) {
+            current_main_round = matches[1];
+        }
+
+        if (endgame_unlocked) {
+            addSheet("/static/css/endgame.css");
+            changeFavicon("/static/images/favicon-endgame.ico");
+            const nodes = document.getElementsByClassName("energy-nodes-info");
+            console.log(nodes);
+            if (nodes.length > 0) {
+                nodes[0].style.display = "block";
+            }
+        } else if (current_main_round === "concert") {
+            addSheet("/static/css/concert.css");
+            changeFavicon("/static/images/favicon-concert.ico");
+            // also add the concert music
+            document.getElementById('nav-music').style.display = 'inline-block';
+            const audio = document.getElementById("music-audio");
+            if (audio) {
+                audio.addEventListener('play', () => {
+                    audio.volume = localStorage.getItem('music-audio-volume') ?? 0.5;
+                });
+                audio.addEventListener('volumechange', () => {
+                    localStorage.setItem('music-audio-volume', audio.volume);
+                });
+            }
+        } else if (seasons.includes(current_main_round)) {
+            addSheet("/static/css/season.css");
+            addSheet(`/static/css/${current_main_round}.css`);
+            changeFavicon(`/static/images/favicon-${current_main_round}.ico`);
+        } else {
+            addSheet("/static/css/blue.css");
+            changeFavicon("/static/images/favicon-blue.ico");
+        }
+    }
+
+    registerOnGlitchHook((ex) => {
+        document.getElementById('background-glitch-wrapper').style.display = 'initial';
+    });
+    </script>
+    
+</body>
+</html>

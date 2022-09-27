@@ -1,0 +1,766 @@
+
+
+
+
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+<title>Solution: Bullet Curtain</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <meta property="og:title" content="Galactic Puzzle Hunt 2022">
+    <meta property="og:description" content="Registration for this year's Galactic Puzzle Hunt is now open!">
+    <meta property="og:image" content="https://galacticpuzzlehunt.com/static/images/banner.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:slnt,CASL,CRSV,MONO@-3,0.5,1,1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/skeleton.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.formset/1.2.2/jquery.formset.min.js"></script>
+    <script src="/jsi18n/"></script>
+    <script src="/static/js/sorttable.js"></script>
+    <script src="/static/js/tray.js"></script>
+    <script src="/static/js/notify.js"></script>
+    <script src="/static/js/time.js"></script>
+    
+    
+    <link rel="icon" sizes="16x16 32x32 48x48 64x64" href="/static/images/favicon.ico" type="image/vnd.microsoft.icon">
+    
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92192633-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-92192633-1');
+</script>
+
+</head>
+<body>
+    
+    <div id="background-glitch-wrapper" class="background-glitch">
+        <div class="glitch-1"></div>
+        <div class="glitch-2"></div>
+        <div class="glitch-3"></div>
+    </div>
+    
+    
+    <input id="shortcuts" type="checkbox">
+    
+    <nav>
+        <span class="tray">
+            <span id="tray-timer"></span>
+            <div class="top-tabs">
+                <a href="/">
+                    Home
+                </a>
+                
+                
+                <a href="/story">
+                    Story
+                </a>
+                
+                
+                <a class="selected-tab" href="/puzzles">
+                    Puzzles
+                </a>
+                
+                <a href="/teams">
+                    Teams
+                </a>
+                
+                
+                <a href="/errata">
+                    Updates
+                </a>
+                
+                
+                
+                
+                <a id="nav-music" href="#">
+                    <label for="music" title="Music" style="margin-bottom: 0; font-weight: normal; cursor: pointer;">Music</label>
+                </a>
+                <input id="music" type="checkbox">
+                <div class="shortcuts music">
+                    <audio id="music-audio" controls src="/static/puzzle_resources/worlds-end-concert/music-audio.mp3">
+                        There should be a music player here.
+                    </audio>
+                </div>
+                
+                
+            </div>
+            <div class="top-left-actions">
+                
+<a href="/puzzle/bullet-curtain" class="btn">Back to the puzzle</a>
+
+            </div>
+        </span>
+        <div class="top-right-actions">
+        
+        <label for="shortcuts" title="Simulator">Simulator </label>
+        
+        
+        </div>
+    </nav>
+    
+    <div class="shortcuts">
+        <form id="progress-simulator">
+        <div>Current round:</div>
+        <button class="btn" type="submit" name="round" value="forward">⬆️</button>
+        <button class="btn" type="submit" name="round" value="spring">🌸</button>
+        <button class="btn" type="submit" name="round" value="summer">☀️</button>
+        <button class="btn" type="submit" name="round" value="autumn">🍂</button>
+        <button class="btn" type="submit" name="round" value="winter">☃️</button>
+        <button class="btn" type="submit" name="round" value="concert">🎤</button>
+        <button class="btn" type="submit" name="round" value="none">None</button>
+        <div>Endgame:</div>
+        <button class="btn" type="submit" name="endgame" value="true">Unlock</button>
+        <button class="btn" type="submit" name="endgame" value="false">Reset</button>
+        <div>Reset:</div>
+        <button class="btn" type="submit" name="reset" value="reset">Reset</button>
+        </form>
+    </div>
+    
+    
+    
+    
+    
+    <div id="loop-reset">
+        <form>
+            <svg viewBox="-30 160 720 320">
+                <defs>
+                    <path id="loop-end-path" d="m 370,240 c 38.29044,0 74.26676,18.33512 96.83716,49.26624 l -76.8369,30.73478 V 270 L 300,330 261.03858,309.74192 c 19.60706,-42.51188 62.14674,-69.74008 108.9623,-69.74306 z m 106.15758,64.22738 c 6.65282,12.65518 10.9906,26.39738 12.80876,40.57862 l -38.96532,5.19538 z"/>
+                </defs>
+                <foreignObject width="720" height="480" clip-path="url(#loop-end-clip)" class="loop-shade">
+                    <aside class="loop-shade" xmlns="http://www.w3.org/1999/xhtml" style="width: 100%; height: 100%;"></aside>
+                </foreignObject>
+                <clipPath id="loop-end-clip"><use href="#loop-end-path"/></clipPath>
+                <use href="#loop-end-path"/>
+                <path d="M 490,400 600,330 450,350 490,280 390,320 V 270 L 300,330 50,200 170,380 50,400"/>
+            </svg>
+            <div>THE END</div>
+            <p>You can reset once per minute.</p>
+            <table>
+                <tr id="loop-reset-btn-row-reset">
+                    <td><button class="btn" disabled>Reset</button></td>
+                    <td>Start over from the beginning of the exam.</td>
+                </tr>
+                <tr id="loop-reset-btn-row-restore">
+                    <td><button class="btn" disabled>Jump</button></td>
+                    <td>Start over, but resubmit your previous answers to bring you back to this point.</td>
+                </tr>
+                <tr>
+                    <td><a class="btn" href="javascript:toggleReset(false)">Stay</a></td>
+                    <td>Look at this page a bit longer. Make sure to save your work.</td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    
+    <script>
+
+    
+    
+    let glitchTriggerFuncs = [];
+    let glitchTriggerReceived = false;
+    let glitchTriggerExReceived = false;
+    let glitchPageLoaded = false;
+    function processGlitchFuncs(ex) {
+        glitchTriggerFuncs.forEach((func) => {
+            func(ex);
+        });
+    }
+    function doGlitch(ex) {
+        glitchTriggerReceived = true;
+        if (ex) {
+            glitchTriggerExReceived = true;
+        }
+        if (glitchPageLoaded) {
+            processGlitchFuncs(ex);
+        }
+    }
+    window.addEventListener('load', () => {
+        glitchPageLoaded = true;
+        if (glitchTriggerExReceived) {
+            processGlitchFuncs(true);
+        }
+        else if (glitchTriggerReceived) {
+            processGlitchFuncs(false);
+        }
+    }, false);
+    
+    
+    
+    function registerOnGlitchHook(func) {
+        if (glitchTriggerExReceived) {
+            func(true);
+        }
+        else if (glitchTriggerReceived) {
+            func(false);
+        }
+        glitchTriggerFuncs.push(func);
+    }
+    
+
+    
+    
+    </script>
+    <div class="content">
+        
+
+<style>
+h2 {
+    font-size: 2.5rem;
+    font-weight: normal;
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+
+h4 {
+    font-size: 2rem;
+    font-weight: normal;
+    margin: 2rem 0;
+}
+</style>
+
+<h1>
+    Solution <span style="font-weight: 300">Bullet Curtain</span>
+    <div class="solved-title-marker">Answer <span class="solved-title-answer spoiler">PHASE DIAGRAM</span></div>
+</h1>
+
+<main class="puzzle-main">
+    <h2 style="margin-top: 0">
+        Written by
+        
+Sam Kim
+
+    </h2>
+
+    
+    <style>
+  img.screenshot {
+    height: 200px;
+    vertical-align: middle;
+  }
+  blockquote {
+    margin: 0 0 2.5rem;
+    overflow-x: auto;
+  }
+  blockquote table {
+    width: 0;
+    margin: 0;
+    display: block;
+  }
+</style>
+<p>We’re given a bullet hell game where we have the script for each level and sliders for the parameters Alpha, Beta, and Gamma. We can either try to read the script or just play around with the sliders to see what each parameter does to make the levels easier to beat.</p>
+<p>Gameplay tip: focusing concentrates your fire, shows your hitbox, and slows your movement down for precise dodging.</p>
+<p>After beating each level, the boss drops 1–26 point items worth 1000 points each. We can convert these into letters to get the phrase SEE EXTRA STAGE.</p>
+<blockquote>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Alpha effect</th>
+<th>Easiest alpha</th>
+<th>Beta effect</th>
+<th>Easiest beta</th>
+<th>Gamma effect</th>
+<th>Easiest gamma</th>
+<th>Point items</th>
+<th>Extracted letter</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Spell Card A</td>
+<td>Green bullet type</td>
+<td>1</td>
+<td>Number of green bullet streams</td>
+<td>-3</td>
+<td>Number of knife streams</td>
+<td>3</td>
+<td>19</td>
+<td>S</td>
+<td>You can either go through the line of green bullets or go counterclockwise around the boss.</td>
+</tr>
+<tr>
+<td>Spell Card B</td>
+<td>Number of drums</td>
+<td>3</td>
+<td>Number of bullets in each chevron</td>
+<td>-3</td>
+<td>Number of chevrons stacked</td>
+<td>-3</td>
+<td>5</td>
+<td>E</td>
+<td></td>
+</tr>
+<tr>
+<td>Spell Card C</td>
+<td>Number of rings of small stars</td>
+<td>3</td>
+<td>Number of stars in each ring</td>
+<td>3</td>
+<td>Number of big stars</td>
+<td>-3</td>
+<td>5</td>
+<td>E</td>
+<td></td>
+</tr>
+<tr>
+<td>Spell Card D</td>
+<td>Number of lasers</td>
+<td>-3</td>
+<td>Number of bullets in each laser when it transforms</td>
+<td>3</td>
+<td>Length of chunk of bullets that move in the same direction</td>
+<td>-3</td>
+<td>5</td>
+<td>E</td>
+<td></td>
+</tr>
+<tr>
+<td>Spell Card E</td>
+<td>Number of lasers</td>
+<td>3</td>
+<td>Number of rings of small bullets</td>
+<td>3</td>
+<td>Number of big aimed bullets</td>
+<td>3</td>
+<td>24</td>
+<td>X</td>
+<td>You can dodge the second angled wave of lasers reliably by moving to the middle of the bottom of the screen (above the enemy marker).</td>
+</tr>
+<tr>
+<td>Spell Card F</td>
+<td>Number of bullets in each ring</td>
+<td>3</td>
+<td>Purple bullet type</td>
+<td>1</td>
+<td>Number of purple bullets in each horizontal pass</td>
+<td>-3</td>
+<td>20</td>
+<td>T</td>
+<td></td>
+</tr>
+<tr>
+<td>Spell Card G</td>
+<td>Number of waves</td>
+<td>-3</td>
+<td>Symmetry of waves</td>
+<td>-3</td>
+<td>Number of bullets in each individual ring</td>
+<td>3</td>
+<td>18</td>
+<td>R</td>
+<td></td>
+</tr>
+<tr>
+<td>Spell Card H</td>
+<td>Red bullet type</td>
+<td>3</td>
+<td>Number of bullets in ring</td>
+<td>3</td>
+<td>Number of rings</td>
+<td>3</td>
+<td>1</td>
+<td>A</td>
+<td></td>
+</tr>
+<tr>
+<td>Spell Card I</td>
+<td>Number of curvy lasers in each horizontal pass</td>
+<td>3</td>
+<td>Number of lines of aimed bullets</td>
+<td>-3</td>
+<td>Number of bullets in line</td>
+<td>-3</td>
+<td>19</td>
+<td>S</td>
+<td></td>
+</tr>
+<tr>
+<td>Spell Card J</td>
+<td>Number of lasers in each laser wheel</td>
+<td>-3</td>
+<td>Number of bullets fired above the boss</td>
+<td>3</td>
+<td>Number of bullets fired at you</td>
+<td>-3</td>
+<td>20</td>
+<td>T</td>
+<td>All that’s necessary is vertical motion. Start in the middle and move downwards to dodge the first wave of laser wheels.</td>
+</tr>
+<tr>
+<td>Spell Card K</td>
+<td>Number of lasers</td>
+<td>3</td>
+<td>Blue bullet type</td>
+<td>-3</td>
+<td>Number of bullets in ring</td>
+<td>3</td>
+<td>1</td>
+<td>A</td>
+<td>The lasers copy the angle from the boss to you.</td>
+</tr>
+<tr>
+<td>Spell Card L</td>
+<td>Number of times rings fired</td>
+<td>3</td>
+<td>Number of rings fired at once</td>
+<td>-3</td>
+<td>Number of bullets in ring</td>
+<td>-3</td>
+<td>7</td>
+<td>G</td>
+<td>Stay near the bottom of the screen and circle around the boss when the bullets are about to hit you.</td>
+</tr>
+<tr>
+<td>Bullet Curtain</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>5</td>
+<td>E</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>The final level has the boss shooting equations of the form “<strong>E</strong>: <strong>A</strong>α + <strong>B</strong>β + <strong>C</strong>γ + <strong>D</strong>” at us.</p>
+<p>As clued by the title “Bullet Curtain” and the term “Spell Card”, this puzzle is about the Touhou Project series of games. Each game is numbered and the number “<strong>E</strong>” in the equations corresponds to this number. (This covers every mainline Windows Touhou game with the exception of Touhou 9: Phantasmagoria of Flower View which has very different gameplay.)</p>
+<p>Each of these games has an extra stage and each lettered level corresponds to a spell card in each of these extra stages. We can adjust the parameters for each level to replicate the true spell cards. (There are plenty of gameplay videos available for these extra stages.)</p>
+<p>Ordering each level by the game number, evaluating each equation with the derived parameters, and converting to letters gives us the answer <strong>PHASE DIAGRAM</strong>. (The levels are initially ordered by the extracted letter for extra confirmation and error correction.)</p>
+<blockquote>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Game</th>
+<th>True spell card</th>
+<th>Screenshot</th>
+<th>True alpha effect</th>
+<th>True alpha</th>
+<th>True beta effect</th>
+<th>True beta</th>
+<th>True gamma effect</th>
+<th>True gamma</th>
+<th>Equation</th>
+<th>Evaluated equation</th>
+<th>Extracted letter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Spell Card J</td>
+<td>Touhou 6: Embodiment of Scarlet Devil</td>
+<td>Forbidden Barrage “Clock that Ticks Away the Past”</td>
+<td><img class="screenshot" src="bullet-curtain/th06.jpg"></td>
+<td>4 lasers in each laser wheel</td>
+<td>0</td>
+<td>32 lines of bullets fired above boss</td>
+<td>1</td>
+<td>17, 7, and 17 lines of bullets fired at player</td>
+<td>2</td>
+<td>-3α-3β+2γ+15</td>
+<td>16</td>
+<td>P</td>
+</tr>
+<tr>
+<td>Spell Card G</td>
+<td>Touhou 7: Perfect Cherry Blossom</td>
+<td>Shikigami “Senko Thoughtful Meditation”</td>
+<td><img class="screenshot" src="bullet-curtain/th07.jpg"></td>
+<td>3 waves</td>
+<td>-1</td>
+<td>4-fold symmetry</td>
+<td>-2</td>
+<td>8 bullets in each ring</td>
+<td>-2</td>
+<td>-2α+β+2γ+12</td>
+<td>8</td>
+<td>H</td>
+</tr>
+<tr>
+<td>Spell Card A</td>
+<td>Touhou 8: Imperishable Night</td>
+<td>Limiting Edict “Curse of Tsuki-no-Iwakasa”</td>
+<td><img class="screenshot" src="bullet-curtain/th08.jpg"></td>
+<td>Green ellipses</td>
+<td>-3</td>
+<td>8 streams of green bullets</td>
+<td>0</td>
+<td>4 streams of knives</td>
+<td>0</td>
+<td>2α-3β-3γ+7</td>
+<td>1</td>
+<td>A</td>
+</tr>
+<tr>
+<td>Spell Card L</td>
+<td>Touhou 10: Mountain of Faith</td>
+<td>Divine Tool “Moriya’s Iron Ring”</td>
+<td><img class="screenshot" src="bullet-curtain/th10.jpg"></td>
+<td>Rings fired 10 times</td>
+<td>1</td>
+<td>3 rings fired at once</td>
+<td>-2</td>
+<td>48 bullets in each ring</td>
+<td>-1</td>
+<td>α-3β-3γ+9</td>
+<td>19</td>
+<td>S</td>
+</tr>
+<tr>
+<td>Spell Card E</td>
+<td>Touhou 11: Subterranean Animism</td>
+<td>Representation “All Ancestors Standing Beside Your Bed”</td>
+<td><img class="screenshot" src="bullet-curtain/th11.jpg"></td>
+<td>10 lasers fired in each half of the screen</td>
+<td>-1</td>
+<td>10 rings of small bullets</td>
+<td>-2</td>
+<td>30 large aimed bullets</td>
+<td>-1</td>
+<td>2α+2β+γ+12</td>
+<td>5</td>
+<td>E</td>
+</tr>
+<tr>
+<td>Spell Card D</td>
+<td>Touhou 12: Undefined Fantastic Object</td>
+<td>Nue Sign “Danmaku Chimera”</td>
+<td><img class="screenshot" src="bullet-curtain/th12.jpg"></td>
+<td>16 lasers</td>
+<td>-1</td>
+<td>10 bullets in each line</td>
+<td>-1</td>
+<td>Bullets alternate direction</td>
+<td>3</td>
+<td>2α+2β-3γ+17</td>
+<td>4</td>
+<td>D</td>
+</tr>
+<tr>
+<td>Spell Card H</td>
+<td>Touhou 13: Ten Desires</td>
+<td>Third Duel “Avian Danmaku Transformation”</td>
+<td><img class="screenshot" src="bullet-curtain/th13.jpg"></td>
+<td>Red glowing small circles</td>
+<td>1</td>
+<td>16 bullets in each ring</td>
+<td>-1</td>
+<td>2 rings</td>
+<td>2</td>
+<td>-3α+β+γ+11</td>
+<td>9</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Spell Card B</td>
+<td>Touhou 14: Double Dealing Character</td>
+<td>First Drum “Raging Temple Taiko”</td>
+<td><img class="screenshot" src="bullet-curtain/th14.jpg"></td>
+<td>9 drums</td>
+<td>-1</td>
+<td>5 bullets in each chevron</td>
+<td>-2</td>
+<td>5 chevrons stacked</td>
+<td>-1</td>
+<td>-3α+2β+2γ+4</td>
+<td>1</td>
+<td>A</td>
+</tr>
+<tr>
+<td>Spell Card F</td>
+<td>Touhou 15: Legacy of Lunatic Kingdom</td>
+<td>Earth “Rain Falling in Hell”</td>
+<td><img class="screenshot" src="bullet-curtain/th15.jpg"></td>
+<td>32 bullets in each ring</td>
+<td>-1</td>
+<td>Purple fireballs</td>
+<td>0</td>
+<td>21 purple bullets in each horizontal pass</td>
+<td>0</td>
+<td>α+2β-3γ+8</td>
+<td>7</td>
+<td>G</td>
+</tr>
+<tr>
+<td>Spell Card K</td>
+<td>Touhou 16: Hidden Star in Four Seasons</td>
+<td>Secret Ceremony “Sword of the Seven Stars”</td>
+<td><img class="screenshot" src="bullet-curtain/th16.jpg"></td>
+<td>7 lasers</td>
+<td>-1</td>
+<td>Blue stars</td>
+<td>2</td>
+<td>32 bullets in each ring</td>
+<td>1</td>
+<td>-4α-β-2γ+18</td>
+<td>18</td>
+<td>R</td>
+</tr>
+<tr>
+<td>Spell Card C</td>
+<td>Touhou 17: Wily Beast and Weakest Creature</td>
+<td>Agile Skill “Black Pegasus Meteor Shot”</td>
+<td><img class="screenshot" src="bullet-curtain/th17.jpg"></td>
+<td>6 rings of small stars</td>
+<td>0</td>
+<td>30 stars in each ring</td>
+<td>-1</td>
+<td>30 big stars</td>
+<td>1</td>
+<td>α+2β-4γ+7</td>
+<td>1</td>
+<td>A</td>
+</tr>
+<tr>
+<td>Spell Card I</td>
+<td>Touhou 18: Unconnected Marketeers</td>
+<td>Kodoku “Sky Pendra”</td>
+<td><img class="screenshot" src="bullet-curtain/th18.jpg"></td>
+<td>13 curvy lasers in each horizontal pass</td>
+<td>2</td>
+<td>5 lines of aimed bullets</td>
+<td>1</td>
+<td>3 bullets in each line</td>
+<td>-1</td>
+<td>α-4β-2γ+13</td>
+<td>13</td>
+<td>M</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+
+    
+    
+    <h2 id="authors-notes">Author&rsquo;s Notes</h2>
+    <p>Originally this puzzle was going to use Danmakufu, but getting it to run would have been a huge pain for the solver.</p>
+<p>This puzzle was vaguely inspired by <a href="https://puzzles.mit.edu/2017/puzzle/a_beauty_cold_and_austere.html">A Beauty Cold and Austere</a> from the 2017 Mystery Hunt.</p>
+<p>Fun fact: Unity seems to have a 65536 method limit (per class or overall?) for IL2CPP builds.</p>
+<p>Credits:</p>
+<ul>
+<li><a href="https://dmk.bagoum.com/docs/articles/top.html">Danmokou</a> for the engine</li>
+<li><a href="https://en.touhouwiki.net/wiki/Touhou_Wiki">Touhou Wiki</a> for translations and screenshots of spell cards</li>
+<li><a href="https://www.bulletforge.org/u/terraformer9x/p/terra-shot-v11-1-2x-ph3sx">Terra-Shot</a> for the knife bullet graphic</li>
+</ul>
+    
+
+    
+    
+
+    
+    <div class="puzzle-main-corner puzzle-main-corner-1"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-2"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-3"></div>
+    
+    <div class="puzzle-main-corner puzzle-main-corner-4"></div>
+    
+</main>
+
+
+    </div>
+    
+
+    
+
+    
+    <script>
+    document.getElementById('nav-music').style.display = 'none';
+    document.getElementById("progress-simulator").addEventListener("submit", (e) => {
+        if (e.submitter.name === "reset") {
+            toggleReset(true);
+            doGlitch(false);
+            document.getElementById("shortcuts").checked = false;
+            e.preventDefault();
+        } else {
+            localStorage.setItem(e.submitter.name, e.submitter.value);
+        }
+    });
+    addStyles();
+
+    function toggleReset(which) {
+        $('#loop-reset').toggleClass('loop-resetting', which);
+    }
+
+    function addStyles() {
+        const changeFavicon = (url) => {
+            const e = Array.from(document.getElementsByTagName("link"))
+                .filter(e => e.rel === "icon")[0];
+            e.href = url;
+        }
+        const addSheet = (url) => {
+            const e = document.createElement("link");
+            e.rel = "stylesheet";
+            e.href = url;
+            document.getElementsByTagName("head")[0].appendChild(e);
+        }
+
+        const seasons = ["spring", "summer", "autumn", "winter"];
+        let current_main_round = localStorage.getItem("round");
+        const endgame_unlocked = localStorage.getItem("endgame") === "true";
+
+        const matches = new RegExp(`\\?(${seasons.join("|")})`).exec(document.URL);
+        if (matches && matches[1]) {
+            current_main_round = matches[1];
+        }
+
+        if (endgame_unlocked) {
+            addSheet("/static/css/endgame.css");
+            changeFavicon("/static/images/favicon-endgame.ico");
+            const nodes = document.getElementsByClassName("energy-nodes-info");
+            console.log(nodes);
+            if (nodes.length > 0) {
+                nodes[0].style.display = "block";
+            }
+        } else if (current_main_round === "concert") {
+            addSheet("/static/css/concert.css");
+            changeFavicon("/static/images/favicon-concert.ico");
+            // also add the concert music
+            document.getElementById('nav-music').style.display = 'inline-block';
+            const audio = document.getElementById("music-audio");
+            if (audio) {
+                audio.addEventListener('play', () => {
+                    audio.volume = localStorage.getItem('music-audio-volume') ?? 0.5;
+                });
+                audio.addEventListener('volumechange', () => {
+                    localStorage.setItem('music-audio-volume', audio.volume);
+                });
+            }
+        } else if (seasons.includes(current_main_round)) {
+            addSheet("/static/css/season.css");
+            addSheet(`/static/css/${current_main_round}.css`);
+            changeFavicon(`/static/images/favicon-${current_main_round}.ico`);
+        } else {
+            addSheet("/static/css/blue.css");
+            changeFavicon("/static/images/favicon-blue.ico");
+        }
+    }
+
+    registerOnGlitchHook((ex) => {
+        document.getElementById('background-glitch-wrapper').style.display = 'initial';
+    });
+    </script>
+    
+</body>
+</html>
