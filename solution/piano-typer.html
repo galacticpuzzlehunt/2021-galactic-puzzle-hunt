@@ -375,7 +375,7 @@ Just like on a real piano, this will help you develop muscle memory for the sect
         let current_main_round = localStorage.getItem("round");
         const endgame_unlocked = localStorage.getItem("endgame") === "true";
 
-        const matches = new RegExp(`\\?(${seasons.join("|")})`).exec(document.URL);
+        const matches = new RegExp(`(?:\\?|3F)(${seasons.join("|")})`).exec(document.URL);
         if (matches && matches[1]) {
             current_main_round = matches[1];
         }

@@ -366,7 +366,7 @@ document.getElementById("check-results-form").addEventListener("submit", (e) => 
 const slugs = ["intro_alt", "intro", "forward", "seasons", "concert", "meta_meta_alt", "meta_meta"];
 slugs.forEach(slug => document.getElementById(slug).style.display = "none");
 
-const matches = new RegExp(`\\?(${slugs.join("|")})`).exec(document.URL);
+const matches = new RegExp(`(?:\\?|3F)(${slugs.join("|")})`).exec(document.URL);
 if (matches && matches[1]) {
     document.getElementById(matches[1]).style.display = "block";
 }
@@ -416,7 +416,7 @@ if (matches && matches[1]) {
         let current_main_round = localStorage.getItem("round");
         const endgame_unlocked = localStorage.getItem("endgame") === "true";
 
-        const matches = new RegExp(`\\?(${seasons.join("|")})`).exec(document.URL);
+        const matches = new RegExp(`(?:\\?|3F)(${seasons.join("|")})`).exec(document.URL);
         if (matches && matches[1]) {
             current_main_round = matches[1];
         }

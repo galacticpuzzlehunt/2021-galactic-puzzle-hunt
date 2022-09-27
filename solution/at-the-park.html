@@ -483,7 +483,7 @@ This refers to the <a href="https://www.espn.com/mlb/playbyplay/_/gameId/4013567
         let current_main_round = localStorage.getItem("round");
         const endgame_unlocked = localStorage.getItem("endgame") === "true";
 
-        const matches = new RegExp(`\\?(${seasons.join("|")})`).exec(document.URL);
+        const matches = new RegExp(`(?:\\?|3F)(${seasons.join("|")})`).exec(document.URL);
         if (matches && matches[1]) {
             current_main_round = matches[1];
         }
