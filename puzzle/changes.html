@@ -518,7 +518,9 @@ td { text-align: center; }
 let sowpods = {}, easy = {};
 fetch("/static/puzzle_resources/changes/sowpods.txt").then(function (response) {
 	response.text().then(function (text) {
-		text.split('\n').forEach(item => sowpods[item.toUpperCase()] = 1);
+		text.split('\n').forEach(item => {
+			if (item) sowpods[item.toUpperCase()] = 1;
+		});
 	});
 })["catch"](function (e) {
 	console.warn(e);
@@ -526,7 +528,9 @@ fetch("/static/puzzle_resources/changes/sowpods.txt").then(function (response) {
 });
 fetch("/static/puzzle_resources/changes/easy.txt").then(function (response) {
 	response.text().then(function (text) {
-		text.split('\n').forEach(item => easy[item.toUpperCase()] = 1);
+		text.split('\n').forEach(item => {
+			if (item) easy[item.toUpperCase()] = 1;
+		});
 	});
 })["catch"](function (e) {
 	console.warn(e);
