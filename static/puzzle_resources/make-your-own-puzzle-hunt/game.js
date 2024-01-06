@@ -68,7 +68,7 @@ let ImageTab = (props) => {
 
     return <div>
       <div className="myoph-puzzle-instructions">
-        <span>Submit an image file as your puzzle.</span>
+        <span>Submit a .jpg image file as your puzzle.</span>
         <div><ul>
           <li>We'll convert the numbers into letters (A=01, B=02, ...)</li>
         </ul></div>
