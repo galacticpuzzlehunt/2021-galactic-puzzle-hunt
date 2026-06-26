@@ -72,8 +72,7 @@ const solve = (puzzle) => {
     if (now !== 0) loc[coord] = now;
     updateFoundCoins();
   }
-  renderCoins();
-  renderFuel();
+  renderEndgame();
 };
 
 let currentRound = "Forward";
@@ -93,8 +92,8 @@ const renderRound = () => {
               currentRound = round;
               renderRound();
             },
-          })
-        )
+          }),
+        ),
     ),
     h(
       "table",
@@ -107,11 +106,11 @@ const renderRound = () => {
             h("td", puzzle.name),
             h(
               "td",
-              createAsteroidButton(() => solve(puzzle))
-            )
-          )
-        )
-    )
+              createAsteroidButton(() => solve(puzzle)),
+            ),
+          ),
+        ),
+    ),
   );
 };
 renderRound();
@@ -137,15 +136,15 @@ const renderCoins = () => {
                 "td",
                 h(
                   `.coin${dist === 0 ? ".active" : ""}`,
-                  foundCoin[i] ? letter : "?"
-                )
+                  foundCoin[i] ? letter : "?",
+                ),
               ),
-              h("td", dist)
+              h("td", dist),
             );
-          })
-        )
-      )
-    )
+          }),
+        ),
+      ),
+    ),
   );
 };
 
@@ -162,46 +161,48 @@ const renderFuel = () => {
         "Fuel: ",
         h("span", `${Math.max(0, fuelLeft)} / 100`, {
           style: { fontWeight: "bold" },
-        })
-      )
-    )
+        }),
+      ),
+    ),
   );
 };
 
 const renderEndgame = () => {
   gid("puz-extra-text").style.display = allFound() ? "block" : "none";
-  render(
-    "endgame-holder",
-    h(
-      ".content",
+  if (gid("endgame-holder").children.length === 0) {
+    render(
+      "endgame-holder",
       h(
-        "div#endgame",
-        {
-          style: {
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          },
-        },
+        ".content",
         h(
-          "div",
-          { style: { marginRight: "1em" } },
-          h("div", "Map:"),
+          "div#endgame",
+          {
+            style: {
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            },
+          },
           h(
-            ".cube-container",
+            "div",
+            { style: { marginRight: "1em" } },
+            h("div", "Map:"),
             h(
-              ".cube",
-              ["front", "back", "right", "left", "top", "bottom"].map((face) =>
-                h(`.face.${face}`)
-              )
-            )
+              ".cube-container",
+              h(
+                ".cube",
+                ["front", "back", "right", "left", "top", "bottom"].map(
+                  (face) => h(`.face.${face}`),
+                ),
+              ),
+            ),
+            h("#fuel"),
           ),
-          h("#fuel")
+          h("#radar"),
         ),
-        h("#radar")
-      )
-    )
-  );
+      ),
+    );
+  }
   renderCoins();
   renderFuel();
 };
